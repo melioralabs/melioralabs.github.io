@@ -1,7 +1,139 @@
-# Meliora Labs
-**Semper Melius — Always striving for better.**
-
-AI-powered tools and consulting for banks, fintechs, and enterprises.
-
-🌐 melioralabs.tech
-📧 melioralabs.tech@gmail.com
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meliora Labs | Semper Melius</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --teal-50: #E1F5EE; --teal-100: #9FE1CB; --teal-400: #1D9E75;
+    --teal-600: #0F6E56; --teal-800: #085041;
+    --gray-50: #F1EFE8; --gray-100: #D3D1C7; --gray-400: #888780;
+    --gray-800: #444441; --gray-900: #2C2C2A;
+  }
+  body { font-family: 'DM Sans', sans-serif; font-weight: 400; color: var(--gray-900); background: #FAFAF8; line-height: 1.7; }
+  nav { display: flex; justify-content: space-between; align-items: center; padding: 1.25rem 3rem; background: white; border-bottom: 0.5px solid var(--gray-100); position: sticky; top: 0; z-index: 100; }
+  .logo { display: flex; align-items: center; gap: 10px; }
+  .logo-mark { width: 36px; height: 36px; background: var(--teal-400); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 600; }
+  .logo-text { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 500; color: var(--gray-900); letter-spacing: -0.3px; }
+  .logo-text span { color: var(--teal-400); }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { text-decoration: none; color: var(--gray-800); font-size: 14px; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--teal-400); }
+  .nav-cta { background: var(--teal-400) !important; color: white !important; padding: 8px 20px; border-radius: 6px; font-weight: 500 !important; transition: background 0.2s !important; }
+  .nav-cta:hover { background: var(--teal-600) !important; }
+  .hero { display: block; padding: 6rem 3rem 5rem; max-width: 1100px; margin: 0 auto; }
+  .hero-tag { display: inline-flex; align-items: center; gap: 6px; background: var(--teal-50); color: var(--teal-600); font-size: 13px; font-weight: 500; padding: 5px 14px; border-radius: 20px; margin-bottom: 1.5rem; border: 0.5px solid var(--teal-100); }
+  .hero-dot { width: 6px; height: 6px; background: var(--teal-400); border-radius: 50%; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+  .hero-title { font-family: 'Playfair Display', serif; font-size: clamp(2.8rem, 5vw, 4.2rem); font-weight: 500; line-height: 1.15; letter-spacing: -1px; color: var(--gray-900); max-width: 700px; margin-bottom: 1.5rem; }
+  .hero-title em { font-style: italic; color: var(--teal-400); }
+  .hero-sub { font-size: 1.1rem; color: var(--gray-800); max-width: 560px; margin-bottom: 2.5rem; line-height: 1.75; font-weight: 300; }
+  .hero-actions { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; }
+  .btn-primary { background: var(--teal-400); color: white; padding: 13px 28px; border-radius: 8px; font-size: 15px; font-weight: 500; text-decoration: none; border: none; cursor: pointer; transition: background 0.2s, transform 0.15s; font-family: 'DM Sans', sans-serif; }
+  .btn-primary:hover { background: var(--teal-600); transform: translateY(-1px); }
+  .btn-secondary { color: var(--gray-800); padding: 13px 28px; border-radius: 8px; font-size: 15px; text-decoration: none; border: 0.5px solid var(--gray-100); cursor: pointer; background: white; transition: border-color 0.2s; font-family: 'DM Sans', sans-serif; }
+  .btn-secondary:hover { border-color: var(--teal-100); color: var(--teal-600); }
+  .hero-stats { display: flex; gap: 3rem; margin-top: 4rem; padding-top: 2.5rem; border-top: 0.5px solid var(--gray-100); flex-wrap: wrap; }
+  .stat-number { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 500; color: var(--teal-400); line-height: 1; }
+  .stat-label { font-size: 13px; color: var(--gray-400); margin-top: 4px; }
+  section { padding: 5rem 3rem; max-width: 1100px; margin: 0 auto; }
+  .section-tag { font-size: 12px; font-weight: 500; text-transform: uppercase; letter-spacing: 1.5px; color: var(--teal-400); margin-bottom: 0.75rem; }
+  .section-title { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 3vw, 2.4rem); font-weight: 500; color: var(--gray-900); letter-spacing: -0.5px; margin-bottom: 1rem; line-height: 1.2; }
+  .section-sub { font-size: 1rem; color: var(--gray-800); max-width: 520px; line-height: 1.75; font-weight: 300; margin-bottom: 3rem; }
+  .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; }
+  .service-card { background: white; border: 0.5px solid var(--gray-100); border-radius: 12px; padding: 1.75rem; transition: border-color 0.2s, transform 0.2s; }
+  .service-card:hover { border-color: var(--teal-100); transform: translateY(-2px); }
+  .service-icon { width: 44px; height: 44px; background: var(--teal-50); border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.25rem; font-size: 20px; }
+  .service-title { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 500; color: var(--gray-900); margin-bottom: 0.5rem; }
+  .service-desc { font-size: 14px; color: var(--gray-800); line-height: 1.7; font-weight: 300; }
+  .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; }
+  .why-item { background: var(--gray-50); border-radius: 10px; padding: 1.5rem; border: 0.5px solid var(--gray-100); }
+  .why-number { font-family: 'Playfair Display', serif; font-size: 2.5rem; font-weight: 500; color: var(--teal-100); line-height: 1; margin-bottom: 0.5rem; }
+  .why-title { font-size: 14px; font-weight: 500; color: var(--gray-900); margin-bottom: 0.4rem; }
+  .why-desc { font-size: 13px; color: var(--gray-400); line-height: 1.6; font-weight: 300; }
+  .cta-section { background: var(--teal-800); border-radius: 16px; padding: 4rem 3rem; text-align: center; margin: 0 3rem 5rem; }
+  .cta-latin { font-family: 'Playfair Display', serif; font-size: 13px; font-style: italic; color: var(--teal-100); margin-bottom: 1rem; }
+  .cta-title { font-family: 'Playfair Display', serif; font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 500; color: white; margin-bottom: 1rem; line-height: 1.2; }
+  .cta-sub { font-size: 15px; color: var(--teal-100); margin-bottom: 2rem; font-weight: 300; max-width: 480px; margin-left: auto; margin-right: auto; }
+  .btn-white { background: white; color: var(--teal-600); padding: 13px 28px; border-radius: 8px; font-size: 15px; font-weight: 500; text-decoration: none; border: none; cursor: pointer; font-family: 'DM Sans', sans-serif; transition: transform 0.15s; display: inline-block; }
+  .btn-white:hover { transform: translateY(-1px); }
+  footer { background: white; border-top: 0.5px solid var(--gray-100); padding: 2rem 3rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+  .footer-logo { font-family: 'Playfair Display', serif; font-size: 16px; font-weight: 500; color: var(--gray-900); }
+  .footer-logo span { color: var(--teal-400); }
+  .footer-tagline { font-size: 12px; color: var(--gray-400); font-style: italic; margin-top: 2px; }
+  .footer-copy { font-size: 13px; color: var(--gray-400); font-weight: 300; }
+  .divider { height: 0.5px; background: var(--gray-100); max-width: 1100px; margin: 0 auto; }
+</style>
+</head>
+<body>
+<nav>
+  <div class="logo">
+    <div class="logo-mark">M</div>
+    <span class="logo-text">Meliora <span>Labs</span></span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#">Services</a></li>
+    <li><a href="#">About</a></li>
+    <li><a href="#">Security</a></li>
+    <li><a href="#contact" class="nav-cta">Get in touch</a></li>
+  </ul>
+</nav>
+<div class="hero">
+  <div class="hero-tag"><div class="hero-dot"></div>AI-Powered IT Solutions</div>
+  <h1 class="hero-title">Built by those who <em>lived</em> inside the systems</h1>
+  <p class="hero-sub">Meliora Labs delivers AI-powered tools and consulting for banks, fintechs, and enterprises — built by engineers with 20+ years inside mission-critical payment platforms and cybersecurity operations.</p>
+  <div class="hero-actions">
+    <a href="#contact" class="btn-primary">Start a conversation</a>
+    <a href="#services" class="btn-secondary">See what we build →</a>
+  </div>
+  <div class="hero-stats">
+    <div class="stat-item"><div class="stat-number">$50B+</div><div class="stat-label">Payment platforms delivered</div></div>
+    <div class="stat-item"><div class="stat-number">20+</div><div class="stat-label">Years in mission-critical systems</div></div>
+    <div class="stat-item"><div class="stat-number">0</div><div class="stat-label">Production rollbacks in 14 years</div></div>
+    <div class="stat-item"><div class="stat-number">360°</div><div class="stat-label">Delivery visibility — our core product</div></div>
+  </div>
+</div>
+<div class="divider"></div>
+<section id="services">
+  <div class="section-tag">What we do</div>
+  <h2 class="section-title">Services built from real-world experience</h2>
+  <p class="section-sub">We don't consult from the outside. We've built, migrated, and secured the systems most firms only read about.</p>
+  <div class="services-grid">
+    <div class="service-card"><div class="service-icon">⚡</div><div class="service-title">360° Delivery Intelligence</div><p class="service-desc">AI-powered estimation and risk visibility across your full delivery lifecycle — dependencies, blockers, capacity, and compliance in one view.</p></div>
+    <div class="service-card"><div class="service-icon">🏦</div><div class="service-title">Payments & Fintech Consulting</div><p class="service-desc">ACH, RTP, Wires, OFAC, AML — hands-on expertise in the formats and regulations that power financial infrastructure.</p></div>
+    <div class="service-card"><div class="service-icon">🔄</div><div class="service-title">Mainframe Modernization</div><p class="service-desc">z/OS to cloud migration strategy and execution. We wrote the playbook for one of the largest bank migrations in North America and Spain.</p></div>
+    <div class="service-card"><div class="service-icon">🔒</div><div class="service-title">Security by Design</div><p class="service-desc">Cybersecurity architecture built in from day one — not bolted on after. Every product we build meets banking-grade security standards.</p></div>
+    <div class="service-card"><div class="service-icon">🤖</div><div class="service-title">AI-Powered IT Tools</div><p class="service-desc">Custom AI applications for delivery governance, compliance reporting, and operational intelligence — built with Claude AI and deployed on AWS.</p></div>
+    <div class="service-card"><div class="service-icon">📋</div><div class="service-title">Governance & Compliance</div><p class="service-desc">Delivery frameworks that survive regulatory scrutiny. Our governance structures have been reviewed by Federal Reserve examiners.</p></div>
+  </div>
+</section>
+<div class="divider"></div>
+<section id="about">
+  <div class="section-tag">Why Meliora Labs</div>
+  <h2 class="section-title">The difference is who built it</h2>
+  <p class="section-sub">We don't consult from the outside. We've built, migrated, and secured the exact systems you're dealing with.</p>
+  <div class="why-grid">
+    <div class="why-item"><div class="why-number">01</div><div class="why-title">Domain depth, not theory</div><p class="why-desc">We've built $50B+ payment platforms from the inside. That's not a case study — it's our daily work for 20 years.</p></div>
+    <div class="why-item"><div class="why-number">02</div><div class="why-title">Security first, always</div><p class="why-desc">Your sensitive data is handled with the same standards that govern Federal Reserve-audited banking systems.</p></div>
+    <div class="why-item"><div class="why-number">03</div><div class="why-title">Humble, not corporate</div><p class="why-desc">Meliora means always striving for better. We don't oversell. We listen, understand, and deliver.</p></div>
+    <div class="why-item"><div class="why-number">04</div><div class="why-title">Lean by design</div><p class="why-desc">No bloated teams, no unnecessary layers. You work directly with the engineers who understand your problem.</p></div>
+  </div>
+</section>
+<div class="cta-section" id="contact">
+  <div class="cta-latin">Meliora — semper melius</div>
+  <h2 class="cta-title">Ready to see what's possible?</h2>
+  <p class="cta-sub">Whether you need a consultation, a custom tool, or a modernization roadmap — let's talk.</p>
+  <a href="mailto:melioralabs.tech@gmail.com" class="btn-white">Schedule a conversation</a>
+</div>
+<footer>
+  <div>
+    <div class="footer-logo">Meliora <span>Labs</span></div>
+    <div class="footer-tagline">Semper melius — always striving for better</div>
+  </div>
+  <div class="footer-copy">© 2026 Meliora Labs. All rights reserved.</div>
+</footer>
+</body>
+</html>
