@@ -14,16 +14,26 @@
     --gray-800: #444441; --gray-900: #2C2C2A;
   }
   body { font-family: 'DM Sans', sans-serif; font-weight: 400; color: var(--gray-900); background: #FAFAF8; line-height: 1.7; }
+
+  /* ── NAV ── */
   nav { display: flex; justify-content: space-between; align-items: center; padding: 1.25rem 3rem; background: white; border-bottom: 0.5px solid var(--gray-100); position: sticky; top: 0; z-index: 100; }
   .logo { display: flex; align-items: center; gap: 10px; }
   .logo-mark { width: 36px; height: 36px; background: var(--teal-400); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 600; }
   .logo-text { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 500; color: var(--gray-900); letter-spacing: -0.3px; }
   .logo-text span { color: var(--teal-400); }
+  .nav-right { display: flex; align-items: center; gap: 1rem; }
   .nav-links { display: flex; gap: 2rem; list-style: none; }
   .nav-links a { text-decoration: none; color: var(--gray-800); font-size: 14px; transition: color 0.2s; }
   .nav-links a:hover { color: var(--teal-400); }
   .nav-cta { background: var(--teal-400) !important; color: white !important; padding: 8px 20px; border-radius: 6px; font-weight: 500 !important; transition: background 0.2s !important; }
   .nav-cta:hover { background: var(--teal-600) !important; }
+
+  /* ── LANGUAGE TOGGLE ── */
+  .lang-toggle { display: flex; align-items: center; background: var(--gray-50); border: 0.5px solid var(--gray-100); border-radius: 20px; padding: 3px; gap: 2px; cursor: pointer; }
+  .lang-btn { font-size: 12px; font-weight: 500; padding: 4px 10px; border-radius: 16px; border: none; background: transparent; color: var(--gray-400); cursor: pointer; transition: all 0.2s; font-family: 'DM Sans', sans-serif; letter-spacing: 0.3px; }
+  .lang-btn.active { background: white; color: var(--teal-600); box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
+
+  /* ── HERO ── */
   .hero { display: block; padding: 6rem 3rem 5rem; max-width: 1100px; margin: 0 auto; }
   .hero-tag { display: inline-flex; align-items: center; gap: 6px; background: var(--teal-50); color: var(--teal-600); font-size: 13px; font-weight: 500; padding: 5px 14px; border-radius: 20px; margin-bottom: 1.5rem; border: 0.5px solid var(--teal-100); }
   .hero-dot { width: 6px; height: 6px; background: var(--teal-400); border-radius: 50%; animation: pulse 2s infinite; }
@@ -39,6 +49,8 @@
   .hero-stats { display: flex; gap: 3rem; margin-top: 4rem; padding-top: 2.5rem; border-top: 0.5px solid var(--gray-100); flex-wrap: wrap; }
   .stat-number { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 500; color: var(--teal-400); line-height: 1; }
   .stat-label { font-size: 13px; color: var(--gray-400); margin-top: 4px; }
+
+  /* ── SECTIONS ── */
   section { padding: 5rem 3rem; max-width: 1100px; margin: 0 auto; }
   .section-tag { font-size: 12px; font-weight: 500; text-transform: uppercase; letter-spacing: 1.5px; color: var(--teal-400); margin-bottom: 0.75rem; }
   .section-title { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 3vw, 2.4rem); font-weight: 500; color: var(--gray-900); letter-spacing: -0.5px; margin-bottom: 1rem; line-height: 1.2; }
@@ -54,86 +66,425 @@
   .why-number { font-family: 'Playfair Display', serif; font-size: 2.5rem; font-weight: 500; color: var(--teal-100); line-height: 1; margin-bottom: 0.5rem; }
   .why-title { font-size: 14px; font-weight: 500; color: var(--gray-900); margin-bottom: 0.4rem; }
   .why-desc { font-size: 13px; color: var(--gray-400); line-height: 1.6; font-weight: 300; }
+
+  /* ── CTA ── */
   .cta-section { background: var(--teal-800); border-radius: 16px; padding: 4rem 3rem; text-align: center; margin: 0 3rem 5rem; }
   .cta-latin { font-family: 'Playfair Display', serif; font-size: 13px; font-style: italic; color: var(--teal-100); margin-bottom: 1rem; }
   .cta-title { font-family: 'Playfair Display', serif; font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 500; color: white; margin-bottom: 1rem; line-height: 1.2; }
   .cta-sub { font-size: 15px; color: var(--teal-100); margin-bottom: 2rem; font-weight: 300; max-width: 480px; margin-left: auto; margin-right: auto; }
   .btn-white { background: white; color: var(--teal-600); padding: 13px 28px; border-radius: 8px; font-size: 15px; font-weight: 500; text-decoration: none; border: none; cursor: pointer; font-family: 'DM Sans', sans-serif; transition: transform 0.15s; display: inline-block; }
   .btn-white:hover { transform: translateY(-1px); }
+
+  /* ── FOOTER ── */
   footer { background: white; border-top: 0.5px solid var(--gray-100); padding: 2rem 3rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
   .footer-logo { font-family: 'Playfair Display', serif; font-size: 16px; font-weight: 500; color: var(--gray-900); }
   .footer-logo span { color: var(--teal-400); }
   .footer-tagline { font-size: 12px; color: var(--gray-400); font-style: italic; margin-top: 2px; }
   .footer-copy { font-size: 13px; color: var(--gray-400); font-weight: 300; }
   .divider { height: 0.5px; background: var(--gray-100); max-width: 1100px; margin: 0 auto; }
+
+  /* ── CHATBOT ── */
+  .chat-bubble { position: fixed; bottom: 28px; right: 28px; z-index: 999; }
+  .chat-trigger { width: 56px; height: 56px; background: var(--teal-400); border-radius: 50%; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 16px rgba(29,158,117,0.35); transition: transform 0.2s, background 0.2s; }
+  .chat-trigger:hover { background: var(--teal-600); transform: scale(1.07); }
+  .chat-trigger svg { width: 24px; height: 24px; fill: white; }
+  .chat-trigger .close-icon { display: none; }
+  .chat-trigger.open .chat-icon { display: none; }
+  .chat-trigger.open .close-icon { display: block; }
+  .chat-unread { position: absolute; top: 0; right: 0; width: 14px; height: 14px; background: #FF6B6B; border-radius: 50%; border: 2px solid white; animation: pulse 2s infinite; }
+
+  .chat-window { position: absolute; bottom: 70px; right: 0; width: 340px; background: white; border-radius: 16px; box-shadow: 0 8px 40px rgba(0,0,0,0.14); border: 0.5px solid var(--gray-100); overflow: hidden; display: none; flex-direction: column; max-height: 480px; }
+  .chat-window.open { display: flex; animation: slideUp 0.22s ease; }
+  @keyframes slideUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+
+  .chat-header { background: var(--teal-800); padding: 1rem 1.25rem; }
+  .chat-header-title { font-family: 'Playfair Display', serif; font-size: 15px; color: white; font-weight: 500; }
+  .chat-header-sub { font-size: 12px; color: var(--teal-100); margin-top: 2px; font-weight: 300; }
+  .chat-status { display: flex; align-items: center; gap: 5px; margin-top: 6px; }
+  .chat-status-dot { width: 7px; height: 7px; background: #6EE7A0; border-radius: 50%; }
+  .chat-status-text { font-size: 11px; color: var(--teal-100); }
+
+  .chat-messages { flex: 1; overflow-y: auto; padding: 1rem; display: flex; flex-direction: column; gap: 10px; }
+  .chat-msg { max-width: 85%; padding: 9px 13px; border-radius: 12px; font-size: 13.5px; line-height: 1.5; }
+  .chat-msg.bot { background: var(--gray-50); color: var(--gray-900); border-bottom-left-radius: 4px; align-self: flex-start; }
+  .chat-msg.user { background: var(--teal-400); color: white; border-bottom-right-radius: 4px; align-self: flex-end; }
+  .chat-msg.typing { background: var(--gray-50); align-self: flex-start; }
+  .typing-dots { display: flex; gap: 4px; padding: 2px 4px; }
+  .typing-dots span { width: 6px; height: 6px; background: var(--gray-400); border-radius: 50%; animation: blink 1.2s infinite; }
+  .typing-dots span:nth-child(2) { animation-delay: 0.2s; }
+  .typing-dots span:nth-child(3) { animation-delay: 0.4s; }
+  @keyframes blink { 0%,80%,100% { opacity: 0.2; } 40% { opacity: 1; } }
+
+  .chat-suggestions { padding: 0 1rem 0.75rem; display: flex; flex-wrap: wrap; gap: 6px; }
+  .chat-chip { background: var(--teal-50); color: var(--teal-600); border: 0.5px solid var(--teal-100); font-size: 12px; padding: 5px 11px; border-radius: 14px; cursor: pointer; transition: background 0.15s; font-family: 'DM Sans', sans-serif; white-space: nowrap; }
+  .chat-chip:hover { background: var(--teal-100); }
+
+  .chat-input-row { display: flex; gap: 8px; padding: 0.75rem 1rem; border-top: 0.5px solid var(--gray-100); }
+  .chat-input { flex: 1; border: 0.5px solid var(--gray-100); border-radius: 8px; padding: 8px 12px; font-size: 13px; font-family: 'DM Sans', sans-serif; outline: none; color: var(--gray-900); background: var(--gray-50); }
+  .chat-input:focus { border-color: var(--teal-100); background: white; }
+  .chat-send { background: var(--teal-400); color: white; border: none; border-radius: 8px; width: 34px; height: 34px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.2s; flex-shrink: 0; }
+  .chat-send:hover { background: var(--teal-600); }
+  .chat-send svg { width: 15px; height: 15px; fill: white; }
+
+  /* ── MOBILE ── */
+  @media (max-width: 640px) {
+    nav { padding: 1rem 1.25rem; }
+    .nav-links { display: none; }
+    .hero { padding: 3.5rem 1.25rem 3rem; }
+    section { padding: 3rem 1.25rem; }
+    .cta-section { margin: 0 1.25rem 3rem; padding: 2.5rem 1.5rem; }
+    footer { padding: 1.5rem 1.25rem; flex-direction: column; align-items: flex-start; }
+    .chat-window { width: calc(100vw - 40px); right: -8px; }
+  }
 </style>
 </head>
 <body>
+
 <nav>
   <div class="logo">
     <div class="logo-mark">M</div>
     <span class="logo-text">Meliora <span>Labs</span></span>
   </div>
-  <ul class="nav-links">
-    <li><a href="#">Services</a></li>
-    <li><a href="#">About</a></li>
-    <li><a href="#">Security</a></li>
-    <li><a href="#contact" class="nav-cta">Get in touch</a></li>
-  </ul>
+  <div class="nav-right">
+    <ul class="nav-links">
+      <li><a href="#" data-i18n="nav.services">Services</a></li>
+      <li><a href="#" data-i18n="nav.about">About</a></li>
+      <li><a href="#" data-i18n="nav.security">Security</a></li>
+      <li><a href="#contact" class="nav-cta" data-i18n="nav.cta">Get in touch</a></li>
+    </ul>
+    <!-- Language Toggle -->
+    <div class="lang-toggle" id="langToggle" role="group" aria-label="Language selector">
+      <button class="lang-btn active" data-lang="en" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" data-lang="es" onclick="setLang('es')">ES</button>
+    </div>
+  </div>
 </nav>
+
 <div class="hero">
-  <div class="hero-tag"><div class="hero-dot"></div>AI-Powered IT Solutions</div>
-  <h1 class="hero-title">Built by those who <em>lived</em> inside the systems</h1>
-  <p class="hero-sub">Meliora Labs delivers AI-powered tools and consulting for banks, fintechs, and enterprises — built by engineers with 20+ years inside mission-critical payment platforms and cybersecurity operations.</p>
+  <div class="hero-tag"><div class="hero-dot"></div><span data-i18n="hero.tag">AI-Powered IT Solutions</span></div>
+  <h1 class="hero-title" data-i18n="hero.title">Built by those who <em>lived</em> inside the systems</h1>
+  <p class="hero-sub" data-i18n="hero.sub">Meliora Labs delivers AI-powered tools and consulting for banks, fintechs, and enterprises — built by engineers with 20+ years inside mission-critical payment platforms and cybersecurity operations.</p>
   <div class="hero-actions">
-    <a href="#contact" class="btn-primary">Start a conversation</a>
-    <a href="#services" class="btn-secondary">See what we build →</a>
+    <a href="#contact" class="btn-primary" data-i18n="hero.cta1">Start a conversation</a>
+    <a href="#services" class="btn-secondary" data-i18n="hero.cta2">See what we build →</a>
   </div>
   <div class="hero-stats">
-    <div class="stat-item"><div class="stat-number">$50B+</div><div class="stat-label">Payment platforms delivered</div></div>
-    <div class="stat-item"><div class="stat-number">20+</div><div class="stat-label">Years in mission-critical systems</div></div>
-    <div class="stat-item"><div class="stat-number">0</div><div class="stat-label">Production rollbacks in 14 years</div></div>
-    <div class="stat-item"><div class="stat-number">360°</div><div class="stat-label">Delivery visibility — our core product</div></div>
+    <div class="stat-item"><div class="stat-number">$50B+</div><div class="stat-label" data-i18n="stats.s1">Payment platforms delivered</div></div>
+    <div class="stat-item"><div class="stat-number">20+</div><div class="stat-label" data-i18n="stats.s2">Years in mission-critical systems</div></div>
+    <div class="stat-item"><div class="stat-number">0</div><div class="stat-label" data-i18n="stats.s3">Production rollbacks in 14 years</div></div>
+    <div class="stat-item"><div class="stat-number">360°</div><div class="stat-label" data-i18n="stats.s4">Delivery visibility — our core product</div></div>
   </div>
 </div>
+
 <div class="divider"></div>
+
 <section id="services">
-  <div class="section-tag">What we do</div>
-  <h2 class="section-title">Services built from real-world experience</h2>
-  <p class="section-sub">We don't consult from the outside. We've built, migrated, and secured the systems most firms only read about.</p>
+  <div class="section-tag" data-i18n="services.tag">What we do</div>
+  <h2 class="section-title" data-i18n="services.title">Services built from real-world experience</h2>
+  <p class="section-sub" data-i18n="services.sub">We don't consult from the outside. We've built, migrated, and secured the systems most firms only read about.</p>
   <div class="services-grid">
-    <div class="service-card"><div class="service-icon">⚡</div><div class="service-title">360° Delivery Intelligence</div><p class="service-desc">AI-powered estimation and risk visibility across your full delivery lifecycle — dependencies, blockers, capacity, and compliance in one view.</p></div>
-    <div class="service-card"><div class="service-icon">🏦</div><div class="service-title">Payments & Fintech Consulting</div><p class="service-desc">ACH, RTP, Wires, OFAC, AML — hands-on expertise in the formats and regulations that power financial infrastructure.</p></div>
-    <div class="service-card"><div class="service-icon">🔄</div><div class="service-title">Mainframe Modernization</div><p class="service-desc">z/OS to cloud migration strategy and execution. We wrote the playbook for one of the largest bank migrations in North America and Spain.</p></div>
-    <div class="service-card"><div class="service-icon">🔒</div><div class="service-title">Security by Design</div><p class="service-desc">Cybersecurity architecture built in from day one — not bolted on after. Every product we build meets banking-grade security standards.</p></div>
-    <div class="service-card"><div class="service-icon">🤖</div><div class="service-title">AI-Powered IT Tools</div><p class="service-desc">Custom AI applications for delivery governance, compliance reporting, and operational intelligence — built with Claude AI and deployed on AWS.</p></div>
-    <div class="service-card"><div class="service-icon">📋</div><div class="service-title">Governance & Compliance</div><p class="service-desc">Delivery frameworks that survive regulatory scrutiny. Our governance structures have been reviewed by Federal Reserve examiners.</p></div>
+    <div class="service-card"><div class="service-icon">⚡</div><div class="service-title" data-i18n="svc1.title">360° Delivery Intelligence</div><p class="service-desc" data-i18n="svc1.desc">AI-powered estimation and risk visibility across your full delivery lifecycle — dependencies, blockers, capacity, and compliance in one view.</p></div>
+    <div class="service-card"><div class="service-icon">🏦</div><div class="service-title" data-i18n="svc2.title">Payments & Fintech Consulting</div><p class="service-desc" data-i18n="svc2.desc">ACH, RTP, Wires, OFAC, AML — hands-on expertise in the formats and regulations that power financial infrastructure.</p></div>
+    <div class="service-card"><div class="service-icon">🔄</div><div class="service-title" data-i18n="svc3.title">Mainframe Modernization</div><p class="service-desc" data-i18n="svc3.desc">z/OS to cloud migration strategy and execution. We wrote the playbook for one of the largest bank migrations in North America and Spain.</p></div>
+    <div class="service-card"><div class="service-icon">🔒</div><div class="service-title" data-i18n="svc4.title">Security by Design</div><p class="service-desc" data-i18n="svc4.desc">Cybersecurity architecture built in from day one — not bolted on after. Every product we build meets banking-grade security standards.</p></div>
+    <div class="service-card"><div class="service-icon">🤖</div><div class="service-title" data-i18n="svc5.title">AI-Powered IT Tools</div><p class="service-desc" data-i18n="svc5.desc">Custom AI applications for delivery governance, compliance reporting, and operational intelligence — built with Claude AI and deployed on AWS.</p></div>
+    <div class="service-card"><div class="service-icon">📋</div><div class="service-title" data-i18n="svc6.title">Governance & Compliance</div><p class="service-desc" data-i18n="svc6.desc">Delivery frameworks that survive regulatory scrutiny. Our governance structures have been reviewed by Federal Reserve examiners.</p></div>
   </div>
 </section>
+
 <div class="divider"></div>
+
 <section id="about">
-  <div class="section-tag">Why Meliora Labs</div>
-  <h2 class="section-title">The difference is who built it</h2>
-  <p class="section-sub">We don't consult from the outside. We've built, migrated, and secured the exact systems you're dealing with.</p>
+  <div class="section-tag" data-i18n="about.tag">Why Meliora Labs</div>
+  <h2 class="section-title" data-i18n="about.title">The difference is who built it</h2>
+  <p class="section-sub" data-i18n="about.sub">We don't consult from the outside. We've built, migrated, and secured the exact systems you're dealing with.</p>
   <div class="why-grid">
-    <div class="why-item"><div class="why-number">01</div><div class="why-title">Domain depth, not theory</div><p class="why-desc">We've built $50B+ payment platforms from the inside. That's not a case study — it's our daily work for 20 years.</p></div>
-    <div class="why-item"><div class="why-number">02</div><div class="why-title">Security first, always</div><p class="why-desc">Your sensitive data is handled with the same standards that govern Federal Reserve-audited banking systems.</p></div>
-    <div class="why-item"><div class="why-number">03</div><div class="why-title">Humble, not corporate</div><p class="why-desc">Meliora means always striving for better. We don't oversell. We listen, understand, and deliver.</p></div>
-    <div class="why-item"><div class="why-number">04</div><div class="why-title">Lean by design</div><p class="why-desc">No bloated teams, no unnecessary layers. You work directly with the engineers who understand your problem.</p></div>
+    <div class="why-item"><div class="why-number">01</div><div class="why-title" data-i18n="why1.title">Domain depth, not theory</div><p class="why-desc" data-i18n="why1.desc">We've built $50B+ payment platforms from the inside. That's not a case study — it's our daily work for 20 years.</p></div>
+    <div class="why-item"><div class="why-number">02</div><div class="why-title" data-i18n="why2.title">Security first, always</div><p class="why-desc" data-i18n="why2.desc">Your sensitive data is handled with the same standards that govern Federal Reserve-audited banking systems.</p></div>
+    <div class="why-item"><div class="why-number">03</div><div class="why-title" data-i18n="why3.title">Humble, not corporate</div><p class="why-desc" data-i18n="why3.desc">Meliora means always striving for better. We don't oversell. We listen, understand, and deliver.</p></div>
+    <div class="why-item"><div class="why-number">04</div><div class="why-title" data-i18n="why4.title">Lean by design</div><p class="why-desc" data-i18n="why4.desc">No bloated teams, no unnecessary layers. You work directly with the engineers who understand your problem.</p></div>
   </div>
 </section>
+
 <div class="cta-section" id="contact">
   <div class="cta-latin">Meliora — semper melius</div>
-  <h2 class="cta-title">Ready to see what's possible?</h2>
-  <p class="cta-sub">Whether you need a consultation, a custom tool, or a modernization roadmap — let's talk.</p>
-  <a href="mailto:melioralabs.tech@gmail.com" class="btn-white">Schedule a conversation</a>
+  <h2 class="cta-title" data-i18n="cta.title">Ready to see what's possible?</h2>
+  <p class="cta-sub" data-i18n="cta.sub">Whether you need a consultation, a custom tool, or a modernization roadmap — let's talk.</p>
+  <a href="mailto:melioralabs.tech@gmail.com" class="btn-white" data-i18n="cta.btn">Schedule a conversation</a>
 </div>
+
 <footer>
   <div>
     <div class="footer-logo">Meliora <span>Labs</span></div>
-    <div class="footer-tagline">Semper melius — always striving for better</div>
+    <div class="footer-tagline" data-i18n="footer.tagline">Semper melius — always striving for better</div>
   </div>
-  <div class="footer-copy">© 2026 Meliora Labs. All rights reserved.</div>
+  <div class="footer-copy" data-i18n="footer.copy">© 2026 Meliora Labs. All rights reserved.</div>
 </footer>
+
+<!-- ── CHATBOT ── -->
+<div class="chat-bubble" id="chatBubble">
+  <div class="chat-window" id="chatWindow">
+    <div class="chat-header">
+      <div class="chat-header-title">Meliora Labs</div>
+      <div class="chat-header-sub" data-i18n="chat.sub">How can we help you today?</div>
+      <div class="chat-status"><div class="chat-status-dot"></div><span class="chat-status-text" data-i18n="chat.status">Online</span></div>
+    </div>
+    <div class="chat-messages" id="chatMessages">
+      <div class="chat-msg bot" id="welcomeMsg">👋 Hi! Meliora Labs is currently in development. Feel free to ask anything — I'm happy to share what we're building!</div>
+    </div>
+    <div class="chat-suggestions" id="chatChips">
+      <span class="chat-chip" onclick="chipClick(this)" data-i18n-chip="chip1">What do you build?</span>
+      <span class="chat-chip" onclick="chipClick(this)" data-i18n-chip="chip2">When will you launch?</span>
+      <span class="chat-chip" onclick="chipClick(this)" data-i18n-chip="chip3">How can I contact you?</span>
+    </div>
+    <div class="chat-input-row">
+      <input class="chat-input" id="chatInput" type="text" placeholder="Ask a question…" data-i18n-placeholder="chat.placeholder" onkeydown="if(event.key==='Enter') sendMsg()" />
+      <button class="chat-send" onclick="sendMsg()" aria-label="Send">
+        <svg viewBox="0 0 24 24"><path d="M2 21l21-9L2 3v7l15 2-15 2v7z"/></svg>
+      </button>
+    </div>
+  </div>
+  <div class="chat-unread" id="chatUnread"></div>
+  <button class="chat-trigger" id="chatTrigger" onclick="toggleChat()" aria-label="Open chat">
+    <svg class="chat-icon" viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H5.17L4 17.17V4h16v12z"/></svg>
+    <svg class="close-icon" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+  </button>
+</div>
+
+<script>
+// ═══════════════════════════════════════════
+// i18n — Translation strings
+// ═══════════════════════════════════════════
+const translations = {
+  en: {
+    "nav.services": "Services",
+    "nav.about": "About",
+    "nav.security": "Security",
+    "nav.cta": "Get in touch",
+    "hero.tag": "AI-Powered IT Solutions",
+    "hero.title": 'Built by those who <em>lived</em> inside the systems',
+    "hero.sub": "Meliora Labs delivers AI-powered tools and consulting for banks, fintechs, and enterprises — built by engineers with 20+ years inside mission-critical payment platforms and cybersecurity operations.",
+    "hero.cta1": "Start a conversation",
+    "hero.cta2": "See what we build →",
+    "stats.s1": "Payment platforms delivered",
+    "stats.s2": "Years in mission-critical systems",
+    "stats.s3": "Production rollbacks in 14 years",
+    "stats.s4": "Delivery visibility — our core product",
+    "services.tag": "What we do",
+    "services.title": "Services built from real-world experience",
+    "services.sub": "We don't consult from the outside. We've built, migrated, and secured the systems most firms only read about.",
+    "svc1.title": "360° Delivery Intelligence",
+    "svc1.desc": "AI-powered estimation and risk visibility across your full delivery lifecycle — dependencies, blockers, capacity, and compliance in one view.",
+    "svc2.title": "Payments & Fintech Consulting",
+    "svc2.desc": "ACH, RTP, Wires, OFAC, AML — hands-on expertise in the formats and regulations that power financial infrastructure.",
+    "svc3.title": "Mainframe Modernization",
+    "svc3.desc": "z/OS to cloud migration strategy and execution. We wrote the playbook for one of the largest bank migrations in North America and Spain.",
+    "svc4.title": "Security by Design",
+    "svc4.desc": "Cybersecurity architecture built in from day one — not bolted on after. Every product we build meets banking-grade security standards.",
+    "svc5.title": "AI-Powered IT Tools",
+    "svc5.desc": "Custom AI applications for delivery governance, compliance reporting, and operational intelligence — built with Claude AI and deployed on AWS.",
+    "svc6.title": "Governance & Compliance",
+    "svc6.desc": "Delivery frameworks that survive regulatory scrutiny. Our governance structures have been reviewed by Federal Reserve examiners.",
+    "about.tag": "Why Meliora Labs",
+    "about.title": "The difference is who built it",
+    "about.sub": "We don't consult from the outside. We've built, migrated, and secured the exact systems you're dealing with.",
+    "why1.title": "Domain depth, not theory",
+    "why1.desc": "We've built $50B+ payment platforms from the inside. That's not a case study — it's our daily work for 20 years.",
+    "why2.title": "Security first, always",
+    "why2.desc": "Your sensitive data is handled with the same standards that govern Federal Reserve-audited banking systems.",
+    "why3.title": "Humble, not corporate",
+    "why3.desc": "Meliora means always striving for better. We don't oversell. We listen, understand, and deliver.",
+    "why4.title": "Lean by design",
+    "why4.desc": "No bloated teams, no unnecessary layers. You work directly with the engineers who understand your problem.",
+    "cta.title": "Ready to see what's possible?",
+    "cta.sub": "Whether you need a consultation, a custom tool, or a modernization roadmap — let's talk.",
+    "cta.btn": "Schedule a conversation",
+    "footer.tagline": "Semper melius — always striving for better",
+    "footer.copy": "© 2026 Meliora Labs. All rights reserved.",
+    "chat.sub": "How can we help you today?",
+    "chat.status": "Online",
+    "chat.placeholder": "Ask a question…",
+    "chip1": "What do you build?",
+    "chip2": "When will you launch?",
+    "chip3": "How can I contact you?",
+  },
+  es: {
+    "nav.services": "Servicios",
+    "nav.about": "Nosotros",
+    "nav.security": "Seguridad",
+    "nav.cta": "Contáctanos",
+    "hero.tag": "Soluciones de TI con IA",
+    "hero.title": 'Construido por quienes <em>vivieron</em> dentro de los sistemas',
+    "hero.sub": "Meliora Labs ofrece herramientas y consultoría con IA para bancos, fintechs y empresas — desarrollado por ingenieros con más de 20 años dentro de plataformas de pagos y operaciones de ciberseguridad.",
+    "hero.cta1": "Comenzar una conversación",
+    "hero.cta2": "Ver lo que construimos →",
+    "stats.s1": "Plataformas de pago entregadas",
+    "stats.s2": "Años en sistemas de misión crítica",
+    "stats.s3": "Rollbacks en producción en 14 años",
+    "stats.s4": "Visibilidad de entrega — nuestro producto central",
+    "services.tag": "Lo que hacemos",
+    "services.title": "Servicios basados en experiencia real",
+    "services.sub": "No consultamos desde afuera. Hemos construido, migrado y asegurado los sistemas que la mayoría solo lee.",
+    "svc1.title": "Inteligencia de Entrega 360°",
+    "svc1.desc": "Estimación e inteligencia de riesgo con IA en todo el ciclo de entrega — dependencias, bloqueos, capacidad y cumplimiento en una sola vista.",
+    "svc2.title": "Consultoría en Pagos y Fintech",
+    "svc2.desc": "ACH, RTP, Transferencias, OFAC, AML — experiencia práctica en los formatos y regulaciones que impulsan la infraestructura financiera.",
+    "svc3.title": "Modernización de Mainframe",
+    "svc3.desc": "Estrategia y ejecución de migración de z/OS a la nube. Escribimos el manual para una de las migraciones bancarias más grandes en Norteamérica y España.",
+    "svc4.title": "Seguridad por Diseño",
+    "svc4.desc": "Arquitectura de ciberseguridad integrada desde el inicio — no añadida después. Cada producto que construimos cumple estándares bancarios.",
+    "svc5.title": "Herramientas de TI con IA",
+    "svc5.desc": "Aplicaciones de IA personalizadas para gobernanza de entrega, informes de cumplimiento e inteligencia operativa — construidas con Claude AI en AWS.",
+    "svc6.title": "Gobernanza y Cumplimiento",
+    "svc6.desc": "Marcos de entrega que superan el escrutinio regulatorio. Nuestras estructuras han sido revisadas por examinadores de la Reserva Federal.",
+    "about.tag": "Por qué Meliora Labs",
+    "about.title": "La diferencia está en quién lo construyó",
+    "about.sub": "No consultamos desde afuera. Hemos construido, migrado y asegurado exactamente los sistemas con los que tú trabajas.",
+    "why1.title": "Profundidad real, no teoría",
+    "why1.desc": "Hemos construido plataformas de pago de más de $50B desde adentro. No es un caso de estudio — es nuestro trabajo diario por 20 años.",
+    "why2.title": "Seguridad primero, siempre",
+    "why2.desc": "Tus datos se manejan con los mismos estándares que rigen los sistemas bancarios auditados por la Reserva Federal.",
+    "why3.title": "Humildes, no corporativos",
+    "why3.desc": "Meliora significa siempre mejorar. No sobrevendemos. Escuchamos, entendemos y entregamos.",
+    "why4.title": "Lean por diseño",
+    "why4.desc": "Sin equipos inflados ni capas innecesarias. Trabajas directamente con los ingenieros que entienden tu problema.",
+    "cta.title": "¿Listo para ver lo que es posible?",
+    "cta.sub": "Ya sea una consulta, una herramienta personalizada o un plan de modernización — hablemos.",
+    "cta.btn": "Agendar una conversación",
+    "footer.tagline": "Semper melius — siempre mejorando",
+    "footer.copy": "© 2026 Meliora Labs. Todos los derechos reservados.",
+    "chat.sub": "¿En qué podemos ayudarte hoy?",
+    "chat.status": "En línea",
+    "chat.placeholder": "Haz una pregunta…",
+    "chip1": "¿Qué construyen?",
+    "chip2": "¿Cuándo lanzan?",
+    "chip3": "¿Cómo los contacto?",
+  }
+};
+
+let currentLang = 'en';
+
+function setLang(lang) {
+  currentLang = lang;
+  const t = translations[lang];
+
+  // Update toggle buttons
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.lang === lang);
+  });
+
+  // Update text nodes
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.dataset.i18n;
+    if (t[key] !== undefined) el.innerHTML = t[key];
+  });
+
+  // Update placeholders
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+    const key = el.dataset.i18nPlaceholder;
+    if (t[key] !== undefined) el.placeholder = t[key];
+  });
+
+  // Update chips
+  document.querySelectorAll('[data-i18n-chip]').forEach(el => {
+    const key = el.dataset.i18nChip;
+    if (t[key] !== undefined) el.textContent = t[key];
+  });
+
+  // Update html lang
+  document.documentElement.lang = lang;
+
+  // Update welcome message
+  const welcome = document.getElementById('welcomeMsg');
+  if (welcome) {
+    welcome.textContent = lang === 'es'
+      ? '👋 ¡Hola! Meliora Labs está actualmente en desarrollo. ¡Haz cualquier pregunta — con gusto te cuento lo que estamos construyendo!'
+      : '👋 Hi! Meliora Labs is currently in development. Feel free to ask anything — I\'m happy to share what we\'re building!';
+  }
+}
+
+// ═══════════════════════════════════════════
+// Chatbot
+// ═══════════════════════════════════════════
+const botResponses = {
+  en: {
+    default: "Thanks for reaching out! 🙌 Meliora Labs is currently under development — we're building something great. For direct inquiries, email us at melioralabs.tech@gmail.com",
+    launch: "We're actively building! 🚀 Our platform is coming soon. Want to be notified? Send us an email at melioralabs.tech@gmail.com and we'll keep you posted.",
+    services: "We specialize in AI-powered IT tools, payments & fintech consulting, mainframe modernization, and security by design — all built on 20+ years of real-world experience inside mission-critical systems.",
+    contact: "You can reach us at 📧 melioralabs.tech@gmail.com — we typically respond within 24 hours. We're also building a contact form, coming soon!",
+    pricing: "Pricing details are coming soon as we finalize our service offerings. Reach out at melioralabs.tech@gmail.com for early conversations.",
+  },
+  es: {
+    default: "¡Gracias por contactarnos! 🙌 Meliora Labs está actualmente en desarrollo — estamos construyendo algo genial. Para consultas directas, escríbenos a melioralabs.tech@gmail.com",
+    launch: "¡Estamos construyendo activamente! 🚀 Nuestra plataforma llega muy pronto. ¿Quieres que te avisemos? Envíanos un correo a melioralabs.tech@gmail.com",
+    services: "Nos especializamos en herramientas de TI con IA, consultoría en pagos y fintech, modernización de mainframe y seguridad por diseño — todo con más de 20 años de experiencia real en sistemas de misión crítica.",
+    contact: "Puedes contactarnos en 📧 melioralabs.tech@gmail.com — generalmente respondemos en 24 horas. ¡También estamos construyendo un formulario de contacto, próximamente!",
+    pricing: "Los detalles de precios estarán disponibles pronto. Escríbenos a melioralabs.tech@gmail.com para conversaciones anticipadas.",
+  }
+};
+
+function getBotReply(text) {
+  const t = text.toLowerCase();
+  const r = botResponses[currentLang];
+  if (/launch|when|soon|ready|cuándo|lanz|próximo|pronto/.test(t)) return r.launch;
+  if (/service|build|what|do|qué|construy|servicio|hacen/.test(t)) return r.services;
+  if (/contact|email|reach|touch|contacto|correo|escribir/.test(t)) return r.contact;
+  if (/price|cost|pricing|plan|precio|costo/.test(t)) return r.pricing;
+  return r.default;
+}
+
+function addMsg(text, type) {
+  const msgs = document.getElementById('chatMessages');
+  const div = document.createElement('div');
+  div.className = 'chat-msg ' + type;
+  div.textContent = text;
+  msgs.appendChild(div);
+  msgs.scrollTop = msgs.scrollHeight;
+  return div;
+}
+
+function showTyping() {
+  const msgs = document.getElementById('chatMessages');
+  const div = document.createElement('div');
+  div.className = 'chat-msg typing';
+  div.id = 'typingIndicator';
+  div.innerHTML = '<div class="typing-dots"><span></span><span></span><span></span></div>';
+  msgs.appendChild(div);
+  msgs.scrollTop = msgs.scrollHeight;
+}
+
+function removeTyping() {
+  const t = document.getElementById('typingIndicator');
+  if (t) t.remove();
+}
+
+function sendMsg() {
+  const input = document.getElementById('chatInput');
+  const text = input.value.trim();
+  if (!text) return;
+  input.value = '';
+  document.getElementById('chatChips').style.display = 'none';
+  addMsg(text, 'user');
+  showTyping();
+  setTimeout(() => {
+    removeTyping();
+    addMsg(getBotReply(text), 'bot');
+  }, 900 + Math.random() * 500);
+}
+
+function chipClick(el) {
+  document.getElementById('chatInput').value = el.textContent;
+  sendMsg();
+}
+
+function toggleChat() {
+  const win = document.getElementById('chatWindow');
+  const btn = document.getElementById('chatTrigger');
+  const unread = document.getElementById('chatUnread');
+  const isOpen = win.classList.toggle('open');
+  btn.classList.toggle('open', isOpen);
+  if (isOpen) unread.style.display = 'none';
+}
+</script>
 </body>
 </html>
