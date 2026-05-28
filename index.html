@@ -1,10 +1,9 @@
 <!-- ============================================================
      Meliora Labs | melioralabs.tech
-     Version : 1.5
+     Version : 1.6
      Date    : 2026-05-28
-     Changes : Smart bot responses (go-live, docs, greetings,
-               timeline, small companies) + bot reset on reopen
-               + version header added
+     Changes : Added Security section (principles, data privacy,
+               protection, credentials, responsible disclosure)
      ============================================================ -->
 <!DOCTYPE html>
 <html lang="en">
@@ -182,6 +181,25 @@
   .chat-send svg { width: 15px; height: 15px; fill: white; }
   .chat-powered { text-align: center; font-size: 10px; color: var(--gray-400); padding: 4px 0 8px; }
 
+  /* ── SECURITY SECTION ── */
+  .security-section { padding: 5rem 3rem; max-width: 1100px; margin: 0 auto; }
+  .security-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-bottom: 2.5rem; }
+  .security-card { background: white; border: 0.5px solid var(--gray-100); border-radius: 12px; padding: 1.75rem; transition: border-color 0.2s, transform 0.2s; }
+  .security-card:hover { border-color: var(--teal-100); transform: translateY(-2px); }
+  .security-card.dark { background: var(--teal-800); border-color: var(--teal-600); }
+  .security-card.dark .service-title { color: white; }
+  .security-card.dark .service-desc { color: var(--teal-100); }
+  .security-card.dark .service-icon { background: var(--teal-600); }
+  .security-badge { display: inline-flex; align-items: center; gap: 6px; background: var(--teal-50); color: var(--teal-600); font-size: 12px; font-weight: 500; padding: 4px 12px; border-radius: 20px; border: 0.5px solid var(--teal-100); margin-bottom: 0.5rem; margin-right: 0.5rem; }
+  .security-badges { margin-top: 1.5rem; display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .disclosure-box { background: var(--gray-50); border: 0.5px solid var(--gray-100); border-radius: 12px; padding: 1.5rem 2rem; display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; margin-top: 1.5rem; }
+  .disclosure-icon { font-size: 2rem; flex-shrink: 0; }
+  .disclosure-text { flex: 1; }
+  .disclosure-title { font-size: 14px; font-weight: 500; color: var(--gray-900); margin-bottom: 4px; }
+  .disclosure-sub { font-size: 13px; color: var(--gray-400); font-weight: 300; }
+  .disclosure-link { background: var(--teal-400); color: white; padding: 9px 20px; border-radius: 8px; font-size: 13px; font-weight: 500; text-decoration: none; white-space: nowrap; transition: background 0.2s; }
+  .disclosure-link:hover { background: var(--teal-600); }
+
   /* ── MOBILE ── */
   @media (max-width: 768px) {
     nav { padding: 1rem 1.25rem; }
@@ -207,7 +225,7 @@
     <ul class="nav-links">
       <li><a href="#services" data-i18n="nav.services">Services</a></li>
       <li><a href="#about" data-i18n="nav.about">About</a></li>
-      <li><a href="#contact-form" data-i18n="nav.security">Security</a></li>
+      <li><a href="#security" data-i18n="nav.security">Security</a></li>
       <li><a href="#contact-form" class="nav-cta" data-i18n="nav.cta">Get in touch</a></li>
     </ul>
     <div class="lang-toggle" role="group" aria-label="Language selector">
@@ -263,6 +281,64 @@
     <div class="why-item reveal reveal-delay-2"><div class="why-number">02</div><div class="why-title" data-i18n="why2.title">Security first, always</div><p class="why-desc" data-i18n="why2.desc">Your sensitive data is handled with the same standards that govern Federal Reserve-audited banking systems.</p></div>
     <div class="why-item reveal reveal-delay-3"><div class="why-number">03</div><div class="why-title" data-i18n="why3.title">Humble, not corporate</div><p class="why-desc" data-i18n="why3.desc">Meliora means always striving for better. We don't oversell. We listen, understand, and deliver.</p></div>
     <div class="why-item reveal reveal-delay-4"><div class="why-number">04</div><div class="why-title" data-i18n="why4.title">Lean by design</div><p class="why-desc" data-i18n="why4.desc">No bloated teams, no unnecessary layers. You work directly with the engineers who understand your problem.</p></div>
+  </div>
+</section>
+
+<!-- SECURITY -->
+<div class="divider"></div>
+<section class="security-section" id="security">
+  <div class="section-tag reveal" data-i18n="sec.tag">Security</div>
+  <h2 class="section-title reveal reveal-delay-1" data-i18n="sec.title">Security is not a feature — it's a foundation</h2>
+  <p class="section-sub reveal reveal-delay-2" data-i18n="sec.sub">Every system we build is designed to withstand regulatory scrutiny, protect client data, and meet banking-grade security standards from day one.</p>
+
+  <div class="security-grid">
+    <div class="security-card reveal reveal-delay-1">
+      <div class="service-icon">🏛️</div>
+      <div class="service-title" data-i18n="sec1.title">Our Security Principles</div>
+      <p class="service-desc" data-i18n="sec1.desc">Security is built in from the first line of code — never bolted on after. We follow a zero-trust architecture model and apply the same standards used in Federal Reserve-audited banking environments.</p>
+    </div>
+    <div class="security-card reveal reveal-delay-2">
+      <div class="service-icon">🔐</div>
+      <div class="service-title" data-i18n="sec2.title">Data Privacy & Confidentiality</div>
+      <p class="service-desc" data-i18n="sec2.desc">Your data stays yours. We never share, sell, or expose client data to third parties. Every engagement is covered by a confidentiality agreement and handled with the discretion of a trusted partner.</p>
+    </div>
+    <div class="security-card reveal reveal-delay-3">
+      <div class="service-icon">🛡️</div>
+      <div class="service-title" data-i18n="sec3.title">What We Protect You From</div>
+      <p class="service-desc" data-i18n="sec3.desc">Unauthorized access, compliance violations, data breaches, system vulnerabilities, and insider threats. We design systems that anticipate risk — not just react to it.</p>
+    </div>
+    <div class="security-card dark reveal reveal-delay-4">
+      <div class="service-icon">🏆</div>
+      <div class="service-title" data-i18n="sec4.title">Our Credentials</div>
+      <p class="service-desc" data-i18n="sec4.desc">20+ years in regulated financial environments. Governance frameworks reviewed by Federal Reserve examiners. Hands-on experience with OFAC, AML, SOX, and PCI-DSS compliance across North America and Spain.</p>
+      <div class="security-badges">
+        <span class="security-badge" style="background:rgba(159,225,203,0.15); border-color:rgba(159,225,203,0.3); color:#9FE1CB;">✓ OFAC</span>
+        <span class="security-badge" style="background:rgba(159,225,203,0.15); border-color:rgba(159,225,203,0.3); color:#9FE1CB;">✓ AML</span>
+        <span class="security-badge" style="background:rgba(159,225,203,0.15); border-color:rgba(159,225,203,0.3); color:#9FE1CB;">✓ SOX</span>
+        <span class="security-badge" style="background:rgba(159,225,203,0.15); border-color:rgba(159,225,203,0.3); color:#9FE1CB;">✓ PCI-DSS</span>
+        <span class="security-badge" style="background:rgba(159,225,203,0.15); border-color:rgba(159,225,203,0.3); color:#9FE1CB;">✓ Fed Reserve</span>
+      </div>
+    </div>
+    <div class="security-card reveal reveal-delay-5">
+      <div class="service-icon">☁️</div>
+      <div class="service-title" data-i18n="sec5.title">Cloud & Infrastructure Security</div>
+      <p class="service-desc" data-i18n="sec5.desc">All cloud deployments on AWS follow security best practices — encrypted at rest and in transit, IAM role-based access, VPC isolation, and automated compliance monitoring.</p>
+    </div>
+    <div class="security-card reveal reveal-delay-6">
+      <div class="service-icon">📋</div>
+      <div class="service-title" data-i18n="sec6.title">Compliance by Design</div>
+      <p class="service-desc" data-i18n="sec6.desc">We don't retrofit compliance. Every project starts with a compliance checklist aligned to your industry — banking, fintech, healthcare, or enterprise — so you're audit-ready from day one.</p>
+    </div>
+  </div>
+
+  <!-- Responsible Disclosure -->
+  <div class="disclosure-box reveal">
+    <div class="disclosure-icon">🔍</div>
+    <div class="disclosure-text">
+      <div class="disclosure-title" data-i18n="sec.disclosure.title">Responsible Disclosure</div>
+      <div class="disclosure-sub" data-i18n="sec.disclosure.sub">Found a security issue? We take all reports seriously. Please contact us directly and we'll respond within 24 hours.</div>
+    </div>
+    <a href="mailto:melioralabs.tech@gmail.com?subject=Security%20Disclosure" class="disclosure-link" data-i18n="sec.disclosure.btn">Report a concern →</a>
   </div>
 </section>
 
@@ -460,6 +536,15 @@ function submitNotify() {
 const translations = {
   en: {
     "nav.services":"Services","nav.about":"About","nav.security":"Security","nav.cta":"Get in touch",
+    "sec.tag":"Security","sec.title":"Security is not a feature — it's a foundation",
+    "sec.sub":"Every system we build is designed to withstand regulatory scrutiny, protect client data, and meet banking-grade security standards from day one.",
+    "sec1.title":"Our Security Principles","sec1.desc":"Security is built in from the first line of code — never bolted on after. We follow a zero-trust architecture model and apply the same standards used in Federal Reserve-audited banking environments.",
+    "sec2.title":"Data Privacy & Confidentiality","sec2.desc":"Your data stays yours. We never share, sell, or expose client data to third parties. Every engagement is covered by a confidentiality agreement and handled with the discretion of a trusted partner.",
+    "sec3.title":"What We Protect You From","sec3.desc":"Unauthorized access, compliance violations, data breaches, system vulnerabilities, and insider threats. We design systems that anticipate risk — not just react to it.",
+    "sec4.title":"Our Credentials","sec4.desc":"20+ years in regulated financial environments. Governance frameworks reviewed by Federal Reserve examiners. Hands-on experience with OFAC, AML, SOX, and PCI-DSS compliance across North America and Spain.",
+    "sec5.title":"Cloud & Infrastructure Security","sec5.desc":"All cloud deployments on AWS follow security best practices — encrypted at rest and in transit, IAM role-based access, VPC isolation, and automated compliance monitoring.",
+    "sec6.title":"Compliance by Design","sec6.desc":"We don't retrofit compliance. Every project starts with a compliance checklist aligned to your industry — banking, fintech, healthcare, or enterprise — so you're audit-ready from day one.",
+    "sec.disclosure.title":"Responsible Disclosure","sec.disclosure.sub":"Found a security issue? We take all reports seriously. Please contact us directly and we'll respond within 24 hours.","sec.disclosure.btn":"Report a concern →",
     "hero.tag":"AI-Powered IT Solutions",
     "hero.title":'Built by those who <em>lived</em> inside the systems',
     "hero.sub":"Meliora Labs delivers AI-powered tools and consulting for banks, fintechs, and enterprises — built by engineers with 20+ years inside mission-critical payment platforms and cybersecurity operations.",
@@ -503,6 +588,15 @@ const translations = {
   },
   es: {
     "nav.services":"Servicios","nav.about":"Nosotros","nav.security":"Seguridad","nav.cta":"Contáctanos",
+    "sec.tag":"Seguridad","sec.title":"La seguridad no es una función — es una base",
+    "sec.sub":"Cada sistema que construimos está diseñado para resistir el escrutinio regulatorio, proteger los datos del cliente y cumplir estándares de seguridad bancaria desde el primer día.",
+    "sec1.title":"Nuestros Principios de Seguridad","sec1.desc":"La seguridad está integrada desde la primera línea de código — nunca añadida después. Seguimos un modelo de arquitectura zero-trust y aplicamos los mismos estándares de entornos bancarios auditados por la Reserva Federal.",
+    "sec2.title":"Privacidad y Confidencialidad","sec2.desc":"Tus datos son tuyos. Nunca compartimos, vendemos ni exponemos datos de clientes a terceros. Cada compromiso está cubierto por un acuerdo de confidencialidad.",
+    "sec3.title":"De Qué Te Protegemos","sec3.desc":"Acceso no autorizado, violaciones de cumplimiento, brechas de datos, vulnerabilidades del sistema y amenazas internas. Diseñamos sistemas que anticipan el riesgo, no solo reaccionan a él.",
+    "sec4.title":"Nuestras Credenciales","sec4.desc":"Más de 20 años en entornos financieros regulados. Marcos de gobernanza revisados por examinadores de la Reserva Federal. Experiencia con OFAC, AML, SOX y PCI-DSS en Norteamérica y España.",
+    "sec5.title":"Seguridad en la Nube","sec5.desc":"Todos los despliegues en AWS siguen las mejores prácticas — cifrado en reposo y en tránsito, acceso basado en roles IAM, aislamiento VPC y monitoreo de cumplimiento automatizado.",
+    "sec6.title":"Cumplimiento por Diseño","sec6.desc":"No adaptamos el cumplimiento después. Cada proyecto comienza con una lista de verificación alineada a tu industria — banca, fintech, salud o empresa — para que estés listo para auditorías desde el primer día.",
+    "sec.disclosure.title":"Divulgación Responsable","sec.disclosure.sub":"¿Encontraste un problema de seguridad? Tomamos todos los reportes en serio. Contáctanos directamente y responderemos en menos de 24 horas.","sec.disclosure.btn":"Reportar un problema →",
     "hero.tag":"Soluciones de TI con IA",
     "hero.title":'Construido por quienes <em>vivieron</em> dentro de los sistemas',
     "hero.sub":"Meliora Labs ofrece herramientas y consultoría con IA para bancos, fintechs y empresas — desarrollado por ingenieros con más de 20 años dentro de plataformas de pagos y operaciones de ciberseguridad.",
@@ -573,7 +667,7 @@ const botResponses = {
     services: "We offer 6 core services: ⚡ 360° Delivery Intelligence, 🏦 Payments & Fintech Consulting, 🔄 Mainframe Modernization, 🔒 Security by Design, 🤖 AI-Powered IT Tools, and 📋 Governance & Compliance. Which one interests you most?",
     payments: "Our payments expertise covers ACH, RTP, Wires, OFAC screening, and AML compliance. We've built and managed $50B+ in payment platforms across North America and Spain — hands-on, not theoretical.",
     mainframe: "We've led one of the largest z/OS to cloud migrations in North America. We bring a proven playbook for mainframe modernization that minimizes risk and keeps your systems running during transition.",
-    security: "Security is built in from day one — not bolted on after. Our architecture standards meet Federal Reserve banking-grade requirements. Every system we build is designed to pass regulatory scrutiny.",
+    security: "Security is our foundation, not an afterthought. 🔒 We follow zero-trust architecture, banking-grade standards reviewed by Federal Reserve examiners, and cover OFAC, AML, SOX and PCI-DSS compliance. Check our Security section on this page for full details — including our responsible disclosure policy.",
     ai: "We build custom AI tools using Claude AI deployed on AWS — for delivery governance, compliance reporting, and operational intelligence. Think smart dashboards that give you real-time visibility into your projects.",
     governance: "Our governance frameworks have been reviewed by Federal Reserve examiners. We design delivery structures that are audit-ready from day one.",
     golive: "Yes! Go-live support is included. 🟢 We provide a 30-day grace period after launch to cover any errors, bugs, or unexpected issues — at no extra cost. You're not on your own after delivery.",
@@ -597,7 +691,7 @@ const botResponses = {
     services: "Ofrecemos 6 servicios principales: ⚡ Inteligencia de Entrega 360°, 🏦 Consultoría en Pagos y Fintech, 🔄 Modernización de Mainframe, 🔒 Seguridad por Diseño, 🤖 Herramientas de TI con IA, y 📋 Gobernanza y Cumplimiento. ¿Cuál te interesa más?",
     payments: "Nuestra experiencia en pagos cubre ACH, RTP, Transferencias, OFAC y cumplimiento AML. Hemos construido y gestionado más de $50B en plataformas de pago en Norteamérica y España.",
     mainframe: "Hemos liderado una de las migraciones de z/OS a la nube más grandes en Norteamérica. Tenemos un playbook probado que minimiza riesgos y mantiene los sistemas funcionando durante la transición.",
-    security: "La seguridad está integrada desde el primer día — no añadida después. Nuestros estándares de arquitectura cumplen los requisitos bancarios de la Reserva Federal.",
+    security: "La seguridad es nuestra base, no algo añadido después. 🔒 Seguimos arquitectura zero-trust, estándares bancarios revisados por la Reserva Federal y cubrimos cumplimiento OFAC, AML, SOX y PCI-DSS. Visita nuestra sección de Seguridad en esta página para todos los detalles.",
     ai: "Construimos herramientas de IA personalizadas usando Claude AI en AWS — para gobernanza de entrega, informes de cumplimiento e inteligencia operativa.",
     governance: "Nuestros marcos de gobernanza han sido revisados por examinadores de la Reserva Federal. Diseñamos estructuras de entrega listas para auditorías desde el primer día.",
     golive: "¡Sí! El soporte de go-live está incluido. 🟢 Ofrecemos un período de gracia de 30 días después del lanzamiento para cubrir errores o problemas inesperados — sin costo adicional. No te dejamos solo después de la entrega.",
