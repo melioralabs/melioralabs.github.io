@@ -1,9 +1,10 @@
 <!-- ============================================================
      Meliora Labs | melioralabs.tech
-     Version : 1.6
+     Version : 1.7
      Date    : 2026-05-28
-     Changes : Added Security section (principles, data privacy,
-               protection, credentials, responsible disclosure)
+     Changes : Interactive 3-tier expandable card for
+               360° Delivery Intelligence (Small/Medium/Large)
+               with pill tab selector and go-live support info
      ============================================================ -->
 <!DOCTYPE html>
 <html lang="en">
@@ -181,6 +182,39 @@
   .chat-send svg { width: 15px; height: 15px; fill: white; }
   .chat-powered { text-align: center; font-size: 10px; color: var(--gray-400); padding: 4px 0 8px; }
 
+  /* ── INTERACTIVE SERVICE CARD ── */
+  .service-card.expandable { cursor: default; }
+  .service-card-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; }
+  .learn-more-btn { background: var(--teal-50); color: var(--teal-600); border: 0.5px solid var(--teal-100); border-radius: 20px; padding: 4px 12px; font-size: 12px; font-weight: 500; cursor: pointer; font-family: 'DM Sans', sans-serif; transition: all 0.2s; white-space: nowrap; flex-shrink: 0; }
+  .learn-more-btn:hover { background: var(--teal-100); }
+  .learn-more-btn.active { background: var(--teal-400); color: white; border-color: var(--teal-400); }
+
+  .tier-panel { display: none; margin-top: 1.25rem; padding-top: 1.25rem; border-top: 0.5px solid var(--gray-100); animation: fadeIn 0.25s ease; }
+  .tier-panel.open { display: block; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+
+  .tier-tabs { display: flex; gap: 6px; margin-bottom: 1.25rem; background: var(--gray-50); border-radius: 20px; padding: 4px; }
+  .tier-tab { flex: 1; text-align: center; padding: 6px 10px; border-radius: 16px; border: none; font-size: 12px; font-weight: 500; cursor: pointer; font-family: 'DM Sans', sans-serif; transition: all 0.2s; background: transparent; color: var(--gray-400); }
+  .tier-tab.active { background: white; box-shadow: 0 1px 4px rgba(0,0,0,0.1); }
+  .tier-tab.small.active { color: #16A34A; }
+  .tier-tab.medium.active { color: #D97706; }
+  .tier-tab.large.active { color: var(--teal-600); }
+
+  .tier-content { display: none; }
+  .tier-content.active { display: block; animation: fadeIn 0.2s ease; }
+  .tier-badge { display: inline-flex; align-items: center; gap: 5px; font-size: 11px; font-weight: 600; padding: 3px 10px; border-radius: 12px; margin-bottom: 0.75rem; text-transform: uppercase; letter-spacing: 0.5px; }
+  .tier-badge.small { background: #DCFCE7; color: #16A34A; }
+  .tier-badge.medium { background: #FEF3C7; color: #D97706; }
+  .tier-badge.large { background: var(--teal-50); color: var(--teal-600); }
+  .tier-feature { display: flex; align-items: flex-start; gap: 8px; margin-bottom: 0.5rem; font-size: 13px; color: var(--gray-800); line-height: 1.5; }
+  .tier-feature-dot { width: 5px; height: 5px; border-radius: 50%; margin-top: 6px; flex-shrink: 0; }
+  .tier-feature-dot.small { background: #16A34A; }
+  .tier-feature-dot.medium { background: #D97706; }
+  .tier-feature-dot.large { background: var(--teal-400); }
+  .tier-golive { display: flex; align-items: center; gap: 6px; margin-top: 0.75rem; padding: 8px 12px; background: var(--teal-50); border-radius: 8px; font-size: 12px; color: var(--teal-600); font-weight: 500; border: 0.5px solid var(--teal-100); }
+  .tier-cta { display: inline-block; margin-top: 1rem; background: var(--teal-400); color: white; padding: 8px 18px; border-radius: 8px; font-size: 13px; font-weight: 500; text-decoration: none; transition: background 0.2s; }
+  .tier-cta:hover { background: var(--teal-600); }
+
   /* ── SECURITY SECTION ── */
   .security-section { padding: 5rem 3rem; max-width: 1100px; margin: 0 auto; }
   .security-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-bottom: 2.5rem; }
@@ -260,7 +294,63 @@
   <h2 class="section-title reveal reveal-delay-1" data-i18n="services.title">Services built from real-world experience</h2>
   <p class="section-sub reveal reveal-delay-2" data-i18n="services.sub">We don't consult from the outside. We've built, migrated, and secured the systems most firms only read about.</p>
   <div class="services-grid">
-    <div class="service-card reveal reveal-delay-1"><div class="service-icon">⚡</div><div class="service-title" data-i18n="svc1.title">360° Delivery Intelligence</div><p class="service-desc" data-i18n="svc1.desc">AI-powered estimation and risk visibility across your full delivery lifecycle — dependencies, blockers, capacity, and compliance in one view.</p></div>
+    <div class="service-card expandable reveal reveal-delay-1" id="card360">
+      <div class="service-card-header">
+        <div>
+          <div class="service-icon">⚡</div>
+          <div class="service-title" data-i18n="svc1.title">360° Delivery Intelligence</div>
+        </div>
+        <button class="learn-more-btn" id="btn360" onclick="toggle360()" data-i18n="card.learnmore">Learn more +</button>
+      </div>
+      <p class="service-desc" data-i18n="svc1.desc">AI-powered estimation and risk visibility across your full delivery lifecycle — dependencies, blockers, capacity, and compliance in one view.</p>
+
+      <!-- EXPANDABLE TIER PANEL -->
+      <div class="tier-panel" id="panel360">
+        <!-- Pill Tabs -->
+        <div class="tier-tabs">
+          <button class="tier-tab small active" onclick="switchTier('small')" data-i18n="tier.small">🟢 Small</button>
+          <button class="tier-tab medium" onclick="switchTier('medium')" data-i18n="tier.medium">🟡 Medium</button>
+          <button class="tier-tab large" onclick="switchTier('large')" data-i18n="tier.large">🔴 Large</button>
+        </div>
+
+        <!-- Small Tier -->
+        <div class="tier-content active" id="tier-small">
+          <div class="tier-badge small">🟢 Small Company</div>
+          <div class="tier-feature"><div class="tier-feature-dot small"></div><span data-i18n="t1s.f1">Simple task tracking — no complex methodology needed</span></div>
+          <div class="tier-feature"><div class="tier-feature-dot small"></div><span data-i18n="t1s.f2">Affordable pricing — tailored to your budget</span></div>
+          <div class="tier-feature"><div class="tier-feature-dot small"></div><span data-i18n="t1s.f3">Minimal disruption to your daily operations</span></div>
+          <div class="tier-feature"><div class="tier-feature-dot small"></div><span data-i18n="t1s.f4">Rollback protection on every delivery</span></div>
+          <div class="tier-feature"><div class="tier-feature-dot small"></div><span data-i18n="t1s.f5">Full issue documentation included</span></div>
+          <div class="tier-golive">🟢 <span data-i18n="t1s.golive">Go-live support included — duration based on project scope</span></div>
+          <a href="#contact-form" class="tier-cta" data-i18n="tier.cta">Get a free consultation →</a>
+        </div>
+
+        <!-- Medium Tier -->
+        <div class="tier-content" id="tier-medium">
+          <div class="tier-badge medium">🟡 Medium Company</div>
+          <div class="tier-feature"><div class="tier-feature-dot medium"></div><span data-i18n="t1m.f1">Agile lite methodology — structured but not overwhelming</span></div>
+          <div class="tier-feature"><div class="tier-feature-dot medium"></div><span data-i18n="t1m.f2">Multi-department coverage including HR projects</span></div>
+          <div class="tier-feature"><div class="tier-feature-dot medium"></div><span data-i18n="t1m.f3">Changes visible fast — zero impact on daily services</span></div>
+          <div class="tier-feature"><div class="tier-feature-dot medium"></div><span data-i18n="t1m.f4">Rollback protection + full documentation package</span></div>
+          <div class="tier-feature"><div class="tier-feature-dot medium"></div><span data-i18n="t1m.f5">Budget-conscious with room to scale</span></div>
+          <div class="tier-golive">🟡 <span data-i18n="t1m.golive">Go-live support during and after launch — duration agreed at project start</span></div>
+          <a href="#contact-form" class="tier-cta" data-i18n="tier.cta">Get a free consultation →</a>
+        </div>
+
+        <!-- Large Tier -->
+        <div class="tier-content" id="tier-large">
+          <div class="tier-badge large">🔴 Enterprise / Retail / Fintech</div>
+          <div class="tier-feature"><div class="tier-feature-dot large"></div><span data-i18n="t1l.f1">Full Agile methodology — compliance and audit ready</span></div>
+          <div class="tier-feature"><div class="tier-feature-dot large"></div><span data-i18n="t1l.f2">One dedicated engineer per project for focused delivery</span></div>
+          <div class="tier-feature"><div class="tier-feature-dot large"></div><span data-i18n="t1l.f3">Changes reflected same day or by next noon</span></div>
+          <div class="tier-feature"><div class="tier-feature-dot large"></div><span data-i18n="t1l.f4">14 years — zero production rollbacks track record</span></div>
+          <div class="tier-feature"><div class="tier-feature-dot large"></div><span data-i18n="t1l.f5">Federal compliance ready (OFAC, AML, SOX, PCI-DSS)</span></div>
+          <div class="tier-feature"><div class="tier-feature-dot large"></div><span data-i18n="t1l.f6">Multi-team coordination — HR, engineering, compliance</span></div>
+          <div class="tier-golive">🔴 <span data-i18n="t1l.golive">Full go-live support during and after launch — dedicated support window agreed per project</span></div>
+          <a href="#contact-form" class="tier-cta" data-i18n="tier.cta">Get a free consultation →</a>
+        </div>
+      </div>
+    </div>
     <div class="service-card reveal reveal-delay-2"><div class="service-icon">🏦</div><div class="service-title" data-i18n="svc2.title">Payments & Fintech Consulting</div><p class="service-desc" data-i18n="svc2.desc">ACH, RTP, Wires, OFAC, AML — hands-on expertise in the formats and regulations that power financial infrastructure.</p></div>
     <div class="service-card reveal reveal-delay-3"><div class="service-icon">🔄</div><div class="service-title" data-i18n="svc3.title">Mainframe Modernization</div><p class="service-desc" data-i18n="svc3.desc">z/OS to cloud migration strategy and execution. We wrote the playbook for one of the largest bank migrations in North America and Spain.</p></div>
     <div class="service-card reveal reveal-delay-4"><div class="service-icon">🔒</div><div class="service-title" data-i18n="svc4.title">Security by Design</div><p class="service-desc" data-i18n="svc4.desc">Cybersecurity architecture built in from day one — not bolted on after. Every product we build meets banking-grade security standards.</p></div>
@@ -474,6 +564,26 @@
 
 <script>
 // ═══════════════════════════════════════════
+// INTERACTIVE 360° CARD
+// ═══════════════════════════════════════════
+function toggle360() {
+  const panel = document.getElementById('panel360');
+  const btn = document.getElementById('btn360');
+  const t = translations[currentLang];
+  const isOpen = panel.classList.toggle('open');
+  btn.classList.toggle('active', isOpen);
+  btn.textContent = isOpen ? (t['card.collapse'] || 'Close −') : (t['card.learnmore'] || 'Learn more +');
+  if (isOpen) switchTier('small');
+}
+
+function switchTier(tier) {
+  document.querySelectorAll('.tier-content').forEach(c => c.classList.remove('active'));
+  document.querySelectorAll('.tier-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('tier-' + tier).classList.add('active');
+  document.querySelector('.tier-tab.' + tier).classList.add('active');
+}
+
+// ═══════════════════════════════════════════
 // SCROLL ANIMATIONS
 // ═══════════════════════════════════════════
 const observer = new IntersectionObserver((entries) => {
@@ -535,7 +645,28 @@ function submitNotify() {
 // ═══════════════════════════════════════════
 const translations = {
   en: {
-    "nav.services":"Services","nav.about":"About","nav.security":"Security","nav.cta":"Get in touch",
+    "card.learnmore":"Learn more +","card.collapse":"Close −",
+    "tier.small":"🟢 Small","tier.medium":"🟡 Medium","tier.large":"🔴 Large",
+    "tier.cta":"Get a free consultation →",
+    "t1s.f1":"Simple task tracking — no complex methodology needed",
+    "t1s.f2":"Affordable pricing — tailored to your budget",
+    "t1s.f3":"Minimal disruption to your daily operations",
+    "t1s.f4":"Rollback protection on every delivery",
+    "t1s.f5":"Full issue documentation included",
+    "t1s.golive":"Go-live support included — duration based on project scope",
+    "t1m.f1":"Agile lite methodology — structured but not overwhelming",
+    "t1m.f2":"Multi-department coverage including HR projects",
+    "t1m.f3":"Changes visible fast — zero impact on daily services",
+    "t1m.f4":"Rollback protection + full documentation package",
+    "t1m.f5":"Budget-conscious with room to scale",
+    "t1m.golive":"Go-live support during and after launch — duration agreed at project start",
+    "t1l.f1":"Full Agile methodology — compliance and audit ready",
+    "t1l.f2":"One dedicated engineer per project for focused delivery",
+    "t1l.f3":"Changes reflected same day or by next noon",
+    "t1l.f4":"14 years — zero production rollbacks track record",
+    "t1l.f5":"Federal compliance ready (OFAC, AML, SOX, PCI-DSS)",
+    "t1l.f6":"Multi-team coordination — HR, engineering, compliance",
+    "t1l.golive":"Full go-live support during and after launch — dedicated support window agreed per project",
     "sec.tag":"Security","sec.title":"Security is not a feature — it's a foundation",
     "sec.sub":"Every system we build is designed to withstand regulatory scrutiny, protect client data, and meet banking-grade security standards from day one.",
     "sec1.title":"Our Security Principles","sec1.desc":"Security is built in from the first line of code — never bolted on after. We follow a zero-trust architecture model and apply the same standards used in Federal Reserve-audited banking environments.",
@@ -587,7 +718,28 @@ const translations = {
     "chip1":"Our services","chip2":"What's included?","chip3":"Go-live support","chip4":"What documents?","chip5":"Get a quote","chip6":"Small companies?",
   },
   es: {
-    "nav.services":"Servicios","nav.about":"Nosotros","nav.security":"Seguridad","nav.cta":"Contáctanos",
+    "card.learnmore":"Ver más +","card.collapse":"Cerrar −",
+    "tier.small":"🟢 Pequeña","tier.medium":"🟡 Mediana","tier.large":"🔴 Grande",
+    "tier.cta":"Consulta gratuita →",
+    "t1s.f1":"Seguimiento simple de tareas — sin metodología compleja",
+    "t1s.f2":"Precio accesible — adaptado a tu presupuesto",
+    "t1s.f3":"Mínima interrupción a tus operaciones diarias",
+    "t1s.f4":"Protección de rollback en cada entrega",
+    "t1s.f5":"Documentación completa de incidencias incluida",
+    "t1s.golive":"Soporte go-live incluido — duración según el alcance del proyecto",
+    "t1m.f1":"Metodología Agile lite — estructurada pero no abrumadora",
+    "t1m.f2":"Cobertura multi-departamento incluyendo proyectos de RRHH",
+    "t1m.f3":"Cambios visibles rápido — cero impacto en servicios diarios",
+    "t1m.f4":"Protección rollback + paquete completo de documentación",
+    "t1m.f5":"Consciente del presupuesto con capacidad de escalar",
+    "t1m.golive":"Soporte go-live durante y después del lanzamiento — duración acordada al inicio",
+    "t1l.f1":"Metodología Agile completa — lista para cumplimiento y auditorías",
+    "t1l.f2":"Un ingeniero dedicado por proyecto para entrega enfocada",
+    "t1l.f3":"Cambios reflejados el mismo día o antes del mediodía siguiente",
+    "t1l.f4":"14 años — cero rollbacks en producción",
+    "t1l.f5":"Listo para cumplimiento federal (OFAC, AML, SOX, PCI-DSS)",
+    "t1l.f6":"Coordinación multi-equipo — RRHH, ingeniería, cumplimiento",
+    "t1l.golive":"Soporte go-live completo durante y después del lanzamiento — ventana de soporte dedicada por proyecto",
     "sec.tag":"Seguridad","sec.title":"La seguridad no es una función — es una base",
     "sec.sub":"Cada sistema que construimos está diseñado para resistir el escrutinio regulatorio, proteger los datos del cliente y cumplir estándares de seguridad bancaria desde el primer día.",
     "sec1.title":"Nuestros Principios de Seguridad","sec1.desc":"La seguridad está integrada desde la primera línea de código — nunca añadida después. Seguimos un modelo de arquitectura zero-trust y aplicamos los mismos estándares de entornos bancarios auditados por la Reserva Federal.",
