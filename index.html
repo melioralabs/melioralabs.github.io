@@ -1,9 +1,10 @@
 <!-- ============================================================
      Meliora Labs | melioralabs.tech
-     Version : 2.0.1
+     Version : 2.0.2
      Date    : 2026-05-28
-     Changes : Hotfix — service cards expand, security cards expand,
-               bot navigation links now clickable (innerHTML fix)
+     Changes : Fix nav links staying English on ES toggle,
+               Fix Learn more buttons staying English on ES,
+               Fix ES bot responses missing clickable links
      ============================================================ -->
 <!DOCTYPE html>
 <html lang="en">
@@ -1444,10 +1445,28 @@ function setLang(lang) {
   document.querySelectorAll('[data-i18n-chip]').forEach(el => { const k = el.dataset.i18nChip; if (t[k] !== undefined) el.textContent = t[k]; });
   document.querySelectorAll('option[data-i18n]').forEach(el => { const k = el.dataset.i18n; if (t[k] !== undefined) el.textContent = t[k]; });
   document.documentElement.lang = lang;
+
+  // Update all card learn-more buttons — open ones show collapse text, closed show learnmore
+  document.querySelectorAll('.learn-more-btn, .sec-learn-btn').forEach(btn => {
+    const panelId = btn.id ? 'panel' + btn.id.replace('btn','') : null;
+    const secMatch = btn.getAttribute('onclick') && btn.getAttribute('onclick').match(/toggleSec\('([^']+)'\)/);
+    let isOpen = false;
+    if (panelId) {
+      const p = document.getElementById(panelId);
+      isOpen = p && p.classList.contains('open');
+    } else if (secMatch) {
+      const p = document.getElementById(secMatch[1]);
+      isOpen = p && p.classList.contains('open');
+    }
+    btn.textContent = isOpen ? (t['card.collapse'] || 'Cerrar −') : (t['card.learnmore'] || 'Ver más +');
+  });
+
+  // Update welcome message
   const welcome = document.getElementById('welcomeMsg');
   if (welcome) welcome.textContent = lang === 'es'
     ? '👋 ¡Hola! Soy el asistente de Meliora Labs. Puedo responder preguntas sobre nuestros servicios, experiencia y cómo podemos ayudar a tu organización. ¿Qué te gustaría saber?'
     : '👋 Hi! I\'m the Meliora Labs assistant. I can answer questions about our services, expertise, and how we can help your organization. What would you like to know?';
+
   gtag('event', 'language_switch', { event_category: 'engagement', event_label: lang });
 }
 
@@ -1481,27 +1500,27 @@ const botResponses = {
   },
   es: {
     greeting: "¡Hola! 👋 ¡Bienvenido a Meliora Labs! Estoy aquí para ayudarte a conocer nuestros servicios y cómo podemos ayudar a tu empresa a crecer con tecnología. ¿Qué te gustaría saber?",
-    services: "Ofrecemos 6 servicios principales: ⚡ Inteligencia de Entrega 360°, 🏦 Consultoría en Pagos y Fintech, 🔄 Modernización de Mainframe, 🔒 Seguridad por Diseño, 🤖 Herramientas de TI con IA, y 📋 Gobernanza y Cumplimiento. ¿Cuál te interesa más?",
-    payments: "Nuestra experiencia en pagos cubre ACH, RTP, Transferencias, OFAC y cumplimiento AML. Hemos construido y gestionado más de $50B en plataformas de pago en Norteamérica y España.",
-    mainframe: "Hemos liderado una de las migraciones de z/OS a la nube más grandes en Norteamérica. Tenemos un playbook probado que minimiza riesgos y mantiene los sistemas funcionando durante la transición.",
-    security: "La seguridad es nuestra base, no algo añadido después. 🔒 Seguimos arquitectura zero-trust, estándares bancarios revisados por la Reserva Federal y cubrimos cumplimiento OFAC, AML, SOX y PCI-DSS. Visita nuestra sección de Seguridad en esta página para todos los detalles.",
-    ai: "Construimos herramientas de IA personalizadas usando Claude AI en AWS — para gobernanza de entrega, informes de cumplimiento e inteligencia operativa.",
-    governance: "Nuestros marcos de gobernanza han sido revisados por examinadores de la Reserva Federal. Diseñamos estructuras de entrega listas para auditorías desde el primer día.",
-    golive: "¡Sí! El soporte de go-live está incluido. 🟢 Ofrecemos un período de gracia de 30 días después del lanzamiento para cubrir errores o problemas inesperados — sin costo adicional. No te dejamos solo después de la entrega.",
-    documents: "📄 Cada proyecto incluye un paquete completo de documentación: Guía del Proyecto, Desglose de Costos, Acuerdo de Facturación, Especificaciones Técnicas y Documento de Traspaso para que tu equipo sea dueño de todo al finalizar.",
-    included: "✅ Qué incluye cada proyecto: consulta inicial, hoja de ruta, especificaciones técnicas, desarrollo y entrega, soporte go-live (30 días de gracia), documentación completa y traspaso. Una experiencia completa de principio a fin.",
-    notincluded: "❌ Lo que NO está incluido por defecto: mantenimiento mensual continuo después de los 30 días de gracia, licencias de software de terceros, costos de infraestructura (AWS, hosting) y solicitudes fuera del alcance. ¡Siempre se pueden agregar!",
-    smallcompany: "¡Por supuesto! 🏢 Trabajamos con empresas de cualquier tamaño. Ya seas una pequeña empresa que quiere incorporar tecnología o una gran empresa que necesita modernización — si involucra tecnología y puede construirse con código, podemos ayudarte.",
-    timeline: "⏱️ Los tiempos dependen del alcance. Herramientas pequeñas: 2–4 semanas. Proyectos medianos: 1–3 meses. Modernizaciones grandes: 3–6+ meses. Siempre empezamos con una consulta gratuita para darte un estimado realista.",
-    remote: "📍 ¡Sí, trabajamos 100% remoto! Atendemos clientes en EE.UU., México y España. Toda la colaboración es por videollamadas, herramientas compartidas y comunicación asíncrona.",
-    quote: "¡Nos encantaría discutir tu proyecto! La mejor forma es llenar el formulario de contacto en esta página o escribirnos a melioralabs.tech@gmail.com. Respondemos en menos de 24 horas.",
-    contact: "Puedes contactarnos en 📧 melioralabs.tech@gmail.com o usar el formulario de contacto en esta página. Generalmente respondemos en menos de 24 horas.",
-    team: "Meliora Labs fue fundada por ingenieros con más de 20 años dentro de plataformas de pago de misión crítica y operaciones de ciberseguridad — de España a Norteamérica. No consultamos desde afuera. Y no desaparecemos después de la entrega. Nunca estás solo — antes, durante ni después del go-live. 🤝",
-    launch: "Actualmente estamos en desarrollo. ¡Regístrate con el formulario 'Notifícame' en esta página y te avisaremos cuando lancemos! 🚀",
-    cost: "El precio depende del alcance de tu proyecto. Llena el formulario de contacto y agendaremos una consulta inicial gratuita. Sin compromiso.",
-    aws: "¡Sí! Desplegamos herramientas con IA en AWS. Nuestro stack incluye Claude AI, AWS Lambda y arquitecturas cloud diseñadas para seguridad bancaria.",
-    outofscope: "¡Eso está un poco fuera de lo que puedo ayudarte aquí! 😊 Estoy enfocado en los servicios de Meliora Labs y temas de consultoría IT. Para otras preguntas, escríbenos a melioralabs.tech@gmail.com",
-    default: "¡Buena pregunta! Meliora Labs se especializa en soluciones de TI con IA para cualquier empresa que quiera crecer con tecnología. ¿Puedes contarme más sobre lo que buscas? O usa el formulario de contacto para hablar con nuestro equipo. 💚",
+    services: "Ofrecemos 7 servicios: ⚡ Inteligencia de Entrega 360°, 🏦 Pagos y Fintech, 🔄 Mainframe, 🔒 Seguridad, 🤖 Herramientas IA, 📋 Gobernanza y 🗺️ Diseño Técnico AS-IS/TO-BE. <a href='javascript:scrollTo(\"services\")' style='color:var(--teal-400);font-weight:500;'>👇 Ver todos los servicios →</a>",
+    payments: "Nuestra experiencia cubre ACH, RTP, Transferencias, OFAC y AML. Hemos gestionado más de $50B en plataformas de pago en Norteamérica y España. <a href='javascript:scrollTo(\"services\")' style='color:var(--teal-400);font-weight:500;'>👇 Ver detalles del servicio →</a>",
+    mainframe: "Hemos liderado una de las migraciones z/OS a nube más grandes en Norteamérica. Cada proyecto es único — esta merece una conversación real. <a href='javascript:scrollTo(\"contact-form\")' style='color:var(--teal-400);font-weight:500;'>☕ Agendar una conversación →</a>",
+    security: "La seguridad es nuestra base. 🔒 Zero-trust, estándares bancarios, protección NPPI, OFAC, AML, SOX y PCI-DSS. <a href='javascript:scrollTo(\"security\")' style='color:var(--teal-400);font-weight:500;'>👇 Ver nuestra sección de Seguridad →</a>",
+    ai: "Construimos herramientas de IA con Claude AI en AWS — gobernanza, informes de cumplimiento e inteligencia operativa. <a href='javascript:scrollTo(\"services\")' style='color:var(--teal-400);font-weight:500;'>👇 Ver detalles de Herramientas IA →</a>",
+    governance: "Marcos de gobernanza revisados por examinadores de la Reserva Federal. Diseñamos estructuras listas para auditorías desde el primer día. <a href='javascript:scrollTo(\"services\")' style='color:var(--teal-400);font-weight:500;'>👇 Ver detalles de Gobernanza →</a>",
+    golive: "¡Sí! El soporte go-live está incluido. 🟢 30 días de gracia para cubrir errores — sin costo adicional. Nunca te dejamos solo. <a href='javascript:scrollTo(\"about\")' style='color:var(--teal-400);font-weight:500;'>👇 Ver nuestro compromiso →</a>",
+    documents: "📄 Cada proyecto incluye: Guía del Proyecto, Desglose de Costos, Acuerdo de Facturación, Especificaciones Técnicas y Documento de Traspaso. <a href='javascript:scrollTo(\"contact-form\")' style='color:var(--teal-400);font-weight:500;'>👇 Contáctanos para más info →</a>",
+    included: "✅ Cada proyecto incluye: consulta inicial, hoja de ruta, specs, desarrollo, soporte go-live (30 días), documentación y traspaso. <a href='javascript:scrollTo(\"services\")' style='color:var(--teal-400);font-weight:500;'>👇 Ver detalles del servicio →</a>",
+    notincluded: "❌ No incluido por defecto: mantenimiento mensual tras los 30 días, licencias de terceros, costos de infraestructura y solicitudes fuera de alcance. ¡Siempre se pueden agregar! <a href='javascript:scrollTo(\"contact-form\")' style='color:var(--teal-400);font-weight:500;'>👇 Contáctanos →</a>",
+    smallcompany: "¡Por supuesto! 🏢 Trabajamos con empresas de cualquier tamaño. Si es digital, puede mejorar — cualquier industria. <a href='javascript:scrollTo(\"services\")' style='color:var(--teal-400);font-weight:500;'>👇 Ver niveles de servicio →</a>",
+    timeline: "⏱️ Herramientas pequeñas: 2–4 semanas. Proyectos medianos: 1–3 meses. Modernizaciones grandes: 3–6+ meses. <a href='javascript:scrollTo(\"contact-form\")' style='color:var(--teal-400);font-weight:500;'>👇 Agendar consulta gratuita →</a>",
+    remote: "📍 ¡Sí, 100% remoto! Atendemos clientes en EE.UU., México y España. <a href='javascript:scrollTo(\"contact-form\")' style='color:var(--teal-400);font-weight:500;'>👇 Contáctanos →</a>",
+    quote: "¡Nos encantaría discutir tu proyecto! Escríbenos a melioralabs.tech@gmail.com — respondemos en menos de 24 horas. <a href='javascript:scrollTo(\"contact-form\")' style='color:var(--teal-400);font-weight:500;'>👇 Ir al formulario →</a>",
+    contact: "Puedes contactarnos en 📧 melioralabs.tech@gmail.com o usar el formulario en esta página. <a href='javascript:scrollTo(\"contact-form\")' style='color:var(--teal-400);font-weight:500;'>👇 Ir al formulario →</a>",
+    team: "Meliora Labs fue fundada por ingenieros con más de 20 años en plataformas de pago y ciberseguridad — de España a Norteamérica. No desaparecemos después de la entrega. Nunca estás solo. 🤝 <a href='javascript:scrollTo(\"about\")' style='color:var(--teal-400);font-weight:500;'>👇 Lee nuestra historia →</a>",
+    launch: "¡Estamos en desarrollo! Regístrate y te avisaremos cuando lancemos. 🚀 <a href='javascript:scrollTo(\"notify\")' style='color:var(--teal-400);font-weight:500;'>👇 Registrarse abajo →</a>",
+    cost: "El precio depende del alcance. Consulta inicial gratuita — sin compromiso. <a href='javascript:scrollTo(\"contact-form\")' style='color:var(--teal-400);font-weight:500;'>👇 Ir al formulario →</a>",
+    aws: "¡Sí! Desplegamos en AWS — con ingenieros certificados en AWS en el equipo. También trabajamos con IBM y GCP. <a href='javascript:scrollTo(\"security\")' style='color:var(--teal-400);font-weight:500;'>👇 Ver seguridad en la nube →</a>",
+    outofscope: "¡Eso está un poco fuera de lo que puedo ayudarte aquí! 😊 Estoy enfocado en los servicios de Meliora Labs. Para otras preguntas escríbenos a melioralabs.tech@gmail.com",
+    default: "¡Buena pregunta! Meliora Labs se especializa en soluciones de TI con IA para cualquier empresa que quiera crecer con tecnología. ¿Puedes contarme más? O usa el formulario de contacto. 💚 <a href='javascript:scrollTo(\"contact-form\")' style='color:var(--teal-400);font-weight:500;'>👇 Ir al formulario →</a>",
   }
 };
 
