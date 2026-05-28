@@ -1,10 +1,9 @@
 <!-- ============================================================
      Meliora Labs | melioralabs.tech
-     Version : 2.0
+     Version : 2.0.1
      Date    : 2026-05-28
-     Changes : 7th service card (AS-IS/TO-BE Technical Design),
-               Security cards expandable teasers, bot navigation
-               hints with scroll links, team credentials updated
+     Changes : Hotfix — service cards expand, security cards expand,
+               bot navigation links now clickable (innerHTML fix)
      ============================================================ -->
 <!DOCTYPE html>
 <html lang="en">
@@ -971,8 +970,8 @@
 // ═══════════════════════════════════════════
 function toggleSec(id) {
   const panel = document.getElementById(id);
-  const btn = panel.previousElementSibling.querySelector('.sec-learn-btn') ||
-              panel.parentElement.querySelector('.sec-learn-btn');
+  const card = panel.closest('.security-card');
+  const btn = card ? card.querySelector('.sec-learn-btn') : null;
   const isOpen = panel.classList.toggle('open');
   const t = translations[currentLang];
   if (btn) btn.textContent = isOpen ? (t['card.collapse'] || 'Close −') : (t['card.learnmore'] || 'Learn more +');
@@ -988,6 +987,7 @@ function scrollTo(id) {
 }
 
 function toggleCard(id) {
+  const panel = document.getElementById('panel' + id);
   const btn = document.getElementById('btn' + id);
   const t = translations[currentLang];
   const isCoffee = panel.classList.contains('coffee-panel');
@@ -1535,7 +1535,11 @@ function addMsg(text, type) {
   const msgs = document.getElementById('chatMessages');
   const div = document.createElement('div');
   div.className = 'chat-msg ' + type;
-  div.textContent = text;
+  if (type === 'bot') {
+    div.innerHTML = text;
+  } else {
+    div.textContent = text;
+  }
   msgs.appendChild(div);
   msgs.scrollTop = msgs.scrollHeight;
 }
