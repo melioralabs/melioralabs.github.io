@@ -1,10 +1,10 @@
 <!-- ============================================================
      Meliora Labs | melioralabs.tech
-     Version : 2.1.1
+     Version : 2.1.2
      Date    : 2026-05-28
-     Changes : PageSpeed fixes — meta description, main landmark,
-               select label, contrast, contact section color fix,
-               Google Fonts preconnect for performance
+     Changes : Fix Get in Touch disappearing on scroll (active nav
+               conflict), fix contact section color extension,
+               scroll-to-top moved above chat bubble
      ============================================================ -->
 <!DOCTYPE html>
 <html lang="en">
@@ -59,6 +59,8 @@
   .nav-links a:hover { color: var(--teal-400); }
   .nav-cta { background: var(--teal-400) !important; color: white !important; padding: 8px 20px; border-radius: 6px; font-weight: 500 !important; transition: background 0.2s !important; }
   .nav-cta:hover { background: var(--teal-600) !important; }
+  .nav-cta.active { color: white !important; background: var(--teal-400) !important; }
+  .nav-cta.active::after { display: none !important; }
 
   /* ── LANGUAGE TOGGLE ── */
   .lang-toggle { display: flex; align-items: center; background: var(--gray-50); border: 0.5px solid var(--gray-100); border-radius: 20px; padding: 3px; gap: 2px; }
@@ -113,8 +115,8 @@
   .notify-success.show { display: block; }
 
   /* ── CONTACT FORM ── */
-  .contact-section { background: white; border: 0.5px solid var(--gray-100); border-radius: 16px; padding: 3.5rem 3rem; margin: 0 3rem 2rem; overflow: hidden; }
-  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
+  .contact-section { background: white; border: 0.5px solid var(--gray-100); border-radius: 16px; padding: 3.5rem 3rem; margin: 0 3rem 2rem; overflow: hidden; position: relative; }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; position: relative; z-index: 1; }
   .contact-info-title { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 500; color: var(--gray-900); margin-bottom: 1rem; line-height: 1.2; }
   .contact-info-sub { font-size: 15px; color: var(--gray-800); font-weight: 300; line-height: 1.75; margin-bottom: 2rem; }
   .contact-detail { display: flex; align-items: center; gap: 10px; margin-bottom: 0.75rem; font-size: 14px; color: var(--gray-800); }
@@ -263,7 +265,7 @@
   @media (max-width: 640px) { .faq-grid { grid-template-columns: 1fr; } .faq-section { padding: 3rem 1.25rem; } }
 
   /* ── SCROLL TO TOP ── */
-  .scroll-top { position: fixed; bottom: 28px; right: 28px; z-index: 998; width: 44px; height: 44px; background: white; border: 0.5px solid var(--gray-100); border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 2px 12px rgba(0,0,0,0.1); transition: all 0.3s; opacity: 0; transform: translateY(10px); pointer-events: none; }
+  .scroll-top { position: fixed; bottom: 172px; right: 28px; z-index: 998; width: 44px; height: 44px; background: white; border: 0.5px solid var(--gray-100); border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 2px 12px rgba(0,0,0,0.1); transition: all 0.3s; opacity: 0; transform: translateY(10px); pointer-events: none; }
   .scroll-top.visible { opacity: 1; transform: translateY(0); pointer-events: all; }
   .scroll-top:hover { background: var(--teal-400); border-color: var(--teal-400); transform: translateY(-2px); box-shadow: 0 4px 16px rgba(29,158,117,0.3); }
   .scroll-top:hover svg { stroke: white; }
@@ -1164,7 +1166,9 @@ window.addEventListener('scroll', () => {
     if (el && window.scrollY >= el.offsetTop - 120) current = id;
   });
   Object.entries(navLinks).forEach(([id, link]) => {
-    if (link) link.classList.toggle('active', id === current);
+    if (!link) return;
+    if (link.classList.contains('nav-cta')) return; // never highlight the CTA button
+    link.classList.toggle('active', id === current);
   });
 });
 
