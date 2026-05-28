@@ -1,3 +1,11 @@
+<!-- ============================================================
+     Meliora Labs | melioralabs.tech
+     Version : 1.5
+     Date    : 2026-05-28
+     Changes : Smart bot responses (go-live, docs, greetings,
+               timeline, small companies) + bot reset on reopen
+               + version header added
+     ============================================================ -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -357,9 +365,11 @@
     </div>
     <div class="chat-suggestions" id="chatChips">
       <span class="chat-chip" onclick="chipClick(this)" data-i18n-chip="chip1">Our services</span>
-      <span class="chat-chip" onclick="chipClick(this)" data-i18n-chip="chip2">Payments expertise</span>
-      <span class="chat-chip" onclick="chipClick(this)" data-i18n-chip="chip3">Get a quote</span>
-      <span class="chat-chip" onclick="chipClick(this)" data-i18n-chip="chip4">About the team</span>
+      <span class="chat-chip" onclick="chipClick(this)" data-i18n-chip="chip2">What's included?</span>
+      <span class="chat-chip" onclick="chipClick(this)" data-i18n-chip="chip3">Go-live support</span>
+      <span class="chat-chip" onclick="chipClick(this)" data-i18n-chip="chip4">What documents?</span>
+      <span class="chat-chip" onclick="chipClick(this)" data-i18n-chip="chip5">Get a quote</span>
+      <span class="chat-chip" onclick="chipClick(this)" data-i18n-chip="chip6">Small companies?</span>
     </div>
     <div class="chat-input-row">
       <input class="chat-input" id="chatInput" type="text" placeholder="Ask me anything…" data-i18n-placeholder="chat.placeholder" onkeydown="if(event.key==='Enter') sendMsg()" />
@@ -489,7 +499,7 @@ const translations = {
     "cta.btn":"Schedule a conversation",
     "footer.tagline":"Semper melius — always striving for better","footer.copy":"© 2026 Meliora Labs. All rights reserved.",
     "chat.status":"AI Assistant • Online","chat.placeholder":"Ask me anything…","chat.powered":"Powered by Meliora Labs AI",
-    "chip1":"Our services","chip2":"Payments expertise","chip3":"Get a quote","chip4":"About the team",
+    "chip1":"Our services","chip2":"What's included?","chip3":"Go-live support","chip4":"What documents?","chip5":"Get a quote","chip6":"Small companies?",
   },
   es: {
     "nav.services":"Servicios","nav.about":"Nosotros","nav.security":"Seguridad","nav.cta":"Contáctanos",
@@ -532,7 +542,7 @@ const translations = {
     "cta.btn":"Agendar una conversación",
     "footer.tagline":"Semper melius — siempre mejorando","footer.copy":"© 2026 Meliora Labs. Todos los derechos reservados.",
     "chat.status":"Asistente IA • En línea","chat.placeholder":"Pregúntame lo que quieras…","chat.powered":"Desarrollado por Meliora Labs IA",
-    "chip1":"Nuestros servicios","chip2":"Experiencia en pagos","chip3":"Cotización","chip4":"El equipo",
+    "chip1":"Nuestros servicios","chip2":"¿Qué incluye?","chip3":"Soporte go-live","chip4":"¿Qué documentos?","chip5":"Cotización","chip6":"¿Empresas pequeñas?",
   }
 };
 
@@ -559,54 +569,78 @@ function setLang(lang) {
 // ═══════════════════════════════════════════
 const botResponses = {
   en: {
+    greeting: "Hello! 👋 Welcome to Meliora Labs! I'm here to help you learn about our services and how we can help your business grow with technology. What would you like to know?",
     services: "We offer 6 core services: ⚡ 360° Delivery Intelligence, 🏦 Payments & Fintech Consulting, 🔄 Mainframe Modernization, 🔒 Security by Design, 🤖 AI-Powered IT Tools, and 📋 Governance & Compliance. Which one interests you most?",
     payments: "Our payments expertise covers ACH, RTP, Wires, OFAC screening, and AML compliance. We've built and managed $50B+ in payment platforms across North America and Spain — hands-on, not theoretical.",
     mainframe: "We've led one of the largest z/OS to cloud migrations in North America. We bring a proven playbook for mainframe modernization that minimizes risk and keeps your systems running during transition.",
     security: "Security is built in from day one — not bolted on after. Our architecture standards meet Federal Reserve banking-grade requirements. Every system we build is designed to pass regulatory scrutiny.",
     ai: "We build custom AI tools using Claude AI deployed on AWS — for delivery governance, compliance reporting, and operational intelligence. Think smart dashboards that give you real-time visibility into your projects.",
     governance: "Our governance frameworks have been reviewed by Federal Reserve examiners. We design delivery structures that are audit-ready from day one.",
+    golive: "Yes! Go-live support is included. 🟢 We provide a 30-day grace period after launch to cover any errors, bugs, or unexpected issues — at no extra cost. You're not on your own after delivery.",
+    documents: "📄 Every engagement includes a full documentation package: Project Guide, Cost Breakdown, Billing Agreement, Technical Specs, and a Handover Document so your team owns everything after we're done. Nothing is left as a black box.",
+    included: "✅ What's included in every project: initial consultation, project roadmap, technical specs, development & delivery, go-live support (30-day grace period), full documentation package, and handover. You get a complete end-to-end experience.",
+    notincluded: "❌ What's NOT included by default: ongoing monthly maintenance after the 30-day grace period, third-party software licenses, infrastructure costs (AWS, cloud hosting), and out-of-scope change requests. These can always be added — just ask!",
+    smallcompany: "Absolutely! 🏢 We work with companies of any size. Whether you're a small business wanting to add tech to your services or a large enterprise needing modernization — if it involves technology and can be built with code, we can help.",
+    timeline: "⏱️ Project timelines depend on scope. Small tools: 2–4 weeks. Medium projects: 1–3 months. Large modernizations: 3–6+ months. We always start with a free consultation to give you a realistic estimate before any commitment.",
+    remote: "📍 Yes, we work 100% remotely! We serve clients across the US, Mexico, and Spain. All collaboration is done via video calls, shared tools, and async communication — no physical office needed.",
     quote: "We'd love to discuss your project! The best way is to fill out the contact form on this page or email us directly at melioralabs.tech@gmail.com. We respond within 24 hours.",
     contact: "You can reach us at 📧 melioralabs.tech@gmail.com or use the contact form on this page. We typically respond within 24 hours.",
     team: "Meliora Labs was founded by engineers with 20+ years inside mission-critical payment platforms and cybersecurity operations. We don't consult from the outside — we've lived inside these systems.",
     launch: "We're currently in development and building our platform. Sign up with the Notify Me form on this page and we'll email you the moment we launch! 🚀",
-    cost: "Pricing depends on the scope of your project. Fill out the contact form and we'll schedule a free initial consultation to understand your needs and provide a custom estimate.",
+    cost: "Pricing depends on the scope of your project. Fill out the contact form and we'll schedule a free initial consultation to understand your needs and provide a custom estimate. No commitment required.",
     aws: "Yes! We deploy AI-powered tools on AWS. Our stack includes Claude AI, AWS Lambda, and cloud-native architectures designed for banking-grade security and scalability.",
-    outofscope: "That's a bit outside what I can help with here! I'm focused on Meliora Labs services and IT consulting topics. For other questions, feel free to email us at melioralabs.tech@gmail.com 😊",
-    default: "Great question! Meliora Labs specializes in AI-powered IT solutions for banks and enterprises. Could you tell me more about what you're looking for? Or use the contact form to start a conversation with our team.",
+    outofscope: "That's a bit outside what I can help with here! 😊 I'm focused on Meliora Labs services and IT consulting topics. For other questions, feel free to email us at melioralabs.tech@gmail.com",
+    default: "Good question! Meliora Labs specializes in AI-powered IT solutions for any company that wants to grow through technology. Could you tell me more about what you're looking for? Or use the contact form to start a conversation with our team. 💚",
   },
   es: {
+    greeting: "¡Hola! 👋 ¡Bienvenido a Meliora Labs! Estoy aquí para ayudarte a conocer nuestros servicios y cómo podemos ayudar a tu empresa a crecer con tecnología. ¿Qué te gustaría saber?",
     services: "Ofrecemos 6 servicios principales: ⚡ Inteligencia de Entrega 360°, 🏦 Consultoría en Pagos y Fintech, 🔄 Modernización de Mainframe, 🔒 Seguridad por Diseño, 🤖 Herramientas de TI con IA, y 📋 Gobernanza y Cumplimiento. ¿Cuál te interesa más?",
     payments: "Nuestra experiencia en pagos cubre ACH, RTP, Transferencias, OFAC y cumplimiento AML. Hemos construido y gestionado más de $50B en plataformas de pago en Norteamérica y España.",
     mainframe: "Hemos liderado una de las migraciones de z/OS a la nube más grandes en Norteamérica. Tenemos un playbook probado que minimiza riesgos y mantiene los sistemas funcionando durante la transición.",
     security: "La seguridad está integrada desde el primer día — no añadida después. Nuestros estándares de arquitectura cumplen los requisitos bancarios de la Reserva Federal.",
     ai: "Construimos herramientas de IA personalizadas usando Claude AI en AWS — para gobernanza de entrega, informes de cumplimiento e inteligencia operativa.",
     governance: "Nuestros marcos de gobernanza han sido revisados por examinadores de la Reserva Federal. Diseñamos estructuras de entrega listas para auditorías desde el primer día.",
+    golive: "¡Sí! El soporte de go-live está incluido. 🟢 Ofrecemos un período de gracia de 30 días después del lanzamiento para cubrir errores o problemas inesperados — sin costo adicional. No te dejamos solo después de la entrega.",
+    documents: "📄 Cada proyecto incluye un paquete completo de documentación: Guía del Proyecto, Desglose de Costos, Acuerdo de Facturación, Especificaciones Técnicas y Documento de Traspaso para que tu equipo sea dueño de todo al finalizar.",
+    included: "✅ Qué incluye cada proyecto: consulta inicial, hoja de ruta, especificaciones técnicas, desarrollo y entrega, soporte go-live (30 días de gracia), documentación completa y traspaso. Una experiencia completa de principio a fin.",
+    notincluded: "❌ Lo que NO está incluido por defecto: mantenimiento mensual continuo después de los 30 días de gracia, licencias de software de terceros, costos de infraestructura (AWS, hosting) y solicitudes fuera del alcance. ¡Siempre se pueden agregar!",
+    smallcompany: "¡Por supuesto! 🏢 Trabajamos con empresas de cualquier tamaño. Ya seas una pequeña empresa que quiere incorporar tecnología o una gran empresa que necesita modernización — si involucra tecnología y puede construirse con código, podemos ayudarte.",
+    timeline: "⏱️ Los tiempos dependen del alcance. Herramientas pequeñas: 2–4 semanas. Proyectos medianos: 1–3 meses. Modernizaciones grandes: 3–6+ meses. Siempre empezamos con una consulta gratuita para darte un estimado realista.",
+    remote: "📍 ¡Sí, trabajamos 100% remoto! Atendemos clientes en EE.UU., México y España. Toda la colaboración es por videollamadas, herramientas compartidas y comunicación asíncrona.",
     quote: "¡Nos encantaría discutir tu proyecto! La mejor forma es llenar el formulario de contacto en esta página o escribirnos a melioralabs.tech@gmail.com. Respondemos en menos de 24 horas.",
     contact: "Puedes contactarnos en 📧 melioralabs.tech@gmail.com o usar el formulario de contacto en esta página. Generalmente respondemos en menos de 24 horas.",
     team: "Meliora Labs fue fundada por ingenieros con más de 20 años dentro de plataformas de pago de misión crítica y operaciones de ciberseguridad.",
-    launch: "Actualmente estamos en desarrollo construyendo nuestra plataforma. ¡Regístrate con el formulario 'Notifícame' en esta página y te avisaremos cuando lancemos! 🚀",
-    cost: "El precio depende del alcance de tu proyecto. Llena el formulario de contacto y agendaremos una consulta inicial gratuita.",
+    launch: "Actualmente estamos en desarrollo. ¡Regístrate con el formulario 'Notifícame' en esta página y te avisaremos cuando lancemos! 🚀",
+    cost: "El precio depende del alcance de tu proyecto. Llena el formulario de contacto y agendaremos una consulta inicial gratuita. Sin compromiso.",
     aws: "¡Sí! Desplegamos herramientas con IA en AWS. Nuestro stack incluye Claude AI, AWS Lambda y arquitecturas cloud diseñadas para seguridad bancaria.",
-    outofscope: "¡Eso está un poco fuera de lo que puedo ayudarte aquí! Estoy enfocado en los servicios de Meliora Labs y temas de consultoría IT. Para otras preguntas, escríbenos a melioralabs.tech@gmail.com 😊",
-    default: "¡Buena pregunta! Meliora Labs se especializa en soluciones de TI con IA para bancos y empresas. ¿Puedes contarme más sobre lo que buscas? O usa el formulario de contacto para hablar con nuestro equipo.",
+    outofscope: "¡Eso está un poco fuera de lo que puedo ayudarte aquí! 😊 Estoy enfocado en los servicios de Meliora Labs y temas de consultoría IT. Para otras preguntas, escríbenos a melioralabs.tech@gmail.com",
+    default: "¡Buena pregunta! Meliora Labs se especializa en soluciones de TI con IA para cualquier empresa que quiera crecer con tecnología. ¿Puedes contarme más sobre lo que buscas? O usa el formulario de contacto para hablar con nuestro equipo. 💚",
   }
 };
 
 function getBotReply(text) {
   const t = text.toLowerCase();
   const r = botResponses[currentLang];
+  if (/^(hi|hello|hey|hola|buenos|buenas|good|como estas|cómo estás|how are|greet|saludos|qué tal|que tal)/.test(t)) return r.greeting;
+  if (/go.?live|post.?launch|after launch|support|soporte|después del|despues del|error after|bugs after/.test(t)) return r.golive;
+  if (/document|doc|guide|guía|specs|spec|handover|traspaso|entregable|deliverable|bill|agreement|acuerdo/.test(t)) return r.documents;
+  if (/what.*includ|includ.*what|what.*cover|what do i get|qué incluye|que incluye|incluido|included/.test(t)) return r.included;
+  if (/not includ|doesn.*includ|exclude|no incluy|no está|what.*not|extra cost|costo extra/.test(t)) return r.notincluded;
+  if (/small|startup|tiny|little|empresa pequeña|pequeña empresa|any size|cualquier tamaño|my company|mi empresa/.test(t)) return r.smallcompany;
+  if (/how long|timeline|duration|time|start|begin|cuánto tiempo|cuando empez|cuándo|plazo|semana|week|month/.test(t)) return r.timeline;
+  if (/remote|location|where|located|office|virtual|remoto|dónde|donde|ubicación/.test(t)) return r.remote;
   if (/service|what do|what you|build|offer|servicio|qué hace|qué ofre/.test(t)) return r.services;
   if (/payment|pago|ach|rtp|wire|ofac|aml|fintech/.test(t)) return r.payments;
   if (/mainframe|z\/os|cobol|migration|migra/.test(t)) return r.mainframe;
   if (/security|seguridad|cyber|hack|protect|protec/.test(t)) return r.security;
-  if (/ai|artificial|claude|aws|tool|herramienta|inteligencia/.test(t)) return r.ai;
+  if (/ai|artificial|claude|tool|herramienta|inteligencia/.test(t)) return r.ai;
   if (/governance|compliance|govern|cumplimiento|audit|auditor/.test(t)) return r.governance;
   if (/quote|price|cost|pricing|how much|cuánto|precio|costo|cotiz/.test(t)) return r.quote;
   if (/contact|email|reach|touch|contacto|correo|escribir/.test(t)) return r.contact;
   if (/team|founder|who are|about|equipo|fundador|quiénes/.test(t)) return r.team;
-  if (/launch|when|soon|ready|cuándo|lanz|próximo|pronto|notify/.test(t)) return r.launch;
-  if (/aws|cloud|deploy|deploy|nube/.test(t)) return r.aws;
-  if (/weather|sport|movie|music|recipe|clima|deporte|película|música/.test(t)) return r.outofscope;
+  if (/launch|when.*launch|soon|ready|cuándo.*lanza|próximo|pronto|notify/.test(t)) return r.launch;
+  if (/aws|cloud|deploy|nube/.test(t)) return r.aws;
+  if (/weather|sport|movie|music|recipe|clima|deporte|película|música|cook|cocin/.test(t)) return r.outofscope;
   return r.default;
 }
 
@@ -649,7 +683,40 @@ function toggleChat() {
   const unread = document.getElementById('chatUnread');
   const isOpen = win.classList.toggle('open');
   btn.classList.toggle('open', isOpen);
-  if (isOpen) { unread.style.display = 'none'; gtag('event', 'chat_open', { event_category: 'engagement' }); }
+  if (isOpen) {
+    unread.style.display = 'none';
+    resetChat();
+    gtag('event', 'chat_open', { event_category: 'engagement' });
+  }
+}
+
+function resetChat() {
+  const msgs = document.getElementById('chatMessages');
+  const chips = document.getElementById('chatChips');
+  const input = document.getElementById('chatInput');
+  const t = translations[currentLang];
+
+  // Clear all messages
+  msgs.innerHTML = '';
+
+  // Re-add welcome message in current language
+  const welcome = document.createElement('div');
+  welcome.className = 'chat-msg bot';
+  welcome.id = 'welcomeMsg';
+  welcome.textContent = currentLang === 'es'
+    ? '👋 ¡Hola! Soy el asistente de Meliora Labs. Puedo responder preguntas sobre nuestros servicios, experiencia y cómo podemos ayudar a tu organización. ¿Qué te gustaría saber?'
+    : '👋 Hi! I\'m the Meliora Labs assistant. I can answer questions about our services, expertise, and how we can help your organization. What would you like to know?';
+  msgs.appendChild(welcome);
+
+  // Reset chips
+  chips.style.display = 'flex';
+  chips.querySelectorAll('.chat-chip').forEach(chip => {
+    const key = chip.dataset.i18nChip;
+    if (t[key]) chip.textContent = t[key];
+  });
+
+  // Clear input
+  input.value = '';
 }
 </script>
 </body>
