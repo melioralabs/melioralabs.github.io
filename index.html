@@ -1,10 +1,10 @@
 <!-- ============================================================
      Meliora Labs | melioralabs.tech
-     Version : 1.9
+     Version : 2.0
      Date    : 2026-05-28
-     Changes : Upgraded Why Meliora Labs section — founder story,
-               PO mindset box, humanized cards 01-04, new box 05
-               All CTAs unified to contact form
+     Changes : 7th service card (AS-IS/TO-BE Technical Design),
+               Security cards expandable teasers, bot navigation
+               hints with scroll links, team credentials updated
      ============================================================ -->
 <!DOCTYPE html>
 <html lang="en">
@@ -235,6 +235,22 @@
   @media (max-width: 640px) {
     .alone-card { grid-column: 1 / -1; }
   }
+
+  /* ── SECURITY EXPANDABLE ── */
+  .sec-card-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; }
+  .sec-expand-panel { display: none; margin-top: 1rem; padding-top: 1rem; border-top: 0.5px solid var(--gray-100); animation: fadeIn 0.25s ease; }
+  .sec-expand-panel.open { display: block; }
+  .sec-expand-panel.dark-panel { border-top-color: rgba(159,225,203,0.2); }
+  .sec-detail { display: flex; align-items: flex-start; gap: 8px; margin-bottom: 0.5rem; font-size: 13px; color: var(--gray-800); line-height: 1.5; }
+  .sec-detail.light { color: var(--teal-100); }
+  .sec-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--teal-400); margin-top: 6px; flex-shrink: 0; }
+  .sec-cta-small { display: inline-block; margin-top: 0.75rem; font-size: 12px; color: var(--teal-600); font-weight: 500; text-decoration: none; border-bottom: 1px solid var(--teal-100); padding-bottom: 1px; transition: color 0.2s; }
+  .sec-cta-small:hover { color: var(--teal-400); }
+  .sec-cta-small.light { color: var(--teal-100); border-bottom-color: rgba(159,225,203,0.3); }
+  .sec-learn-btn { background: rgba(255,255,255,0.1); color: var(--teal-100); border: 0.5px solid rgba(159,225,203,0.3); border-radius: 20px; padding: 4px 12px; font-size: 12px; font-weight: 500; cursor: pointer; font-family: 'DM Sans', sans-serif; transition: all 0.2s; white-space: nowrap; flex-shrink: 0; }
+  .sec-learn-btn:hover { background: rgba(255,255,255,0.15); }
+  .sec-learn-btn.light-btn { background: var(--teal-50); color: var(--teal-600); border-color: var(--teal-100); }
+  .sec-learn-btn.light-btn:hover { background: var(--teal-100); }
 
   /* ── COFFEE CARD ── */
   .coffee-panel { display: none; margin-top: 1.25rem; padding-top: 1.25rem; border-top: 0.5px solid var(--gray-100); animation: fadeIn 0.25s ease; }
@@ -533,7 +549,54 @@
       </div>
     </div>
 
-    <!-- GOVERNANCE — 2 tiers Medium + Large -->
+    <!-- TECHNICAL DESIGN AS-IS / TO-BE -->
+    <div class="service-card expandable reveal reveal-delay-1" id="cardTech">
+      <div class="service-card-header">
+        <div>
+          <div class="service-icon">🗺️</div>
+          <div class="service-title" data-i18n="svc7.title">Technical Design — AS-IS / TO-BE</div>
+        </div>
+        <button class="learn-more-btn" id="btnTech" onclick="toggleCard('Tech')" data-i18n="card.learnmore">Learn more +</button>
+      </div>
+      <p class="service-desc" data-i18n="svc7.desc">Every digital system has room to grow. We map where you are, design where you could be, and build the bridge — simply, clearly, for humans not just engineers.</p>
+      <div class="tier-panel" id="panelTech">
+        <div class="tier-tabs">
+          <button class="tier-tab small active" onclick="switchTierCard('Tech','small')" data-i18n="tier.small">🟢 Small</button>
+          <button class="tier-tab medium" onclick="switchTierCard('Tech','medium')" data-i18n="tier.medium">🟡 Medium</button>
+          <button class="tier-tab large" onclick="switchTierCard('Tech','large')" data-i18n="tier.large">🔴 Large</button>
+        </div>
+        <div class="tier-content active" id="Tech-small">
+          <div class="tier-badge small">🟢 Small Company</div>
+          <div class="tier-feature"><div class="tier-feature-dot small"></div><span data-i18n="t7s.f1">AS-IS diagram — map your current digital systems clearly</span></div>
+          <div class="tier-feature"><div class="tier-feature-dot small"></div><span data-i18n="t7s.f2">Quick wins identified — what to improve first, low cost</span></div>
+          <div class="tier-feature"><div class="tier-feature-dot small"></div><span data-i18n="t7s.f3">Simple human-readable diagrams — no engineering degree needed</span></div>
+          <div class="tier-feature"><div class="tier-feature-dot small"></div><span data-i18n="t7s.f4">If it's digital, it can be improved — any industry</span></div>
+          <div class="tier-golive">🟢 <span data-i18n="t7s.golive">Go-live support included — duration based on project scope</span></div>
+          <a href="#contact-form" class="tier-cta" data-i18n="tier.cta">Get a free consultation →</a>
+        </div>
+        <div class="tier-content" id="Tech-medium">
+          <div class="tier-badge medium">🟡 Medium Company</div>
+          <div class="tier-feature"><div class="tier-feature-dot medium"></div><span data-i18n="t7m.f1">Full AS-IS / TO-BE architecture — present and future state</span></div>
+          <div class="tier-feature"><div class="tier-feature-dot medium"></div><span data-i18n="t7m.f2">Transformation roadmap — phased, realistic, achievable</span></div>
+          <div class="tier-feature"><div class="tier-feature-dot medium"></div><span data-i18n="t7m.f3">PowerPoint presentation — simple, clear, for decision makers</span></div>
+          <div class="tier-feature"><div class="tier-feature-dot medium"></div><span data-i18n="t7m.f4">Small enhancements identified — quick value, low disruption</span></div>
+          <div class="tier-feature"><div class="tier-feature-dot medium"></div><span data-i18n="t7m.f5">AI automation opportunities flagged for future phases</span></div>
+          <div class="tier-golive">🟡 <span data-i18n="t7m.golive">Go-live support during and after launch — duration agreed at project start</span></div>
+          <a href="#contact-form" class="tier-cta" data-i18n="tier.cta">Get a free consultation →</a>
+        </div>
+        <div class="tier-content" id="Tech-large">
+          <div class="tier-badge large">🔴 Enterprise</div>
+          <div class="tier-feature"><div class="tier-feature-dot large"></div><span data-i18n="t7l.f1">Complete architecture transformation — AS-IS to TO-BE</span></div>
+          <div class="tier-feature"><div class="tier-feature-dot large"></div><span data-i18n="t7l.f2">Multi-system integration design — end to end visibility</span></div>
+          <div class="tier-feature"><div class="tier-feature-dot large"></div><span data-i18n="t7l.f3">Phased delivery plan — changes reflected with zero disruption</span></div>
+          <div class="tier-feature"><div class="tier-feature-dot large"></div><span data-i18n="t7l.f4">AI framework integration — intelligent automation by design</span></div>
+          <div class="tier-feature"><div class="tier-feature-dot large"></div><span data-i18n="t7l.f5">Diagrams and PPT for humans — board-ready presentations</span></div>
+          <div class="tier-feature"><div class="tier-feature-dot large"></div><span data-i18n="t7l.f6">AWS-certified engineers and AI specialists on your project</span></div>
+          <div class="tier-golive">🔴 <span data-i18n="t7l.golive">Full go-live support — dedicated support window agreed per project</span></div>
+          <a href="#contact-form" class="tier-cta" data-i18n="tier.cta">Get a free consultation →</a>
+        </div>
+      </div>
+    </div>
     <div class="service-card expandable reveal reveal-delay-6" id="cardGov">
       <div class="service-card-header">
         <div>
@@ -649,42 +712,115 @@
   <p class="section-sub reveal reveal-delay-2" data-i18n="sec.sub">Every system we build is designed to withstand regulatory scrutiny, protect client data, and meet banking-grade security standards from day one.</p>
 
   <div class="security-grid">
+    <!-- Security Principles -->
     <div class="security-card reveal reveal-delay-1">
-      <div class="service-icon">🏛️</div>
+      <div class="sec-card-header">
+        <div class="service-icon">🏛️</div>
+        <button class="learn-more-btn sec-learn-btn light-btn" onclick="toggleSec('sec1')" data-i18n="card.learnmore">Learn more +</button>
+      </div>
       <div class="service-title" data-i18n="sec1.title">Our Security Principles</div>
       <p class="service-desc" data-i18n="sec1.desc">Security is built in from the first line of code — never bolted on after. We follow a zero-trust architecture model and apply the same standards used in Federal Reserve-audited banking environments.</p>
-    </div>
-    <div class="security-card reveal reveal-delay-2">
-      <div class="service-icon">🔐</div>
-      <div class="service-title" data-i18n="sec2.title">Data Privacy & Confidentiality</div>
-      <p class="service-desc" data-i18n="sec2.desc">Your data stays yours. We never share, sell, or expose client data to third parties. Every engagement is covered by a confidentiality agreement and handled with the discretion of a trusted partner.</p>
-    </div>
-    <div class="security-card reveal reveal-delay-3">
-      <div class="service-icon">🛡️</div>
-      <div class="service-title" data-i18n="sec3.title">What We Protect You From</div>
-      <p class="service-desc" data-i18n="sec3.desc">Unauthorized access, compliance violations, data breaches, system vulnerabilities, and insider threats. We design systems that anticipate risk — not just react to it.</p>
-    </div>
-    <div class="security-card dark reveal reveal-delay-4">
-      <div class="service-icon">🏆</div>
-      <div class="service-title" data-i18n="sec4.title">Our Credentials</div>
-      <p class="service-desc" data-i18n="sec4.desc">20+ years in regulated financial environments. Governance frameworks reviewed by Federal Reserve examiners. Hands-on experience with OFAC, AML, SOX, and PCI-DSS compliance across North America and Spain.</p>
-      <div class="security-badges">
-        <span class="security-badge" style="background:rgba(159,225,203,0.15); border-color:rgba(159,225,203,0.3); color:#9FE1CB;">✓ OFAC</span>
-        <span class="security-badge" style="background:rgba(159,225,203,0.15); border-color:rgba(159,225,203,0.3); color:#9FE1CB;">✓ AML</span>
-        <span class="security-badge" style="background:rgba(159,225,203,0.15); border-color:rgba(159,225,203,0.3); color:#9FE1CB;">✓ SOX</span>
-        <span class="security-badge" style="background:rgba(159,225,203,0.15); border-color:rgba(159,225,203,0.3); color:#9FE1CB;">✓ PCI-DSS</span>
-        <span class="security-badge" style="background:rgba(159,225,203,0.15); border-color:rgba(159,225,203,0.3); color:#9FE1CB;">✓ Fed Reserve</span>
+      <div class="sec-expand-panel" id="sec1">
+        <div class="sec-detail"><div class="sec-dot"></div><span data-i18n="sec1.d1">NPPI data protected — no exceptions, no shortcuts</span></div>
+        <div class="sec-detail"><div class="sec-dot"></div><span data-i18n="sec1.d2">All data encrypted at rest and in transit</span></div>
+        <div class="sec-detail"><div class="sec-dot"></div><span data-i18n="sec1.d3">Zero tolerance for security flaws — this is not a checkbox</span></div>
+        <div class="sec-detail"><div class="sec-dot"></div><span data-i18n="sec1.d4">Banking-grade standards applied to every project, every size</span></div>
+        <a href="#contact-form" class="sec-cta-small" data-i18n="sec.learnlink">Ask us about our security standards →</a>
       </div>
     </div>
-    <div class="security-card reveal reveal-delay-5">
-      <div class="service-icon">☁️</div>
-      <div class="service-title" data-i18n="sec5.title">Cloud & Infrastructure Security</div>
-      <p class="service-desc" data-i18n="sec5.desc">All cloud deployments on AWS follow security best practices — encrypted at rest and in transit, IAM role-based access, VPC isolation, and automated compliance monitoring.</p>
+
+    <!-- Data Privacy -->
+    <div class="security-card reveal reveal-delay-2">
+      <div class="sec-card-header">
+        <div class="service-icon">🔐</div>
+        <button class="learn-more-btn sec-learn-btn light-btn" onclick="toggleSec('sec2')" data-i18n="card.learnmore">Learn more +</button>
+      </div>
+      <div class="service-title" data-i18n="sec2.title">Data Privacy & Confidentiality</div>
+      <p class="service-desc" data-i18n="sec2.desc">Your data stays yours. We never share, sell, or expose client data to third parties. Every engagement is covered by a confidentiality agreement and handled with the discretion of a trusted partner.</p>
+      <div class="sec-expand-panel" id="sec2">
+        <div class="sec-detail"><div class="sec-dot"></div><span data-i18n="sec2.d1">Server security with roles and profiles — AWS as the main actor</span></div>
+        <div class="sec-detail"><div class="sec-dot"></div><span data-i18n="sec2.d2">Access control — right people, right data, right time</span></div>
+        <div class="sec-detail"><div class="sec-dot"></div><span data-i18n="sec2.d3">Compliance certifications identified per project requirements</span></div>
+        <div class="sec-detail"><div class="sec-dot"></div><span data-i18n="sec2.d4">Confidentiality agreement included in every engagement</span></div>
+        <a href="#contact-form" class="sec-cta-small" data-i18n="sec.learnlink">Ask us about our security standards →</a>
+      </div>
     </div>
+
+    <!-- What We Protect -->
+    <div class="security-card reveal reveal-delay-3">
+      <div class="sec-card-header">
+        <div class="service-icon">🛡️</div>
+        <button class="learn-more-btn sec-learn-btn light-btn" onclick="toggleSec('sec3')" data-i18n="card.learnmore">Learn more +</button>
+      </div>
+      <div class="service-title" data-i18n="sec3.title">What We Protect You From</div>
+      <p class="service-desc" data-i18n="sec3.desc">Unauthorized access, compliance violations, data breaches, system vulnerabilities, and insider threats. We design systems that anticipate risk — not just react to it.</p>
+      <div class="sec-expand-panel" id="sec3">
+        <div class="sec-detail"><div class="sec-dot"></div><span data-i18n="sec3.d1">Multiple layers of security — not just one wall</span></div>
+        <div class="sec-detail"><div class="sec-dot"></div><span data-i18n="sec3.d2">Security metrics provided — cost-effective visibility</span></div>
+        <div class="sec-detail"><div class="sec-dot"></div><span data-i18n="sec3.d3">Real-time alerts — know before it becomes a problem</span></div>
+        <div class="sec-detail"><div class="sec-dot"></div><span data-i18n="sec3.d4">Patches and software version updates managed proactively</span></div>
+        <a href="#contact-form" class="sec-cta-small" data-i18n="sec.learnlink">Ask us about our security standards →</a>
+      </div>
+    </div>
+
+    <!-- Credentials — dark card -->
+    <div class="security-card dark reveal reveal-delay-4">
+      <div class="sec-card-header">
+        <div class="service-icon">🏆</div>
+        <button class="learn-more-btn sec-learn-btn" onclick="toggleSec('sec4')" data-i18n="card.learnmore">Learn more +</button>
+      </div>
+      <div class="service-title" data-i18n="sec4.title">Our Credentials</div>
+      <p class="service-desc" data-i18n="sec4.desc">20+ years in regulated financial environments. AWS-certified engineers and AI specialists on our team. Governance frameworks reviewed by Federal Reserve examiners.</p>
+      <div class="security-badges">
+        <span class="security-badge" style="background:rgba(159,225,203,0.15);border-color:rgba(159,225,203,0.3);color:#9FE1CB;">✓ OFAC</span>
+        <span class="security-badge" style="background:rgba(159,225,203,0.15);border-color:rgba(159,225,203,0.3);color:#9FE1CB;">✓ AML</span>
+        <span class="security-badge" style="background:rgba(159,225,203,0.15);border-color:rgba(159,225,203,0.3);color:#9FE1CB;">✓ SOX</span>
+        <span class="security-badge" style="background:rgba(159,225,203,0.15);border-color:rgba(159,225,203,0.3);color:#9FE1CB;">✓ PCI-DSS</span>
+        <span class="security-badge" style="background:rgba(159,225,203,0.15);border-color:rgba(159,225,203,0.3);color:#9FE1CB;">✓ Fed Reserve</span>
+        <span class="security-badge" style="background:rgba(159,225,203,0.15);border-color:rgba(159,225,203,0.3);color:#9FE1CB;">✓ AWS Certified</span>
+        <span class="security-badge" style="background:rgba(159,225,203,0.15);border-color:rgba(159,225,203,0.3);color:#9FE1CB;">✓ MS AI</span>
+      </div>
+      <div class="sec-expand-panel dark-panel" id="sec4">
+        <div class="sec-detail light"><div class="sec-dot"></div><span data-i18n="sec4.d1">AWS-certified engineers — cloud architecture and security</span></div>
+        <div class="sec-detail light"><div class="sec-dot"></div><span data-i18n="sec4.d2">MS in Artificial Intelligence — AI-powered solutions</span></div>
+        <div class="sec-detail light"><div class="sec-dot"></div><span data-i18n="sec4.d3">20+ years OFAC, AML, SOX, PCI-DSS across US and Spain</span></div>
+        <div class="sec-detail light"><div class="sec-dot"></div><span data-i18n="sec4.d4">Federal Reserve examiner-reviewed governance frameworks</span></div>
+        <a href="#contact-form" class="sec-cta-small light" data-i18n="sec.learnlink">Ask us about our security standards →</a>
+      </div>
+    </div>
+
+    <!-- Cloud Security -->
+    <div class="security-card reveal reveal-delay-5">
+      <div class="sec-card-header">
+        <div class="service-icon">☁️</div>
+        <button class="learn-more-btn sec-learn-btn light-btn" onclick="toggleSec('sec5')" data-i18n="card.learnmore">Learn more +</button>
+      </div>
+      <div class="service-title" data-i18n="sec5.title">Cloud & Infrastructure Security</div>
+      <p class="service-desc" data-i18n="sec5.desc">All cloud deployments follow security best practices — encrypted at rest and in transit, IAM role-based access, VPC isolation, and automated compliance monitoring.</p>
+      <div class="sec-expand-panel" id="sec5">
+        <div class="sec-detail"><div class="sec-dot"></div><span data-i18n="sec5.d1">AWS, IBM, or GCP — we work with your provider</span></div>
+        <div class="sec-detail"><div class="sec-dot"></div><span data-i18n="sec5.d2">Scalability built in — grows with your business</span></div>
+        <div class="sec-detail"><div class="sec-dot"></div><span data-i18n="sec5.d3">IAM roles and profiles — right access, right people</span></div>
+        <div class="sec-detail"><div class="sec-dot"></div><span data-i18n="sec5.d4">VPC isolation and automated compliance monitoring</span></div>
+        <a href="#contact-form" class="sec-cta-small" data-i18n="sec.learnlink">Ask us about our security standards →</a>
+      </div>
+    </div>
+
+    <!-- Compliance -->
     <div class="security-card reveal reveal-delay-6">
-      <div class="service-icon">📋</div>
+      <div class="sec-card-header">
+        <div class="service-icon">📋</div>
+        <button class="learn-more-btn sec-learn-btn light-btn" onclick="toggleSec('sec6')" data-i18n="card.learnmore">Learn more +</button>
+      </div>
       <div class="service-title" data-i18n="sec6.title">Compliance by Design</div>
       <p class="service-desc" data-i18n="sec6.desc">We don't retrofit compliance. Every project starts with a compliance checklist aligned to your industry — banking, fintech, healthcare, or enterprise — so you're audit-ready from day one.</p>
+      <div class="sec-expand-panel" id="sec6">
+        <div class="sec-detail"><div class="sec-dot"></div><span data-i18n="sec6.d1">Gap analysis per project — what rules apply to you specifically</span></div>
+        <div class="sec-detail"><div class="sec-dot"></div><span data-i18n="sec6.d2">Compliance rules mapped per industry and region</span></div>
+        <div class="sec-detail"><div class="sec-dot"></div><span data-i18n="sec6.d3">Each project gets its own compliance checklist</span></div>
+        <div class="sec-detail"><div class="sec-dot"></div><span data-i18n="sec6.d4">Audit-ready documentation from day one — no scrambling</span></div>
+        <a href="#contact-form" class="sec-cta-small" data-i18n="sec.learnlink">Ask us about our security standards →</a>
+      </div>
     </div>
   </div>
 
@@ -833,8 +969,25 @@
 // ═══════════════════════════════════════════
 // INTERACTIVE 360° CARD
 // ═══════════════════════════════════════════
+function toggleSec(id) {
+  const panel = document.getElementById(id);
+  const btn = panel.previousElementSibling.querySelector('.sec-learn-btn') ||
+              panel.parentElement.querySelector('.sec-learn-btn');
+  const isOpen = panel.classList.toggle('open');
+  const t = translations[currentLang];
+  if (btn) btn.textContent = isOpen ? (t['card.collapse'] || 'Close −') : (t['card.learnmore'] || 'Learn more +');
+}
+
+// ═══════════════════════════════════════════
+// SMOOTH SCROLL HELPER
+// ═══════════════════════════════════════════
+function scrollTo(id) {
+  const el = document.getElementById(id);
+  if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  toggleChat();
+}
+
 function toggleCard(id) {
-  const panel = document.getElementById('panel' + id);
   const btn = document.getElementById('btn' + id);
   const t = translations[currentLang];
   const isCoffee = panel.classList.contains('coffee-panel');
@@ -919,7 +1072,51 @@ function submitNotify() {
 // ═══════════════════════════════════════════
 const translations = {
   en: {
-    "coffee.title":"This one deserves a real conversation.",
+    "svc7.title":"Technical Design — AS-IS / TO-BE",
+    "svc7.desc":"Every digital system has room to grow. We map where you are, design where you could be, and build the bridge — simply, clearly, for humans not just engineers.",
+    "t7s.f1":"AS-IS diagram — map your current digital systems clearly",
+    "t7s.f2":"Quick wins identified — what to improve first, low cost",
+    "t7s.f3":"Simple human-readable diagrams — no engineering degree needed",
+    "t7s.f4":"If it's digital, it can be improved — any industry",
+    "t7s.golive":"Go-live support included — duration based on project scope",
+    "t7m.f1":"Full AS-IS / TO-BE architecture — present and future state",
+    "t7m.f2":"Transformation roadmap — phased, realistic, achievable",
+    "t7m.f3":"PowerPoint presentation — simple, clear, for decision makers",
+    "t7m.f4":"Small enhancements identified — quick value, low disruption",
+    "t7m.f5":"AI automation opportunities flagged for future phases",
+    "t7m.golive":"Go-live support during and after launch — duration agreed at project start",
+    "t7l.f1":"Complete architecture transformation — AS-IS to TO-BE",
+    "t7l.f2":"Multi-system integration design — end to end visibility",
+    "t7l.f3":"Phased delivery plan — changes reflected with zero disruption",
+    "t7l.f4":"AI framework integration — intelligent automation by design",
+    "t7l.f5":"Diagrams and PPT for humans — board-ready presentations",
+    "t7l.f6":"AWS-certified engineers and AI specialists on your project",
+    "t7l.golive":"Full go-live support — dedicated support window agreed per project",
+    "sec.learnlink":"Ask us about our security standards →",
+    "sec1.d1":"NPPI data protected — no exceptions, no shortcuts",
+    "sec1.d2":"All data encrypted at rest and in transit",
+    "sec1.d3":"Zero tolerance for security flaws — this is not a checkbox",
+    "sec1.d4":"Banking-grade standards applied to every project, every size",
+    "sec2.d1":"Server security with roles and profiles — AWS as the main actor",
+    "sec2.d2":"Access control — right people, right data, right time",
+    "sec2.d3":"Compliance certifications identified per project requirements",
+    "sec2.d4":"Confidentiality agreement included in every engagement",
+    "sec3.d1":"Multiple layers of security — not just one wall",
+    "sec3.d2":"Security metrics provided — cost-effective visibility",
+    "sec3.d3":"Real-time alerts — know before it becomes a problem",
+    "sec3.d4":"Patches and software version updates managed proactively",
+    "sec4.d1":"AWS-certified engineers — cloud architecture and security",
+    "sec4.d2":"MS in Artificial Intelligence — AI-powered solutions",
+    "sec4.d3":"20+ years OFAC, AML, SOX, PCI-DSS across US and Spain",
+    "sec4.d4":"Federal Reserve examiner-reviewed governance frameworks",
+    "sec5.d1":"AWS, IBM, or GCP — we work with your provider",
+    "sec5.d2":"Scalability built in — grows with your business",
+    "sec5.d3":"IAM roles and profiles — right access, right people",
+    "sec5.d4":"VPC isolation and automated compliance monitoring",
+    "sec6.d1":"Gap analysis per project — what rules apply to you specifically",
+    "sec6.d2":"Compliance rules mapped per industry and region",
+    "sec6.d3":"Each project gets its own compliance checklist",
+    "sec6.d4":"Audit-ready documentation from day one — no scrambling",
     "coffee.sub":"Every mainframe modernization is unique. The complexity, the risk, and the opportunity are different for every organization — database conversions, cross-platform migrations, legacy code transformation. This is not a checkbox on a website. Let's talk.",
     "coffee.cta":"☕ Schedule a conversation →",
     "t2m.f1":"Payment flow consulting — ACH, RTP, and Wire transfers",
@@ -1055,7 +1252,51 @@ const translations = {
     "chip1":"Our services","chip2":"What's included?","chip3":"Go-live support","chip4":"What documents?","chip5":"Get a quote","chip6":"Small companies?",
   },
   es: {
-    "coffee.title":"Esta merece una conversación de verdad.",
+    "svc7.title":"Diseño Técnico — AS-IS / TO-BE",
+    "svc7.desc":"Todo sistema digital tiene espacio para crecer. Mapeamos dónde estás, diseñamos dónde podrías estar y construimos el puente — simple, claro, para humanos no solo ingenieros.",
+    "t7s.f1":"Diagrama AS-IS — mapea tus sistemas digitales actuales claramente",
+    "t7s.f2":"Mejoras rápidas identificadas — qué mejorar primero, bajo costo",
+    "t7s.f3":"Diagramas simples para humanos — sin necesidad de ser ingeniero",
+    "t7s.f4":"Si es digital, puede mejorar — cualquier industria",
+    "t7s.golive":"Soporte go-live incluido — duración según el alcance del proyecto",
+    "t7m.f1":"Arquitectura completa AS-IS / TO-BE — estado presente y futuro",
+    "t7m.f2":"Hoja de ruta de transformación — por fases, realista, alcanzable",
+    "t7m.f3":"Presentación PowerPoint — simple, clara, para tomadores de decisiones",
+    "t7m.f4":"Mejoras pequeñas identificadas — valor rápido, mínima interrupción",
+    "t7m.f5":"Oportunidades de automatización con IA marcadas para fases futuras",
+    "t7m.golive":"Soporte go-live durante y después del lanzamiento — duración acordada al inicio",
+    "t7l.f1":"Transformación completa de arquitectura — AS-IS a TO-BE",
+    "t7l.f2":"Diseño de integración multi-sistema — visibilidad de extremo a extremo",
+    "t7l.f3":"Plan de entrega por fases — cambios reflejados sin interrupción",
+    "t7l.f4":"Integración de marco de IA — automatización inteligente por diseño",
+    "t7l.f5":"Diagramas y PPT para humanos — presentaciones listas para directivos",
+    "t7l.f6":"Ingenieros certificados en AWS y especialistas en IA en tu proyecto",
+    "t7l.golive":"Soporte go-live completo — ventana de soporte dedicada por proyecto",
+    "sec.learnlink":"Pregúntanos sobre nuestros estándares de seguridad →",
+    "sec1.d1":"Datos NPPI protegidos — sin excepciones, sin atajos",
+    "sec1.d2":"Todos los datos cifrados en reposo y en tránsito",
+    "sec1.d3":"Tolerancia cero a fallas de seguridad — esto no es una casilla",
+    "sec1.d4":"Estándares bancarios aplicados a cada proyecto, de cualquier tamaño",
+    "sec2.d1":"Seguridad de servidor con roles y perfiles — AWS como actor principal",
+    "sec2.d2":"Control de acceso — personas correctas, datos correctos, momento correcto",
+    "sec2.d3":"Certificaciones de cumplimiento identificadas por requerimientos del proyecto",
+    "sec2.d4":"Acuerdo de confidencialidad incluido en cada compromiso",
+    "sec3.d1":"Múltiples capas de seguridad — no solo una pared",
+    "sec3.d2":"Métricas de seguridad proporcionadas — visibilidad rentable",
+    "sec3.d3":"Alertas en tiempo real — sabes antes de que se convierta en problema",
+    "sec3.d4":"Parches y actualizaciones de versiones de software gestionados proactivamente",
+    "sec4.d1":"Ingenieros certificados en AWS — arquitectura cloud y seguridad",
+    "sec4.d2":"Maestría en Inteligencia Artificial — soluciones impulsadas por IA",
+    "sec4.d3":"20+ años OFAC, AML, SOX, PCI-DSS en EE.UU. y España",
+    "sec4.d4":"Marcos de gobernanza revisados por examinadores de la Reserva Federal",
+    "sec5.d1":"AWS, IBM o GCP — trabajamos con tu proveedor",
+    "sec5.d2":"Escalabilidad integrada — crece con tu negocio",
+    "sec5.d3":"Roles y perfiles IAM — acceso correcto, personas correctas",
+    "sec5.d4":"Aislamiento VPC y monitoreo de cumplimiento automatizado",
+    "sec6.d1":"Análisis de brechas por proyecto — qué reglas aplican específicamente a ti",
+    "sec6.d2":"Reglas de cumplimiento mapeadas por industria y región",
+    "sec6.d3":"Cada proyecto obtiene su propia lista de verificación de cumplimiento",
+    "sec6.d4":"Documentación lista para auditorías desde el primer día",
     "coffee.sub":"Cada modernización de mainframe es única. La complejidad, el riesgo y la oportunidad son diferentes para cada organización — conversiones de bases de datos, migraciones multiplataforma, transformación de código legado. Esto no es una casilla en un sitio web. Hablemos.",
     "coffee.cta":"☕ Agendar una conversación →",
     "t2m.f1":"Consultoría de flujos de pago — ACH, RTP y transferencias",
@@ -1216,25 +1457,25 @@ function setLang(lang) {
 const botResponses = {
   en: {
     greeting: "Hello! 👋 Welcome to Meliora Labs! I'm here to help you learn about our services and how we can help your business grow with technology. What would you like to know?",
-    services: "We offer 6 core services: ⚡ 360° Delivery Intelligence, 🏦 Payments & Fintech Consulting, 🔄 Mainframe Modernization, 🔒 Security by Design, 🤖 AI-Powered IT Tools, and 📋 Governance & Compliance. Which one interests you most?",
-    payments: "Our payments expertise covers ACH, RTP, Wires, OFAC screening, and AML compliance. We've built and managed $50B+ in payment platforms across North America and Spain — hands-on, not theoretical.",
-    mainframe: "We've led one of the largest z/OS to cloud migrations in North America. We bring a proven playbook for mainframe modernization that minimizes risk and keeps your systems running during transition.",
-    security: "Security is our foundation, not an afterthought. 🔒 We follow zero-trust architecture, banking-grade standards reviewed by Federal Reserve examiners, and cover OFAC, AML, SOX and PCI-DSS compliance. Check our Security section on this page for full details — including our responsible disclosure policy.",
-    ai: "We build custom AI tools using Claude AI deployed on AWS — for delivery governance, compliance reporting, and operational intelligence. Think smart dashboards that give you real-time visibility into your projects.",
-    governance: "Our governance frameworks have been reviewed by Federal Reserve examiners. We design delivery structures that are audit-ready from day one.",
-    golive: "Yes! Go-live support is included. 🟢 We provide a 30-day grace period after launch to cover any errors, bugs, or unexpected issues — at no extra cost. You're not on your own after delivery.",
-    documents: "📄 Every engagement includes a full documentation package: Project Guide, Cost Breakdown, Billing Agreement, Technical Specs, and a Handover Document so your team owns everything after we're done. Nothing is left as a black box.",
-    included: "✅ What's included in every project: initial consultation, project roadmap, technical specs, development & delivery, go-live support (30-day grace period), full documentation package, and handover. You get a complete end-to-end experience.",
-    notincluded: "❌ What's NOT included by default: ongoing monthly maintenance after the 30-day grace period, third-party software licenses, infrastructure costs (AWS, cloud hosting), and out-of-scope change requests. These can always be added — just ask!",
-    smallcompany: "Absolutely! 🏢 We work with companies of any size. Whether you're a small business wanting to add tech to your services or a large enterprise needing modernization — if it involves technology and can be built with code, we can help.",
-    timeline: "⏱️ Project timelines depend on scope. Small tools: 2–4 weeks. Medium projects: 1–3 months. Large modernizations: 3–6+ months. We always start with a free consultation to give you a realistic estimate before any commitment.",
-    remote: "📍 Yes, we work 100% remotely! We serve clients across the US, Mexico, and Spain. All collaboration is done via video calls, shared tools, and async communication — no physical office needed.",
-    quote: "We'd love to discuss your project! The best way is to fill out the contact form on this page or email us directly at melioralabs.tech@gmail.com. We respond within 24 hours.",
-    contact: "You can reach us at 📧 melioralabs.tech@gmail.com or use the contact form on this page. We typically respond within 24 hours.",
-    team: "Meliora Labs was founded by engineers with 20+ years inside mission-critical payment platforms and cybersecurity operations — from Spain to North America. We don't consult from the outside. And we don't disappear after delivery. You are never alone — before, during, or after go-live. 🤝",
-    launch: "We're currently in development and building our platform. Sign up with the Notify Me form on this page and we'll email you the moment we launch! 🚀",
-    cost: "Pricing depends on the scope of your project. Fill out the contact form and we'll schedule a free initial consultation to understand your needs and provide a custom estimate. No commitment required.",
-    aws: "Yes! We deploy AI-powered tools on AWS. Our stack includes Claude AI, AWS Lambda, and cloud-native architectures designed for banking-grade security and scalability.",
+    services: "We offer 7 core services: ⚡ 360° Delivery Intelligence, 🏦 Payments & Fintech, 🔄 Mainframe Modernization, 🔒 Security by Design, 🤖 AI-Powered IT Tools, 📋 Governance & Compliance, and 🗺️ Technical Design (AS-IS/TO-BE). <a href='javascript:scrollTo(\"services\")' style='color:var(--teal-400);font-weight:500;'>👇 See all services below →</a>",
+    payments: "Our payments expertise covers ACH, RTP, Wires, OFAC screening, and AML compliance. We've built and managed $50B+ in payment platforms across North America and Spain — hands-on, not theoretical. <a href='javascript:scrollTo(\"services\")' style='color:var(--teal-400);font-weight:500;'>👇 See Payments service details below →</a>",
+    mainframe: "We've led one of the largest z/OS to cloud migrations in North America. Every mainframe project is unique — this one deserves a real conversation. <a href='javascript:scrollTo(\"contact-form\")' style='color:var(--teal-400);font-weight:500;'>☕ Schedule a conversation →</a>",
+    security: "Security is our foundation, not an afterthought. 🔒 Zero-trust architecture, banking-grade standards, NPPI data protection, OFAC, AML, SOX and PCI-DSS compliance. <a href='javascript:scrollTo(\"security\")' style='color:var(--teal-400);font-weight:500;'>👇 See our full Security section below →</a>",
+    ai: "We build custom AI tools using Claude AI deployed on AWS — for delivery governance, compliance reporting, and operational intelligence. <a href='javascript:scrollTo(\"services\")' style='color:var(--teal-400);font-weight:500;'>👇 See AI Tools details below →</a>",
+    governance: "Our governance frameworks have been reviewed by Federal Reserve examiners. We design delivery structures that are audit-ready from day one. <a href='javascript:scrollTo(\"services\")' style='color:var(--teal-400);font-weight:500;'>👇 See Governance details below →</a>",
+    golive: "Yes! Go-live support is included. 🟢 We provide a 30-day grace period after launch to cover any errors, bugs, or unexpected issues — at no extra cost. You are never alone. <a href='javascript:scrollTo(\"about\")' style='color:var(--teal-400);font-weight:500;'>👇 See our full commitment below →</a>",
+    documents: "📄 Every engagement includes: Project Guide, Cost Breakdown, Billing Agreement, Technical Specs, and a Handover Document. Nothing is left as a black box. <a href='javascript:scrollTo(\"contact-form\")' style='color:var(--teal-400);font-weight:500;'>👇 Contact us to learn more →</a>",
+    included: "✅ Every project includes: initial consultation, roadmap, technical specs, development, go-live support (30-day grace period), full documentation, and handover. <a href='javascript:scrollTo(\"services\")' style='color:var(--teal-400);font-weight:500;'>👇 See service details below →</a>",
+    notincluded: "❌ Not included by default: ongoing maintenance after 30-day grace, third-party licenses, infrastructure costs, and out-of-scope requests. These can always be added — just ask! <a href='javascript:scrollTo(\"contact-form\")' style='color:var(--teal-400);font-weight:500;'>👇 Contact us to discuss →</a>",
+    smallcompany: "Absolutely! 🏢 We work with companies of any size. If it's digital, it can be improved — any industry, any scale. <a href='javascript:scrollTo(\"services\")' style='color:var(--teal-400);font-weight:500;'>👇 See our service tiers below →</a>",
+    timeline: "⏱️ Small tools: 2–4 weeks. Medium projects: 1–3 months. Large modernizations: 3–6+ months. We always start with a free consultation. <a href='javascript:scrollTo(\"contact-form\")' style='color:var(--teal-400);font-weight:500;'>👇 Schedule a free consultation →</a>",
+    remote: "📍 Yes, 100% remote! We serve clients across the US, Mexico, and Spain. <a href='javascript:scrollTo(\"contact-form\")' style='color:var(--teal-400);font-weight:500;'>👇 Get in touch below →</a>",
+    quote: "We'd love to discuss your project! Fill out the contact form or email melioralabs.tech@gmail.com — we respond within 24 hours. <a href='javascript:scrollTo(\"contact-form\")' style='color:var(--teal-400);font-weight:500;'>👇 Go to contact form →</a>",
+    contact: "You can reach us at 📧 melioralabs.tech@gmail.com or use the contact form on this page. We respond within 24 hours. <a href='javascript:scrollTo(\"contact-form\")' style='color:var(--teal-400);font-weight:500;'>👇 Go to contact form →</a>",
+    team: "Meliora Labs was founded by engineers with 20+ years inside mission-critical payment platforms and cybersecurity operations — from Spain to North America. We don't disappear after delivery. You are never alone. 🤝 <a href='javascript:scrollTo(\"about\")' style='color:var(--teal-400);font-weight:500;'>👇 Read our story below →</a>",
+    launch: "We're currently in development! Sign up with the Notify Me form and we'll email you the moment we launch. 🚀 <a href='javascript:scrollTo(\"notify\")' style='color:var(--teal-400);font-weight:500;'>👇 Sign up below →</a>",
+    cost: "Pricing depends on scope. Fill out the contact form and we'll schedule a free initial consultation — no commitment required. <a href='javascript:scrollTo(\"contact-form\")' style='color:var(--teal-400);font-weight:500;'>👇 Go to contact form →</a>",
+    aws: "Yes! We deploy on AWS — and our team includes AWS-certified engineers. We also work with IBM and GCP. <a href='javascript:scrollTo(\"security\")' style='color:var(--teal-400);font-weight:500;'>👇 See our cloud security details below →</a>",
     outofscope: "That's a bit outside what I can help with here! 😊 I'm focused on Meliora Labs services and IT consulting topics. For other questions, feel free to email us at melioralabs.tech@gmail.com",
     default: "Good question! Meliora Labs specializes in AI-powered IT solutions for any company that wants to grow through technology. Could you tell me more about what you're looking for? Or use the contact form to start a conversation with our team. 💚",
   },
