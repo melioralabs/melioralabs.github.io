@@ -1,9 +1,9 @@
 <!-- ============================================================
      Meliora Labs | melioralabs.tech
-     Version : 2.0.4
+     Version : 2.1.0
      Date    : 2026-05-28
-     Changes : Fix scroll-to-top opening chat — renamed navScrollTo
-               to avoid conflict with window.scrollTo
+     Changes : Favicon added, bot position fix (no footer overlap),
+               active nav highlight on scroll, FAQ accordion section
      ============================================================ -->
 <!DOCTYPE html>
 <html lang="en">
@@ -11,6 +11,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Meliora Labs | Semper Melius</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%231D9E75'/><text x='50%25' y='50%25' dominant-baseline='central' text-anchor='middle' font-family='Georgia,serif' font-size='20' font-weight='bold' fill='white'>M</text></svg>">
 
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-J9CZ8DPC40"></script>
@@ -142,7 +143,7 @@
   .divider { height: 0.5px; background: var(--gray-100); max-width: 1100px; margin: 0 auto; }
 
   /* ── CHATBOT ── */
-  .chat-bubble { position: fixed; bottom: 28px; right: 28px; z-index: 999; }
+  .chat-bubble { position: fixed; bottom: 100px; right: 28px; z-index: 999; }
   .chat-trigger { width: 60px; height: 60px; background: var(--teal-400); border-radius: 50%; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 16px rgba(29,158,117,0.35); transition: transform 0.2s, background 0.2s; }
   .chat-trigger:hover { background: var(--teal-600); transform: scale(1.07); }
   .chat-robot-icon { width: 32px; height: 32px; display: block; }
@@ -235,8 +236,30 @@
     .alone-card { grid-column: 1 / -1; }
   }
 
+  /* ── ACTIVE NAV ── */
+  .nav-links a.active { color: var(--teal-400) !important; font-weight: 500; }
+  .nav-links a::after { content: ''; display: block; height: 2px; background: var(--teal-400); border-radius: 2px; transform: scaleX(0); transition: transform 0.2s; }
+  .nav-links a.active::after { transform: scaleX(1); }
+
+  /* ── FAQ SECTION ── */
+  .faq-section { padding: 5rem 3rem; max-width: 1100px; margin: 0 auto; }
+  .faq-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(480px, 1fr)); gap: 1rem; margin-top: 2rem; }
+  .faq-item { background: white; border: 0.5px solid var(--gray-100); border-radius: 12px; overflow: hidden; transition: border-color 0.2s; }
+  .faq-item:hover { border-color: var(--teal-100); }
+  .faq-item.open { border-color: var(--teal-100); }
+  .faq-question { display: flex; justify-content: space-between; align-items: center; padding: 1.25rem 1.5rem; cursor: pointer; gap: 1rem; }
+  .faq-question-text { font-size: 14px; font-weight: 500; color: var(--gray-900); line-height: 1.4; }
+  .faq-icon { width: 24px; height: 24px; background: var(--teal-50); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: all 0.3s; border: 0.5px solid var(--teal-100); }
+  .faq-icon svg { width: 12px; height: 12px; stroke: var(--teal-400); fill: none; stroke-width: 2.5; stroke-linecap: round; transition: transform 0.3s; }
+  .faq-item.open .faq-icon { background: var(--teal-400); border-color: var(--teal-400); }
+  .faq-item.open .faq-icon svg { stroke: white; transform: rotate(180deg); }
+  .faq-answer { display: none; padding: 0 1.5rem 1.25rem; font-size: 14px; color: var(--gray-800); line-height: 1.75; font-weight: 300; border-top: 0.5px solid var(--gray-100); padding-top: 1rem; }
+  .faq-answer.open { display: block; animation: fadeIn 0.2s ease; }
+
+  @media (max-width: 640px) { .faq-grid { grid-template-columns: 1fr; } .faq-section { padding: 3rem 1.25rem; } }
+
   /* ── SCROLL TO TOP ── */
-  .scroll-top { position: fixed; bottom: 100px; right: 28px; z-index: 998; width: 44px; height: 44px; background: white; border: 0.5px solid var(--gray-100); border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 2px 12px rgba(0,0,0,0.1); transition: all 0.3s; opacity: 0; transform: translateY(10px); pointer-events: none; }
+  .scroll-top { position: fixed; bottom: 28px; right: 28px; z-index: 998; width: 44px; height: 44px; background: white; border: 0.5px solid var(--gray-100); border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 2px 12px rgba(0,0,0,0.1); transition: all 0.3s; opacity: 0; transform: translateY(10px); pointer-events: none; }
   .scroll-top.visible { opacity: 1; transform: translateY(0); pointer-events: all; }
   .scroll-top:hover { background: var(--teal-400); border-color: var(--teal-400); transform: translateY(-2px); box-shadow: 0 4px 16px rgba(29,158,117,0.3); }
   .scroll-top:hover svg { stroke: white; }
@@ -313,6 +336,7 @@
       <li><a href="#services" data-i18n="nav.services">Services</a></li>
       <li><a href="#about" data-i18n="nav.about">About</a></li>
       <li><a href="#security" data-i18n="nav.security">Security</a></li>
+      <li><a href="#faq" data-i18n="nav.faq">FAQ</a></li>
       <li><a href="#contact-form" class="nav-cta" data-i18n="nav.cta">Get in touch</a></li>
     </ul>
     <div class="lang-toggle" role="group" aria-label="Language selector">
@@ -841,6 +865,81 @@
   </div>
 </section>
 
+<!-- FAQ -->
+<div class="divider"></div>
+<section class="faq-section" id="faq">
+  <div class="section-tag reveal" data-i18n="faq.tag">FAQ</div>
+  <h2 class="section-title reveal reveal-delay-1" data-i18n="faq.title">Frequently Asked Questions</h2>
+  <p class="section-sub reveal reveal-delay-2" data-i18n="faq.sub">Everything you need to know before starting a conversation with us.</p>
+  <div class="faq-grid">
+
+    <div class="faq-item reveal reveal-delay-1">
+      <div class="faq-question" onclick="toggleFaq(this)">
+        <span class="faq-question-text" data-i18n="faq.q1">What type of companies do you work with?</span>
+        <div class="faq-icon"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg></div>
+      </div>
+      <div class="faq-answer" data-i18n="faq.a1">We work with companies of any size — from small businesses wanting to add technology to their services, to medium enterprises and large banks or fintechs needing full modernization. If it's digital, we can help. We serve clients in the US, Mexico, and Spain.</div>
+    </div>
+
+    <div class="faq-item reveal reveal-delay-2">
+      <div class="faq-question" onclick="toggleFaq(this)">
+        <span class="faq-question-text" data-i18n="faq.q2">How much does a project cost?</span>
+        <div class="faq-icon"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg></div>
+      </div>
+      <div class="faq-answer" data-i18n="faq.a2">Pricing depends on the scope, complexity, and tier of your project. We believe technology should be accessible — our pricing is designed to be fair for every company size. We start with a free consultation to understand your needs and provide a custom estimate. No commitment required.</div>
+    </div>
+
+    <div class="faq-item reveal reveal-delay-3">
+      <div class="faq-question" onclick="toggleFaq(this)">
+        <span class="faq-question-text" data-i18n="faq.q3">Do you work remotely?</span>
+        <div class="faq-icon"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg></div>
+      </div>
+      <div class="faq-answer" data-i18n="faq.a3">Yes — 100% remote. We serve clients across the US, Mexico, and Spain. All collaboration happens through video calls, shared tools, and async communication. No physical office needed — and no limits on where we can work together.</div>
+    </div>
+
+    <div class="faq-item reveal reveal-delay-4">
+      <div class="faq-question" onclick="toggleFaq(this)">
+        <span class="faq-question-text" data-i18n="faq.q4">What does go-live support include?</span>
+        <div class="faq-icon"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg></div>
+      </div>
+      <div class="faq-answer" data-i18n="faq.a4">Go-live support is included in every project. We provide a grace period after launch to cover any errors, bugs, or unexpected issues — at no extra cost. You are never alone after delivery. The duration is agreed at the start of each project and documented in your service agreement.</div>
+    </div>
+
+    <div class="faq-item reveal reveal-delay-5">
+      <div class="faq-question" onclick="toggleFaq(this)">
+        <span class="faq-question-text" data-i18n="faq.q5">What documents do I receive at the end?</span>
+        <div class="faq-icon"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg></div>
+      </div>
+      <div class="faq-answer" data-i18n="faq.a5">Every project includes a complete documentation package: Project Guide, Cost Breakdown, Billing Agreement, Technical Specifications, and a Handover Document. Nothing is left as a black box — your team owns everything after we're done.</div>
+    </div>
+
+    <div class="faq-item reveal reveal-delay-6">
+      <div class="faq-question" onclick="toggleFaq(this)">
+        <span class="faq-question-text" data-i18n="faq.q6">How long does a project take?</span>
+        <div class="faq-icon"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg></div>
+      </div>
+      <div class="faq-answer" data-i18n="faq.a6">Timelines depend on scope. Small tools and enhancements: 2–4 weeks. Medium projects: 1–3 months. Large modernizations: 3–6+ months. We always provide a realistic estimate during the free initial consultation — before any commitment.</div>
+    </div>
+
+    <div class="faq-item reveal reveal-delay-1">
+      <div class="faq-question" onclick="toggleFaq(this)">
+        <span class="faq-question-text" data-i18n="faq.q7">Do I need technical knowledge to work with you?</span>
+        <div class="faq-icon"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg></div>
+      </div>
+      <div class="faq-answer" data-i18n="faq.a7">Not at all. We translate complex technology into simple, human language. Our diagrams and presentations are designed for decision makers, not just engineers. You bring the business knowledge — we bring the technical expertise. Together we build the right solution.</div>
+    </div>
+
+    <div class="faq-item reveal reveal-delay-2">
+      <div class="faq-question" onclick="toggleFaq(this)">
+        <span class="faq-question-text" data-i18n="faq.q8">Do you work with companies in Mexico and Spain?</span>
+        <div class="faq-icon"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg></div>
+      </div>
+      <div class="faq-answer" data-i18n="faq.a8">Yes. We have deep experience working across the US, Mexico, and Spain — including one of the largest bank migrations between North America and Spain. We understand the regulatory, cultural, and technical differences across these markets.</div>
+    </div>
+
+  </div>
+</section>
+
 <!-- NOTIFY ME -->
 <div class="notify-section reveal" id="notify">
   <div class="notify-tag" data-i18n="notify.tag">Coming Soon</div>
@@ -1023,6 +1122,47 @@ function switchTierCard(cardId, tier) {
 }
 
 // ═══════════════════════════════════════════
+// FAQ ACCORDION
+// ═══════════════════════════════════════════
+function toggleFaq(questionEl) {
+  const item = questionEl.closest('.faq-item');
+  const answer = item.querySelector('.faq-answer');
+  const isOpen = item.classList.contains('open');
+  // Close all others
+  document.querySelectorAll('.faq-item.open').forEach(el => {
+    el.classList.remove('open');
+    el.querySelector('.faq-answer').classList.remove('open');
+  });
+  if (!isOpen) {
+    item.classList.add('open');
+    answer.classList.add('open');
+  }
+}
+
+// ═══════════════════════════════════════════
+// ACTIVE NAV ON SCROLL
+// ═══════════════════════════════════════════
+const navSections = ['services', 'about', 'security', 'faq', 'contact-form'];
+const navLinks = {
+  'services': document.querySelector('a[href="#services"]'),
+  'about': document.querySelector('a[href="#about"]'),
+  'security': document.querySelector('a[href="#security"]'),
+  'faq': document.querySelector('a[href="#faq"]'),
+  'contact-form': document.querySelector('a[href="#contact-form"]'),
+};
+
+window.addEventListener('scroll', () => {
+  let current = '';
+  navSections.forEach(id => {
+    const el = document.getElementById(id);
+    if (el && window.scrollY >= el.offsetTop - 120) current = id;
+  });
+  Object.entries(navLinks).forEach(([id, link]) => {
+    if (link) link.classList.toggle('active', id === current);
+  });
+});
+
+// ═══════════════════════════════════════════
 // SCROLL TO TOP
 // ═══════════════════════════════════════════
 const scrollTopBtn = document.getElementById('scrollTop');
@@ -1100,6 +1240,25 @@ function submitNotify() {
 // ═══════════════════════════════════════════
 const translations = {
   en: {
+    "nav.services":"Services","nav.about":"About","nav.security":"Security","nav.faq":"FAQ","nav.cta":"Get in touch",
+    "faq.tag":"FAQ","faq.title":"Frequently Asked Questions",
+    "faq.sub":"Everything you need to know before starting a conversation with us.",
+    "faq.q1":"What type of companies do you work with?",
+    "faq.a1":"We work with companies of any size — from small businesses wanting to add technology to their services, to medium enterprises and large banks or fintechs needing full modernization. If it's digital, we can help. We serve clients in the US, Mexico, and Spain.",
+    "faq.q2":"How much does a project cost?",
+    "faq.a2":"Pricing depends on scope, complexity, and tier. We believe technology should be accessible — our pricing is designed to be fair for every company size. We start with a free consultation. No commitment required.",
+    "faq.q3":"Do you work remotely?",
+    "faq.a3":"Yes — 100% remote. We serve clients across the US, Mexico, and Spain through video calls, shared tools, and async communication. No limits on where we work together.",
+    "faq.q4":"What does go-live support include?",
+    "faq.a4":"Go-live support is included in every project — a grace period after launch to cover errors or unexpected issues at no extra cost. You are never alone after delivery. Duration is agreed at project start and documented in your service agreement.",
+    "faq.q5":"What documents do I receive at the end?",
+    "faq.a5":"Every project includes: Project Guide, Cost Breakdown, Billing Agreement, Technical Specifications, and a Handover Document. Nothing is left as a black box — your team owns everything after we're done.",
+    "faq.q6":"How long does a project take?",
+    "faq.a6":"Small tools: 2–4 weeks. Medium projects: 1–3 months. Large modernizations: 3–6+ months. We always provide a realistic estimate during the free initial consultation — before any commitment.",
+    "faq.q7":"Do I need technical knowledge to work with you?",
+    "faq.a7":"Not at all. We translate complex technology into simple human language. Diagrams and presentations are designed for decision makers, not just engineers. You bring the business knowledge — we bring the technical expertise.",
+    "faq.q8":"Do you work with companies in Mexico and Spain?",
+    "faq.a8":"Yes. We have deep experience across the US, Mexico, and Spain — including one of the largest bank migrations between North America and Spain. We understand the regulatory, cultural, and technical differences across these markets.",
     "svc7.title":"Technical Design — AS-IS / TO-BE",
     "svc7.desc":"Every digital system has room to grow. We map where you are, design where you could be, and build the bridge — simply, clearly, for humans not just engineers.",
     "t7s.f1":"AS-IS diagram — map your current digital systems clearly",
@@ -1280,6 +1439,25 @@ const translations = {
     "chip1":"Our services","chip2":"What's included?","chip3":"Go-live support","chip4":"What documents?","chip5":"Get a quote","chip6":"Small companies?",
   },
   es: {
+    "nav.services":"Servicios","nav.about":"Nosotros","nav.security":"Seguridad","nav.faq":"FAQ","nav.cta":"Contáctanos",
+    "faq.tag":"Preguntas Frecuentes","faq.title":"Preguntas Frecuentes",
+    "faq.sub":"Todo lo que necesitas saber antes de comenzar una conversación con nosotros.",
+    "faq.q1":"¿Con qué tipo de empresas trabajan?",
+    "faq.a1":"Trabajamos con empresas de cualquier tamaño — desde pequeños negocios que quieren incorporar tecnología, hasta medianas empresas y grandes bancos o fintechs que necesitan modernización completa. Si es digital, podemos ayudar. Atendemos clientes en EE.UU., México y España.",
+    "faq.q2":"¿Cuánto cuesta un proyecto?",
+    "faq.a2":"El precio depende del alcance, complejidad y nivel del proyecto. Creemos que la tecnología debe ser accesible — nuestros precios están diseñados para ser justos para cada tamaño de empresa. Comenzamos con una consulta gratuita. Sin compromiso.",
+    "faq.q3":"¿Trabajan de forma remota?",
+    "faq.a3":"Sí — 100% remoto. Atendemos clientes en EE.UU., México y España a través de videollamadas, herramientas compartidas y comunicación asíncrona. Sin límites de ubicación.",
+    "faq.q4":"¿Qué incluye el soporte go-live?",
+    "faq.a4":"El soporte go-live está incluido en cada proyecto — un período de gracia después del lanzamiento para cubrir errores o problemas inesperados sin costo adicional. Nunca estás solo después de la entrega. La duración se acuerda al inicio del proyecto y se documenta en tu acuerdo de servicio.",
+    "faq.q5":"¿Qué documentos recibo al final?",
+    "faq.a5":"Cada proyecto incluye: Guía del Proyecto, Desglose de Costos, Acuerdo de Facturación, Especificaciones Técnicas y Documento de Traspaso. Nada queda como caja negra — tu equipo es dueño de todo al finalizar.",
+    "faq.q6":"¿Cuánto tiempo toma un proyecto?",
+    "faq.a6":"Herramientas pequeñas: 2–4 semanas. Proyectos medianos: 1–3 meses. Modernizaciones grandes: 3–6+ meses. Siempre damos un estimado realista en la consulta inicial gratuita — antes de cualquier compromiso.",
+    "faq.q7":"¿Necesito conocimientos técnicos para trabajar con ustedes?",
+    "faq.a7":"Para nada. Traducimos tecnología compleja a lenguaje humano simple. Los diagramas y presentaciones están diseñados para tomadores de decisiones, no solo ingenieros. Tú traes el conocimiento del negocio — nosotros la experiencia técnica.",
+    "faq.q8":"¿Trabajan con empresas en México y España?",
+    "faq.a8":"Sí. Tenemos amplia experiencia en EE.UU., México y España — incluyendo una de las migraciones bancarias más grandes entre Norteamérica y España. Entendemos las diferencias regulatorias, culturales y técnicas entre estos mercados.",
     "svc7.title":"Diseño Técnico — AS-IS / TO-BE",
     "svc7.desc":"Todo sistema digital tiene espacio para crecer. Mapeamos dónde estás, diseñamos dónde podrías estar y construimos el puente — simple, claro, para humanos no solo ingenieros.",
     "t7s.f1":"Diagrama AS-IS — mapea tus sistemas digitales actuales claramente",
