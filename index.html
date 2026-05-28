@@ -1,10 +1,10 @@
 <!-- ============================================================
      Meliora Labs | melioralabs.tech
-     Version : 1.8
+     Version : 1.9
      Date    : 2026-05-28
-     Changes : Interactive expandable cards for all 6 services
-               Payments/Governance (2 tiers), Security/AI (3 tiers)
-               Mainframe "lets talk" coffee card
+     Changes : Upgraded Why Meliora Labs section — founder story,
+               PO mindset box, humanized cards 01-04, new box 05
+               All CTAs unified to contact form
      ============================================================ -->
 <!DOCTYPE html>
 <html lang="en">
@@ -214,6 +214,27 @@
   .tier-golive { display: flex; align-items: center; gap: 6px; margin-top: 0.75rem; padding: 8px 12px; background: var(--teal-50); border-radius: 8px; font-size: 12px; color: var(--teal-600); font-weight: 500; border: 0.5px solid var(--teal-100); }
   .tier-cta { display: inline-block; margin-top: 1rem; background: var(--teal-400); color: white; padding: 8px 18px; border-radius: 8px; font-size: 13px; font-weight: 500; text-decoration: none; transition: background 0.2s; }
   .tier-cta:hover { background: var(--teal-600); }
+
+  /* ── WHY SECTION UPGRADES ── */
+  .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; }
+  .founder-card { background: var(--teal-800); border-radius: 12px; padding: 2rem; grid-column: 1 / -1; position: relative; overflow: hidden; }
+  .founder-card::before { content: ''; position: absolute; top: -40px; right: -40px; width: 180px; height: 180px; background: rgba(29,158,117,0.15); border-radius: 50%; }
+  .founder-quote { font-family: 'Playfair Display', serif; font-size: clamp(1.1rem, 2vw, 1.3rem); color: white; line-height: 1.7; font-style: italic; margin-bottom: 1.25rem; position: relative; z-index: 1; }
+  .founder-quote::before { content: '"'; font-size: 4rem; color: var(--teal-400); line-height: 0; vertical-align: -1.5rem; margin-right: 4px; font-style: normal; }
+  .founder-meta { display: flex; align-items: center; gap: 10px; position: relative; z-index: 1; }
+  .founder-dot { width: 8px; height: 8px; background: var(--teal-400); border-radius: 50%; animation: pulse 2s infinite; }
+  .founder-name { font-size: 13px; color: var(--teal-100); font-weight: 300; }
+
+  .alone-card { background: var(--teal-50); border: 0.5px solid var(--teal-100); border-radius: 12px; padding: 1.75rem; grid-column: span 2; }
+  .alone-card .why-title { font-size: 16px; color: var(--teal-600); margin-bottom: 0.75rem; }
+  .alone-card .why-desc { font-size: 14px; color: var(--gray-800); line-height: 1.7; }
+  .alone-card .why-number { color: var(--teal-100); }
+  .alone-promise { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1rem; }
+  .alone-badge { display: flex; align-items: center; gap: 6px; background: white; border: 0.5px solid var(--teal-100); border-radius: 20px; padding: 5px 14px; font-size: 12px; color: var(--teal-600); font-weight: 500; }
+
+  @media (max-width: 640px) {
+    .alone-card { grid-column: 1 / -1; }
+  }
 
   /* ── COFFEE CARD ── */
   .coffee-panel { display: none; margin-top: 1.25rem; padding-top: 1.25rem; border-top: 0.5px solid var(--gray-100); animation: fadeIn 0.25s ease; }
@@ -559,10 +580,64 @@
   <h2 class="section-title reveal reveal-delay-1" data-i18n="about.title">The difference is who built it</h2>
   <p class="section-sub reveal reveal-delay-2" data-i18n="about.sub">We don't consult from the outside. We've built, migrated, and secured the exact systems you're dealing with.</p>
   <div class="why-grid">
-    <div class="why-item reveal reveal-delay-1"><div class="why-number">01</div><div class="why-title" data-i18n="why1.title">Domain depth, not theory</div><p class="why-desc" data-i18n="why1.desc">We've built $50B+ payment platforms from the inside. That's not a case study — it's our daily work for 20 years.</p></div>
-    <div class="why-item reveal reveal-delay-2"><div class="why-number">02</div><div class="why-title" data-i18n="why2.title">Security first, always</div><p class="why-desc" data-i18n="why2.desc">Your sensitive data is handled with the same standards that govern Federal Reserve-audited banking systems.</p></div>
-    <div class="why-item reveal reveal-delay-3"><div class="why-number">03</div><div class="why-title" data-i18n="why3.title">Humble, not corporate</div><p class="why-desc" data-i18n="why3.desc">Meliora means always striving for better. We don't oversell. We listen, understand, and deliver.</p></div>
-    <div class="why-item reveal reveal-delay-4"><div class="why-number">04</div><div class="why-title" data-i18n="why4.title">Lean by design</div><p class="why-desc" data-i18n="why4.desc">No bloated teams, no unnecessary layers. You work directly with the engineers who understand your problem.</p></div>
+
+    <!-- FOUNDER STORY -->
+    <div class="founder-card reveal">
+      <div class="founder-quote" data-i18n="founder.quote">I spent 20+ years inside the systems most consultants only read about. Payment platforms, mainframe migrations, cybersecurity — from Spain to North America. I've been in the war room at 2am. I know what's at stake when systems go down. I built Meliora Labs because every company deserves that same level of care. Not a consultant who delivers and disappears. A partner who stays until it's right.</div>
+      <div class="founder-meta">
+        <div class="founder-dot"></div>
+        <div class="founder-name" data-i18n="founder.meta">Founder, Meliora Labs</div>
+      </div>
+    </div>
+
+    <!-- YOU ARE NOT ALONE -->
+    <div class="alone-card reveal reveal-delay-1">
+      <div class="why-number">🤝</div>
+      <div class="why-title" data-i18n="alone.title">You are never alone — before, during, or after</div>
+      <p class="why-desc" data-i18n="alone.desc">Problems don't wait for business hours — and neither do we. From the first line of code to the moment your system goes live, and every issue that comes after, we are with you. No ticket closed until you are comfortable. No delivery considered done until you say so. That's the Meliora Labs promise.</p>
+      <div class="alone-promise">
+        <div class="alone-badge">🌙 <span data-i18n="alone.b1">Any time, any day</span></div>
+        <div class="alone-badge">🔄 <span data-i18n="alone.b2">Stay until it's fixed</span></div>
+        <div class="alone-badge">🧠 <span data-i18n="alone.b3">PO mindset — we own it with you</span></div>
+        <div class="alone-badge">📋 <span data-i18n="alone.b4">Covered in your agreement</span></div>
+      </div>
+    </div>
+
+    <!-- 01 -->
+    <div class="why-item reveal reveal-delay-2">
+      <div class="why-number">01</div>
+      <div class="why-title" data-i18n="why1.title">Domain depth, not theory</div>
+      <p class="why-desc" data-i18n="why1.desc">We've sat in the war room at 2am when a payment system went down. We've led $50B+ migrations from the inside. That's not a case study — that's 20 years of daily work.</p>
+    </div>
+
+    <!-- 02 -->
+    <div class="why-item reveal reveal-delay-3">
+      <div class="why-number">02</div>
+      <div class="why-title" data-i18n="why2.title">Security first, always</div>
+      <p class="why-desc" data-i18n="why2.desc">Your sensitive data is handled with the same standards that govern Federal Reserve-audited banking systems. Security isn't a feature we add — it's how we think from day one.</p>
+    </div>
+
+    <!-- 03 -->
+    <div class="why-item reveal reveal-delay-4">
+      <div class="why-number">03</div>
+      <div class="why-title" data-i18n="why3.title">Humble, not corporate</div>
+      <p class="why-desc" data-i18n="why3.desc">Meliora means always striving for better. We don't oversell. We don't disappear after delivery. We listen, understand, and stay until the job is truly done.</p>
+    </div>
+
+    <!-- 04 -->
+    <div class="why-item reveal reveal-delay-5">
+      <div class="why-number">04</div>
+      <div class="why-title" data-i18n="why4.title">Lean by design</div>
+      <p class="why-desc" data-i18n="why4.desc">No bloated teams, no unnecessary layers. You work directly with the engineers who understand your problem — and we bring the right people behind every project.</p>
+    </div>
+
+    <!-- 05 NEW -->
+    <div class="why-item reveal reveal-delay-6" style="background: var(--teal-800); border-color: var(--teal-600);">
+      <div class="why-number" style="color: var(--teal-400);">05</div>
+      <div class="why-title" style="color: white;" data-i18n="why5.title">We don't disappear</div>
+      <p class="why-desc" style="color: var(--teal-100);" data-i18n="why5.desc">Every deployment, upgrade, and go-live has our full support. Issues happen — that's reality. What matters is who's there when they do. We are.</p>
+    </div>
+
   </div>
 </section>
 
@@ -947,10 +1022,17 @@ const translations = {
     "svc6.title":"Governance & Compliance","svc6.desc":"Delivery frameworks that survive regulatory scrutiny. Our governance structures have been reviewed by Federal Reserve examiners.",
     "about.tag":"Why Meliora Labs","about.title":"The difference is who built it",
     "about.sub":"We don't consult from the outside. We've built, migrated, and secured the exact systems you're dealing with.",
-    "why1.title":"Domain depth, not theory","why1.desc":"We've built $50B+ payment platforms from the inside. That's not a case study — it's our daily work for 20 years.",
-    "why2.title":"Security first, always","why2.desc":"Your sensitive data is handled with the same standards that govern Federal Reserve-audited banking systems.",
-    "why3.title":"Humble, not corporate","why3.desc":"Meliora means always striving for better. We don't oversell. We listen, understand, and deliver.",
-    "why4.title":"Lean by design","why4.desc":"No bloated teams, no unnecessary layers. You work directly with the engineers who understand your problem.",
+    "founder.quote":"I spent 20+ years inside the systems most consultants only read about. Payment platforms, mainframe migrations, cybersecurity — from Spain to North America. I've been in the war room at 2am. I know what's at stake when systems go down. I built Meliora Labs because every company deserves that same level of care. Not a consultant who delivers and disappears. A partner who stays until it's right.",
+    "founder.meta":"Founder, Meliora Labs",
+    "alone.title":"You are never alone — before, during, or after",
+    "alone.desc":"Problems don't wait for business hours — and neither do we. From the first line of code to the moment your system goes live, and every issue that comes after, we are with you. No ticket closed until you are comfortable. No delivery considered done until you say so. That's the Meliora Labs promise.",
+    "alone.b1":"Any time, any day","alone.b2":"Stay until it's fixed",
+    "alone.b3":"PO mindset — we own it with you","alone.b4":"Covered in your agreement",
+    "why1.title":"Domain depth, not theory","why1.desc":"We've sat in the war room at 2am when a payment system went down. We've led $50B+ migrations from the inside. That's not a case study — that's 20 years of daily work.",
+    "why2.title":"Security first, always","why2.desc":"Your sensitive data is handled with the same standards that govern Federal Reserve-audited banking systems. Security isn't a feature we add — it's how we think from day one.",
+    "why3.title":"Humble, not corporate","why3.desc":"Meliora means always striving for better. We don't oversell. We don't disappear after delivery. We listen, understand, and stay until the job is truly done.",
+    "why4.title":"Lean by design","why4.desc":"No bloated teams, no unnecessary layers. You work directly with the engineers who understand your problem — and we bring the right people behind every project.",
+    "why5.title":"We don't disappear","why5.desc":"Every deployment, upgrade, and go-live has our full support. Issues happen — that's reality. What matters is who's there when they do. We are.",
     "notify.tag":"Coming Soon","notify.title":"Something powerful is coming.",
     "notify.sub":"Be the first to know when Meliora Labs officially launches. No spam — just one email when we're ready.",
     "notify.placeholder":"your@email.com","notify.btn":"Notify Me","notify.success":"✅ You're on the list! We'll be in touch.",
@@ -1076,10 +1158,17 @@ const translations = {
     "svc6.title":"Gobernanza y Cumplimiento","svc6.desc":"Marcos de entrega que superan el escrutinio regulatorio. Nuestras estructuras han sido revisadas por examinadores de la Reserva Federal.",
     "about.tag":"Por qué Meliora Labs","about.title":"La diferencia está en quién lo construyó",
     "about.sub":"No consultamos desde afuera. Hemos construido, migrado y asegurado exactamente los sistemas con los que tú trabajas.",
-    "why1.title":"Profundidad real, no teoría","why1.desc":"Hemos construido plataformas de pago de más de $50B desde adentro. No es un caso de estudio — es nuestro trabajo diario por 20 años.",
-    "why2.title":"Seguridad primero, siempre","why2.desc":"Tus datos se manejan con los mismos estándares que rigen los sistemas bancarios auditados por la Reserva Federal.",
-    "why3.title":"Humildes, no corporativos","why3.desc":"Meliora significa siempre mejorar. No sobrevendemos. Escuchamos, entendemos y entregamos.",
-    "why4.title":"Lean por diseño","why4.desc":"Sin equipos inflados ni capas innecesarias. Trabajas directamente con los ingenieros que entienden tu problema.",
+    "founder.quote":"Pasé más de 20 años dentro de los sistemas que la mayoría de los consultores solo leen. Plataformas de pago, migraciones de mainframe, ciberseguridad — de España a Norteamérica. He estado en la sala de guerra a las 2am. Sé lo que está en juego cuando los sistemas fallan. Construí Meliora Labs porque cada empresa merece ese mismo nivel de cuidado. No un consultor que entrega y desaparece. Un socio que se queda hasta que todo esté bien.",
+    "founder.meta":"Fundador, Meliora Labs",
+    "alone.title":"Nunca estás solo — antes, durante ni después",
+    "alone.desc":"Los problemas no esperan el horario de oficina — y nosotros tampoco. Desde la primera línea de código hasta el momento en que tu sistema sale en vivo, y cada problema que viene después, estamos contigo. Ningún ticket cerrado hasta que estés cómodo. Ninguna entrega considerada terminada hasta que tú lo digas. Esa es la promesa de Meliora Labs.",
+    "alone.b1":"Cualquier hora, cualquier día","alone.b2":"Quedamos hasta que esté resuelto",
+    "alone.b3":"Mentalidad PO — lo asumimos contigo","alone.b4":"Cubierto en tu acuerdo",
+    "why1.title":"Profundidad real, no teoría","why1.desc":"Hemos estado en la sala de guerra a las 2am cuando un sistema de pagos falló. Hemos liderado migraciones de más de $50B desde adentro. No es un caso de estudio — son 20 años de trabajo diario.",
+    "why2.title":"Seguridad primero, siempre","why2.desc":"Tus datos se manejan con los mismos estándares que rigen los sistemas bancarios auditados por la Reserva Federal. La seguridad no es una función que añadimos — es como pensamos desde el primer día.",
+    "why3.title":"Humildes, no corporativos","why3.desc":"Meliora significa siempre mejorar. No sobrevendemos. No desaparecemos después de la entrega. Escuchamos, entendemos y nos quedamos hasta que el trabajo esté verdaderamente terminado.",
+    "why4.title":"Lean por diseño","why4.desc":"Sin equipos inflados ni capas innecesarias. Trabajas directamente con los ingenieros que entienden tu problema — y traemos a las personas correctas detrás de cada proyecto.",
+    "why5.title":"No desaparecemos","why5.desc":"Cada despliegue, actualización y go-live tiene nuestro apoyo completo. Los problemas ocurren — esa es la realidad. Lo que importa es quién está ahí cuando suceden. Nosotros estamos.",
     "notify.tag":"Próximamente","notify.title":"Algo poderoso está por llegar.",
     "notify.sub":"Sé el primero en saber cuando Meliora Labs lance oficialmente. Sin spam — solo un correo cuando estemos listos.",
     "notify.placeholder":"tu@email.com","notify.btn":"Notifícame","notify.success":"✅ ¡Estás en la lista! Estaremos en contacto.",
@@ -1142,7 +1231,7 @@ const botResponses = {
     remote: "📍 Yes, we work 100% remotely! We serve clients across the US, Mexico, and Spain. All collaboration is done via video calls, shared tools, and async communication — no physical office needed.",
     quote: "We'd love to discuss your project! The best way is to fill out the contact form on this page or email us directly at melioralabs.tech@gmail.com. We respond within 24 hours.",
     contact: "You can reach us at 📧 melioralabs.tech@gmail.com or use the contact form on this page. We typically respond within 24 hours.",
-    team: "Meliora Labs was founded by engineers with 20+ years inside mission-critical payment platforms and cybersecurity operations. We don't consult from the outside — we've lived inside these systems.",
+    team: "Meliora Labs was founded by engineers with 20+ years inside mission-critical payment platforms and cybersecurity operations — from Spain to North America. We don't consult from the outside. And we don't disappear after delivery. You are never alone — before, during, or after go-live. 🤝",
     launch: "We're currently in development and building our platform. Sign up with the Notify Me form on this page and we'll email you the moment we launch! 🚀",
     cost: "Pricing depends on the scope of your project. Fill out the contact form and we'll schedule a free initial consultation to understand your needs and provide a custom estimate. No commitment required.",
     aws: "Yes! We deploy AI-powered tools on AWS. Our stack includes Claude AI, AWS Lambda, and cloud-native architectures designed for banking-grade security and scalability.",
@@ -1166,7 +1255,7 @@ const botResponses = {
     remote: "📍 ¡Sí, trabajamos 100% remoto! Atendemos clientes en EE.UU., México y España. Toda la colaboración es por videollamadas, herramientas compartidas y comunicación asíncrona.",
     quote: "¡Nos encantaría discutir tu proyecto! La mejor forma es llenar el formulario de contacto en esta página o escribirnos a melioralabs.tech@gmail.com. Respondemos en menos de 24 horas.",
     contact: "Puedes contactarnos en 📧 melioralabs.tech@gmail.com o usar el formulario de contacto en esta página. Generalmente respondemos en menos de 24 horas.",
-    team: "Meliora Labs fue fundada por ingenieros con más de 20 años dentro de plataformas de pago de misión crítica y operaciones de ciberseguridad.",
+    team: "Meliora Labs fue fundada por ingenieros con más de 20 años dentro de plataformas de pago de misión crítica y operaciones de ciberseguridad — de España a Norteamérica. No consultamos desde afuera. Y no desaparecemos después de la entrega. Nunca estás solo — antes, durante ni después del go-live. 🤝",
     launch: "Actualmente estamos en desarrollo. ¡Regístrate con el formulario 'Notifícame' en esta página y te avisaremos cuando lancemos! 🚀",
     cost: "El precio depende del alcance de tu proyecto. Llena el formulario de contacto y agendaremos una consulta inicial gratuita. Sin compromiso.",
     aws: "¡Sí! Desplegamos herramientas con IA en AWS. Nuestro stack incluye Claude AI, AWS Lambda y arquitecturas cloud diseñadas para seguridad bancaria.",
