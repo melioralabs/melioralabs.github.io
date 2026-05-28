@@ -1,17 +1,21 @@
 <!-- ============================================================
      Meliora Labs | melioralabs.tech
-     Version : 2.1.0
+     Version : 2.1.1
      Date    : 2026-05-28
-     Changes : Favicon added, bot position fix (no footer overlap),
-               active nav highlight on scroll, FAQ accordion section
+     Changes : PageSpeed fixes — meta description, main landmark,
+               select label, contrast, contact section color fix,
+               Google Fonts preconnect for performance
      ============================================================ -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Meliora Labs — AI-powered IT consulting for banks, fintechs, and enterprises. Payments, mainframe modernization, cybersecurity, and delivery intelligence. Serving US, Mexico, and Spain.">
 <title>Meliora Labs | Semper Melius</title>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%231D9E75'/><text x='50%25' y='50%25' dominant-baseline='central' text-anchor='middle' font-family='Georgia,serif' font-size='20' font-weight='bold' fill='white'>M</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-J9CZ8DPC40"></script>
@@ -28,7 +32,7 @@
   :root {
     --teal-50: #E1F5EE; --teal-100: #9FE1CB; --teal-400: #1D9E75;
     --teal-600: #0F6E56; --teal-800: #085041;
-    --gray-50: #F1EFE8; --gray-100: #D3D1C7; --gray-400: #888780;
+    --gray-50: #F1EFE8; --gray-100: #D3D1C7; --gray-400: #6B6A64;
     --gray-800: #444441; --gray-900: #2C2C2A;
   }
   body { font-family: 'DM Sans', sans-serif; font-weight: 400; color: var(--gray-900); background: #FAFAF8; line-height: 1.7; }
@@ -109,7 +113,7 @@
   .notify-success.show { display: block; }
 
   /* ── CONTACT FORM ── */
-  .contact-section { background: white; border: 0.5px solid var(--gray-100); border-radius: 16px; padding: 3.5rem 3rem; margin: 0 3rem 2rem; }
+  .contact-section { background: white; border: 0.5px solid var(--gray-100); border-radius: 16px; padding: 3.5rem 3rem; margin: 0 3rem 2rem; overflow: hidden; }
   .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
   .contact-info-title { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 500; color: var(--gray-900); margin-bottom: 1rem; line-height: 1.2; }
   .contact-info-sub { font-size: 15px; color: var(--gray-800); font-weight: 300; line-height: 1.75; margin-bottom: 2rem; }
@@ -347,6 +351,7 @@
 </nav>
 
 <!-- HERO -->
+<main>
 <div class="hero">
   <div class="hero-tag reveal"><div class="hero-dot"></div><span data-i18n="hero.tag">AI-Powered IT Solutions</span></div>
   <h1 class="hero-title reveal reveal-delay-1" data-i18n="hero.title">Built by those who <em>lived</em> inside the systems</h1>
@@ -974,8 +979,8 @@
           <input class="form-input" type="email" name="email" required data-i18n-placeholder="form.emailPh" placeholder="john@company.com" />
         </div>
         <div class="form-group">
-          <label class="form-label" data-i18n="form.service">Service of Interest</label>
-          <select class="form-select" name="service">
+          <label class="form-label" for="serviceSelect" data-i18n="form.service">Service of Interest</label>
+          <select class="form-select" id="serviceSelect" name="service" aria-label="Service of Interest">
             <option value="" data-i18n="form.servicePh">Select a service...</option>
             <option value="delivery" data-i18n="form.svc1">360° Delivery Intelligence</option>
             <option value="payments" data-i18n="form.svc2">Payments & Fintech Consulting</option>
@@ -1005,6 +1010,7 @@
   <a href="#contact-form" class="btn-white reveal reveal-delay-2" data-i18n="cta.btn">Schedule a conversation</a>
 </div>
 
+</main>
 <footer>
   <div>
     <div class="footer-logo">Meliora <span>Labs</span></div>
