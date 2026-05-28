@@ -1,10 +1,9 @@
 <!-- ============================================================
      Meliora Labs | melioralabs.tech
-     Version : 2.0.2
+     Version : 2.0.3
      Date    : 2026-05-28
-     Changes : Fix nav links staying English on ES toggle,
-               Fix Learn more buttons staying English on ES,
-               Fix ES bot responses missing clickable links
+     Changes : Fix Close/Cerrar on all cards in ES, fix Learn more
+               on security cards in ES, fancy scroll-to-top button
      ============================================================ -->
 <!DOCTYPE html>
 <html lang="en">
@@ -235,6 +234,13 @@
   @media (max-width: 640px) {
     .alone-card { grid-column: 1 / -1; }
   }
+
+  /* ── SCROLL TO TOP ── */
+  .scroll-top { position: fixed; bottom: 100px; right: 28px; z-index: 998; width: 44px; height: 44px; background: white; border: 0.5px solid var(--gray-100); border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 2px 12px rgba(0,0,0,0.1); transition: all 0.3s; opacity: 0; transform: translateY(10px); pointer-events: none; }
+  .scroll-top.visible { opacity: 1; transform: translateY(0); pointer-events: all; }
+  .scroll-top:hover { background: var(--teal-400); border-color: var(--teal-400); transform: translateY(-2px); box-shadow: 0 4px 16px rgba(29,158,117,0.3); }
+  .scroll-top:hover svg { stroke: white; }
+  .scroll-top svg { width: 18px; height: 18px; stroke: var(--teal-400); fill: none; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; transition: stroke 0.2s; }
 
   /* ── SECURITY EXPANDABLE ── */
   .sec-card-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; }
@@ -908,6 +914,11 @@
   <div class="footer-copy" data-i18n="footer.copy">© 2026 Meliora Labs. All rights reserved.</div>
 </footer>
 
+<!-- SCROLL TO TOP -->
+<button class="scroll-top" id="scrollTop" onclick="scrollToTop()" aria-label="Scroll to top">
+  <svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"></polyline></svg>
+</button>
+
 <!-- CHATBOT -->
 <div class="chat-bubble" id="chatBubble">
   <div class="chat-window" id="chatWindow">
@@ -975,7 +986,7 @@ function toggleSec(id) {
   const btn = card ? card.querySelector('.sec-learn-btn') : null;
   const isOpen = panel.classList.toggle('open');
   const t = translations[currentLang];
-  if (btn) btn.textContent = isOpen ? (t['card.collapse'] || 'Close −') : (t['card.learnmore'] || 'Learn more +');
+  if (btn) btn.textContent = isOpen ? (t['card.collapse'] || 'Cerrar −') : (t['card.learnmore'] || 'Ver más +');
 }
 
 // ═══════════════════════════════════════════
@@ -994,7 +1005,7 @@ function toggleCard(id) {
   const isCoffee = panel.classList.contains('coffee-panel');
   const isOpen = panel.classList.toggle('open');
   btn.classList.toggle('active', isOpen);
-  btn.textContent = isOpen ? (t['card.collapse'] || 'Close −') : (t['card.learnmore'] || 'Learn more +');
+  btn.textContent = isOpen ? (t['card.collapse'] || 'Cerrar −') : (t['card.learnmore'] || 'Ver más +');
   if (isOpen && !isCoffee) {
     const firstTab = panel.querySelector('.tier-tab');
     if (firstTab) switchTierCard(id, firstTab.classList.contains('small') ? 'small' : 'medium');
@@ -1009,6 +1020,22 @@ function switchTierCard(cardId, tier) {
   const tab = panel.querySelector('.tier-tab.' + tier);
   if (content) content.classList.add('active');
   if (tab) tab.classList.add('active');
+}
+
+// ═══════════════════════════════════════════
+// SCROLL TO TOP
+// ═══════════════════════════════════════════
+const scrollTopBtn = document.getElementById('scrollTop');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 400) {
+    scrollTopBtn.classList.add('visible');
+  } else {
+    scrollTopBtn.classList.remove('visible');
+  }
+});
+
+function scrollToTop() {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 // ═══════════════════════════════════════════
