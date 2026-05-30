@@ -636,6 +636,8 @@
     .card { padding: 1.5rem; }
   }
 </style>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>emailjs.init("LtlkZ6Md5-FNypll1");</script>
 </head>
 <body>
 
@@ -1248,6 +1250,38 @@ function submitForm() {
       document.querySelectorAll('.step-dot').forEach(d=>d.classList.add('done'));
     } else {
       res.json().then(err => {
+        submitBtn.textContent = '✉️ Submit Request';
+        submitBtn.disabled = false;
+        alert('Submission error: ' + (err.error || 'Please try again.'));
+      });
+    }
+  })
+  .then(formspreeRes => {
+    if (formspreeRes.ok) {
+      // ── Send auto-reply to client via EmailJS ──
+      emailjs.send("meliora_gmail", "template_14hnex5", {
+        name:        data.name,
+        client_email:data.email,
+        project:     data.project,
+        service:     data.service,
+        estimate:    data.estimate,
+        hours:       data.hours,
+        risk_label:  data.risk_label,
+      })
+      .then(() => {
+        // Both sent — show success screen
+        document.querySelectorAll('.step-panel').forEach(p=>p.style.display='none');
+        document.getElementById('success-screen').style.display='block';
+        document.querySelectorAll('.step-dot').forEach(d=>d.classList.add('done'));
+      })
+      .catch(() => {
+        // Formspree worked, EmailJS failed — still show success
+        document.querySelectorAll('.step-panel').forEach(p=>p.style.display='none');
+        document.getElementById('success-screen').style.display='block';
+        document.querySelectorAll('.step-dot').forEach(d=>d.classList.add('done'));
+      });
+    } else {
+      formspreeRes.json().then(err => {
         submitBtn.textContent = '✉️ Submit Request';
         submitBtn.disabled = false;
         alert('Submission error: ' + (err.error || 'Please try again.'));
