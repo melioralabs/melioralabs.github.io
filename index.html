@@ -64,6 +64,9 @@
   .nav-cta.active { color: white !important; background: var(--teal-400) !important; }
   .nav-cta::after { display: none !important; content: none !important; }
   .nav-cta.active::after { display: none !important; content: none !important; }
+  .nav-contact { border: 0.5px solid var(--teal-100) !important; color: var(--teal-600) !important; padding: 7px 16px; border-radius: 6px; font-weight: 500 !important; transition: all 0.2s !important; }
+  .nav-contact:hover { background: var(--teal-50) !important; border-color: var(--teal-400) !important; }
+  .nav-contact::after { display: none !important; content: none !important; }
 
   /* ── LANGUAGE TOGGLE ── */
   .lang-toggle { display: flex; align-items: center; background: var(--gray-50); border: 0.5px solid var(--gray-100); border-radius: 20px; padding: 3px; gap: 2px; }
@@ -262,8 +265,8 @@
   .faq-icon svg { width: 12px; height: 12px; stroke: var(--teal-400); fill: none; stroke-width: 2.5; stroke-linecap: round; transition: transform 0.3s; }
   .faq-item.open .faq-icon { background: var(--teal-400); border-color: var(--teal-400); }
   .faq-item.open .faq-icon svg { stroke: white; transform: rotate(180deg); }
-  .faq-answer { display: none; padding: 0 1.5rem 1.25rem; font-size: 14px; color: var(--gray-800); line-height: 1.75; font-weight: 300; border-top: 0.5px solid var(--gray-100); padding-top: 1rem; }
-  .faq-answer.open { display: block; animation: fadeIn 0.2s ease; }
+  .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease, padding 0.3s ease; padding: 0 1.5rem; font-size: 14px; color: var(--gray-800); line-height: 1.75; font-weight: 300; border-top: 0.5px solid transparent; }
+  .faq-answer.open { max-height: 400px; padding: 1rem 1.5rem 1.25rem; border-top-color: var(--gray-100); }
 
   @media (max-width: 640px) { .faq-grid { grid-template-columns: 1fr; } .faq-section { padding: 3rem 1.25rem; } }
 
@@ -346,6 +349,7 @@
       <li><a href="#about" data-i18n="nav.about">About</a></li>
       <li><a href="#security" data-i18n="nav.security">Security</a></li>
       <li><a href="#faq" data-i18n="nav.faq">FAQ</a></li>
+      <li><a href="#contact-form" class="nav-contact" data-i18n="nav.contact">Get in touch</a></li>
       <li><a href="/intake.html" class="nav-cta" data-i18n="nav.cta">Start a Project</a></li>
     </ul>
     <div class="lang-toggle" role="group" aria-label="Language selector">
@@ -871,7 +875,7 @@
       <div class="disclosure-title" data-i18n="sec.disclosure.title">Responsible Disclosure</div>
       <div class="disclosure-sub" data-i18n="sec.disclosure.sub">Found a security issue? We take all reports seriously. Please contact us directly and we'll respond within 24 hours.</div>
     </div>
-    <a href="mailto:melioralabs.tech@gmail.com?subject=Security%20Disclosure" class="disclosure-link" data-i18n="sec.disclosure.btn">Report a concern →</a>
+    <a href="mailto:melioralabs.tech@gmail.com?subject=Security%20Disclosure" class="disclosure-link" data-i18n="sec.disclosure.btn" onclick="event.stopPropagation()">Report a concern →</a>
   </div>
 </section>
 
@@ -1171,6 +1175,7 @@ window.addEventListener('scroll', () => {
   Object.entries(navLinks).forEach(([id, link]) => {
     if (!link) return;
     if (link.classList.contains('nav-cta')) return; // never highlight the CTA button
+    if (link.classList.contains('nav-contact')) return; // never highlight the contact link
     link.classList.toggle('active', id === current);
   });
 });
@@ -1253,7 +1258,7 @@ function submitNotify() {
 // ═══════════════════════════════════════════
 const translations = {
   en: {
-    "nav.services":"Services","nav.about":"About","nav.security":"Security","nav.faq":"FAQ","nav.cta":"Get in touch",
+    "nav.services":"Services","nav.about":"About","nav.security":"Security","nav.faq":"FAQ","nav.contact":"Get in touch","nav.cta":"Start a Project",
     "faq.tag":"FAQ","faq.title":"Frequently Asked Questions",
     "faq.sub":"Everything you need to know before starting a conversation with us.",
     "faq.q1":"What type of companies do you work with?",
@@ -1452,7 +1457,7 @@ const translations = {
     "chip1":"Our services","chip2":"What's included?","chip3":"Go-live support","chip4":"What documents?","chip5":"Get a quote","chip6":"Small companies?",
   },
   es: {
-    "nav.services":"Servicios","nav.about":"Nosotros","nav.security":"Seguridad","nav.faq":"FAQ","nav.cta":"Contáctanos",
+    "nav.services":"Servicios","nav.about":"Nosotros","nav.security":"Seguridad","nav.faq":"FAQ","nav.contact":"Contáctanos","nav.cta":"Iniciar Proyecto",
     "faq.tag":"Preguntas Frecuentes","faq.title":"Preguntas Frecuentes",
     "faq.sub":"Todo lo que necesitas saber antes de comenzar una conversación con nosotros.",
     "faq.q1":"¿Con qué tipo de empresas trabajan?",
