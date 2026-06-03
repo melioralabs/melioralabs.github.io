@@ -683,8 +683,9 @@
           <span class="error-msg">Please enter your name</span>
         </div>
         <div class="field" id="f-company">
-          <label>Company / Organization</label>
+          <label>Company / Organization <span class="req">*</span></label>
           <input type="text" id="inp-company" placeholder="Acme Corp">
+          <span class="error-msg">Please enter your company or organization name</span>
         </div>
       </div>
 
@@ -695,8 +696,9 @@
           <span class="error-msg">Please enter a valid email</span>
         </div>
         <div class="field" id="f-phone">
-          <label>Phone / WhatsApp</label>
+          <label>Phone / WhatsApp <span class="req">*</span></label>
           <input type="tel" id="inp-phone" placeholder="+1 555 000 0000">
+          <span class="error-msg">Please enter a phone number</span>
         </div>
       </div>
 
@@ -993,6 +995,20 @@
         </div>
       </div>
 
+      <!-- PRIVACY CONSENT -->
+      <div class="field" id="f-consent" style="margin:1.5rem 0 1rem;">
+        <label style="display:flex;align-items:flex-start;gap:0.75rem;cursor:pointer;font-weight:400;text-transform:none;letter-spacing:0;font-size:0.88rem;color:var(--muted);line-height:1.5;">
+          <input type="checkbox" id="inp-consent" style="margin-top:3px;accent-color:var(--gold);width:16px;height:16px;flex-shrink:0;">
+          <span>
+            I agree to share my contact information (name, email, phone) with Meliora Labs for the purpose of receiving a project estimate and follow-up consultation.
+            Your information is <strong>strictly confidential</strong> — we will never sell, share, or use it for any purpose other than responding to your request.
+            No sensitive financial or personal data is collected in this form.
+            By submitting, you confirm you are comfortable sharing this information under these terms.
+          </span>
+        </label>
+        <span class="error-msg" id="consent-error" style="display:none;color:#e74c3c;font-size:0.82rem;margin-top:0.4rem;">Please accept the privacy agreement to continue</span>
+      </div>
+
       <div class="btn-row">
         <button class="btn btn-secondary" onclick="goToStep(3)">← Back</button>
         <button class="btn btn-gold" onclick="submitForm()">✉️ Submit Request</button>
@@ -1102,8 +1118,10 @@ function goToStep(n) {
 function validateStep(n) {
   let ok = true;
   if (n === 1) {
-    ok = validateField('f-name','inp-name',v=>v.trim().length>1) & ok;
-    ok = validateField('f-email','inp-email',v=>/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) & ok;
+    ok = validateField('f-name',   'inp-name',   v=>v.trim().length>1) & ok;
+    ok = validateField('f-company','inp-company',v=>v.trim().length>1) & ok;
+    ok = validateField('f-email',  'inp-email',  v=>/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) & ok;
+    ok = validateField('f-phone',  'inp-phone',  v=>v.trim().length>5) & ok;
     ok = validateField('f-country','inp-country',v=>v!=='') & ok;
   }
   if (n === 2) {
@@ -1186,19 +1204,29 @@ function buildSummary() {
   document.getElementById('est-sub').textContent =
     `USD  ·  ${e.totalHrs} hours  ·  ${e.service}  ·  Risk: ${e.riskLabel} (${e.riskScore}/10)  ·  Valid 30 days`;
 
+  const riskLabels = {
+    international_client:'🌎 International client', sensitive_data:'🔒 Sensitive data',
+    legacy_systems:'🖥️ Legacy systems', tight_deadline:'⏰ Tight deadline',
+    unclear_requirements:'❓ Unclear requirements', multiple_stakeholders:'👥 Multiple stakeholders',
+    compliance_required:'📋 Compliance (SOX/AML/PCI)', first_time_client:'🤝 First-time client'
+  };
+  const riskSelected = state.selectedRisks.map(r=>riskLabels[r]||r).join(', ') || 'None selected';
   const items = [
-    ['Client',    document.getElementById('inp-name').value],
-    ['Country',   document.getElementById('inp-country').value],
-    ['Project',   document.getElementById('inp-project').value],
-    ['Service',   e.service],
-    ['Tier',      e.tier],
-    ['Complexity',e.complexity],
-    ['Timeline',  document.getElementById('inp-duration').value],
-    ['Hours',     `${e.totalHrs} hrs`],
-    ['Rate',      `$${e.rate}/hr`],
-    ['Base Cost', `$${e.baseCost.toLocaleString('en-US',{minimumFractionDigits:2})}`],
+    ['Client',       document.getElementById('inp-name').value],
+    ['Company',      document.getElementById('inp-company').value],
+    ['Email',        document.getElementById('inp-email').value],
+    ['Country',      document.getElementById('inp-country').value],
+    ['Project',      document.getElementById('inp-project').value],
+    ['Service',      e.service],
+    ['Tier',         e.tier],
+    ['Complexity',   e.complexity],
+    ['Timeline',     document.getElementById('inp-duration').value],
+    ['Risk Factors', riskSelected],
+    ['Hours',        `${e.totalHrs} hrs`],
+    ['Rate',         `$${e.rate}/hr`],
+    ['Base Cost',    `$${e.baseCost.toLocaleString('en-US',{minimumFractionDigits:2})}`],
     [`Contingency (${e.contPct}%)`, `$${e.contingency.toLocaleString('en-US',{minimumFractionDigits:2})}`],
-    ['Risk Score',`${e.riskScore}/10 — ${e.riskLabel}`],
+    ['Risk Score',   `${e.riskScore}/10 — ${e.riskLabel}`],
   ];
 
   document.getElementById('summary-grid').innerHTML = items.map(([l,v])=>`
@@ -1210,6 +1238,16 @@ function buildSummary() {
 
 // ── SUBMIT ──
 async function submitForm() {
+  // Validate consent checkbox
+  const consentEl = document.getElementById('inp-consent');
+  const consentErr = document.getElementById('consent-error');
+  if (!consentEl.checked) {
+    consentErr.style.display = 'block';
+    consentEl.closest('.field').scrollIntoView({behavior:'smooth', block:'center'});
+    return;
+  }
+  consentErr.style.display = 'none';
+
   const e = calcEstimate();
   const data = {
     name:        document.getElementById('inp-name').value,
