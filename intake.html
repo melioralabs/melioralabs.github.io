@@ -432,6 +432,10 @@
     font-size: 0.95rem;
     font-weight: 600;
     color: var(--blue);
+    word-break: break-word;
+  }
+  .summary-item.full {
+    grid-column: 1 / -1;
   }
 
   /* ── TOTAL BOX ── */
@@ -1211,28 +1215,30 @@ function buildSummary() {
     compliance_required:'📋 Compliance (SOX/AML/PCI)', first_time_client:'🤝 First-time client'
   };
   const riskSelected = state.selectedRisks.map(r=>riskLabels[r]||r).join(', ') || 'None selected';
+  // [label, value, fullWidth]
   const items = [
-    ['Client',       document.getElementById('inp-name').value],
-    ['Company',      document.getElementById('inp-company').value],
-    ['Email',        document.getElementById('inp-email').value],
-    ['Country',      document.getElementById('inp-country').value],
-    ['Project',      document.getElementById('inp-project').value],
-    ['Service',      e.service],
-    ['Tier',         e.tier],
-    ['Complexity',   e.complexity],
-    ['Timeline',     document.getElementById('inp-duration').value],
-    ['Risk Factors', riskSelected],
-    ['Hours',        `${e.totalHrs} hrs`],
-    ['Rate',         `$${e.rate}/hr`],
-    ['Base Cost',    `$${e.baseCost.toLocaleString('en-US',{minimumFractionDigits:2})}`],
-    [`Contingency (${e.contPct}%)`, `$${e.contingency.toLocaleString('en-US',{minimumFractionDigits:2})}`],
-    ['Risk Score',   `${e.riskScore}/10 — ${e.riskLabel}`],
+    ['Full Name',    document.getElementById('inp-name').value,    true],
+    ['Company',      document.getElementById('inp-company').value,  true],
+    ['Email',        document.getElementById('inp-email').value,    true],
+    ['Phone',        document.getElementById('inp-phone').value,    false],
+    ['Country',      document.getElementById('inp-country').value,  false],
+    ['Project',      document.getElementById('inp-project').value,  true],
+    ['Service',      e.service,                                      false],
+    ['Tier',         e.tier,                                         false],
+    ['Complexity',   e.complexity,                                   false],
+    ['Timeline',     document.getElementById('inp-duration').value, false],
+    ['Risk Factors', riskSelected,                                   true],
+    ['Hours',        `${e.totalHrs} hrs`,                           false],
+    ['Rate',         `$${e.rate}/hr`,                               false],
+    ['Base Cost',    `$${e.baseCost.toLocaleString('en-US',{minimumFractionDigits:2})}`, false],
+    [`Contingency (${e.contPct}%)`, `$${e.contingency.toLocaleString('en-US',{minimumFractionDigits:2})}`, false],
+    ['Risk Score',   `${e.riskScore}/10 — ${e.riskLabel}`,          false],
   ];
 
-  document.getElementById('summary-grid').innerHTML = items.map(([l,v])=>`
-    <div class="summary-item">
+  document.getElementById('summary-grid').innerHTML = items.map(([l,v,full])=>`
+    <div class="summary-item${full?' full':''}">
       <div class="s-label">${l}</div>
-      <div class="s-value">${v}</div>
+      <div class="s-value">${v || '—'}</div>
     </div>`).join('');
 }
 
