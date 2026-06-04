@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="icon" href="data:,">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Meliora Labs — Project Intake</title>
@@ -1203,6 +1204,12 @@ function calcEstimate() {
 
 // ── BUILD SUMMARY ──
 function buildSummary() {
+  // Debug — open browser console to verify values are being read
+  console.log('🔍 buildSummary called');
+  console.log('  name:',    document.getElementById('inp-name')?.value);
+  console.log('  company:', document.getElementById('inp-company')?.value);
+  console.log('  email:',   document.getElementById('inp-email')?.value);
+  console.log('  risks:',   state.selectedRisks);
   const e = calcEstimate();
   document.getElementById('est-total').textContent = `$${e.total.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})}`;
   document.getElementById('est-sub').textContent =
@@ -1235,11 +1242,14 @@ function buildSummary() {
     ['Risk Score',   `${e.riskScore}/10 — ${e.riskLabel}`,          false],
   ];
 
-  document.getElementById('summary-grid').innerHTML = items.map(([l,v,full])=>`
-    <div class="summary-item${full?' full':''}">
-      <div class="s-label">${l}</div>
-      <div class="s-value">${v || '—'}</div>
-    </div>`).join('');
+  const grid = document.getElementById('summary-grid');
+  grid.innerHTML = '';
+  items.forEach(([l,v,full]) => {
+    const div = document.createElement('div');
+    div.className = 'summary-item' + (full ? ' full' : '');
+    div.innerHTML = `<div class="s-label">${l}</div><div class="s-value">${v || '—'}</div>`;
+    grid.appendChild(div);
+  });
 }
 
 // ── SUBMIT ──
