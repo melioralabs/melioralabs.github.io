@@ -687,12 +687,12 @@
 
       <div class="field-group">
         <div class="field" id="f-name">
-          <label>Full Name <span class="req">*</span></label>
+          <label for="inp-name">Full Name <span class="req">*</span></label>
           <input type="text" id="inp-name" placeholder="John Smith">
           <span class="error-msg">Please enter your name</span>
         </div>
         <div class="field" id="f-company">
-          <label>Company / Organization <span class="req">*</span></label>
+          <label for="inp-company">Company / Organization <span class="req">*</span></label>
           <input type="text" id="inp-company" placeholder="Acme Corp">
           <span class="error-msg">Please enter your company or organization name</span>
         </div>
@@ -700,12 +700,12 @@
 
       <div class="field-group">
         <div class="field" id="f-email">
-          <label>Email <span class="req">*</span></label>
+          <label for="inp-email">Email <span class="req">*</span></label>
           <input type="email" id="inp-email" placeholder="john@company.com">
           <span class="error-msg">Please enter a valid email</span>
         </div>
         <div class="field" id="f-phone">
-          <label>Phone / WhatsApp <span class="req">*</span></label>
+          <label for="inp-phone">Phone / WhatsApp <span class="req">*</span></label>
           <input type="tel" id="inp-phone" placeholder="+1 555 000 0000">
           <span class="error-msg">Please enter a phone number</span>
         </div>
@@ -713,7 +713,7 @@
 
       <div class="field-group three">
         <div class="field" id="f-country">
-          <label>Country <span class="req">*</span></label>
+          <label for="inp-country">Country <span class="req">*</span></label>
           <select id="inp-country">
             <option value="">Select country...</option>
             <option value="USA">🇺🇸 United States</option>
@@ -724,11 +724,11 @@
           <span class="error-msg">Please select your country</span>
         </div>
         <div class="field">
-          <label>Role / Title</label>
+          <label for="inp-role">Role / Title</label>
           <input type="text" id="inp-role" placeholder="CTO / Director / Manager">
         </div>
         <div class="field">
-          <label>How did you hear about us?</label>
+          <label for="inp-source">How did you hear about us?</label>
           <select id="inp-source">
             <option value="">Select...</option>
             <option>LinkedIn</option>
@@ -757,7 +757,7 @@
 
       <div class="field-group full">
         <div class="field" id="f-project">
-          <label>Project Name <span class="req">*</span></label>
+          <label for="inp-project">Project Name <span class="req">*</span></label>
           <input type="text" id="inp-project" placeholder="e.g. Payment Gateway Integration / Mainframe Migration Phase 1">
           <span class="error-msg">Please enter a project name</span>
         </div>
@@ -765,7 +765,7 @@
 
       <div class="field-group full">
         <div class="field" id="f-description">
-          <label>Project Description <span class="req">*</span></label>
+          <label for="inp-description">Project Description <span class="req">*</span></label>
           <textarea id="inp-description" placeholder="Describe what you want to build or solve. What's the main problem? What does success look like? Who will use this? Any existing systems involved?"></textarea>
           <span class="error-msg">Please describe your project</span>
         </div>
@@ -813,7 +813,7 @@
 
       <div class="field-group three">
         <div class="field" id="f-complexity">
-          <label>Complexity <span class="req">*</span></label>
+          <label for="inp-complexity">Complexity <span class="req">*</span></label>
           <select id="inp-complexity">
             <option value="">Select...</option>
             <option value="Low">Low — straightforward</option>
@@ -823,7 +823,7 @@
           <span class="error-msg">Please select complexity</span>
         </div>
         <div class="field" id="f-duration">
-          <label>Timeline <span class="req">*</span></label>
+          <label for="inp-duration">Timeline <span class="req">*</span></label>
           <select id="inp-duration">
             <option value="">Select...</option>
             <option value="1-2 weeks">1–2 weeks</option>
@@ -835,7 +835,7 @@
           <span class="error-msg">Please select a timeline</span>
         </div>
         <div class="field">
-          <label>Team Size Needed</label>
+          <label for="inp-team">Team Size Needed</label>
           <select id="inp-team">
             <option value="1">Just me (1)</option>
             <option value="2">2 people</option>
@@ -930,7 +930,7 @@
       <!-- BUDGET -->
       <div class="field-group">
         <div class="field">
-          <label>Budget Range (USD)</label>
+          <label for="inp-budget">Budget Range (USD)</label>
           <select id="inp-budget">
             <option value="">Not defined yet</option>
             <option value="under_5k">Under $5,000</option>
@@ -941,14 +941,14 @@
           </select>
         </div>
         <div class="field">
-          <label>Preferred Start Date</label>
+          <label for="inp-start">Preferred Start Date</label>
           <input type="date" id="inp-start">
         </div>
       </div>
 
       <div class="field-group full">
         <div class="field">
-          <label>Additional Notes</label>
+          <label for="inp-notes">Additional Notes</label>
           <textarea id="inp-notes" placeholder="Anything else we should know? Existing tech stack, constraints, compliance requirements, integration needs..."></textarea>
         </div>
       </div>
@@ -1243,14 +1243,12 @@ function buildSummary() {
   const grid = document.getElementById('summary-grid');
   if (!grid) { console.error('summary-grid element NOT FOUND'); return; }
   grid.innerHTML = '';
-  console.log('📦 Building', items.length, 'summary items into', grid);
   items.forEach(([l,v,full]) => {
     const div = document.createElement('div');
     div.className = 'summary-item' + (full ? ' full' : '');
     div.innerHTML = '<div class="s-label">' + l + '</div><div class="s-value">' + (v || '—') + '</div>';
     grid.appendChild(div);
   });
-  console.log('✅ Summary grid children:', grid.children.length);
 }
 
 // ── SUBMIT ──
