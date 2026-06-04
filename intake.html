@@ -414,29 +414,33 @@
   }
 
   .summary-item {
-    background: var(--surface);
-    border: 1px solid var(--border);
+    background: #ffffff;
+    border: 1.5px solid #2E86C1;
     border-radius: 10px;
     padding: 0.8rem 1rem;
+    box-shadow: 0 2px 6px rgba(46,134,193,0.08);
   }
 
   .summary-item .s-label {
-    font-size: 0.72rem;
-    font-weight: 600;
-    color: var(--muted);
+    font-size: 0.70rem;
+    font-weight: 700;
+    color: #2E86C1;
     text-transform: uppercase;
-    letter-spacing: 0.7px;
-    margin-bottom: 0.25rem;
+    letter-spacing: 0.8px;
+    margin-bottom: 0.3rem;
   }
 
   .summary-item .s-value {
     font-size: 0.95rem;
     font-weight: 600;
-    color: var(--blue);
+    color: #1B4F72;
     word-break: break-word;
   }
+
   .summary-item.full {
     grid-column: 1 / -1;
+    background: #EBF5FB;
+    border-color: #1B4F72;
   }
 
   /* ── TOTAL BOX ── */
@@ -1204,12 +1208,6 @@ function calcEstimate() {
 
 // ── BUILD SUMMARY ──
 function buildSummary() {
-  // Debug — open browser console to verify values are being read
-  console.log('🔍 buildSummary called');
-  console.log('  name:',    document.getElementById('inp-name')?.value);
-  console.log('  company:', document.getElementById('inp-company')?.value);
-  console.log('  email:',   document.getElementById('inp-email')?.value);
-  console.log('  risks:',   state.selectedRisks);
   const e = calcEstimate();
   document.getElementById('est-total').textContent = `$${e.total.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})}`;
   document.getElementById('est-sub').textContent =
@@ -1253,14 +1251,6 @@ function buildSummary() {
     grid.appendChild(div);
   });
   console.log('✅ Summary grid children:', grid.children.length);
-  console.log('✅ Summary grid height:', grid.getBoundingClientRect().height);
-  console.log('✅ First child:', grid.children[0]?.outerHTML);
-  // Force visibility
-  grid.style.display = 'grid';
-  grid.style.visibility = 'visible';
-  grid.style.opacity = '1';
-  grid.style.minHeight = '200px';
-  grid.style.border = '2px solid red'; // TEMP: bright red border to confirm it's rendering
 }
 
 // ── SUBMIT ──
