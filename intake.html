@@ -1243,13 +1243,20 @@ function buildSummary() {
   ];
 
   const grid = document.getElementById('summary-grid');
+  if (!grid) { console.error('summary-grid element NOT FOUND'); return; }
   grid.innerHTML = '';
+  console.log('📦 Building', items.length, 'summary items into', grid);
   items.forEach(([l,v,full]) => {
     const div = document.createElement('div');
     div.className = 'summary-item' + (full ? ' full' : '');
-    div.innerHTML = `<div class="s-label">${l}</div><div class="s-value">${v || '—'}</div>`;
+    div.innerHTML = '<div class="s-label">' + l + '</div><div class="s-value">' + (v || '—') + '</div>';
     grid.appendChild(div);
   });
+  console.log('✅ Summary grid children:', grid.children.length);
+  // Force visibility
+  grid.style.display = 'grid';
+  grid.style.visibility = 'visible';
+  grid.style.opacity = '1';
 }
 
 // ── SUBMIT ──
