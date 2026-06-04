@@ -1253,10 +1253,14 @@ function buildSummary() {
     grid.appendChild(div);
   });
   console.log('✅ Summary grid children:', grid.children.length);
+  console.log('✅ Summary grid height:', grid.getBoundingClientRect().height);
+  console.log('✅ First child:', grid.children[0]?.outerHTML);
   // Force visibility
   grid.style.display = 'grid';
   grid.style.visibility = 'visible';
   grid.style.opacity = '1';
+  grid.style.minHeight = '200px';
+  grid.style.border = '2px solid red'; // TEMP: bright red border to confirm it's rendering
 }
 
 // ── SUBMIT ──
