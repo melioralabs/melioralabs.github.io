@@ -682,115 +682,358 @@
 
 <div class="divider"></div>
 
-<!-- PRICING CALCULATOR -->
-<section id="pricing-calculator" style="padding:80px 0 60px;background:#f8faf9;position:relative;overflow:hidden;">
-  <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(45,212,191,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(45,212,191,0.04) 1px,transparent 1px);background-size:40px 40px;pointer-events:none;"></div>
-  <div style="max-width:900px;margin:0 auto;padding:0 3rem;position:relative;">
+<!-- PRICING & PROJECT BRIEF — v2.2 -->
+<section id="pricing-calculator" style="padding:5rem 0 4rem;background:#FAFAF8;">
+<div style="max-width:1100px;margin:0 auto;padding:0 3rem;">
 
-    <div style="text-align:center;margin-bottom:3rem;">
-      <div class="section-tag reveal" data-i18n="calc.tag">Estimate your project</div>
-      <h2 class="section-title reveal reveal-delay-1" data-i18n="calc.title">Pricing Calculator</h2>
-      <p class="section-sub reveal reveal-delay-2" style="margin-left:auto;margin-right:auto;" data-i18n="calc.sub">Get an instant ballpark estimate. No commitment required — just fill in your project details below.</p>
+  <!-- ── Header ── -->
+  <div style="text-align:center;margin-bottom:3.5rem;">
+    <div class="section-tag reveal" data-i18n="rates.tag">Transparent Pricing</div>
+    <h2 class="section-title reveal reveal-delay-1" data-i18n="rates.title">Fair rates. No surprises.</h2>
+    <p class="section-sub reveal reveal-delay-2" style="margin:0 auto;" data-i18n="rates.sub">We charge significantly less than large consulting firms — without sacrificing 20+ years of hands-on expertise. Every engagement starts with a free discovery call.</p>
+  </div>
+
+  <!-- ── BLOCK 1: Rate Card ── -->
+  <div class="reveal" style="background:white;border:0.5px solid var(--gray-100);border-radius:16px;overflow:hidden;margin-bottom:1.5rem;box-shadow:0 2px 16px rgba(0,0,0,0.04);">
+
+    <!-- Rate card header -->
+    <div style="background:var(--teal-800);padding:1.25rem 2rem;display:grid;grid-template-columns:2fr 1.1fr 1.1fr 1.5fr;gap:1rem;align-items:center;">
+      <div style="font-family:'Playfair Display',serif;font-size:15px;font-weight:500;color:white;" data-i18n="rates.col.service">Service</div>
+      <div style="font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:1.5px;color:var(--teal-100);text-align:center;" data-i18n="rates.col.big4">Big 4 / Large Firms</div>
+      <div style="font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:1.5px;color:#6ee7b7;text-align:center;" data-i18n="rates.col.meliora">Meliora Labs</div>
+      <div style="font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:1.5px;color:var(--teal-100);text-align:center;" data-i18n="rates.col.why">Why we can do it</div>
     </div>
 
-    <div style="background:white;border:0.5px solid var(--gray-100);border-radius:16px;padding:2.5rem;box-shadow:0 4px 24px rgba(0,0,0,0.04);">
+    <!-- Row: Mainframe -->
+    <div style="display:grid;grid-template-columns:2fr 1.1fr 1.1fr 1.5fr;gap:1rem;padding:1.25rem 2rem;border-bottom:0.5px solid var(--gray-100);align-items:center;" class="rate-row">
+      <div>
+        <div style="font-size:14px;font-weight:500;color:var(--gray-900);margin-bottom:3px;" data-i18n="rates.r1.name">🔄 Mainframe Modernization</div>
+        <div style="font-size:12px;color:var(--gray-400);font-weight:300;" data-i18n="rates.r1.desc">z/OS migration, COBOL refactor, cloud lift</div>
+      </div>
+      <div style="text-align:center;">
+        <span style="font-size:13px;color:var(--gray-400);text-decoration:line-through;">$250–$400/hr</span>
+      </div>
+      <div style="text-align:center;">
+        <span style="display:inline-block;background:var(--teal-50);color:var(--teal-600);font-size:14px;font-weight:500;padding:4px 12px;border-radius:20px;border:0.5px solid var(--teal-100);">$145/hr</span>
+      </div>
+      <div style="font-size:12px;color:var(--gray-400);font-weight:300;" data-i18n="rates.r1.why">Boutique firm — no partner overhead, 100+ migrations delivered</div>
+    </div>
 
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;">
+    <!-- Row: Payments -->
+    <div style="display:grid;grid-template-columns:2fr 1.1fr 1.1fr 1.5fr;gap:1rem;padding:1.25rem 2rem;border-bottom:0.5px solid var(--gray-100);align-items:center;background:var(--gray-50);">
+      <div>
+        <div style="font-size:14px;font-weight:500;color:var(--gray-900);margin-bottom:3px;" data-i18n="rates.r2.name">🏦 Payments & Fintech</div>
+        <div style="font-size:12px;color:var(--gray-400);font-weight:300;" data-i18n="rates.r2.desc">ACH, RTP, SWIFT, OFAC, AML compliance</div>
+      </div>
+      <div style="text-align:center;">
+        <span style="font-size:13px;color:var(--gray-400);text-decoration:line-through;">$200–$350/hr</span>
+      </div>
+      <div style="text-align:center;">
+        <span style="display:inline-block;background:var(--teal-50);color:var(--teal-600);font-size:14px;font-weight:500;padding:4px 12px;border-radius:20px;border:0.5px solid var(--teal-100);">$125/hr</span>
+      </div>
+      <div style="font-size:12px;color:var(--gray-400);font-weight:300;" data-i18n="rates.r2.why">Specialist, not generalist — $50B+ in payment platforms delivered</div>
+    </div>
 
-        <!-- Project Type -->
-        <div style="grid-column:1/-1;">
-          <div style="font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:1.5px;color:var(--teal-400);margin-bottom:0.75rem;" data-i18n="calc.type">Project Type</div>
-          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px;">
-            <button class="calc-type-btn calc-active" data-value="mainframe" onclick="calcSelectType(this)" data-i18n="calc.t1" style="padding:10px 8px;background:var(--teal-50);border:1.5px solid var(--teal-400);border-radius:10px;color:var(--teal-600);font-size:13px;font-weight:500;cursor:pointer;transition:all .2s;text-align:center;font-family:'DM Sans',sans-serif;">Mainframe</button>
-            <button class="calc-type-btn" data-value="payments" onclick="calcSelectType(this)" data-i18n="calc.t2" style="padding:10px 8px;background:var(--gray-50);border:0.5px solid var(--gray-100);border-radius:10px;color:var(--gray-800);font-size:13px;font-weight:500;cursor:pointer;transition:all .2s;text-align:center;font-family:'DM Sans',sans-serif;">Payments</button>
-            <button class="calc-type-btn" data-value="cyber" onclick="calcSelectType(this)" data-i18n="calc.t3" style="padding:10px 8px;background:var(--gray-50);border:0.5px solid var(--gray-100);border-radius:10px;color:var(--gray-800);font-size:13px;font-weight:500;cursor:pointer;transition:all .2s;text-align:center;font-family:'DM Sans',sans-serif;">Cybersecurity</button>
-            <button class="calc-type-btn" data-value="fintech" onclick="calcSelectType(this)" data-i18n="calc.t4" style="padding:10px 8px;background:var(--gray-50);border:0.5px solid var(--gray-100);border-radius:10px;color:var(--gray-800);font-size:13px;font-weight:500;cursor:pointer;transition:all .2s;text-align:center;font-family:'DM Sans',sans-serif;">Fintech</button>
-            <button class="calc-type-btn" data-value="migration" onclick="calcSelectType(this)" data-i18n="calc.t5" style="padding:10px 8px;background:var(--gray-50);border:0.5px solid var(--gray-100);border-radius:10px;color:var(--gray-800);font-size:13px;font-weight:500;cursor:pointer;transition:all .2s;text-align:center;font-family:'DM Sans',sans-serif;">Migration</button>
-            <button class="calc-type-btn" data-value="consulting" onclick="calcSelectType(this)" data-i18n="calc.t6" style="padding:10px 8px;background:var(--gray-50);border:0.5px solid var(--gray-100);border-radius:10px;color:var(--gray-800);font-size:13px;font-weight:500;cursor:pointer;transition:all .2s;text-align:center;font-family:'DM Sans',sans-serif;">Consulting</button>
+    <!-- Row: Cybersecurity -->
+    <div style="display:grid;grid-template-columns:2fr 1.1fr 1.1fr 1.5fr;gap:1rem;padding:1.25rem 2rem;border-bottom:0.5px solid var(--gray-100);align-items:center;">
+      <div>
+        <div style="font-size:14px;font-weight:500;color:var(--gray-900);margin-bottom:3px;" data-i18n="rates.r3.name">🔒 Cybersecurity Audit</div>
+        <div style="font-size:12px;color:var(--gray-400);font-weight:300;" data-i18n="rates.r3.desc">Security assessment, PCI-DSS, SOX compliance</div>
+      </div>
+      <div style="text-align:center;">
+        <span style="font-size:13px;color:var(--gray-400);text-decoration:line-through;">$300–$500/hr</span>
+      </div>
+      <div style="text-align:center;">
+        <span style="display:inline-block;background:var(--teal-50);color:var(--teal-600);font-size:14px;font-weight:500;padding:4px 12px;border-radius:20px;border:0.5px solid var(--teal-100);">$155/hr</span>
+      </div>
+      <div style="font-size:12px;color:var(--gray-400);font-weight:300;" data-i18n="rates.r3.why">Banking-grade experience, lean team — you pay for expertise, not headcount</div>
+    </div>
+
+    <!-- Row: Fintech Integration -->
+    <div style="display:grid;grid-template-columns:2fr 1.1fr 1.1fr 1.5fr;gap:1rem;padding:1.25rem 2rem;border-bottom:0.5px solid var(--gray-100);align-items:center;background:var(--gray-50);">
+      <div>
+        <div style="font-size:14px;font-weight:500;color:var(--gray-900);margin-bottom:3px;" data-i18n="rates.r4.name">⚡ Fintech Integration</div>
+        <div style="font-size:12px;color:var(--gray-400);font-weight:300;" data-i18n="rates.r4.desc">API design, third-party integrations, cloud-native</div>
+      </div>
+      <div style="text-align:center;">
+        <span style="font-size:13px;color:var(--gray-400);text-decoration:line-through;">$175–$300/hr</span>
+      </div>
+      <div style="text-align:center;">
+        <span style="display:inline-block;background:var(--teal-50);color:var(--teal-600);font-size:14px;font-weight:500;padding:4px 12px;border-radius:20px;border:0.5px solid var(--teal-100);">$115/hr</span>
+      </div>
+      <div style="font-size:12px;color:var(--gray-400);font-weight:300;" data-i18n="rates.r4.why">Deep API & cloud experience across US, Mexico, Spain markets</div>
+    </div>
+
+    <!-- Row: Legacy Migration -->
+    <div style="display:grid;grid-template-columns:2fr 1.1fr 1.1fr 1.5fr;gap:1rem;padding:1.25rem 2rem;border-bottom:0.5px solid var(--gray-100);align-items:center;">
+      <div>
+        <div style="font-size:14px;font-weight:500;color:var(--gray-900);margin-bottom:3px;" data-i18n="rates.r5.name">🔁 Legacy Migration</div>
+        <div style="font-size:12px;color:var(--gray-400);font-weight:300;" data-i18n="rates.r5.desc">On-prem to cloud, data migration, zero-downtime cutover</div>
+      </div>
+      <div style="text-align:center;">
+        <span style="font-size:13px;color:var(--gray-400);text-decoration:line-through;">$200–$350/hr</span>
+      </div>
+      <div style="text-align:center;">
+        <span style="display:inline-block;background:var(--teal-50);color:var(--teal-600);font-size:14px;font-weight:500;padding:4px 12px;border-radius:20px;border:0.5px solid var(--teal-100);">$135/hr</span>
+      </div>
+      <div style="font-size:12px;color:var(--gray-400);font-weight:300;" data-i18n="rates.r5.why">14 years zero rollback record — we've done it at scale</div>
+    </div>
+
+    <!-- Row: IT Consulting -->
+    <div style="display:grid;grid-template-columns:2fr 1.1fr 1.1fr 1.5fr;gap:1rem;padding:1.25rem 2rem;align-items:center;background:var(--gray-50);">
+      <div>
+        <div style="font-size:14px;font-weight:500;color:var(--gray-900);margin-bottom:3px;" data-i18n="rates.r6.name">🤖 AI-Powered IT Consulting</div>
+        <div style="font-size:12px;color:var(--gray-400);font-weight:300;" data-i18n="rates.r6.desc">Strategy, delivery governance, AI tooling</div>
+      </div>
+      <div style="text-align:center;">
+        <span style="font-size:13px;color:var(--gray-400);text-decoration:line-through;">$150–$250/hr</span>
+      </div>
+      <div style="text-align:center;">
+        <span style="display:inline-block;background:var(--teal-50);color:var(--teal-600);font-size:14px;font-weight:500;padding:4px 12px;border-radius:20px;border:0.5px solid var(--teal-100);">$95/hr</span>
+      </div>
+      <div style="font-size:12px;color:var(--gray-400);font-weight:300;" data-i18n="rates.r6.why">Independent firm — lower overhead means better rates for you</div>
+    </div>
+
+    <!-- Rate card footer note -->
+    <div style="padding:1rem 2rem;background:var(--teal-50);border-top:0.5px solid var(--teal-100);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;">
+      <p style="font-size:12px;color:var(--teal-600);margin:0;font-weight:300;" data-i18n="rates.note">* All rates in USD. Project minimums apply. Mexico and Spain engagements adjusted for local market. Free discovery call always included.</p>
+      <a href="#project-brief" class="btn-primary" style="font-size:13px;padding:9px 20px;" data-i18n="rates.cta">Tell us about your project →</a>
+    </div>
+  </div>
+
+  <!-- ── BLOCK 2: AWS Cost Benefit ── -->
+  <div class="reveal" style="background:white;border:0.5px solid var(--gray-100);border-radius:16px;overflow:hidden;margin-bottom:1.5rem;box-shadow:0 2px 16px rgba(0,0,0,0.04);">
+
+    <div style="padding:2rem 2rem 0;">
+      <div class="section-tag" style="margin-bottom:0.5rem;" data-i18n="aws.tag">No infrastructure needed</div>
+      <h3 style="font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:500;color:var(--gray-900);margin:0 0 0.5rem;" data-i18n="aws.title">We bring the infrastructure. You pay only for what you use.</h3>
+      <p style="font-size:14px;color:var(--gray-800);font-weight:300;max-width:620px;line-height:1.75;margin:0 0 2rem;" data-i18n="aws.sub">No servers to buy. No data center to maintain. No separate IT infrastructure team to hire. We build everything on AWS — and pass the savings to you.</p>
+    </div>
+
+    <!-- 3-column comparison -->
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;border-top:0.5px solid var(--gray-100);">
+
+      <!-- Build it yourself -->
+      <div style="padding:1.75rem;border-right:0.5px solid var(--gray-100);">
+        <div style="font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:1.5px;color:var(--gray-400);margin-bottom:1rem;" data-i18n="aws.col1.label">Build it yourself</div>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;font-size:13px;">
+            <span style="color:var(--gray-800);font-weight:300;" data-i18n="aws.item.servers">Servers / hardware</span>
+            <span style="color:var(--gray-900);font-weight:500;">$40k–$200k</span>
           </div>
-        </div>
-
-        <!-- Complexity -->
-        <div>
-          <div style="font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:1.5px;color:var(--teal-400);margin-bottom:0.75rem;" data-i18n="calc.complexity">Complexity</div>
-          <div style="display:flex;flex-direction:column;gap:6px;">
-            <button class="calc-complexity-btn calc-active" data-value="1" onclick="calcSelectOpt('complexity',this)" data-i18n="calc.c1" style="padding:9px 14px;background:var(--teal-50);border:1.5px solid var(--teal-400);border-radius:8px;color:var(--teal-600);font-size:13px;cursor:pointer;text-align:left;transition:all .2s;font-family:'DM Sans',sans-serif;">Simple — well-defined scope</button>
-            <button class="calc-complexity-btn" data-value="1.6" onclick="calcSelectOpt('complexity',this)" data-i18n="calc.c2" style="padding:9px 14px;background:var(--gray-50);border:0.5px solid var(--gray-100);border-radius:8px;color:var(--gray-800);font-size:13px;cursor:pointer;text-align:left;transition:all .2s;font-family:'DM Sans',sans-serif;">Medium — some unknowns</button>
-            <button class="calc-complexity-btn" data-value="2.4" onclick="calcSelectOpt('complexity',this)" data-i18n="calc.c3" style="padding:9px 14px;background:var(--gray-50);border:0.5px solid var(--gray-100);border-radius:8px;color:var(--gray-800);font-size:13px;cursor:pointer;text-align:left;transition:all .2s;font-family:'DM Sans',sans-serif;">Complex — multiple integrations</button>
-            <button class="calc-complexity-btn" data-value="3.5" onclick="calcSelectOpt('complexity',this)" data-i18n="calc.c4" style="padding:9px 14px;background:var(--gray-50);border:0.5px solid var(--gray-100);border-radius:8px;color:var(--gray-800);font-size:13px;cursor:pointer;text-align:left;transition:all .2s;font-family:'DM Sans',sans-serif;">Enterprise — critical systems</button>
+          <div style="display:flex;justify-content:space-between;align-items:baseline;font-size:13px;">
+            <span style="color:var(--gray-800);font-weight:300;" data-i18n="aws.item.staff">Infra team (1–2 FTEs)</span>
+            <span style="color:var(--gray-900);font-weight:500;">$120k–$240k/yr</span>
           </div>
-        </div>
-
-        <!-- Right column -->
-        <div style="display:flex;flex-direction:column;gap:1.5rem;">
-
-          <!-- Team -->
-          <div>
-            <div style="font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:1.5px;color:var(--teal-400);margin-bottom:0.75rem;" data-i18n="calc.team">Client Team Size</div>
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;">
-              <button class="calc-team-btn calc-active" data-value="1" onclick="calcSelectOpt('team',this)" data-i18n="calc.tm1" style="padding:9px;background:var(--teal-50);border:1.5px solid var(--teal-400);border-radius:8px;color:var(--teal-600);font-size:13px;cursor:pointer;transition:all .2s;font-family:'DM Sans',sans-serif;">Solo</button>
-              <button class="calc-team-btn" data-value="1.3" onclick="calcSelectOpt('team',this)" data-i18n="calc.tm2" style="padding:9px;background:var(--gray-50);border:0.5px solid var(--gray-100);border-radius:8px;color:var(--gray-800);font-size:13px;cursor:pointer;transition:all .2s;font-family:'DM Sans',sans-serif;">Small (2–3)</button>
-              <button class="calc-team-btn" data-value="1.6" onclick="calcSelectOpt('team',this)" data-i18n="calc.tm3" style="padding:9px;background:var(--gray-50);border:0.5px solid var(--gray-100);border-radius:8px;color:var(--gray-800);font-size:13px;cursor:pointer;transition:all .2s;font-family:'DM Sans',sans-serif;">Medium (4–6)</button>
-              <button class="calc-team-btn" data-value="2" onclick="calcSelectOpt('team',this)" data-i18n="calc.tm4" style="padding:9px;background:var(--gray-50);border:0.5px solid var(--gray-100);border-radius:8px;color:var(--gray-800);font-size:13px;cursor:pointer;transition:all .2s;font-family:'DM Sans',sans-serif;">Large (7+)</button>
-            </div>
+          <div style="display:flex;justify-content:space-between;align-items:baseline;font-size:13px;">
+            <span style="color:var(--gray-800);font-weight:300;" data-i18n="aws.item.licenses">Software licenses</span>
+            <span style="color:var(--gray-900);font-weight:500;">$15k–$60k/yr</span>
           </div>
-
-          <!-- Timeline -->
-          <div>
-            <div style="font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:1.5px;color:var(--teal-400);margin-bottom:0.75rem;" data-i18n="calc.timeline">Target Timeline</div>
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;">
-              <button class="calc-timeline-btn calc-active" data-value="0.8" onclick="calcSelectOpt('timeline',this)" data-i18n="calc.tl1" style="padding:9px;background:var(--teal-50);border:1.5px solid var(--teal-400);border-radius:8px;color:var(--teal-600);font-size:12px;cursor:pointer;transition:all .2s;font-family:'DM Sans',sans-serif;">1–2 weeks</button>
-              <button class="calc-timeline-btn" data-value="1" onclick="calcSelectOpt('timeline',this)" data-i18n="calc.tl2" style="padding:9px;background:var(--gray-50);border:0.5px solid var(--gray-100);border-radius:8px;color:var(--gray-800);font-size:12px;cursor:pointer;transition:all .2s;font-family:'DM Sans',sans-serif;">~1 month</button>
-              <button class="calc-timeline-btn" data-value="1.3" onclick="calcSelectOpt('timeline',this)" data-i18n="calc.tl3" style="padding:9px;background:var(--gray-50);border:0.5px solid var(--gray-100);border-radius:8px;color:var(--gray-800);font-size:12px;cursor:pointer;transition:all .2s;font-family:'DM Sans',sans-serif;">2–3 months</button>
-              <button class="calc-timeline-btn" data-value="1.8" onclick="calcSelectOpt('timeline',this)" data-i18n="calc.tl4" style="padding:9px;background:var(--gray-50);border:0.5px solid var(--gray-100);border-radius:8px;color:var(--gray-800);font-size:12px;cursor:pointer;transition:all .2s;font-family:'DM Sans',sans-serif;">6+ months</button>
-            </div>
+          <div style="display:flex;justify-content:space-between;align-items:baseline;font-size:13px;">
+            <span style="color:var(--gray-800);font-weight:300;" data-i18n="aws.item.maint">Maintenance & downtime</span>
+            <span style="color:var(--gray-900);font-weight:500;">$20k–$80k/yr</span>
           </div>
-
-          <!-- Market -->
-          <div>
-            <div style="font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:1.5px;color:var(--teal-400);margin-bottom:0.75rem;" data-i18n="calc.market">Your Market</div>
-            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;">
-              <button class="calc-market-btn calc-active" data-value="1" onclick="calcSelectOpt('market',this)" style="padding:9px 4px;background:var(--teal-50);border:1.5px solid var(--teal-400);border-radius:8px;color:var(--teal-600);font-size:13px;cursor:pointer;transition:all .2s;font-family:'DM Sans',sans-serif;">🇺🇸 USA</button>
-              <button class="calc-market-btn" data-value="0.65" onclick="calcSelectOpt('market',this)" style="padding:9px 4px;background:var(--gray-50);border:0.5px solid var(--gray-100);border-radius:8px;color:var(--gray-800);font-size:13px;cursor:pointer;transition:all .2s;font-family:'DM Sans',sans-serif;">🇲🇽 Mexico</button>
-              <button class="calc-market-btn" data-value="0.8" onclick="calcSelectOpt('market',this)" style="padding:9px 4px;background:var(--gray-50);border:0.5px solid var(--gray-100);border-radius:8px;color:var(--gray-800);font-size:13px;cursor:pointer;transition:all .2s;font-family:'DM Sans',sans-serif;">🇪🇸 Spain</button>
-            </div>
+          <div style="height:0.5px;background:var(--gray-100);margin:4px 0;"></div>
+          <div style="display:flex;justify-content:space-between;align-items:baseline;">
+            <span style="font-size:13px;color:var(--gray-800);font-weight:500;" data-i18n="aws.total.self">3-yr total cost</span>
+            <span style="font-size:16px;color:var(--gray-900);font-weight:500;font-family:'Playfair Display',serif;">$600k+</span>
           </div>
-
         </div>
       </div>
 
-      <!-- Divider -->
-      <div style="height:0.5px;background:var(--gray-100);margin:2rem 0;"></div>
-
-      <!-- Results -->
-      <div id="calc-results" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;margin-bottom:1.5rem;transition:opacity .2s;">
-        <div style="background:var(--teal-50);border:0.5px solid var(--teal-100);border-radius:12px;padding:1.25rem;text-align:center;">
-          <div style="font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:1.5px;color:var(--teal-400);margin-bottom:8px;" data-i18n="calc.rcost">Estimated Cost</div>
-          <div id="calc-result-cost" style="font-size:22px;font-weight:500;color:var(--teal-600);font-family:'Playfair Display',serif;line-height:1.2;">—</div>
-          <div style="font-size:11px;color:var(--gray-400);margin-top:4px;">USD</div>
-        </div>
-        <div style="background:var(--gray-50);border:0.5px solid var(--gray-100);border-radius:12px;padding:1.25rem;text-align:center;">
-          <div style="font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:1.5px;color:var(--teal-400);margin-bottom:8px;" data-i18n="calc.rhours">Estimated Hours</div>
-          <div id="calc-result-hours" style="font-size:22px;font-weight:500;color:var(--gray-900);font-family:'Playfair Display',serif;line-height:1.2;">—</div>
-          <div style="font-size:11px;color:var(--gray-400);margin-top:4px;" data-i18n="calc.rtotal">project total</div>
-        </div>
-        <div style="background:var(--teal-50);border:0.5px solid var(--teal-100);border-radius:12px;padding:1.25rem;text-align:center;">
-          <div style="font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:1.5px;color:var(--teal-400);margin-bottom:8px;" data-i18n="calc.rtier">Recommended Tier</div>
-          <div id="calc-result-tier" style="font-size:22px;font-weight:500;color:var(--teal-600);font-family:'Playfair Display',serif;line-height:1.2;">—</div>
-          <div style="font-size:11px;color:var(--gray-400);margin-top:4px;" data-i18n="calc.rpackage">service package</div>
+      <!-- With Meliora + AWS -->
+      <div style="padding:1.75rem;border-right:0.5px solid var(--teal-100);background:var(--teal-50);">
+        <div style="font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:1.5px;color:var(--teal-400);margin-bottom:1rem;" data-i18n="aws.col2.label">With Meliora + AWS</div>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;font-size:13px;">
+            <span style="color:var(--gray-800);font-weight:300;" data-i18n="aws.item.servers">Servers / hardware</span>
+            <span style="color:var(--teal-600);font-weight:500;">$0</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:baseline;font-size:13px;">
+            <span style="color:var(--gray-800);font-weight:300;" data-i18n="aws.item.staff">Infra team</span>
+            <span style="color:var(--teal-600);font-weight:500;">$0 <span style="font-size:11px;font-weight:300;">(we handle it)</span></span>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:baseline;font-size:13px;">
+            <span style="color:var(--gray-800);font-weight:300;" data-i18n="aws.item.aws">AWS usage (pay-as-you-go)</span>
+            <span style="color:var(--teal-600);font-weight:500;">$300–$2k/mo</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:baseline;font-size:13px;">
+            <span style="color:var(--gray-800);font-weight:300;" data-i18n="aws.item.meliora">Meliora engagement fee</span>
+            <span style="color:var(--teal-600);font-weight:500;">per project</span>
+          </div>
+          <div style="height:0.5px;background:var(--teal-100);margin:4px 0;"></div>
+          <div style="display:flex;justify-content:space-between;align-items:baseline;">
+            <span style="font-size:13px;color:var(--teal-600);font-weight:500;" data-i18n="aws.total.meliora">3-yr total cost</span>
+            <span style="font-size:16px;color:var(--teal-600);font-weight:500;font-family:'Playfair Display',serif;">~$200k</span>
+          </div>
         </div>
       </div>
 
-      <!-- CTA row -->
-      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;">
-        <p style="font-size:12px;color:var(--gray-400);margin:0;line-height:1.6;max-width:420px;" data-i18n="calc.disclaimer">* Indicative ranges based on project parameters. Final pricing confirmed after a free discovery call.</p>
-        <a href="#contact-form" class="btn-primary" data-i18n="calc.cta">Get a Free Quote →</a>
+      <!-- Savings callout -->
+      <div style="padding:1.75rem;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;background:var(--teal-800);">
+        <div style="font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:1.5px;color:var(--teal-100);margin-bottom:0.75rem;" data-i18n="aws.savings.label">Typical savings</div>
+        <div style="font-family:'Playfair Display',serif;font-size:3rem;font-weight:500;color:white;line-height:1;">~66%</div>
+        <div style="font-size:13px;color:var(--teal-100);margin:0.5rem 0 1.5rem;font-weight:300;" data-i18n="aws.savings.sub">lower infrastructure cost vs. building it yourself</div>
+        <div style="font-size:11px;color:var(--teal-100);opacity:0.7;font-weight:300;line-height:1.5;" data-i18n="aws.savings.source">Source: ESG / AWS 3-yr TCO study. Actual savings vary by workload.</div>
       </div>
 
     </div>
   </div>
+
+  <!-- ── BLOCK 3: Project Brief Form ── -->
+  <div id="project-brief" class="reveal" style="background:white;border:0.5px solid var(--gray-100);border-radius:16px;overflow:hidden;box-shadow:0 2px 16px rgba(0,0,0,0.04);">
+
+    <div style="padding:2rem 2rem 0;">
+      <div class="section-tag" style="margin-bottom:0.5rem;" data-i18n="brief.tag">Start the conversation</div>
+      <h3 style="font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:500;color:var(--gray-900);margin:0 0 0.5rem;" data-i18n="brief.title">Tell us about your project</h3>
+      <p style="font-size:14px;color:var(--gray-800);font-weight:300;max-width:580px;line-height:1.75;margin:0 0 2rem;" data-i18n="brief.sub">Answer a few questions and we'll come back with a real estimate — no generic quotes, no automated responses. A real engineer will review this and reply within 24 hours.</p>
+    </div>
+
+    <form id="projectBriefForm" action="https://formspree.io/f/mdajyype" method="POST" onsubmit="handleBriefSubmit(event)" style="padding:0 2rem 2rem;">
+
+      <!-- Row 1: Name + Company -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;">
+        <div>
+          <label style="display:block;font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:1px;color:var(--teal-400);margin-bottom:6px;" data-i18n="brief.name">Your name *</label>
+          <input class="form-input" type="text" name="name" required data-i18n-placeholder="brief.namePh" placeholder="Maria González" />
+        </div>
+        <div>
+          <label style="display:block;font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:1px;color:var(--teal-400);margin-bottom:6px;" data-i18n="brief.company">Company *</label>
+          <input class="form-input" type="text" name="company" required data-i18n-placeholder="brief.companyPh" placeholder="Acme Bank" />
+        </div>
+      </div>
+
+      <!-- Row 2: Email + Market -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;">
+        <div>
+          <label style="display:block;font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:1px;color:var(--teal-400);margin-bottom:6px;" data-i18n="brief.email">Work email *</label>
+          <input class="form-input" type="email" name="email" required data-i18n-placeholder="brief.emailPh" placeholder="maria@acmebank.com" />
+        </div>
+        <div>
+          <label style="display:block;font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:1px;color:var(--teal-400);margin-bottom:6px;" data-i18n="brief.market">Your market *</label>
+          <select class="form-select" name="market" required>
+            <option value="" data-i18n="brief.marketPh">Select your country</option>
+            <option value="USA">🇺🇸 United States</option>
+            <option value="Mexico">🇲🇽 Mexico</option>
+            <option value="Spain">🇪🇸 Spain</option>
+            <option value="Other" data-i18n="brief.marketOther">Other</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Row 3: Service needed -->
+      <div style="margin-bottom:1rem;">
+        <label style="display:block;font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:1px;color:var(--teal-400);margin-bottom:8px;" data-i18n="brief.service">What do you need? (select all that apply)</label>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:8px;">
+          <label style="display:flex;align-items:center;gap:8px;background:var(--gray-50);border:0.5px solid var(--gray-100);border-radius:8px;padding:10px 12px;cursor:pointer;font-size:13px;color:var(--gray-800);transition:border-color .2s;" onmouseover="this.style.borderColor='var(--teal-100)'" onmouseout="this.style.borderColor='var(--gray-100)'"><input type="checkbox" name="service_mainframe" style="accent-color:var(--teal-400);" /> <span data-i18n="brief.svc1">🔄 Mainframe Modernization</span></label>
+          <label style="display:flex;align-items:center;gap:8px;background:var(--gray-50);border:0.5px solid var(--gray-100);border-radius:8px;padding:10px 12px;cursor:pointer;font-size:13px;color:var(--gray-800);transition:border-color .2s;" onmouseover="this.style.borderColor='var(--teal-100)'" onmouseout="this.style.borderColor='var(--gray-100)'"><input type="checkbox" name="service_payments" style="accent-color:var(--teal-400);" /> <span data-i18n="brief.svc2">🏦 Payments & Fintech</span></label>
+          <label style="display:flex;align-items:center;gap:8px;background:var(--gray-50);border:0.5px solid var(--gray-100);border-radius:8px;padding:10px 12px;cursor:pointer;font-size:13px;color:var(--gray-800);transition:border-color .2s;" onmouseover="this.style.borderColor='var(--teal-100)'" onmouseout="this.style.borderColor='var(--gray-100)'"><input type="checkbox" name="service_cyber" style="accent-color:var(--teal-400);" /> <span data-i18n="brief.svc3">🔒 Cybersecurity Audit</span></label>
+          <label style="display:flex;align-items:center;gap:8px;background:var(--gray-50);border:0.5px solid var(--gray-100);border-radius:8px;padding:10px 12px;cursor:pointer;font-size:13px;color:var(--gray-800);transition:border-color .2s;" onmouseover="this.style.borderColor='var(--teal-100)'" onmouseout="this.style.borderColor='var(--gray-100)'"><input type="checkbox" name="service_migration" style="accent-color:var(--teal-400);" /> <span data-i18n="brief.svc4">🔁 Legacy Migration</span></label>
+          <label style="display:flex;align-items:center;gap:8px;background:var(--gray-50);border:0.5px solid var(--gray-100);border-radius:8px;padding:10px 12px;cursor:pointer;font-size:13px;color:var(--gray-800);transition:border-color .2s;" onmouseover="this.style.borderColor='var(--teal-100)'" onmouseout="this.style.borderColor='var(--gray-100)'"><input type="checkbox" name="service_aws" style="accent-color:var(--teal-400);" /> <span data-i18n="brief.svc5">☁️ AWS / Cloud Setup</span></label>
+          <label style="display:flex;align-items:center;gap:8px;background:var(--gray-50);border:0.5px solid var(--gray-100);border-radius:8px;padding:10px 12px;cursor:pointer;font-size:13px;color:var(--gray-800);transition:border-color .2s;" onmouseover="this.style.borderColor='var(--teal-100)'" onmouseout="this.style.borderColor='var(--gray-100)'"><input type="checkbox" name="service_consulting" style="accent-color:var(--teal-400);" /> <span data-i18n="brief.svc6">🤖 AI-Powered Consulting</span></label>
+        </div>
+      </div>
+
+      <!-- Row 4: Systems + Compliance -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;">
+        <div>
+          <label style="display:block;font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:1px;color:var(--teal-400);margin-bottom:6px;" data-i18n="brief.systems">Systems involved</label>
+          <select class="form-select" name="systems">
+            <option value="" data-i18n="brief.systemsPh">Select primary system</option>
+            <option value="Mainframe z/OS">Mainframe / z/OS</option>
+            <option value="Core Banking">Core Banking Platform</option>
+            <option value="Payment Gateway">Payment Gateway</option>
+            <option value="Custom App">Custom Application</option>
+            <option value="Cloud">Cloud / AWS / Azure</option>
+            <option value="Multiple">Multiple systems</option>
+            <option value="Not sure" data-i18n="brief.notSure">Not sure yet</option>
+          </select>
+        </div>
+        <div>
+          <label style="display:block;font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:1px;color:var(--teal-400);margin-bottom:6px;" data-i18n="brief.compliance">Compliance requirements</label>
+          <select class="form-select" name="compliance">
+            <option value="None / Unknown" data-i18n="brief.complianceNone">None / Not sure</option>
+            <option value="PCI-DSS">PCI-DSS</option>
+            <option value="SOX">SOX</option>
+            <option value="OFAC / AML">OFAC / AML</option>
+            <option value="Multiple">Multiple requirements</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Row 5: Timeline + Budget -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;">
+        <div>
+          <label style="display:block;font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:1px;color:var(--teal-400);margin-bottom:6px;" data-i18n="brief.timeline">Target go-live</label>
+          <select class="form-select" name="timeline">
+            <option value="" data-i18n="brief.timelinePh">Select a timeframe</option>
+            <option value="ASAP" data-i18n="brief.tl1">As soon as possible</option>
+            <option value="1-3 months" data-i18n="brief.tl2">1–3 months</option>
+            <option value="3-6 months" data-i18n="brief.tl3">3–6 months</option>
+            <option value="6-12 months" data-i18n="brief.tl4">6–12 months</option>
+            <option value="Flexible" data-i18n="brief.tl5">Flexible / Exploring</option>
+          </select>
+        </div>
+        <div>
+          <label style="display:block;font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:1px;color:var(--teal-400);margin-bottom:6px;" data-i18n="brief.budget">Budget range (USD) *</label>
+          <select class="form-select" name="budget" required>
+            <option value="" data-i18n="brief.budgetPh">Select your range</option>
+            <option value="Under $10k" data-i18n="brief.b1">Under $10,000</option>
+            <option value="$10k-$50k" data-i18n="brief.b2">$10,000 – $50,000</option>
+            <option value="$50k-$100k" data-i18n="brief.b3">$50,000 – $100,000</option>
+            <option value="$100k+" data-i18n="brief.b4">$100,000+</option>
+            <option value="TBD" data-i18n="brief.b5">Not defined yet</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Row 6: Documentation + Team size -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;">
+        <div>
+          <label style="display:block;font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:1px;color:var(--teal-400);margin-bottom:6px;" data-i18n="brief.docs">Existing documentation</label>
+          <select class="form-select" name="documentation">
+            <option value="Yes — complete" data-i18n="brief.doc1">Yes — complete docs available</option>
+            <option value="Partial" data-i18n="brief.doc2">Partial — some docs exist</option>
+            <option value="None" data-i18n="brief.doc3">None — starting from scratch</option>
+          </select>
+        </div>
+        <div>
+          <label style="display:block;font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:1px;color:var(--teal-400);margin-bottom:6px;" data-i18n="brief.teamsize">Your team size</label>
+          <select class="form-select" name="team_size">
+            <option value="Solo / 1" data-i18n="brief.ts1">Solo / 1 person</option>
+            <option value="2-5" data-i18n="brief.ts2">2–5 people</option>
+            <option value="6-15" data-i18n="brief.ts3">6–15 people</option>
+            <option value="15+" data-i18n="brief.ts4">15+ people</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Row 7: Project description -->
+      <div style="margin-bottom:1.5rem;">
+        <label style="display:block;font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:1px;color:var(--teal-400);margin-bottom:6px;" data-i18n="brief.desc">Describe your project *</label>
+        <textarea class="form-input" name="message" required rows="4" data-i18n-placeholder="brief.descPh" placeholder="Tell us what you're trying to build, migrate, or fix. The more detail, the better estimate we can give you." style="min-height:100px;resize:vertical;"></textarea>
+      </div>
+
+      <!-- Hidden field to identify source -->
+      <input type="hidden" name="_subject" value="[Meliora Labs] New Project Brief" />
+
+      <!-- Submit row -->
+      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;">
+        <p style="font-size:12px;color:var(--gray-400);margin:0;font-weight:300;line-height:1.6;max-width:420px;" data-i18n="brief.privacy">Your information is never shared. We'll respond within 24 hours with a real estimate — not an automated reply.</p>
+        <button type="submit" class="btn-primary" data-i18n="brief.submit">Send Project Brief →</button>
+      </div>
+
+      <!-- Success message -->
+      <div id="briefSuccess" style="display:none;margin-top:1.25rem;background:var(--teal-50);border:0.5px solid var(--teal-100);border-radius:10px;padding:1rem 1.25rem;font-size:14px;color:var(--teal-600);font-weight:300;" data-i18n="brief.success">
+        ✅ Brief received! A real engineer will review this and respond within 24 hours. Thank you for reaching out.
+      </div>
+    </form>
+  </div>
+
+</div>
 </section>
-<!-- END PRICING CALCULATOR -->
+<!-- END PRICING & PROJECT BRIEF -->
+
 
 <div class="divider"></div>
 
@@ -1966,112 +2209,136 @@ function resetChat() {
 }
 </script>
 
-<!-- PRICING CALCULATOR SCRIPT -->
+<!-- PRICING & BRIEF SCRIPT -->
 <script>
-(function() {
-  var BASE = {
-    mainframe:  { low: 8000,  high: 18000, hrs: [80,  160] },
-    payments:   { low: 6000,  high: 14000, hrs: [60,  120] },
-    cyber:      { low: 4000,  high: 10000, hrs: [40,   90] },
-    fintech:    { low: 5000,  high: 12000, hrs: [50,  110] },
-    migration:  { low: 7000,  high: 16000, hrs: [70,  150] },
-    consulting: { low: 2500,  high: 6000,  hrs: [25,   60] }
-  };
-
-  function getTier(rawLow) {
-    if (rawLow < 5000)  return { en: 'Small',  es: 'Pequeño'  };
-    if (rawLow < 15000) return { en: 'Medium', es: 'Mediano'  };
-    return                     { en: 'Large',  es: 'Grande'   };
-  }
-
-  var calcState = { type: 'mainframe', complexity: 1, team: 1, timeline: 0.8, market: 1 };
-
-  function calcUpdate() {
-    var b = BASE[calcState.type];
-    var mult = calcState.complexity * calcState.team * calcState.timeline;
-    var costLow  = Math.round((b.low  * mult * calcState.market) / 500) * 500;
-    var costHigh = Math.round((b.high * mult * calcState.market) / 500) * 500;
-    var hrsLow   = Math.round(b.hrs[0] * calcState.complexity * calcState.team);
-    var hrsHigh  = Math.round(b.hrs[1] * calcState.complexity * calcState.team);
-    var tier = getTier(b.low * mult);
-    var lang = document.documentElement.lang || 'en';
-    function fmt(n) { return n >= 1000 ? '$' + (n/1000).toFixed(n % 1000 === 0 ? 0 : 1) + 'k' : '$' + n; }
-    document.getElementById('calc-result-cost').textContent  = fmt(costLow) + ' – ' + fmt(costHigh);
-    document.getElementById('calc-result-hours').textContent = hrsLow + ' – ' + hrsHigh + ' hrs';
-    document.getElementById('calc-result-tier').textContent  = lang === 'es' ? tier.es : tier.en;
-    var r = document.getElementById('calc-results');
-    r.style.opacity = '0.3';
-    setTimeout(function() { r.style.opacity = '1'; }, 180);
-  }
-
-  window.calcSelectType = function(btn) {
-    document.querySelectorAll('.calc-type-btn').forEach(function(b) {
-      b.style.background = 'var(--gray-50)'; b.style.border = '0.5px solid var(--gray-100)'; b.style.color = 'var(--gray-800)';
-    });
-    btn.style.background = 'var(--teal-50)'; btn.style.border = '1.5px solid var(--teal-400)'; btn.style.color = 'var(--teal-600)';
-    calcState.type = btn.dataset.value;
-    calcUpdate();
-  };
-
-  window.calcSelectOpt = function(group, btn) {
-    document.querySelectorAll('.calc-' + group + '-btn').forEach(function(b) {
-      b.style.background = 'var(--gray-50)'; b.style.border = '0.5px solid var(--gray-100)'; b.style.color = 'var(--gray-800)';
-    });
-    btn.style.background = 'var(--teal-50)'; btn.style.border = '1.5px solid var(--teal-400)'; btn.style.color = 'var(--teal-600)';
-    calcState[group] = parseFloat(btn.dataset.value);
-    calcUpdate();
-  };
-
-  var calcI18n = {
-    en: {
-      'calc.tag':'Estimate your project','calc.title':'Pricing Calculator',
-      'calc.sub':'Get an instant ballpark estimate. No commitment required — just fill in your project details below.',
-      'calc.type':'Project Type','calc.complexity':'Complexity','calc.team':'Client Team Size',
-      'calc.timeline':'Target Timeline','calc.market':'Your Market',
-      'calc.t1':'Mainframe','calc.t2':'Payments','calc.t3':'Cybersecurity',
-      'calc.t4':'Fintech','calc.t5':'Migration','calc.t6':'Consulting',
-      'calc.c1':'Simple — well-defined scope','calc.c2':'Medium — some unknowns',
-      'calc.c3':'Complex — multiple integrations','calc.c4':'Enterprise — critical systems',
-      'calc.tm1':'Solo','calc.tm2':'Small (2–3)','calc.tm3':'Medium (4–6)','calc.tm4':'Large (7+)',
-      'calc.tl1':'1–2 weeks','calc.tl2':'~1 month','calc.tl3':'2–3 months','calc.tl4':'6+ months',
-      'calc.rcost':'Estimated Cost','calc.rhours':'Estimated Hours','calc.rtier':'Recommended Tier',
-      'calc.rtotal':'project total','calc.rpackage':'service package',
-      'calc.disclaimer':'* Indicative ranges based on project parameters. Final pricing confirmed after a free discovery call.',
-      'calc.cta':'Get a Free Quote →'
-    },
-    es: {
-      'calc.tag':'Estima tu proyecto','calc.title':'Calculadora de Precios',
-      'calc.sub':'Obtén una estimación instantánea. Sin compromiso — solo completa los detalles de tu proyecto.',
-      'calc.type':'Tipo de Proyecto','calc.complexity':'Complejidad','calc.team':'Tamaño del Equipo Cliente',
-      'calc.timeline':'Plazo Objetivo','calc.market':'Tu Mercado',
-      'calc.t1':'Mainframe','calc.t2':'Pagos','calc.t3':'Ciberseguridad',
-      'calc.t4':'Fintech','calc.t5':'Migración','calc.t6':'Consultoría',
-      'calc.c1':'Simple — alcance definido','calc.c2':'Medio — algunas incógnitas',
-      'calc.c3':'Complejo — múltiples integraciones','calc.c4':'Enterprise — sistemas críticos',
-      'calc.tm1':'Individual','calc.tm2':'Pequeño (2–3)','calc.tm3':'Mediano (4–6)','calc.tm4':'Grande (7+)',
-      'calc.tl1':'1–2 semanas','calc.tl2':'~1 mes','calc.tl3':'2–3 meses','calc.tl4':'6+ meses',
-      'calc.rcost':'Costo Estimado','calc.rhours':'Horas Estimadas','calc.rtier':'Tier Recomendado',
-      'calc.rtotal':'total proyecto','calc.rpackage':'paquete de servicio',
-      'calc.disclaimer':'* Rangos indicativos según parámetros del proyecto. Precio final confirmado tras una llamada de descubrimiento gratuita.',
-      'calc.cta':'Solicitar Cotización Gratis →'
+// ── Project Brief Form handler ─────────────────────────────────
+function handleBriefSubmit(e) {
+  e.preventDefault();
+  var form = document.getElementById('projectBriefForm');
+  var data = new FormData(form);
+  fetch(form.action, {
+    method: 'POST',
+    body: data,
+    headers: { 'Accept': 'application/json' }
+  }).then(function(r) {
+    if (r.ok) {
+      form.style.display = 'none';
+      document.getElementById('briefSuccess').style.display = 'block';
+    } else {
+      form.submit();
     }
-  };
+  }).catch(function() { form.submit(); });
+}
 
-  // Hook into existing setLanguage function
-  var _origSetLang = window.setLanguage;
-  window.setLanguage = function(lang) {
-    if (_origSetLang) _origSetLang(lang);
-    var t = calcI18n[lang] || calcI18n['en'];
-    document.querySelectorAll('#pricing-calculator [data-i18n]').forEach(function(el) {
-      var key = el.dataset.i18n;
-      if (t[key]) el.textContent = t[key];
-    });
-    calcUpdate();
-  };
+// ── i18n keys for Pricing & Brief section ────────────────────
+var pricingI18n = {
+  en: {
+    'rates.tag':'Transparent Pricing','rates.title':'Fair rates. No surprises.',
+    'rates.sub':'We charge significantly less than large consulting firms — without sacrificing 20+ years of hands-on expertise. Every engagement starts with a free discovery call.',
+    'rates.col.service':'Service','rates.col.big4':'Big 4 / Large Firms','rates.col.meliora':'Meliora Labs','rates.col.why':'Why we can do it',
+    'rates.r1.name':'🔄 Mainframe Modernization','rates.r1.desc':'z/OS migration, COBOL refactor, cloud lift','rates.r1.why':'Boutique firm — no partner overhead, 100+ migrations delivered',
+    'rates.r2.name':'🏦 Payments & Fintech','rates.r2.desc':'ACH, RTP, SWIFT, OFAC, AML compliance','rates.r2.why':'Specialist, not generalist — $50B+ in payment platforms delivered',
+    'rates.r3.name':'🔒 Cybersecurity Audit','rates.r3.desc':'Security assessment, PCI-DSS, SOX compliance','rates.r3.why':'Banking-grade experience, lean team — you pay for expertise, not headcount',
+    'rates.r4.name':'⚡ Fintech Integration','rates.r4.desc':'API design, third-party integrations, cloud-native','rates.r4.why':'Deep API & cloud experience across US, Mexico, Spain markets',
+    'rates.r5.name':'🔁 Legacy Migration','rates.r5.desc':'On-prem to cloud, data migration, zero-downtime cutover','rates.r5.why':'14 years zero rollback record — we've done it at scale',
+    'rates.r6.name':'🤖 AI-Powered IT Consulting','rates.r6.desc':'Strategy, delivery governance, AI tooling','rates.r6.why':'Independent firm — lower overhead means better rates for you',
+    'rates.note':'* All rates in USD. Project minimums apply. Mexico and Spain engagements adjusted for local market. Free discovery call always included.',
+    'rates.cta':'Tell us about your project →',
+    'aws.tag':'No infrastructure needed','aws.title':'We bring the infrastructure. You pay only for what you use.',
+    'aws.sub':'No servers to buy. No data center to maintain. No separate IT infrastructure team to hire. We build everything on AWS — and pass the savings to you.',
+    'aws.col1.label':'Build it yourself','aws.col2.label':'With Meliora + AWS',
+    'aws.item.servers':'Servers / hardware','aws.item.staff':'Infra team (1–2 FTEs)','aws.item.licenses':'Software licenses',
+    'aws.item.maint':'Maintenance & downtime','aws.item.aws':'AWS usage (pay-as-you-go)','aws.item.meliora':'Meliora engagement fee',
+    'aws.total.self':'3-yr total cost','aws.total.meliora':'3-yr total cost',
+    'aws.savings.label':'Typical savings','aws.savings.sub':'lower infrastructure cost vs. building it yourself',
+    'aws.savings.source':'Source: ESG / AWS 3-yr TCO study. Actual savings vary by workload.',
+    'brief.tag':'Start the conversation','brief.title':'Tell us about your project',
+    'brief.sub':'Answer a few questions and we'll come back with a real estimate — no generic quotes, no automated responses. A real engineer will review this and reply within 24 hours.',
+    'brief.name':'Your name *','brief.namePh':'Maria González','brief.company':'Company *','brief.companyPh':'Acme Bank',
+    'brief.email':'Work email *','brief.emailPh':'maria@acmebank.com','brief.market':'Your market *','brief.marketPh':'Select your country','brief.marketOther':'Other',
+    'brief.service':'What do you need? (select all that apply)',
+    'brief.svc1':'🔄 Mainframe Modernization','brief.svc2':'🏦 Payments & Fintech','brief.svc3':'🔒 Cybersecurity Audit',
+    'brief.svc4':'🔁 Legacy Migration','brief.svc5':'☁️ AWS / Cloud Setup','brief.svc6':'🤖 AI-Powered Consulting',
+    'brief.systems':'Systems involved','brief.systemsPh':'Select primary system','brief.notSure':'Not sure yet',
+    'brief.compliance':'Compliance requirements','brief.complianceNone':'None / Not sure',
+    'brief.timeline':'Target go-live','brief.timelinePh':'Select a timeframe',
+    'brief.tl1':'As soon as possible','brief.tl2':'1–3 months','brief.tl3':'3–6 months','brief.tl4':'6–12 months','brief.tl5':'Flexible / Exploring',
+    'brief.budget':'Budget range (USD) *','brief.budgetPh':'Select your range',
+    'brief.b1':'Under $10,000','brief.b2':'$10,000 – $50,000','brief.b3':'$50,000 – $100,000','brief.b4':'$100,000+','brief.b5':'Not defined yet',
+    'brief.docs':'Existing documentation','brief.doc1':'Yes — complete docs available','brief.doc2':'Partial — some docs exist','brief.doc3':'None — starting from scratch',
+    'brief.teamsize':'Your team size','brief.ts1':'Solo / 1 person','brief.ts2':'2–5 people','brief.ts3':'6–15 people','brief.ts4':'15+ people',
+    'brief.desc':'Describe your project *','brief.descPh':'Tell us what you're trying to build, migrate, or fix. The more detail, the better estimate we can give you.',
+    'brief.privacy':'Your information is never shared. We'll respond within 24 hours with a real estimate — not an automated reply.',
+    'brief.submit':'Send Project Brief →',
+    'brief.success':'✅ Brief received! A real engineer will review this and respond within 24 hours. Thank you for reaching out.'
+  },
+  es: {
+    'rates.tag':'Precios Transparentes','rates.title':'Tarifas justas. Sin sorpresas.',
+    'rates.sub':'Cobramos significativamente menos que las grandes consultoras — sin sacrificar 20+ años de experiencia práctica. Cada compromiso comienza con una llamada de descubrimiento gratuita.',
+    'rates.col.service':'Servicio','rates.col.big4':'Big 4 / Grandes Firmas','rates.col.meliora':'Meliora Labs','rates.col.why':'Por qué podemos hacerlo',
+    'rates.r1.name':'🔄 Modernización Mainframe','rates.r1.desc':'Migración z/OS, refactoring COBOL, lift to cloud','rates.r1.why':'Firma boutique — sin overhead de socios, 100+ migraciones entregadas',
+    'rates.r2.name':'🏦 Pagos & Fintech','rates.r2.desc':'ACH, RTP, SWIFT, cumplimiento OFAC, AML','rates.r2.why':'Especialistas, no generalistas — +$50B en plataformas de pago',
+    'rates.r3.name':'🔒 Auditoría de Ciberseguridad','rates.r3.desc':'Evaluación de seguridad, PCI-DSS, cumplimiento SOX','rates.r3.why':'Experiencia bancaria, equipo ágil — pagas por experiencia, no por headcount',
+    'rates.r4.name':'⚡ Integración Fintech','rates.r4.desc':'Diseño de APIs, integraciones third-party, cloud-native','rates.r4.why':'Experiencia profunda en API y cloud en US, México y España',
+    'rates.r5.name':'🔁 Migración Legacy','rates.r5.desc':'On-prem a cloud, migración de datos, cutover sin downtime','rates.r5.why':'14 años sin rollbacks — lo hemos hecho a escala real',
+    'rates.r6.name':'🤖 Consultoría IT con IA','rates.r6.desc':'Estrategia, gobernanza de entrega, herramientas IA','rates.r6.why':'Firma independiente — menos overhead significa mejores tarifas',
+    'rates.note':'* Todas las tarifas en USD. Se aplican mínimos por proyecto. Los compromisos en México y España se ajustan al mercado local. Llamada de descubrimiento siempre gratuita.',
+    'rates.cta':'Cuéntanos sobre tu proyecto →',
+    'aws.tag':'Sin infraestructura propia','aws.title':'Nosotros traemos la infraestructura. Tú pagas solo por lo que usas.',
+    'aws.sub':'Sin servidores que comprar. Sin centro de datos que mantener. Sin equipo de infraestructura adicional. Construimos todo en AWS — y te pasamos los ahorros.',
+    'aws.col1.label':'Construirlo tú mismo','aws.col2.label':'Con Meliora + AWS',
+    'aws.item.servers':'Servidores / hardware','aws.item.staff':'Equipo de infra (1–2 FTEs)','aws.item.licenses':'Licencias de software',
+    'aws.item.maint':'Mantenimiento y downtime','aws.item.aws':'Uso de AWS (pago por uso)','aws.item.meliora':'Fee de compromiso Meliora',
+    'aws.total.self':'Costo total 3 años','aws.total.meliora':'Costo total 3 años',
+    'aws.savings.label':'Ahorro típico','aws.savings.sub':'menor costo de infraestructura vs. construirlo tú mismo',
+    'aws.savings.source':'Fuente: Estudio TCO 3 años ESG / AWS. Los ahorros reales varían según la carga de trabajo.',
+    'brief.tag':'Inicia la conversación','brief.title':'Cuéntanos sobre tu proyecto',
+    'brief.sub':'Responde unas preguntas y te devolveremos una estimación real — sin cotizaciones genéricas, sin respuestas automáticas. Un ingeniero real revisará esto y responderá en 24 horas.',
+    'brief.name':'Tu nombre *','brief.namePh':'María González','brief.company':'Empresa *','brief.companyPh':'Banco Acme',
+    'brief.email':'Email de trabajo *','brief.emailPh':'maria@bancoacme.com','brief.market':'Tu mercado *','brief.marketPh':'Selecciona tu país','brief.marketOther':'Otro',
+    'brief.service':'¿Qué necesitas? (selecciona todo lo que aplique)',
+    'brief.svc1':'🔄 Modernización Mainframe','brief.svc2':'🏦 Pagos & Fintech','brief.svc3':'🔒 Auditoría de Seguridad',
+    'brief.svc4':'🔁 Migración Legacy','brief.svc5':'☁️ AWS / Cloud','brief.svc6':'🤖 Consultoría con IA',
+    'brief.systems':'Sistemas involucrados','brief.systemsPh':'Selecciona el sistema principal','brief.notSure':'No estoy seguro todavía',
+    'brief.compliance':'Requisitos de cumplimiento','brief.complianceNone':'Ninguno / No estoy seguro',
+    'brief.timeline':'Fecha objetivo de lanzamiento','brief.timelinePh':'Selecciona un plazo',
+    'brief.tl1':'Lo antes posible','brief.tl2':'1–3 meses','brief.tl3':'3–6 meses','brief.tl4':'6–12 meses','brief.tl5':'Flexible / Explorando',
+    'brief.budget':'Rango de presupuesto (USD) *','brief.budgetPh':'Selecciona tu rango',
+    'brief.b1':'Menos de $10,000','brief.b2':'$10,000 – $50,000','brief.b3':'$50,000 – $100,000','brief.b4':'$100,000+','brief.b5':'Aún no definido',
+    'brief.docs':'Documentación existente','brief.doc1':'Sí — documentación completa disponible','brief.doc2':'Parcial — existe algo de documentación','brief.doc3':'Ninguna — empezando desde cero',
+    'brief.teamsize':'Tamaño de tu equipo','brief.ts1':'Solo / 1 persona','brief.ts2':'2–5 personas','brief.ts3':'6–15 personas','brief.ts4':'15+ personas',
+    'brief.desc':'Describe tu proyecto *','brief.descPh':'Cuéntanos qué quieres construir, migrar o solucionar. Más detalle = mejor estimación.',
+    'brief.privacy':'Tu información nunca se comparte. Responderemos en 24 horas con una estimación real, no una respuesta automatizada.',
+    'brief.submit':'Enviar Brief del Proyecto →',
+    'brief.success':'✅ ¡Brief recibido! Un ingeniero real lo revisará y responderá en 24 horas. Gracias por contactarnos.'
+  }
+};
 
-  document.addEventListener('DOMContentLoaded', function() { calcUpdate(); });
-})();
+// Hook into existing setLanguage
+var _origSetLang2 = window.setLanguage;
+window.setLanguage = function(lang) {
+  if (_origSetLang2) _origSetLang2(lang);
+  var t = pricingI18n[lang] || pricingI18n['en'];
+  document.querySelectorAll('#pricing-calculator [data-i18n]').forEach(function(el) {
+    var key = el.dataset.i18n;
+    if (t[key]) el.textContent = t[key];
+  });
+  document.querySelectorAll('#pricing-calculator [data-i18n-placeholder]').forEach(function(el) {
+    var key = el.dataset.i18nPlaceholder;
+    if (t[key]) el.placeholder = t[key];
+  });
+  // translate select options
+  document.querySelectorAll('#pricing-calculator option[data-i18n]').forEach(function(el) {
+    var key = el.dataset.i18n;
+    if (t[key]) el.textContent = t[key];
+  });
+  // translate checkbox labels
+  document.querySelectorAll('#pricing-calculator span[data-i18n]').forEach(function(el) {
+    var key = el.dataset.i18n;
+    if (t[key]) el.textContent = t[key];
+  });
+};
 </script>
-<!-- END PRICING CALCULATOR SCRIPT -->
+<!-- END PRICING & BRIEF SCRIPT -->
 </body>
 </html>
