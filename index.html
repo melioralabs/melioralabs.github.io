@@ -346,6 +346,7 @@
   <div class="nav-right">
     <ul class="nav-links">
       <li><a href="#services" data-i18n="nav.services">Services</a></li>
+      <li><a href="#pricing-calculator" data-i18n="nav.calculator">Calculator</a></li>
       <li><a href="#about" data-i18n="nav.about">About</a></li>
       <li><a href="#security" data-i18n="nav.security">Security</a></li>
       <li><a href="#faq" data-i18n="nav.faq">FAQ</a></li>
@@ -678,6 +679,118 @@
     </div>
   </div>
 </section>
+
+<div class="divider"></div>
+
+<!-- PRICING CALCULATOR -->
+<section id="pricing-calculator" style="padding:80px 0 60px;background:#f8faf9;position:relative;overflow:hidden;">
+  <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(45,212,191,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(45,212,191,0.04) 1px,transparent 1px);background-size:40px 40px;pointer-events:none;"></div>
+  <div style="max-width:900px;margin:0 auto;padding:0 3rem;position:relative;">
+
+    <div style="text-align:center;margin-bottom:3rem;">
+      <div class="section-tag reveal" data-i18n="calc.tag">Estimate your project</div>
+      <h2 class="section-title reveal reveal-delay-1" data-i18n="calc.title">Pricing Calculator</h2>
+      <p class="section-sub reveal reveal-delay-2" style="margin-left:auto;margin-right:auto;" data-i18n="calc.sub">Get an instant ballpark estimate. No commitment required — just fill in your project details below.</p>
+    </div>
+
+    <div style="background:white;border:0.5px solid var(--gray-100);border-radius:16px;padding:2.5rem;box-shadow:0 4px 24px rgba(0,0,0,0.04);">
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;">
+
+        <!-- Project Type -->
+        <div style="grid-column:1/-1;">
+          <div style="font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:1.5px;color:var(--teal-400);margin-bottom:0.75rem;" data-i18n="calc.type">Project Type</div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px;">
+            <button class="calc-type-btn calc-active" data-value="mainframe" onclick="calcSelectType(this)" data-i18n="calc.t1" style="padding:10px 8px;background:var(--teal-50);border:1.5px solid var(--teal-400);border-radius:10px;color:var(--teal-600);font-size:13px;font-weight:500;cursor:pointer;transition:all .2s;text-align:center;font-family:'DM Sans',sans-serif;">Mainframe</button>
+            <button class="calc-type-btn" data-value="payments" onclick="calcSelectType(this)" data-i18n="calc.t2" style="padding:10px 8px;background:var(--gray-50);border:0.5px solid var(--gray-100);border-radius:10px;color:var(--gray-800);font-size:13px;font-weight:500;cursor:pointer;transition:all .2s;text-align:center;font-family:'DM Sans',sans-serif;">Payments</button>
+            <button class="calc-type-btn" data-value="cyber" onclick="calcSelectType(this)" data-i18n="calc.t3" style="padding:10px 8px;background:var(--gray-50);border:0.5px solid var(--gray-100);border-radius:10px;color:var(--gray-800);font-size:13px;font-weight:500;cursor:pointer;transition:all .2s;text-align:center;font-family:'DM Sans',sans-serif;">Cybersecurity</button>
+            <button class="calc-type-btn" data-value="fintech" onclick="calcSelectType(this)" data-i18n="calc.t4" style="padding:10px 8px;background:var(--gray-50);border:0.5px solid var(--gray-100);border-radius:10px;color:var(--gray-800);font-size:13px;font-weight:500;cursor:pointer;transition:all .2s;text-align:center;font-family:'DM Sans',sans-serif;">Fintech</button>
+            <button class="calc-type-btn" data-value="migration" onclick="calcSelectType(this)" data-i18n="calc.t5" style="padding:10px 8px;background:var(--gray-50);border:0.5px solid var(--gray-100);border-radius:10px;color:var(--gray-800);font-size:13px;font-weight:500;cursor:pointer;transition:all .2s;text-align:center;font-family:'DM Sans',sans-serif;">Migration</button>
+            <button class="calc-type-btn" data-value="consulting" onclick="calcSelectType(this)" data-i18n="calc.t6" style="padding:10px 8px;background:var(--gray-50);border:0.5px solid var(--gray-100);border-radius:10px;color:var(--gray-800);font-size:13px;font-weight:500;cursor:pointer;transition:all .2s;text-align:center;font-family:'DM Sans',sans-serif;">Consulting</button>
+          </div>
+        </div>
+
+        <!-- Complexity -->
+        <div>
+          <div style="font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:1.5px;color:var(--teal-400);margin-bottom:0.75rem;" data-i18n="calc.complexity">Complexity</div>
+          <div style="display:flex;flex-direction:column;gap:6px;">
+            <button class="calc-complexity-btn calc-active" data-value="1" onclick="calcSelectOpt('complexity',this)" data-i18n="calc.c1" style="padding:9px 14px;background:var(--teal-50);border:1.5px solid var(--teal-400);border-radius:8px;color:var(--teal-600);font-size:13px;cursor:pointer;text-align:left;transition:all .2s;font-family:'DM Sans',sans-serif;">Simple — well-defined scope</button>
+            <button class="calc-complexity-btn" data-value="1.6" onclick="calcSelectOpt('complexity',this)" data-i18n="calc.c2" style="padding:9px 14px;background:var(--gray-50);border:0.5px solid var(--gray-100);border-radius:8px;color:var(--gray-800);font-size:13px;cursor:pointer;text-align:left;transition:all .2s;font-family:'DM Sans',sans-serif;">Medium — some unknowns</button>
+            <button class="calc-complexity-btn" data-value="2.4" onclick="calcSelectOpt('complexity',this)" data-i18n="calc.c3" style="padding:9px 14px;background:var(--gray-50);border:0.5px solid var(--gray-100);border-radius:8px;color:var(--gray-800);font-size:13px;cursor:pointer;text-align:left;transition:all .2s;font-family:'DM Sans',sans-serif;">Complex — multiple integrations</button>
+            <button class="calc-complexity-btn" data-value="3.5" onclick="calcSelectOpt('complexity',this)" data-i18n="calc.c4" style="padding:9px 14px;background:var(--gray-50);border:0.5px solid var(--gray-100);border-radius:8px;color:var(--gray-800);font-size:13px;cursor:pointer;text-align:left;transition:all .2s;font-family:'DM Sans',sans-serif;">Enterprise — critical systems</button>
+          </div>
+        </div>
+
+        <!-- Right column -->
+        <div style="display:flex;flex-direction:column;gap:1.5rem;">
+
+          <!-- Team -->
+          <div>
+            <div style="font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:1.5px;color:var(--teal-400);margin-bottom:0.75rem;" data-i18n="calc.team">Client Team Size</div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;">
+              <button class="calc-team-btn calc-active" data-value="1" onclick="calcSelectOpt('team',this)" data-i18n="calc.tm1" style="padding:9px;background:var(--teal-50);border:1.5px solid var(--teal-400);border-radius:8px;color:var(--teal-600);font-size:13px;cursor:pointer;transition:all .2s;font-family:'DM Sans',sans-serif;">Solo</button>
+              <button class="calc-team-btn" data-value="1.3" onclick="calcSelectOpt('team',this)" data-i18n="calc.tm2" style="padding:9px;background:var(--gray-50);border:0.5px solid var(--gray-100);border-radius:8px;color:var(--gray-800);font-size:13px;cursor:pointer;transition:all .2s;font-family:'DM Sans',sans-serif;">Small (2–3)</button>
+              <button class="calc-team-btn" data-value="1.6" onclick="calcSelectOpt('team',this)" data-i18n="calc.tm3" style="padding:9px;background:var(--gray-50);border:0.5px solid var(--gray-100);border-radius:8px;color:var(--gray-800);font-size:13px;cursor:pointer;transition:all .2s;font-family:'DM Sans',sans-serif;">Medium (4–6)</button>
+              <button class="calc-team-btn" data-value="2" onclick="calcSelectOpt('team',this)" data-i18n="calc.tm4" style="padding:9px;background:var(--gray-50);border:0.5px solid var(--gray-100);border-radius:8px;color:var(--gray-800);font-size:13px;cursor:pointer;transition:all .2s;font-family:'DM Sans',sans-serif;">Large (7+)</button>
+            </div>
+          </div>
+
+          <!-- Timeline -->
+          <div>
+            <div style="font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:1.5px;color:var(--teal-400);margin-bottom:0.75rem;" data-i18n="calc.timeline">Target Timeline</div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;">
+              <button class="calc-timeline-btn calc-active" data-value="0.8" onclick="calcSelectOpt('timeline',this)" data-i18n="calc.tl1" style="padding:9px;background:var(--teal-50);border:1.5px solid var(--teal-400);border-radius:8px;color:var(--teal-600);font-size:12px;cursor:pointer;transition:all .2s;font-family:'DM Sans',sans-serif;">1–2 weeks</button>
+              <button class="calc-timeline-btn" data-value="1" onclick="calcSelectOpt('timeline',this)" data-i18n="calc.tl2" style="padding:9px;background:var(--gray-50);border:0.5px solid var(--gray-100);border-radius:8px;color:var(--gray-800);font-size:12px;cursor:pointer;transition:all .2s;font-family:'DM Sans',sans-serif;">~1 month</button>
+              <button class="calc-timeline-btn" data-value="1.3" onclick="calcSelectOpt('timeline',this)" data-i18n="calc.tl3" style="padding:9px;background:var(--gray-50);border:0.5px solid var(--gray-100);border-radius:8px;color:var(--gray-800);font-size:12px;cursor:pointer;transition:all .2s;font-family:'DM Sans',sans-serif;">2–3 months</button>
+              <button class="calc-timeline-btn" data-value="1.8" onclick="calcSelectOpt('timeline',this)" data-i18n="calc.tl4" style="padding:9px;background:var(--gray-50);border:0.5px solid var(--gray-100);border-radius:8px;color:var(--gray-800);font-size:12px;cursor:pointer;transition:all .2s;font-family:'DM Sans',sans-serif;">6+ months</button>
+            </div>
+          </div>
+
+          <!-- Market -->
+          <div>
+            <div style="font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:1.5px;color:var(--teal-400);margin-bottom:0.75rem;" data-i18n="calc.market">Your Market</div>
+            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;">
+              <button class="calc-market-btn calc-active" data-value="1" onclick="calcSelectOpt('market',this)" style="padding:9px 4px;background:var(--teal-50);border:1.5px solid var(--teal-400);border-radius:8px;color:var(--teal-600);font-size:13px;cursor:pointer;transition:all .2s;font-family:'DM Sans',sans-serif;">🇺🇸 USA</button>
+              <button class="calc-market-btn" data-value="0.65" onclick="calcSelectOpt('market',this)" style="padding:9px 4px;background:var(--gray-50);border:0.5px solid var(--gray-100);border-radius:8px;color:var(--gray-800);font-size:13px;cursor:pointer;transition:all .2s;font-family:'DM Sans',sans-serif;">🇲🇽 Mexico</button>
+              <button class="calc-market-btn" data-value="0.8" onclick="calcSelectOpt('market',this)" style="padding:9px 4px;background:var(--gray-50);border:0.5px solid var(--gray-100);border-radius:8px;color:var(--gray-800);font-size:13px;cursor:pointer;transition:all .2s;font-family:'DM Sans',sans-serif;">🇪🇸 Spain</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Divider -->
+      <div style="height:0.5px;background:var(--gray-100);margin:2rem 0;"></div>
+
+      <!-- Results -->
+      <div id="calc-results" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;margin-bottom:1.5rem;transition:opacity .2s;">
+        <div style="background:var(--teal-50);border:0.5px solid var(--teal-100);border-radius:12px;padding:1.25rem;text-align:center;">
+          <div style="font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:1.5px;color:var(--teal-400);margin-bottom:8px;" data-i18n="calc.rcost">Estimated Cost</div>
+          <div id="calc-result-cost" style="font-size:22px;font-weight:500;color:var(--teal-600);font-family:'Playfair Display',serif;line-height:1.2;">—</div>
+          <div style="font-size:11px;color:var(--gray-400);margin-top:4px;">USD</div>
+        </div>
+        <div style="background:var(--gray-50);border:0.5px solid var(--gray-100);border-radius:12px;padding:1.25rem;text-align:center;">
+          <div style="font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:1.5px;color:var(--teal-400);margin-bottom:8px;" data-i18n="calc.rhours">Estimated Hours</div>
+          <div id="calc-result-hours" style="font-size:22px;font-weight:500;color:var(--gray-900);font-family:'Playfair Display',serif;line-height:1.2;">—</div>
+          <div style="font-size:11px;color:var(--gray-400);margin-top:4px;" data-i18n="calc.rtotal">project total</div>
+        </div>
+        <div style="background:var(--teal-50);border:0.5px solid var(--teal-100);border-radius:12px;padding:1.25rem;text-align:center;">
+          <div style="font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:1.5px;color:var(--teal-400);margin-bottom:8px;" data-i18n="calc.rtier">Recommended Tier</div>
+          <div id="calc-result-tier" style="font-size:22px;font-weight:500;color:var(--teal-600);font-family:'Playfair Display',serif;line-height:1.2;">—</div>
+          <div style="font-size:11px;color:var(--gray-400);margin-top:4px;" data-i18n="calc.rpackage">service package</div>
+        </div>
+      </div>
+
+      <!-- CTA row -->
+      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;">
+        <p style="font-size:12px;color:var(--gray-400);margin:0;line-height:1.6;max-width:420px;" data-i18n="calc.disclaimer">* Indicative ranges based on project parameters. Final pricing confirmed after a free discovery call.</p>
+        <a href="#contact-form" class="btn-primary" data-i18n="calc.cta">Get a Free Quote →</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+<!-- END PRICING CALCULATOR -->
 
 <div class="divider"></div>
 
@@ -1258,7 +1371,7 @@ function submitNotify() {
 // ═══════════════════════════════════════════
 const translations = {
   en: {
-    "nav.services":"Services","nav.about":"About","nav.security":"Security","nav.faq":"FAQ","nav.contact":"Get in touch","nav.cta":"Start a Project",
+    "nav.services":"Services","nav.calculator":"Calculator","nav.about":"About","nav.security":"Security","nav.faq":"FAQ","nav.contact":"Get in touch","nav.cta":"Start a Project",
     "faq.tag":"FAQ","faq.title":"Frequently Asked Questions",
     "faq.sub":"Everything you need to know before starting a conversation with us.",
     "faq.q1":"What type of companies do you work with?",
@@ -1457,7 +1570,7 @@ const translations = {
     "chip1":"Our services","chip2":"What's included?","chip3":"Go-live support","chip4":"What documents?","chip5":"Get a quote","chip6":"Small companies?",
   },
   es: {
-    "nav.services":"Servicios","nav.about":"Nosotros","nav.security":"Seguridad","nav.faq":"FAQ","nav.contact":"Contáctanos","nav.cta":"Iniciar Proyecto",
+    "nav.services":"Servicios","nav.calculator":"Calculadora","nav.about":"Nosotros","nav.security":"Seguridad","nav.faq":"FAQ","nav.contact":"Contáctanos","nav.cta":"Iniciar Proyecto",
     "faq.tag":"Preguntas Frecuentes","faq.title":"Preguntas Frecuentes",
     "faq.sub":"Todo lo que necesitas saber antes de comenzar una conversación con nosotros.",
     "faq.q1":"¿Con qué tipo de empresas trabajan?",
@@ -1852,5 +1965,113 @@ function resetChat() {
   input.value = '';
 }
 </script>
+
+<!-- PRICING CALCULATOR SCRIPT -->
+<script>
+(function() {
+  var BASE = {
+    mainframe:  { low: 8000,  high: 18000, hrs: [80,  160] },
+    payments:   { low: 6000,  high: 14000, hrs: [60,  120] },
+    cyber:      { low: 4000,  high: 10000, hrs: [40,   90] },
+    fintech:    { low: 5000,  high: 12000, hrs: [50,  110] },
+    migration:  { low: 7000,  high: 16000, hrs: [70,  150] },
+    consulting: { low: 2500,  high: 6000,  hrs: [25,   60] }
+  };
+
+  function getTier(rawLow) {
+    if (rawLow < 5000)  return { en: 'Small',  es: 'Pequeño'  };
+    if (rawLow < 15000) return { en: 'Medium', es: 'Mediano'  };
+    return                     { en: 'Large',  es: 'Grande'   };
+  }
+
+  var calcState = { type: 'mainframe', complexity: 1, team: 1, timeline: 0.8, market: 1 };
+
+  function calcUpdate() {
+    var b = BASE[calcState.type];
+    var mult = calcState.complexity * calcState.team * calcState.timeline;
+    var costLow  = Math.round((b.low  * mult * calcState.market) / 500) * 500;
+    var costHigh = Math.round((b.high * mult * calcState.market) / 500) * 500;
+    var hrsLow   = Math.round(b.hrs[0] * calcState.complexity * calcState.team);
+    var hrsHigh  = Math.round(b.hrs[1] * calcState.complexity * calcState.team);
+    var tier = getTier(b.low * mult);
+    var lang = document.documentElement.lang || 'en';
+    function fmt(n) { return n >= 1000 ? '$' + (n/1000).toFixed(n % 1000 === 0 ? 0 : 1) + 'k' : '$' + n; }
+    document.getElementById('calc-result-cost').textContent  = fmt(costLow) + ' – ' + fmt(costHigh);
+    document.getElementById('calc-result-hours').textContent = hrsLow + ' – ' + hrsHigh + ' hrs';
+    document.getElementById('calc-result-tier').textContent  = lang === 'es' ? tier.es : tier.en;
+    var r = document.getElementById('calc-results');
+    r.style.opacity = '0.3';
+    setTimeout(function() { r.style.opacity = '1'; }, 180);
+  }
+
+  window.calcSelectType = function(btn) {
+    document.querySelectorAll('.calc-type-btn').forEach(function(b) {
+      b.style.background = 'var(--gray-50)'; b.style.border = '0.5px solid var(--gray-100)'; b.style.color = 'var(--gray-800)';
+    });
+    btn.style.background = 'var(--teal-50)'; btn.style.border = '1.5px solid var(--teal-400)'; btn.style.color = 'var(--teal-600)';
+    calcState.type = btn.dataset.value;
+    calcUpdate();
+  };
+
+  window.calcSelectOpt = function(group, btn) {
+    document.querySelectorAll('.calc-' + group + '-btn').forEach(function(b) {
+      b.style.background = 'var(--gray-50)'; b.style.border = '0.5px solid var(--gray-100)'; b.style.color = 'var(--gray-800)';
+    });
+    btn.style.background = 'var(--teal-50)'; btn.style.border = '1.5px solid var(--teal-400)'; btn.style.color = 'var(--teal-600)';
+    calcState[group] = parseFloat(btn.dataset.value);
+    calcUpdate();
+  };
+
+  var calcI18n = {
+    en: {
+      'calc.tag':'Estimate your project','calc.title':'Pricing Calculator',
+      'calc.sub':'Get an instant ballpark estimate. No commitment required — just fill in your project details below.',
+      'calc.type':'Project Type','calc.complexity':'Complexity','calc.team':'Client Team Size',
+      'calc.timeline':'Target Timeline','calc.market':'Your Market',
+      'calc.t1':'Mainframe','calc.t2':'Payments','calc.t3':'Cybersecurity',
+      'calc.t4':'Fintech','calc.t5':'Migration','calc.t6':'Consulting',
+      'calc.c1':'Simple — well-defined scope','calc.c2':'Medium — some unknowns',
+      'calc.c3':'Complex — multiple integrations','calc.c4':'Enterprise — critical systems',
+      'calc.tm1':'Solo','calc.tm2':'Small (2–3)','calc.tm3':'Medium (4–6)','calc.tm4':'Large (7+)',
+      'calc.tl1':'1–2 weeks','calc.tl2':'~1 month','calc.tl3':'2–3 months','calc.tl4':'6+ months',
+      'calc.rcost':'Estimated Cost','calc.rhours':'Estimated Hours','calc.rtier':'Recommended Tier',
+      'calc.rtotal':'project total','calc.rpackage':'service package',
+      'calc.disclaimer':'* Indicative ranges based on project parameters. Final pricing confirmed after a free discovery call.',
+      'calc.cta':'Get a Free Quote →'
+    },
+    es: {
+      'calc.tag':'Estima tu proyecto','calc.title':'Calculadora de Precios',
+      'calc.sub':'Obtén una estimación instantánea. Sin compromiso — solo completa los detalles de tu proyecto.',
+      'calc.type':'Tipo de Proyecto','calc.complexity':'Complejidad','calc.team':'Tamaño del Equipo Cliente',
+      'calc.timeline':'Plazo Objetivo','calc.market':'Tu Mercado',
+      'calc.t1':'Mainframe','calc.t2':'Pagos','calc.t3':'Ciberseguridad',
+      'calc.t4':'Fintech','calc.t5':'Migración','calc.t6':'Consultoría',
+      'calc.c1':'Simple — alcance definido','calc.c2':'Medio — algunas incógnitas',
+      'calc.c3':'Complejo — múltiples integraciones','calc.c4':'Enterprise — sistemas críticos',
+      'calc.tm1':'Individual','calc.tm2':'Pequeño (2–3)','calc.tm3':'Mediano (4–6)','calc.tm4':'Grande (7+)',
+      'calc.tl1':'1–2 semanas','calc.tl2':'~1 mes','calc.tl3':'2–3 meses','calc.tl4':'6+ meses',
+      'calc.rcost':'Costo Estimado','calc.rhours':'Horas Estimadas','calc.rtier':'Tier Recomendado',
+      'calc.rtotal':'total proyecto','calc.rpackage':'paquete de servicio',
+      'calc.disclaimer':'* Rangos indicativos según parámetros del proyecto. Precio final confirmado tras una llamada de descubrimiento gratuita.',
+      'calc.cta':'Solicitar Cotización Gratis →'
+    }
+  };
+
+  // Hook into existing setLanguage function
+  var _origSetLang = window.setLanguage;
+  window.setLanguage = function(lang) {
+    if (_origSetLang) _origSetLang(lang);
+    var t = calcI18n[lang] || calcI18n['en'];
+    document.querySelectorAll('#pricing-calculator [data-i18n]').forEach(function(el) {
+      var key = el.dataset.i18n;
+      if (t[key]) el.textContent = t[key];
+    });
+    calcUpdate();
+  };
+
+  document.addEventListener('DOMContentLoaded', function() { calcUpdate(); });
+})();
+</script>
+<!-- END PRICING CALCULATOR SCRIPT -->
 </body>
 </html>
