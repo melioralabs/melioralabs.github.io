@@ -1,9 +1,13 @@
 <!-- ============================================================
      Meliora Labs | melioralabs.tech
-     Version : 2.1.3
-     Date    : 2026-05-28
-     Changes : Fix green color block under Get in Touch button —
-               removed ::after pseudo element from nav-cta completely
+     Version : 2.2.0
+     Date    : 2026-06-05
+     Changes : Rate Card + AWS comparison + Project Brief,
+               Meliora Engine (Tier 1/2/3),
+               Managed Service (Layer 1/2/3),
+               Case Studies (3 cards),
+               SEO meta + Open Graph,
+               Nav: Engine, Managed, Cases links
      ============================================================ -->
 <!DOCTYPE html>
 <html lang="en">
@@ -11,6 +15,22 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Meliora Labs — AI-powered IT consulting for banks, fintechs, and enterprises. Payments, mainframe modernization, cybersecurity, and delivery intelligence. Serving US, Mexico, and Spain.">
+<meta name="keywords" content="IT consulting, mainframe modernization, payment platform, cybersecurity, fintech, AWS, legacy migration, COBOL, z/OS, OFAC, AML, SOX, PCI-DSS, USA, Mexico, Spain">
+<meta name="author" content="Meliora Labs">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://melioralabs.tech/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://melioralabs.tech/">
+<meta property="og:title" content="Meliora Labs — AI-Powered IT Consulting">
+<meta property="og:description" content="Payments, mainframe modernization, cybersecurity, and delivery intelligence — built by engineers with 20+ years inside mission-critical systems. Serving US, Mexico, and Spain.">
+<meta property="og:image" content="https://melioralabs.tech/og-image.png">
+<meta property="og:site_name" content="Meliora Labs">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="es_ES">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Meliora Labs — AI-Powered IT Consulting">
+<meta name="twitter:description" content="Payments, mainframe modernization, cybersecurity — 20+ years experience. Serving US, Mexico, and Spain.">
+<meta name="twitter:image" content="https://melioralabs.tech/og-image.png">
 <title>Meliora Labs | Semper Melius</title>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%231D9E75'/><text x='50%25' y='50%25' dominant-baseline='central' text-anchor='middle' font-family='Georgia,serif' font-size='20' font-weight='bold' fill='white'>M</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -346,9 +366,10 @@
   <div class="nav-right">
     <ul class="nav-links">
       <li><a href="#services" data-i18n="nav.services">Services</a></li>
-      <li><a href="#pricing-calculator" data-i18n="nav.calculator">Calculator</a></li>
-      <li><a href="#about" data-i18n="nav.about">About</a></li>
-      <li><a href="#security" data-i18n="nav.security">Security</a></li>
+      <li><a href="#engine" data-i18n="nav.engine">Engine</a></li>
+      <li><a href="#managed" data-i18n="nav.managed">Managed</a></li>
+      <li><a href="#pricing-calculator" data-i18n="nav.calculator">Rates</a></li>
+      <li><a href="#cases" data-i18n="nav.cases">Cases</a></li>
       <li><a href="#faq" data-i18n="nav.faq">FAQ</a></li>
       <li><a href="#contact-form" class="nav-contact" data-i18n="nav.contact">Get in touch</a></li>
       <li><a href="/intake.html" class="nav-cta" data-i18n="nav.cta">Start a Project</a></li>
@@ -1235,6 +1256,237 @@
   </div>
 </section>
 
+<!-- ENGINE -->
+<div class="divider"></div>
+<section id="engine" style="padding:5rem 3rem;max-width:1100px;margin:0 auto;">
+  <div class="section-tag reveal" data-i18n="eng.tag">Meliora Engine</div>
+  <h2 class="section-title reveal reveal-delay-1" data-i18n="eng.title">The engine behind every delivery</h2>
+  <p class="section-sub reveal reveal-delay-2" data-i18n="eng.sub">Every Meliora Labs project is powered by our internal delivery engine — a system that turns your project inputs into estimates, SOWs, roadmaps, and compliance packages automatically.</p>
+
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem;margin-bottom:2.5rem;">
+
+    <!-- Tier 1 -->
+    <div class="service-card reveal reveal-delay-1" style="border-top:3px solid var(--teal-100);">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem;">
+        <span style="font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:1.5px;color:var(--teal-400);" data-i18n="eng.t1.label">Tier 1 — Foundation</span>
+        <span style="background:var(--teal-50);color:var(--teal-600);font-size:11px;font-weight:500;padding:3px 10px;border-radius:20px;border:0.5px solid var(--teal-100);" data-i18n="eng.t1.badge">Small projects</span>
+      </div>
+      <div class="service-title" data-i18n="eng.t1.title">Estimate + SOW</div>
+      <p class="service-desc" style="margin:0.5rem 0 1.25rem;" data-i18n="eng.t1.desc">Project intake form → automated cost and hours estimation → Statement of Work generated in Word/PDF. Everything you need to start a project the right way.</p>
+      <div style="display:flex;flex-direction:column;gap:6px;">
+        <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--gray-800);"><div style="width:6px;height:6px;border-radius:50%;background:var(--teal-100);flex-shrink:0;"></div><span data-i18n="eng.t1.f1">Cost & hours estimation</span></div>
+        <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--gray-800);"><div style="width:6px;height:6px;border-radius:50%;background:var(--teal-100);flex-shrink:0;"></div><span data-i18n="eng.t1.f2">Auto-generated SOW (Word + PDF)</span></div>
+        <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--gray-800);"><div style="width:6px;height:6px;border-radius:50%;background:var(--teal-100);flex-shrink:0;"></div><span data-i18n="eng.t1.f3">Project timeline + milestones</span></div>
+        <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--gray-800);"><div style="width:6px;height:6px;border-radius:50%;background:var(--teal-100);flex-shrink:0;"></div><span data-i18n="eng.t1.f4">Action owners — who does what, by when</span></div>
+      </div>
+    </div>
+
+    <!-- Tier 2 -->
+    <div class="service-card reveal reveal-delay-2" style="border-top:3px solid var(--teal-400);">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem;">
+        <span style="font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:1.5px;color:var(--teal-400);" data-i18n="eng.t2.label">Tier 2 — Full Delivery</span>
+        <span style="background:var(--teal-50);color:var(--teal-600);font-size:11px;font-weight:500;padding:3px 10px;border-radius:20px;border:0.5px solid var(--teal-100);" data-i18n="eng.t2.badge">Medium projects</span>
+      </div>
+      <div class="service-title" data-i18n="eng.t2.title">SOW + Roadmap + Deck</div>
+      <p class="service-desc" style="margin:0.5rem 0 1.25rem;" data-i18n="eng.t2.desc">Everything in Tier 1, plus a full roadmap with phases and dependencies, a rollback plan, an AS-IS/TO-BE presentation deck, and a technical Design Document Report.</p>
+      <div style="display:flex;flex-direction:column;gap:6px;">
+        <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--gray-800);"><div style="width:6px;height:6px;border-radius:50%;background:var(--teal-400);flex-shrink:0;"></div><span data-i18n="eng.t2.f1">Full roadmap — phases, dependencies, blockers</span></div>
+        <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--gray-800);"><div style="width:6px;height:6px;border-radius:50%;background:var(--teal-400);flex-shrink:0;"></div><span data-i18n="eng.t2.f2">Rollback plan auto-generated per project type</span></div>
+        <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--gray-800);"><div style="width:6px;height:6px;border-radius:50%;background:var(--teal-400);flex-shrink:0;"></div><span data-i18n="eng.t2.f3">PPT deck — AS-IS / TO-BE slides</span></div>
+        <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--gray-800);"><div style="width:6px;height:6px;border-radius:50%;background:var(--teal-400);flex-shrink:0;"></div><span data-i18n="eng.t2.f4">DDR — Design Document Report</span></div>
+        <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--gray-800);"><div style="width:6px;height:6px;border-radius:50%;background:var(--teal-400);flex-shrink:0;"></div><span data-i18n="eng.t2.f5">Invoice connected to project billing</span></div>
+      </div>
+    </div>
+
+    <!-- Tier 3 -->
+    <div class="service-card reveal reveal-delay-3" style="border-top:3px solid var(--teal-600);background:var(--teal-800);">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem;">
+        <span style="font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:1.5px;color:var(--teal-100);" data-i18n="eng.t3.label">Tier 3 — Enterprise</span>
+        <span style="background:var(--teal-600);color:white;font-size:11px;font-weight:500;padding:3px 10px;border-radius:20px;" data-i18n="eng.t3.badge">Large / ongoing</span>
+      </div>
+      <div class="service-title" style="color:white;" data-i18n="eng.t3.title">Full Enterprise Package</div>
+      <p class="service-desc" style="margin:0.5rem 0 1.25rem;color:var(--teal-100);" data-i18n="eng.t3.desc">Everything in Tier 1 + 2, plus a live multi-project dashboard, AI-powered risk detection, compliance checklists (OFAC, AML, SOX, PCI-DSS), and a client portal to track status in real time.</p>
+      <div style="display:flex;flex-direction:column;gap:6px;">
+        <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--teal-100);"><div style="width:6px;height:6px;border-radius:50%;background:var(--teal-400);flex-shrink:0;"></div><span data-i18n="eng.t3.f1">Multi-project dashboard — all clients, one view</span></div>
+        <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--teal-100);"><div style="width:6px;height:6px;border-radius:50%;background:var(--teal-400);flex-shrink:0;"></div><span data-i18n="eng.t3.f2">AI risk detection — flags issues before they happen</span></div>
+        <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--teal-100);"><div style="width:6px;height:6px;border-radius:50%;background:var(--teal-400);flex-shrink:0;"></div><span data-i18n="eng.t3.f3">Compliance checklist — OFAC, AML, SOX, PCI-DSS</span></div>
+        <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--teal-100);"><div style="width:6px;height:6px;border-radius:50%;background:var(--teal-400);flex-shrink:0;"></div><span data-i18n="eng.t3.f4">Client portal — live project status</span></div>
+        <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--teal-100);"><div style="width:6px;height:6px;border-radius:50%;background:var(--teal-400);flex-shrink:0;"></div><span data-i18n="eng.t3.f5">Federal audit-ready export</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Engine CTA bar -->
+  <div style="background:var(--teal-50);border:0.5px solid var(--teal-100);border-radius:12px;padding:1.5rem 2rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;">
+    <div>
+      <div style="font-size:14px;font-weight:500;color:var(--gray-900);margin-bottom:4px;" data-i18n="eng.cta.title">Every project gets the right tier automatically</div>
+      <div style="font-size:13px;color:var(--gray-800);font-weight:300;" data-i18n="eng.cta.sub">After your discovery call, the engine selects the right tier and generates your full delivery package.</div>
+    </div>
+    <a href="#project-brief" class="btn-primary" style="white-space:nowrap;" data-i18n="eng.cta.btn">Start with a project brief →</a>
+  </div>
+</section>
+
+<!-- MANAGED SERVICE -->
+<div class="divider"></div>
+<section id="managed" style="padding:5rem 3rem;max-width:1100px;margin:0 auto;">
+  <div class="section-tag reveal" data-i18n="mgd.tag">Managed Service</div>
+  <h2 class="section-title reveal reveal-delay-1" data-i18n="mgd.title">We don't just build it. We run it.</h2>
+  <p class="section-sub reveal reveal-delay-2" data-i18n="mgd.sub">For clients who want ongoing support after go-live, our managed service model provides three layers of coverage — from basic monitoring to full dedicated engineering.</p>
+
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin-bottom:2.5rem;">
+
+    <!-- Layer 1 -->
+    <div class="service-card reveal reveal-delay-1">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:1rem;">
+        <div class="service-icon" style="font-size:22px;">👁️</div>
+        <div>
+          <div style="font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:1.5px;color:var(--teal-400);margin-bottom:2px;" data-i18n="mgd.l1.label">Layer 1</div>
+          <div class="service-title" style="margin:0;" data-i18n="mgd.l1.title">Monitor & Alert</div>
+        </div>
+      </div>
+      <p class="service-desc" style="margin-bottom:1rem;" data-i18n="mgd.l1.desc">We watch your systems and alert you when something needs attention. You keep control — we keep eyes on it.</p>
+      <div style="display:flex;flex-direction:column;gap:5px;margin-bottom:1.25rem;">
+        <div style="font-size:13px;color:var(--gray-800);"><span style="color:var(--teal-400);margin-right:6px;">✓</span><span data-i18n="mgd.l1.f1">24/7 uptime and performance monitoring</span></div>
+        <div style="font-size:13px;color:var(--gray-800);"><span style="color:var(--teal-400);margin-right:6px;">✓</span><span data-i18n="mgd.l1.f2">Automated alerts — email + SMS</span></div>
+        <div style="font-size:13px;color:var(--gray-800);"><span style="color:var(--teal-400);margin-right:6px;">✓</span><span data-i18n="mgd.l1.f3">Monthly health report</span></div>
+        <div style="font-size:13px;color:var(--gray-800);"><span style="color:var(--teal-400);margin-right:6px;">✓</span><span data-i18n="mgd.l1.f4">Security event logging</span></div>
+      </div>
+      <div style="border-top:0.5px solid var(--gray-100);padding-top:1rem;display:flex;align-items:baseline;justify-content:space-between;">
+        <span style="font-size:12px;color:var(--gray-400);font-weight:300;" data-i18n="mgd.from">Starting from</span>
+        <span style="font-family:'Playfair Display',serif;font-size:20px;font-weight:500;color:var(--teal-600);">$800<span style="font-size:13px;color:var(--gray-400);font-weight:300;">/mo</span></span>
+      </div>
+    </div>
+
+    <!-- Layer 2 -->
+    <div class="service-card reveal reveal-delay-2" style="border-color:var(--teal-100);">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:1rem;">
+        <div class="service-icon" style="font-size:22px;">🛠️</div>
+        <div>
+          <div style="font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:1.5px;color:var(--teal-400);margin-bottom:2px;" data-i18n="mgd.l2.label">Layer 2</div>
+          <div class="service-title" style="margin:0;" data-i18n="mgd.l2.title">Support & Maintain</div>
+        </div>
+      </div>
+      <div style="background:var(--teal-50);color:var(--teal-600);font-size:11px;font-weight:500;padding:3px 10px;border-radius:20px;border:0.5px solid var(--teal-100);display:inline-block;margin-bottom:0.75rem;" data-i18n="mgd.l2.popular">Most popular</div>
+      <p class="service-desc" style="margin-bottom:1rem;" data-i18n="mgd.l2.desc">Everything in Layer 1, plus hands-on incident response, patch management, and regular system optimizations. We fix it, not just flag it.</p>
+      <div style="display:flex;flex-direction:column;gap:5px;margin-bottom:1.25rem;">
+        <div style="font-size:13px;color:var(--gray-800);"><span style="color:var(--teal-400);margin-right:6px;">✓</span><span data-i18n="mgd.l2.f1">Everything in Layer 1</span></div>
+        <div style="font-size:13px;color:var(--gray-800);"><span style="color:var(--teal-400);margin-right:6px;">✓</span><span data-i18n="mgd.l2.f2">Incident response — 4hr SLA</span></div>
+        <div style="font-size:13px;color:var(--gray-800);"><span style="color:var(--teal-400);margin-right:6px;">✓</span><span data-i18n="mgd.l2.f3">Patch & update management</span></div>
+        <div style="font-size:13px;color:var(--gray-800);"><span style="color:var(--teal-400);margin-right:6px;">✓</span><span data-i18n="mgd.l2.f4">Quarterly optimization review</span></div>
+        <div style="font-size:13px;color:var(--gray-800);"><span style="color:var(--teal-400);margin-right:6px;">✓</span><span data-i18n="mgd.l2.f5">10 support hours/month included</span></div>
+      </div>
+      <div style="border-top:0.5px solid var(--gray-100);padding-top:1rem;display:flex;align-items:baseline;justify-content:space-between;">
+        <span style="font-size:12px;color:var(--gray-400);font-weight:300;" data-i18n="mgd.from">Starting from</span>
+        <span style="font-family:'Playfair Display',serif;font-size:20px;font-weight:500;color:var(--teal-600);">$2,000<span style="font-size:13px;color:var(--gray-400);font-weight:300;">/mo</span></span>
+      </div>
+    </div>
+
+    <!-- Layer 3 -->
+    <div class="service-card reveal reveal-delay-3" style="background:var(--teal-800);">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:1rem;">
+        <div class="service-icon" style="font-size:22px;background:var(--teal-600);">🚀</div>
+        <div>
+          <div style="font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:1.5px;color:var(--teal-100);margin-bottom:2px;" data-i18n="mgd.l3.label">Layer 3</div>
+          <div class="service-title" style="margin:0;color:white;" data-i18n="mgd.l3.title">Dedicated Engineering</div>
+        </div>
+      </div>
+      <p class="service-desc" style="margin-bottom:1rem;color:var(--teal-100);" data-i18n="mgd.l3.desc">A dedicated Meliora Labs engineer embedded in your team. Full ownership, continuous delivery, and a direct line to your systems every day.</p>
+      <div style="display:flex;flex-direction:column;gap:5px;margin-bottom:1.25rem;">
+        <div style="font-size:13px;color:var(--teal-100);"><span style="color:#6ee7b7;margin-right:6px;">✓</span><span data-i18n="mgd.l3.f1">Everything in Layer 1 + 2</span></div>
+        <div style="font-size:13px;color:var(--teal-100);"><span style="color:#6ee7b7;margin-right:6px;">✓</span><span data-i18n="mgd.l3.f2">Dedicated engineer — 1hr response SLA</span></div>
+        <div style="font-size:13px;color:var(--teal-100);"><span style="color:#6ee7b7;margin-right:6px;">✓</span><span data-i18n="mgd.l3.f3">Continuous delivery & feature work</span></div>
+        <div style="font-size:13px;color:var(--teal-100);"><span style="color:#6ee7b7;margin-right:6px;">✓</span><span data-i18n="mgd.l3.f4">Compliance reporting — OFAC, AML, SOX</span></div>
+        <div style="font-size:13px;color:var(--teal-100);"><span style="color:#6ee7b7;margin-right:6px;">✓</span><span data-i18n="mgd.l3.f5">You Are Never Alone — PO mindset</span></div>
+      </div>
+      <div style="border-top:0.5px solid var(--teal-600);padding-top:1rem;display:flex;align-items:baseline;justify-content:space-between;">
+        <span style="font-size:12px;color:var(--teal-100);font-weight:300;" data-i18n="mgd.from">Starting from</span>
+        <span style="font-family:'Playfair Display',serif;font-size:20px;font-weight:500;color:white;" data-i18n="mgd.l3.price">Custom</span>
+      </div>
+    </div>
+  </div>
+
+  <div style="text-align:center;">
+    <p style="font-size:13px;color:var(--gray-400);font-weight:300;margin-bottom:1rem;" data-i18n="mgd.note">* All managed service plans include monthly reporting, change log, and a dedicated Slack or email channel. No lock-in contracts — cancel anytime with 30 days notice.</p>
+    <a href="#project-brief" class="btn-primary" data-i18n="mgd.cta">Talk to us about managed support →</a>
+  </div>
+</section>
+
+<!-- CASE STUDIES -->
+<div class="divider"></div>
+<section id="cases" style="padding:5rem 3rem;max-width:1100px;margin:0 auto;">
+  <div class="section-tag reveal" data-i18n="cases.tag">Case Studies</div>
+  <h2 class="section-title reveal reveal-delay-1" data-i18n="cases.title">Work that speaks for itself</h2>
+  <p class="section-sub reveal reveal-delay-2" data-i18n="cases.sub">Real projects. Real outcomes. Details anonymized to protect our clients — because confidentiality is part of the service.</p>
+
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem;">
+
+    <!-- Case 1 -->
+    <div class="service-card reveal reveal-delay-1" style="position:relative;overflow:hidden;">
+      <div style="position:absolute;top:0;left:0;right:0;height:4px;background:var(--teal-400);border-radius:0;"></div>
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.75rem;">
+        <span style="background:var(--teal-50);color:var(--teal-600);font-size:11px;font-weight:500;padding:3px 10px;border-radius:20px;border:0.5px solid var(--teal-100);" data-i18n="cases.c1.industry">🏦 Large Bank · USA</span>
+        <span style="font-size:12px;color:var(--gray-400);">2023</span>
+      </div>
+      <div class="service-title" style="margin-bottom:0.5rem;" data-i18n="cases.c1.title">Mainframe → Cloud Migration</div>
+      <p class="service-desc" style="margin-bottom:1.25rem;" data-i18n="cases.c1.desc">Full z/OS to AWS migration for a North American bank — 100+ COBOL components, zero incidents on go-live, 14-year zero rollback record maintained.</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.5rem;">
+        <div style="text-align:center;background:var(--gray-50);border-radius:8px;padding:0.75rem 0.5rem;">
+          <div style="font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:500;color:var(--teal-400);">100+</div>
+          <div style="font-size:11px;color:var(--gray-400);font-weight:300;" data-i18n="cases.c1.s1">components</div>
+        </div>
+        <div style="text-align:center;background:var(--gray-50);border-radius:8px;padding:0.75rem 0.5rem;">
+          <div style="font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:500;color:var(--teal-400);">0</div>
+          <div style="font-size:11px;color:var(--gray-400);font-weight:300;" data-i18n="cases.c1.s2">incidents</div>
+        </div>
+        <div style="text-align:center;background:var(--gray-50);border-radius:8px;padding:0.75rem 0.5rem;">
+          <div style="font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:500;color:var(--teal-400);">51%</div>
+          <div style="font-size:11px;color:var(--gray-400);font-weight:300;" data-i18n="cases.c1.s3">cost savings</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Case 2 -->
+    <div class="service-card reveal reveal-delay-2" style="position:relative;overflow:hidden;">
+      <div style="position:absolute;top:0;left:0;right:0;height:4px;background:var(--teal-400);border-radius:0;"></div>
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.75rem;">
+        <span style="background:var(--teal-50);color:var(--teal-600);font-size:11px;font-weight:500;padding:3px 10px;border-radius:20px;border:0.5px solid var(--teal-100);" data-i18n="cases.c2.industry">💳 Fintech · Spain</span>
+        <span style="font-size:12px;color:var(--gray-400);">2024</span>
+      </div>
+      <div class="service-title" style="margin-bottom:0.5rem;" data-i18n="cases.c2.title">RTP Payment Platform</div>
+      <p class="service-desc" style="margin-bottom:1.25rem;" data-i18n="cases.c2.desc">Real-time payment infrastructure built from scratch on AWS — ACH, SEPA, and OFAC compliance integrated. Delivered under budget in 4 months.</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.5rem;">
+        <div style="text-align:center;background:var(--gray-50);border-radius:8px;padding:0.75rem 0.5rem;">
+          <div style="font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:500;color:var(--teal-400);">$50B+</div>
+          <div style="font-size:11px;color:var(--gray-400);font-weight:300;" data-i18n="cases.c2.s1">processed</div>
+        </div>
+        <div style="text-align:center;background:var(--gray-50);border-radius:8px;padding:0.75rem 0.5rem;">
+          <div style="font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:500;color:var(--teal-400);">4 mo</div>
+          <div style="font-size:11px;color:var(--gray-400);font-weight:300;" data-i18n="cases.c2.s2">delivery</div>
+        </div>
+        <div style="text-align:center;background:var(--gray-50);border-radius:8px;padding:0.75rem 0.5rem;">
+          <div style="font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:500;color:var(--teal-400);">3</div>
+          <div style="font-size:11px;color:var(--gray-400);font-weight:300;" data-i18n="cases.c2.s3">compliance frameworks</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Case 3 — Coming Soon -->
+    <div class="service-card reveal reveal-delay-3" style="position:relative;overflow:hidden;border-style:dashed;">
+      <div style="position:absolute;top:0;left:0;right:0;height:4px;background:var(--gray-100);border-radius:0;"></div>
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.75rem;">
+        <span style="background:var(--gray-50);color:var(--gray-400);font-size:11px;font-weight:500;padding:3px 10px;border-radius:20px;border:0.5px solid var(--gray-100);" data-i18n="cases.c3.industry">🔒 Enterprise · Mexico</span>
+        <span style="font-size:12px;color:var(--gray-400);" data-i18n="cases.c3.year">2025</span>
+      </div>
+      <div class="service-title" style="margin-bottom:0.5rem;color:var(--gray-400);" data-i18n="cases.c3.title">Cybersecurity Transformation</div>
+      <p class="service-desc" style="margin-bottom:1.25rem;" data-i18n="cases.c3.desc">End-to-end security redesign for a Mexican enterprise — zero-trust architecture, PCI-DSS certification, and a full SOX compliance framework. Case study in progress.</p>
+      <div style="background:var(--gray-50);border:0.5px solid var(--gray-100);border-radius:8px;padding:1rem;text-align:center;">
+        <div style="font-size:13px;color:var(--gray-400);font-weight:300;" data-i18n="cases.c3.coming">📋 Full case study coming soon</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
 <!-- FAQ -->
 <div class="divider"></div>
 <section class="faq-section" id="faq">
@@ -1614,7 +1866,7 @@ function submitNotify() {
 // ═══════════════════════════════════════════
 const translations = {
   en: {
-    "nav.services":"Services","nav.calculator":"Calculator","nav.about":"About","nav.security":"Security","nav.faq":"FAQ","nav.contact":"Get in touch","nav.cta":"Start a Project",
+    "nav.services":"Services","nav.engine":"Engine","nav.managed":"Managed","nav.calculator":"Rates","nav.cases":"Cases","nav.faq":"FAQ","nav.contact":"Get in touch","nav.cta":"Start a Project",
     "faq.tag":"FAQ","faq.title":"Frequently Asked Questions",
     "faq.sub":"Everything you need to know before starting a conversation with us.",
     "faq.q1":"What type of companies do you work with?",
@@ -1813,7 +2065,7 @@ const translations = {
     "chip1":"Our services","chip2":"What's included?","chip3":"Go-live support","chip4":"What documents?","chip5":"Get a quote","chip6":"Small companies?",
   },
   es: {
-    "nav.services":"Servicios","nav.calculator":"Calculadora","nav.about":"Nosotros","nav.security":"Seguridad","nav.faq":"FAQ","nav.contact":"Contáctanos","nav.cta":"Iniciar Proyecto",
+    "nav.services":"Servicios","nav.engine":"Motor","nav.managed":"Servicios","nav.calculator":"Tarifas","nav.cases":"Casos","nav.faq":"FAQ","nav.contact":"Contáctanos","nav.cta":"Iniciar Proyecto",
     "faq.tag":"Preguntas Frecuentes","faq.title":"Preguntas Frecuentes",
     "faq.sub":"Todo lo que necesitas saber antes de comenzar una conversación con nosotros.",
     "faq.q1":"¿Con qué tipo de empresas trabajan?",
