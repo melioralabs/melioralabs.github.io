@@ -1,15 +1,11 @@
 <!-- ============================================================
      Meliora Labs | melioralabs.tech
-     Version : 2.4.0
+     Version : 2.5.0
      Date    : 2026-06-06
-     Changes : Project brief form — full grandma-test rewrite,
-               Plain-language checkboxes (no IT jargon),
-               Spain removed from country dropdown (US + Mexico only),
-               Systems involved + Compliance rows removed,
-               Budget note added (no commitment, never exceed written),
-               Company size replaces team size,
-               Textarea prompt replaced with human example,
-               EN + ES translations fully updated
+     Changes : Case 2 rewritten — Fintech USA, KYC/AML/onboarding/PO story,
+               Spain removed from Case 2 badge and description,
+               Managed section CTA → #contact-form (was #project-brief),
+               EN + ES translations updated for Case 2
      ============================================================ -->
 <!DOCTYPE html>
 <html lang="en">
@@ -1373,7 +1369,7 @@
 
   <div style="text-align:center;">
     <p style="font-size:13px;color:var(--gray-400);font-weight:300;margin-bottom:1rem;" data-i18n="mgd.note">* All managed service plans include monthly reporting, change log, and a dedicated Slack or email channel. No lock-in contracts — cancel anytime with 30 days notice.</p>
-    <a href="#project-brief" class="btn-primary" data-i18n="mgd.cta">Talk to us about managed support →</a>
+    <a href="#contact-form" class="btn-primary" data-i18n="mgd.cta">Talk to us about managed support →</a>
   </div>
 </section>
 
@@ -1415,19 +1411,19 @@
     <div class="service-card reveal reveal-delay-2" style="position:relative;overflow:hidden;">
       <div style="position:absolute;top:0;left:0;right:0;height:4px;background:var(--teal-400);border-radius:0;"></div>
       <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.75rem;">
-        <span style="background:var(--teal-50);color:var(--teal-600);font-size:11px;font-weight:500;padding:3px 10px;border-radius:20px;border:0.5px solid var(--teal-100);" data-i18n="cases.c2.industry">💳 Fintech · Spain</span>
+        <span style="background:var(--teal-50);color:var(--teal-600);font-size:11px;font-weight:500;padding:3px 10px;border-radius:20px;border:0.5px solid var(--teal-100);" data-i18n="cases.c2.industry">💳 Fintech · USA</span>
         <span style="font-size:12px;color:var(--gray-400);">2024</span>
       </div>
-      <div class="service-title" style="margin-bottom:0.5rem;" data-i18n="cases.c2.title">RTP Payment Platform</div>
-      <p class="service-desc" style="margin-bottom:1.25rem;" data-i18n="cases.c2.desc">Real-time payment infrastructure built from scratch on AWS — ACH, SEPA, and OFAC compliance integrated. Delivered under budget in 4 months.</p>
+      <div class="service-title" style="margin-bottom:0.5rem;" data-i18n="cases.c2.title">Payments & Onboarding Platform</div>
+      <p class="service-desc" style="margin-bottom:1.25rem;" data-i18n="cases.c2.desc">End-to-end payment and client onboarding platform built on AWS — ACH, RTP, KYC verification, and AML compliance integrated. Led as Product Owner and technical lead, delivered under budget.</p>
       <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.5rem;">
         <div style="text-align:center;background:var(--gray-50);border-radius:8px;padding:0.75rem 0.5rem;">
           <div style="font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:500;color:var(--teal-400);">$50B+</div>
           <div style="font-size:11px;color:var(--gray-400);font-weight:300;" data-i18n="cases.c2.s1">processed</div>
         </div>
         <div style="text-align:center;background:var(--gray-50);border-radius:8px;padding:0.75rem 0.5rem;">
-          <div style="font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:500;color:var(--teal-400);">4 mo</div>
-          <div style="font-size:11px;color:var(--gray-400);font-weight:300;" data-i18n="cases.c2.s2">delivery</div>
+          <div style="font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:500;color:var(--teal-400);">0</div>
+          <div style="font-size:11px;color:var(--gray-400);font-weight:300;" data-i18n="cases.c2.s2">rollbacks</div>
         </div>
         <div style="text-align:center;background:var(--gray-50);border-radius:8px;padding:0.75rem 0.5rem;">
           <div style="font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:500;color:var(--teal-400);">3</div>
@@ -2111,9 +2107,9 @@ const translations = {
     "cases.c1.industry":"🏦 Large Bank · USA","cases.c1.title":"Mainframe → Cloud Migration",
     "cases.c1.desc":"Full z/OS to AWS migration — 100+ COBOL components, zero incidents on go-live, 14-year zero rollback record maintained.",
     "cases.c1.s1":"components","cases.c1.s2":"incidents","cases.c1.s3":"cost savings",
-    "cases.c2.industry":"💳 Fintech · Spain","cases.c2.title":"RTP Payment Platform",
-    "cases.c2.desc":"Real-time payment infrastructure on AWS — ACH, SEPA, OFAC compliance. Delivered under budget in 4 months.",
-    "cases.c2.s1":"processed","cases.c2.s2":"delivery","cases.c2.s3":"compliance frameworks",
+    "cases.c2.industry":"💳 Fintech · USA","cases.c2.title":"Payments & Onboarding Platform",
+    "cases.c2.desc":"End-to-end payment and client onboarding platform built on AWS — ACH, RTP, KYC verification, and AML compliance integrated. Led as Product Owner and technical lead, delivered under budget.",
+    "cases.c2.s1":"processed","cases.c2.s2":"rollbacks","cases.c2.s3":"compliance frameworks",
     "cases.c3.industry":"🔒 Enterprise · Mexico","cases.c3.title":"Cybersecurity Transformation","cases.c3.year":"2025",
     "cases.c3.desc":"End-to-end security redesign — zero-trust architecture, PCI-DSS certification, SOX compliance framework. Case study in progress.",
     "cases.c3.coming":"📋 Full case study coming soon"
@@ -2392,9 +2388,9 @@ const translations = {
     "cases.c1.industry":"🏦 Banco Grande · USA","cases.c1.title":"Mainframe → Migración a la Nube",
     "cases.c1.desc":"Migración completa de z/OS a AWS — 100+ componentes COBOL, cero incidentes en go-live, récord de cero rollbacks en 14 años.",
     "cases.c1.s1":"componentes","cases.c1.s2":"incidentes","cases.c1.s3":"ahorro en costos",
-    "cases.c2.industry":"💳 Fintech · España","cases.c2.title":"Plataforma de Pagos RTP",
-    "cases.c2.desc":"Infraestructura de pago en tiempo real en AWS — ACH, SEPA y cumplimiento OFAC. Entregado bajo presupuesto en 4 meses.",
-    "cases.c2.s1":"procesados","cases.c2.s2":"entrega","cases.c2.s3":"marcos de cumplimiento",
+    "cases.c2.industry":"💳 Fintech · EE.UU.","cases.c2.title":"Plataforma de Pagos y Onboarding",
+    "cases.c2.desc":"Plataforma de pagos y onboarding de clientes de extremo a extremo en AWS — ACH, RTP, verificación KYC y cumplimiento AML integrados. Liderado como Product Owner y responsable técnico, entregado bajo presupuesto.",
+    "cases.c2.s1":"procesados","cases.c2.s2":"rollbacks","cases.c2.s3":"marcos de cumplimiento",
     "cases.c3.industry":"🔒 Empresa · México","cases.c3.title":"Transformación de Ciberseguridad","cases.c3.year":"2025",
     "cases.c3.desc":"Rediseño de seguridad de extremo a extremo — arquitectura zero-trust, certificación PCI-DSS y marco SOX. Caso de estudio en progreso.",
     "cases.c3.coming":"📋 Caso de estudio completo próximamente"
