@@ -1,13 +1,15 @@
 <!-- ============================================================
      Meliora Labs | melioralabs.tech
-     Version : 2.3.0
+     Version : 2.4.0
      Date    : 2026-06-06
-     Changes : Logo click → scroll to hero,
-               Nav active highlight on all sections (Engine/Managed/Rates/Cases/FAQ),
-               FAQ grid align-items:start — no neighbor push on expand,
-               card.learnmore + card.collapse keys added to EN+ES translations,
-               Contact + Brief forms: id/for/autocomplete on all fields,
-               Notify Me + Chatbot: hidden labels + autocomplete
+     Changes : Project brief form — full grandma-test rewrite,
+               Plain-language checkboxes (no IT jargon),
+               Spain removed from country dropdown (US + Mexico only),
+               Systems involved + Compliance rows removed,
+               Budget note added (no commitment, never exceed written),
+               Company size replaces team size,
+               Textarea prompt replaced with human example,
+               EN + ES translations fully updated
      ============================================================ -->
 <!DOCTYPE html>
 <html lang="en">
@@ -907,7 +909,7 @@
     <div style="padding:2rem 2rem 0;">
       <div class="section-tag" style="margin-bottom:0.5rem;" data-i18n="brief.tag">Start the conversation</div>
       <h3 style="font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:500;color:var(--gray-900);margin:0 0 0.5rem;" data-i18n="brief.title">Tell us about your project</h3>
-      <p style="font-size:14px;color:var(--gray-800);font-weight:300;max-width:580px;line-height:1.75;margin:0 0 2rem;" data-i18n="brief.sub">Answer a few questions and we'll come back with a real estimate — no generic quotes, no automated responses. A real engineer will review this and reply within 24 hours.</p>
+      <p style="font-size:14px;color:var(--gray-800);font-weight:300;max-width:580px;line-height:1.75;margin:0 0 2rem;" data-i18n="brief.sub">No technical knowledge needed — just tell us what you want to improve or fix. A real engineer will read this and reply within 24 hours with a clear, honest estimate.</p>
     </div>
 
     <form id="projectBriefForm" action="https://formspree.io/f/mdajyype" method="POST" onsubmit="handleBriefSubmit(event)" style="padding:0 2rem 2rem;">
@@ -924,115 +926,79 @@
         </div>
       </div>
 
-      <!-- Row 2: Email + Market -->
+      <!-- Row 2: Email + Country -->
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;">
         <div>
           <label for="briefEmail" style="display:block;font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:1px;color:var(--teal-400);margin-bottom:6px;" data-i18n="brief.email">Work email *</label>
           <input class="form-input" type="email" id="briefEmail" name="email" required autocomplete="email" data-i18n-placeholder="brief.emailPh" placeholder="maria@acmebank.com" />
         </div>
         <div>
-          <label for="briefMarket" style="display:block;font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:1px;color:var(--teal-400);margin-bottom:6px;" data-i18n="brief.market">Your market *</label>
+          <label for="briefMarket" style="display:block;font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:1px;color:var(--teal-400);margin-bottom:6px;" data-i18n="brief.market">Your country *</label>
           <select class="form-select" id="briefMarket" name="market" required autocomplete="country">
             <option value="" data-i18n="brief.marketPh">Select your country</option>
             <option value="USA">🇺🇸 United States</option>
             <option value="Mexico">🇲🇽 Mexico</option>
-            <option value="Spain">🇪🇸 Spain</option>
             <option value="Other" data-i18n="brief.marketOther">Other</option>
           </select>
         </div>
       </div>
 
-      <!-- Row 3: Service needed -->
+      <!-- Row 3: What do you need — plain language checkboxes -->
       <div style="margin-bottom:1rem;">
-        <label style="display:block;font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:1px;color:var(--teal-400);margin-bottom:8px;" data-i18n="brief.service">What do you need? (select all that apply)</label>
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:8px;">
-          <label style="display:flex;align-items:center;gap:8px;background:var(--gray-50);border:0.5px solid var(--gray-100);border-radius:8px;padding:10px 12px;cursor:pointer;font-size:13px;color:var(--gray-800);transition:border-color .2s;" onmouseover="this.style.borderColor='var(--teal-100)'" onmouseout="this.style.borderColor='var(--gray-100)'"><input type="checkbox" name="service_mainframe" style="accent-color:var(--teal-400);" /> <span data-i18n="brief.svc1">🔄 Mainframe Modernization</span></label>
-          <label style="display:flex;align-items:center;gap:8px;background:var(--gray-50);border:0.5px solid var(--gray-100);border-radius:8px;padding:10px 12px;cursor:pointer;font-size:13px;color:var(--gray-800);transition:border-color .2s;" onmouseover="this.style.borderColor='var(--teal-100)'" onmouseout="this.style.borderColor='var(--gray-100)'"><input type="checkbox" name="service_payments" style="accent-color:var(--teal-400);" /> <span data-i18n="brief.svc2">🏦 Payments & Fintech</span></label>
-          <label style="display:flex;align-items:center;gap:8px;background:var(--gray-50);border:0.5px solid var(--gray-100);border-radius:8px;padding:10px 12px;cursor:pointer;font-size:13px;color:var(--gray-800);transition:border-color .2s;" onmouseover="this.style.borderColor='var(--teal-100)'" onmouseout="this.style.borderColor='var(--gray-100)'"><input type="checkbox" name="service_cyber" style="accent-color:var(--teal-400);" /> <span data-i18n="brief.svc3">🔒 Cybersecurity Audit</span></label>
-          <label style="display:flex;align-items:center;gap:8px;background:var(--gray-50);border:0.5px solid var(--gray-100);border-radius:8px;padding:10px 12px;cursor:pointer;font-size:13px;color:var(--gray-800);transition:border-color .2s;" onmouseover="this.style.borderColor='var(--teal-100)'" onmouseout="this.style.borderColor='var(--gray-100)'"><input type="checkbox" name="service_migration" style="accent-color:var(--teal-400);" /> <span data-i18n="brief.svc4">🔁 Legacy Migration</span></label>
-          <label style="display:flex;align-items:center;gap:8px;background:var(--gray-50);border:0.5px solid var(--gray-100);border-radius:8px;padding:10px 12px;cursor:pointer;font-size:13px;color:var(--gray-800);transition:border-color .2s;" onmouseover="this.style.borderColor='var(--teal-100)'" onmouseout="this.style.borderColor='var(--gray-100)'"><input type="checkbox" name="service_aws" style="accent-color:var(--teal-400);" /> <span data-i18n="brief.svc5">☁️ AWS / Cloud Setup</span></label>
-          <label style="display:flex;align-items:center;gap:8px;background:var(--gray-50);border:0.5px solid var(--gray-100);border-radius:8px;padding:10px 12px;cursor:pointer;font-size:13px;color:var(--gray-800);transition:border-color .2s;" onmouseover="this.style.borderColor='var(--teal-100)'" onmouseout="this.style.borderColor='var(--gray-100)'"><input type="checkbox" name="service_consulting" style="accent-color:var(--teal-400);" /> <span data-i18n="brief.svc6">🤖 AI-Powered Consulting</span></label>
+        <label style="display:block;font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:1px;color:var(--teal-400);margin-bottom:8px;" data-i18n="brief.service">What would you like to improve? (check all that apply)</label>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:8px;">
+          <label style="display:flex;align-items:center;gap:8px;background:var(--gray-50);border:0.5px solid var(--gray-100);border-radius:8px;padding:10px 12px;cursor:pointer;font-size:13px;color:var(--gray-800);transition:border-color .2s;" onmouseover="this.style.borderColor='var(--teal-100)'" onmouseout="this.style.borderColor='var(--gray-100)'"><input type="checkbox" name="service_mainframe" style="accent-color:var(--teal-400);" /> <span data-i18n="brief.svc1">🖥️ Old software running slow or at risk</span></label>
+          <label style="display:flex;align-items:center;gap:8px;background:var(--gray-50);border:0.5px solid var(--gray-100);border-radius:8px;padding:10px 12px;cursor:pointer;font-size:13px;color:var(--gray-800);transition:border-color .2s;" onmouseover="this.style.borderColor='var(--teal-100)'" onmouseout="this.style.borderColor='var(--gray-100)'"><input type="checkbox" name="service_payments" style="accent-color:var(--teal-400);" /> <span data-i18n="brief.svc2">🏦 Payments, banking or financial systems</span></label>
+          <label style="display:flex;align-items:center;gap:8px;background:var(--gray-50);border:0.5px solid var(--gray-100);border-radius:8px;padding:10px 12px;cursor:pointer;font-size:13px;color:var(--gray-800);transition:border-color .2s;" onmouseover="this.style.borderColor='var(--teal-100)'" onmouseout="this.style.borderColor='var(--gray-100)'"><input type="checkbox" name="service_automation" style="accent-color:var(--teal-400);" /> <span data-i18n="brief.svc3">🤖 Automate manual or repetitive work</span></label>
+          <label style="display:flex;align-items:center;gap:8px;background:var(--gray-50);border:0.5px solid var(--gray-100);border-radius:8px;padding:10px 12px;cursor:pointer;font-size:13px;color:var(--gray-800);transition:border-color .2s;" onmouseover="this.style.borderColor='var(--teal-100)'" onmouseout="this.style.borderColor='var(--gray-100)'"><input type="checkbox" name="service_cloud" style="accent-color:var(--teal-400);" /> <span data-i18n="brief.svc4">☁️ Move systems to the cloud (AWS)</span></label>
+          <label style="display:flex;align-items:center;gap:8px;background:var(--gray-50);border:0.5px solid var(--gray-100);border-radius:8px;padding:10px 12px;cursor:pointer;font-size:13px;color:var(--gray-800);transition:border-color .2s;" onmouseover="this.style.borderColor='var(--teal-100)'" onmouseout="this.style.borderColor='var(--gray-100)'"><input type="checkbox" name="service_data" style="accent-color:var(--teal-400);" /> <span data-i18n="brief.svc5">📊 Data, files, or reports that need organizing</span></label>
+          <label style="display:flex;align-items:center;gap:8px;background:var(--gray-50);border:0.5px solid var(--gray-100);border-radius:8px;padding:10px 12px;cursor:pointer;font-size:13px;color:var(--gray-800);transition:border-color .2s;" onmouseover="this.style.borderColor='var(--teal-100)'" onmouseout="this.style.borderColor='var(--gray-100)'"><input type="checkbox" name="service_other" style="accent-color:var(--teal-400);" /> <span data-i18n="brief.svc6">💡 Something else — I will describe it below</span></label>
         </div>
       </div>
 
-      <!-- Row 4: Systems + Compliance -->
+      <!-- Row 4: Company size + Timeline -->
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;">
         <div>
-          <label for="briefSystems" style="display:block;font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:1px;color:var(--teal-400);margin-bottom:6px;" data-i18n="brief.systems">Systems involved</label>
-          <select class="form-select" id="briefSystems" name="systems" autocomplete="off">
-            <option value="" data-i18n="brief.systemsPh">Select primary system</option>
-            <option value="Mainframe z/OS">Mainframe / z/OS</option>
-            <option value="Core Banking">Core Banking Platform</option>
-            <option value="Payment Gateway">Payment Gateway</option>
-            <option value="Custom App">Custom Application</option>
-            <option value="Cloud">Cloud / AWS / Azure</option>
-            <option value="Multiple">Multiple systems</option>
-            <option value="Not sure" data-i18n="brief.notSure">Not sure yet</option>
+          <label for="briefTeamsize" style="display:block;font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:1px;color:var(--teal-400);margin-bottom:6px;" data-i18n="brief.teamsize">How big is your company?</label>
+          <select class="form-select" id="briefTeamsize" name="team_size" autocomplete="off">
+            <option value="" data-i18n="brief.teamPh">Select size</option>
+            <option value="Solo / 1" data-i18n="brief.ts1">Just me</option>
+            <option value="2-10" data-i18n="brief.ts2">2–10 people</option>
+            <option value="11-50" data-i18n="brief.ts3">11–50 people</option>
+            <option value="50+" data-i18n="brief.ts4">More than 50 people</option>
           </select>
         </div>
         <div>
-          <label for="briefCompliance" style="display:block;font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:1px;color:var(--teal-400);margin-bottom:6px;" data-i18n="brief.compliance">Compliance requirements</label>
-          <select class="form-select" id="briefCompliance" name="compliance" autocomplete="off">
-            <option value="None / Unknown" data-i18n="brief.complianceNone">None / Not sure</option>
-            <option value="PCI-DSS">PCI-DSS</option>
-            <option value="SOX">SOX</option>
-            <option value="OFAC / AML">OFAC / AML</option>
-            <option value="Multiple">Multiple requirements</option>
-          </select>
-        </div>
-      </div>
-
-      <!-- Row 5: Timeline + Budget -->
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;">
-        <div>
-          <label for="briefTimeline" style="display:block;font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:1px;color:var(--teal-400);margin-bottom:6px;" data-i18n="brief.timeline">Target go-live</label>
+          <label for="briefTimeline" style="display:block;font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:1px;color:var(--teal-400);margin-bottom:6px;" data-i18n="brief.timeline">When do you need this done?</label>
           <select class="form-select" id="briefTimeline" name="timeline" autocomplete="off">
             <option value="" data-i18n="brief.timelinePh">Select a timeframe</option>
             <option value="ASAP" data-i18n="brief.tl1">As soon as possible</option>
-            <option value="1-3 months" data-i18n="brief.tl2">1–3 months</option>
-            <option value="3-6 months" data-i18n="brief.tl3">3–6 months</option>
-            <option value="6-12 months" data-i18n="brief.tl4">6–12 months</option>
-            <option value="Flexible" data-i18n="brief.tl5">Flexible / Exploring</option>
-          </select>
-        </div>
-        <div>
-          <label for="briefBudget" style="display:block;font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:1px;color:var(--teal-400);margin-bottom:6px;" data-i18n="brief.budget">Budget range (USD) *</label>
-          <select class="form-select" id="briefBudget" name="budget" required autocomplete="off">
-            <option value="" data-i18n="brief.budgetPh">Select your range</option>
-            <option value="Under $10k" data-i18n="brief.b1">Under $10,000</option>
-            <option value="$10k-$50k" data-i18n="brief.b2">$10,000 – $50,000</option>
-            <option value="$50k-$100k" data-i18n="brief.b3">$50,000 – $100,000</option>
-            <option value="$100k+" data-i18n="brief.b4">$100,000+</option>
-            <option value="TBD" data-i18n="brief.b5">Not defined yet</option>
+            <option value="1-3 months" data-i18n="brief.tl2">In 1–3 months</option>
+            <option value="3-6 months" data-i18n="brief.tl3">In 3–6 months</option>
+            <option value="6-12 months" data-i18n="brief.tl4">In 6–12 months</option>
+            <option value="Flexible" data-i18n="brief.tl5">No rush — still exploring</option>
           </select>
         </div>
       </div>
 
-      <!-- Row 6: Documentation + Team size -->
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;">
-        <div>
-          <label for="briefDocs" style="display:block;font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:1px;color:var(--teal-400);margin-bottom:6px;" data-i18n="brief.docs">Existing documentation</label>
-          <select class="form-select" id="briefDocs" name="documentation" autocomplete="off">
-            <option value="Yes — complete" data-i18n="brief.doc1">Yes — complete docs available</option>
-            <option value="Partial" data-i18n="brief.doc2">Partial — some docs exist</option>
-            <option value="None" data-i18n="brief.doc3">None — starting from scratch</option>
-          </select>
-        </div>
-        <div>
-          <label for="briefTeamsize" style="display:block;font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:1px;color:var(--teal-400);margin-bottom:6px;" data-i18n="brief.teamsize">Your team size</label>
-          <select class="form-select" id="briefTeamsize" name="team_size" autocomplete="off">
-            <option value="Solo / 1" data-i18n="brief.ts1">Solo / 1 person</option>
-            <option value="2-5" data-i18n="brief.ts2">2–5 people</option>
-            <option value="6-15" data-i18n="brief.ts3">6–15 people</option>
-            <option value="15+" data-i18n="brief.ts4">15+ people</option>
-          </select>
-        </div>
+      <!-- Row 5: Budget -->
+      <div style="margin-bottom:1rem;">
+        <label for="briefBudget" style="display:block;font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:1px;color:var(--teal-400);margin-bottom:6px;" data-i18n="brief.budget">Approximate budget (USD) *</label>
+        <select class="form-select" id="briefBudget" name="budget" required autocomplete="off">
+          <option value="" data-i18n="brief.budgetPh">Select a range</option>
+          <option value="Under $10k" data-i18n="brief.b1">Under $10,000</option>
+          <option value="$10k-$50k" data-i18n="brief.b2">$10,000 – $50,000</option>
+          <option value="$50k-$100k" data-i18n="brief.b3">$50,000 – $100,000</option>
+          <option value="$100k+" data-i18n="brief.b4">Over $100,000</option>
+          <option value="TBD" data-i18n="brief.b5">I do not know yet</option>
+        </select>
+        <p style="font-size:12px;color:var(--gray-400);margin:6px 0 0;font-weight:300;line-height:1.5;" data-i18n="brief.budgetNote">No commitment required. This helps us give you a realistic estimate — we will never charge more than what we agree in writing.</p>
       </div>
 
-      <!-- Row 7: Project description -->
+      <!-- Row 6: Project description — plain language prompt -->
       <div style="margin-bottom:1.5rem;">
-        <label for="briefDesc" style="display:block;font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:1px;color:var(--teal-400);margin-bottom:6px;" data-i18n="brief.desc">Describe your project *</label>
-        <textarea class="form-input" id="briefDesc" name="message" required rows="4" autocomplete="off" data-i18n-placeholder="brief.descPh" placeholder="Tell us what you're trying to build, migrate, or fix. The more detail, the better estimate we can give you." style="min-height:100px;resize:vertical;"></textarea>
+        <label for="briefDesc" style="display:block;font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:1px;color:var(--teal-400);margin-bottom:6px;" data-i18n="brief.desc">Tell us what is happening *</label>
+        <textarea class="form-input" id="briefDesc" name="message" required rows="4" autocomplete="off" data-i18n-placeholder="brief.descPh" placeholder="Example: Our software is very slow and we are afraid to touch it. We process payments every day and something could break. We want to make it faster and safer without changing how it works." style="min-height:110px;resize:vertical;"></textarea>
       </div>
 
       <!-- Hidden field to identify source -->
@@ -1040,13 +1006,13 @@
 
       <!-- Submit row -->
       <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;">
-        <p style="font-size:12px;color:var(--gray-400);margin:0;font-weight:300;line-height:1.6;max-width:420px;" data-i18n="brief.privacy">Your information is never shared. We'll respond within 24 hours with a real estimate — not an automated reply.</p>
-        <button type="submit" class="btn-primary" data-i18n="brief.submit">Send Project Brief →</button>
+        <p style="font-size:12px;color:var(--gray-400);margin:0;font-weight:300;line-height:1.6;max-width:420px;" data-i18n="brief.privacy">Your information is never shared. A real engineer will read this and reply within 24 hours — not an automated response.</p>
+        <button type="submit" class="btn-primary" data-i18n="brief.submit">Send →</button>
       </div>
 
       <!-- Success message -->
       <div id="briefSuccess" style="display:none;margin-top:1.25rem;background:var(--teal-50);border:0.5px solid var(--teal-100);border-radius:10px;padding:1rem 1.25rem;font-size:14px;color:var(--teal-600);font-weight:300;" data-i18n="brief.success">
-        ✅ Brief received! A real engineer will review this and respond within 24 hours. Thank you for reaching out.
+        ✅ Received! A real engineer will review this and respond within 24 hours. Thank you for reaching out.
       </div>
     </form>
   </div>
@@ -2090,24 +2056,27 @@ const translations = {
     "aws.savings.label":"Typical savings","aws.savings.sub":"lower infrastructure cost vs. building it yourself",
     "aws.savings.source":"Source: ESG / AWS 3-yr TCO study. Actual savings vary by workload.",
     "brief.tag":"Start the conversation","brief.title":"Tell us about your project",
-    "brief.sub":"Answer a few questions and we will come back with a real estimate — no generic quotes, no automated responses. A real engineer will review this and reply within 24 hours.",
+    "brief.sub":"No technical knowledge needed — just tell us what you want to improve or fix. A real engineer will read this and reply within 24 hours with a clear, honest estimate.",
     "brief.name":"Your name *","brief.namePh":"Maria Gonzalez","brief.company":"Company *","brief.companyPh":"Acme Bank",
-    "brief.email":"Work email *","brief.emailPh":"maria@acmebank.com","brief.market":"Your market *","brief.marketPh":"Select your country","brief.marketOther":"Other",
-    "brief.service":"What do you need? (select all that apply)",
-    "brief.svc1":"🔄 Mainframe Modernization","brief.svc2":"🏦 Payments & Fintech","brief.svc3":"🔒 Cybersecurity Audit",
-    "brief.svc4":"🔁 Legacy Migration","brief.svc5":"☁️ AWS / Cloud Setup","brief.svc6":"🤖 AI-Powered Consulting",
-    "brief.systems":"Systems involved","brief.systemsPh":"Select primary system","brief.notSure":"Not sure yet",
-    "brief.compliance":"Compliance requirements","brief.complianceNone":"None / Not sure",
-    "brief.timeline":"Target go-live","brief.timelinePh":"Select a timeframe",
-    "brief.tl1":"As soon as possible","brief.tl2":"1-3 months","brief.tl3":"3-6 months","brief.tl4":"6-12 months","brief.tl5":"Flexible / Exploring",
-    "brief.budget":"Budget range (USD) *","brief.budgetPh":"Select your range",
-    "brief.b1":"Under $10,000","brief.b2":"$10,000 - $50,000","brief.b3":"$50,000 - $100,000","brief.b4":"$100,000+","brief.b5":"Not defined yet",
-    "brief.docs":"Existing documentation","brief.doc1":"Yes — complete docs available","brief.doc2":"Partial — some docs exist","brief.doc3":"None — starting from scratch",
-    "brief.teamsize":"Your team size","brief.ts1":"Solo / 1 person","brief.ts2":"2-5 people","brief.ts3":"6-15 people","brief.ts4":"15+ people",
-    "brief.desc":"Describe your project *","brief.descPh":"Tell us what you want to build, migrate, or fix. More detail means a better estimate.",
-    "brief.privacy":"Your information is never shared. We will respond within 24 hours with a real estimate — not an automated reply.",
-    "brief.submit":"Send Project Brief →",
-    "brief.success":"✅ Brief received! A real engineer will review this and respond within 24 hours. Thank you for reaching out.",
+    "brief.email":"Work email *","brief.emailPh":"maria@acmebank.com","brief.market":"Your country *","brief.marketPh":"Select your country","brief.marketOther":"Other",
+    "brief.service":"What would you like to improve? (check all that apply)",
+    "brief.svc1":"🖥️ Old software running slow or at risk",
+    "brief.svc2":"🏦 Payments, banking or financial systems",
+    "brief.svc3":"🤖 Automate manual or repetitive work",
+    "brief.svc4":"☁️ Move systems to the cloud (AWS)",
+    "brief.svc5":"📊 Data, files, or reports that need organizing",
+    "brief.svc6":"💡 Something else — I will describe it below",
+    "brief.teamsize":"How big is your company?","brief.teamPh":"Select size",
+    "brief.ts1":"Just me","brief.ts2":"2–10 people","brief.ts3":"11–50 people","brief.ts4":"More than 50 people",
+    "brief.timeline":"When do you need this done?","brief.timelinePh":"Select a timeframe",
+    "brief.tl1":"As soon as possible","brief.tl2":"In 1–3 months","brief.tl3":"In 3–6 months","brief.tl4":"In 6–12 months","brief.tl5":"No rush — still exploring",
+    "brief.budget":"Approximate budget (USD) *","brief.budgetPh":"Select a range",
+    "brief.b1":"Under $10,000","brief.b2":"$10,000 – $50,000","brief.b3":"$50,000 – $100,000","brief.b4":"Over $100,000","brief.b5":"I do not know yet",
+    "brief.budgetNote":"No commitment required. This helps us give you a realistic estimate — we will never charge more than what we agree in writing.",
+    "brief.desc":"Tell us what is happening *","brief.descPh":"Example: Our software is very slow and we are afraid to touch it. We process payments every day and something could break. We want to make it faster and safer without changing how it works.",
+    "brief.privacy":"Your information is never shared. A real engineer will read this and reply within 24 hours — not an automated response.",
+    "brief.submit":"Send →",
+    "brief.success":"✅ Received! A real engineer will review this and respond within 24 hours. Thank you for reaching out.",
     "eng.tag":"Meliora Engine","eng.title":"The engine behind every delivery",
     "eng.sub":"Every Meliora Labs project is powered by our internal delivery engine — turning project inputs into estimates, SOWs, roadmaps, and compliance packages automatically.",
     "eng.t1.label":"Tier 1 — Foundation","eng.t1.badge":"Small projects","eng.t1.title":"Estimate + SOW",
@@ -2368,24 +2337,27 @@ const translations = {
     "aws.savings.label":"Ahorro típico","aws.savings.sub":"menor costo de infraestructura vs. construirlo tú mismo",
     "aws.savings.source":"Fuente: Estudio TCO 3 años ESG / AWS. Los ahorros reales varían según la carga de trabajo.",
     "brief.tag":"Inicia la conversación","brief.title":"Cuéntanos sobre tu proyecto",
-    "brief.sub":"Responde unas preguntas y te devolveremos una estimación real — sin cotizaciones genéricas ni respuestas automáticas. Un ingeniero real responderá en 24 horas.",
+    "brief.sub":"No necesitas conocimientos técnicos — solo cuéntanos qué quieres mejorar o resolver. Un ingeniero real leerá esto y responderá en 24 horas con una estimación clara y honesta.",
     "brief.name":"Tu nombre *","brief.namePh":"María González","brief.company":"Empresa *","brief.companyPh":"Banco Acme",
-    "brief.email":"Email de trabajo *","brief.emailPh":"maria@bancoacme.com","brief.market":"Tu mercado *","brief.marketPh":"Selecciona tu país","brief.marketOther":"Otro",
-    "brief.service":"¿Qué necesitas? (selecciona todo lo que aplique)",
-    "brief.svc1":"🔄 Modernización Mainframe","brief.svc2":"🏦 Pagos & Fintech","brief.svc3":"🔒 Auditoría de Seguridad",
-    "brief.svc4":"🔁 Migración Legacy","brief.svc5":"☁️ AWS / Cloud","brief.svc6":"🤖 Consultoría con IA",
-    "brief.systems":"Sistemas involucrados","brief.systemsPh":"Selecciona el sistema principal","brief.notSure":"No estoy seguro todavía",
-    "brief.compliance":"Requisitos de cumplimiento","brief.complianceNone":"Ninguno / No estoy seguro",
-    "brief.timeline":"Fecha objetivo de lanzamiento","brief.timelinePh":"Selecciona un plazo",
-    "brief.tl1":"Lo antes posible","brief.tl2":"1-3 meses","brief.tl3":"3-6 meses","brief.tl4":"6-12 meses","brief.tl5":"Flexible / Explorando",
-    "brief.budget":"Rango de presupuesto (USD) *","brief.budgetPh":"Selecciona tu rango",
-    "brief.b1":"Menos de $10,000","brief.b2":"$10,000 - $50,000","brief.b3":"$50,000 - $100,000","brief.b4":"$100,000+","brief.b5":"Aún no definido",
-    "brief.docs":"Documentación existente","brief.doc1":"Sí — documentación completa disponible","brief.doc2":"Parcial — existe algo de documentación","brief.doc3":"Ninguna — empezando desde cero",
-    "brief.teamsize":"Tamaño de tu equipo","brief.ts1":"Solo / 1 persona","brief.ts2":"2-5 personas","brief.ts3":"6-15 personas","brief.ts4":"15+ personas",
-    "brief.desc":"Describe tu proyecto *","brief.descPh":"Cuéntanos qué quieres construir, migrar o solucionar. Más detalle significa mejor estimación.",
-    "brief.privacy":"Tu información nunca se comparte. Responderemos en 24 horas con una estimación real, no una respuesta automatizada.",
-    "brief.submit":"Enviar Brief del Proyecto →",
-    "brief.success":"✅ Brief recibido! Un ingeniero real lo revisará y responderá en 24 horas. Gracias por contactarnos.",
+    "brief.email":"Email de trabajo *","brief.emailPh":"maria@bancoacme.com","brief.market":"Tu país *","brief.marketPh":"Selecciona tu país","brief.marketOther":"Otro",
+    "brief.service":"¿Qué te gustaría mejorar? (selecciona todo lo que aplique)",
+    "brief.svc1":"🖥️ Software antiguo que va lento o que da miedo tocar",
+    "brief.svc2":"🏦 Pagos, banca o sistemas financieros",
+    "brief.svc3":"🤖 Automatizar trabajo manual o repetitivo",
+    "brief.svc4":"☁️ Mover sistemas a la nube (AWS)",
+    "brief.svc5":"📊 Datos, archivos o reportes que necesitan orden",
+    "brief.svc6":"💡 Otra cosa — lo describo abajo",
+    "brief.teamsize":"¿Qué tan grande es tu empresa?","brief.teamPh":"Selecciona tamaño",
+    "brief.ts1":"Solo yo","brief.ts2":"2–10 personas","brief.ts3":"11–50 personas","brief.ts4":"Más de 50 personas",
+    "brief.timeline":"¿Cuándo necesitas que esté listo?","brief.timelinePh":"Selecciona un plazo",
+    "brief.tl1":"Lo antes posible","brief.tl2":"En 1–3 meses","brief.tl3":"En 3–6 meses","brief.tl4":"En 6–12 meses","brief.tl5":"Sin prisa — todavía explorando",
+    "brief.budget":"Presupuesto aproximado (USD) *","brief.budgetPh":"Selecciona un rango",
+    "brief.b1":"Menos de $10,000","brief.b2":"$10,000 – $50,000","brief.b3":"$50,000 – $100,000","brief.b4":"Más de $100,000","brief.b5":"Aún no lo sé",
+    "brief.budgetNote":"Sin compromiso. Esto nos ayuda a darte una estimación realista — nunca cobraremos más de lo que acordemos por escrito.",
+    "brief.desc":"Cuéntanos qué está pasando *","brief.descPh":"Ejemplo: Nuestro software es muy lento y tenemos miedo de tocarlo. Procesamos pagos todos los días y algo podría fallar. Queremos que sea más rápido y seguro sin cambiar cómo funciona.",
+    "brief.privacy":"Tu información nunca se comparte. Un ingeniero real leerá esto y responderá en 24 horas — no es una respuesta automática.",
+    "brief.submit":"Enviar →",
+    "brief.success":"✅ Recibido! Un ingeniero real revisará esto y responderá en 24 horas. Gracias por contactarnos.",
     "eng.tag":"Motor Meliora","eng.title":"El motor detrás de cada entrega",
     "eng.sub":"Cada proyecto de Meliora Labs es impulsado por nuestro motor interno — convierte los datos del proyecto en estimaciones, SOWs, roadmaps y paquetes de cumplimiento automáticamente.",
     "eng.t1.label":"Nivel 1 — Base","eng.t1.badge":"Proyectos pequeños","eng.t1.title":"Estimación + SOW",
