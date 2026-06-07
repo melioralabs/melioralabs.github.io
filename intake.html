@@ -718,7 +718,6 @@
             <option value="">Select country...</option>
             <option value="USA">🇺🇸 United States</option>
             <option value="Mexico">🇲🇽 Mexico</option>
-            <option value="Spain">🇪🇸 Spain</option>
             <option value="Other">🌍 Other</option>
           </select>
           <span class="error-msg">Please select your country</span>
@@ -786,10 +785,10 @@
               <div class="label">Mainframe Modernization</div>
               <div class="rate">$200/hr</div>
             </div>
-            <div class="service-card" data-value="Cybersecurity" onclick="selectService(this)">
-              <div class="icon">🔒</div>
-              <div class="label">Cybersecurity</div>
-              <div class="rate">$185/hr</div>
+            <div class="service-card" data-value="AI / Automation" onclick="selectService(this)">
+              <div class="icon">🤖</div>
+              <div class="label">AI / Automation</div>
+              <div class="rate">$165/hr</div>
             </div>
             <div class="service-card" data-value="IT Consulting" onclick="selectService(this)">
               <div class="icon">💡</div>
@@ -1097,7 +1096,7 @@ const state = {
 
 const RATES = {
   'IT Consulting': 150, 'Payments & Fintech': 175,
-  'Mainframe Modernization': 200, 'Cybersecurity': 185,
+  'Mainframe Modernization': 200, 'AI / Automation': 165,
   'Delivery Intelligence': 160, 'SOW / Documentation': 125,
 };
 const BASE_HOURS = { Low: 20, Medium: 60, High: 120 };
