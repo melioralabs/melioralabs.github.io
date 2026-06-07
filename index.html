@@ -1,13 +1,13 @@
 <!-- ============================================================
      Meliora Labs | melioralabs.tech
-     Version : 2.2.0
-     Date    : 2026-06-05
-     Changes : Rate Card + AWS comparison + Project Brief,
-               Meliora Engine (Tier 1/2/3),
-               Managed Service (Layer 1/2/3),
-               Case Studies (3 cards),
-               SEO meta + Open Graph,
-               Nav: Engine, Managed, Cases links
+     Version : 2.3.0
+     Date    : 2026-06-06
+     Changes : Logo click → scroll to hero,
+               Nav active highlight on all sections (Engine/Managed/Rates/Cases/FAQ),
+               FAQ grid align-items:start — no neighbor push on expand,
+               card.learnmore + card.collapse keys added to EN+ES translations,
+               Contact + Brief forms: id/for/autocomplete on all fields,
+               Notify Me + Chatbot: hidden labels + autocomplete
      ============================================================ -->
 <!DOCTYPE html>
 <html lang="en">
@@ -275,7 +275,7 @@
 
   /* ── FAQ SECTION ── */
   .faq-section { padding: 5rem 3rem; max-width: 1100px; margin: 0 auto; }
-  .faq-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(480px, 1fr)); gap: 1rem; margin-top: 2rem; }
+  .faq-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(480px, 1fr)); gap: 1rem; margin-top: 2rem; align-items: start; }
   .faq-item { background: white; border: 0.5px solid var(--gray-100); border-radius: 12px; overflow: hidden; transition: border-color 0.2s; }
   .faq-item:hover { border-color: var(--teal-100); }
   .faq-item.open { border-color: var(--teal-100); }
@@ -359,10 +359,10 @@
 <body>
 
 <nav>
-  <div class="logo">
+  <a class="logo" href="#" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;" style="text-decoration:none;" aria-label="Meliora Labs — Back to top">
     <div class="logo-mark">M</div>
     <span class="logo-text">Meliora <span>Labs</span></span>
-  </div>
+  </a>
   <div class="nav-right">
     <ul class="nav-links">
       <li><a href="#services" data-i18n="nav.services">Services</a></li>
@@ -915,24 +915,24 @@
       <!-- Row 1: Name + Company -->
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;">
         <div>
-          <label style="display:block;font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:1px;color:var(--teal-400);margin-bottom:6px;" data-i18n="brief.name">Your name *</label>
-          <input class="form-input" type="text" name="name" required data-i18n-placeholder="brief.namePh" placeholder="Maria González" />
+          <label for="briefName" style="display:block;font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:1px;color:var(--teal-400);margin-bottom:6px;" data-i18n="brief.name">Your name *</label>
+          <input class="form-input" type="text" id="briefName" name="name" required autocomplete="name" data-i18n-placeholder="brief.namePh" placeholder="Maria González" />
         </div>
         <div>
-          <label style="display:block;font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:1px;color:var(--teal-400);margin-bottom:6px;" data-i18n="brief.company">Company *</label>
-          <input class="form-input" type="text" name="company" required data-i18n-placeholder="brief.companyPh" placeholder="Acme Bank" />
+          <label for="briefCompany" style="display:block;font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:1px;color:var(--teal-400);margin-bottom:6px;" data-i18n="brief.company">Company *</label>
+          <input class="form-input" type="text" id="briefCompany" name="company" required autocomplete="organization" data-i18n-placeholder="brief.companyPh" placeholder="Acme Bank" />
         </div>
       </div>
 
       <!-- Row 2: Email + Market -->
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;">
         <div>
-          <label style="display:block;font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:1px;color:var(--teal-400);margin-bottom:6px;" data-i18n="brief.email">Work email *</label>
-          <input class="form-input" type="email" name="email" required data-i18n-placeholder="brief.emailPh" placeholder="maria@acmebank.com" />
+          <label for="briefEmail" style="display:block;font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:1px;color:var(--teal-400);margin-bottom:6px;" data-i18n="brief.email">Work email *</label>
+          <input class="form-input" type="email" id="briefEmail" name="email" required autocomplete="email" data-i18n-placeholder="brief.emailPh" placeholder="maria@acmebank.com" />
         </div>
         <div>
-          <label style="display:block;font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:1px;color:var(--teal-400);margin-bottom:6px;" data-i18n="brief.market">Your market *</label>
-          <select class="form-select" name="market" required>
+          <label for="briefMarket" style="display:block;font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:1px;color:var(--teal-400);margin-bottom:6px;" data-i18n="brief.market">Your market *</label>
+          <select class="form-select" id="briefMarket" name="market" required autocomplete="country">
             <option value="" data-i18n="brief.marketPh">Select your country</option>
             <option value="USA">🇺🇸 United States</option>
             <option value="Mexico">🇲🇽 Mexico</option>
@@ -958,8 +958,8 @@
       <!-- Row 4: Systems + Compliance -->
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;">
         <div>
-          <label style="display:block;font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:1px;color:var(--teal-400);margin-bottom:6px;" data-i18n="brief.systems">Systems involved</label>
-          <select class="form-select" name="systems">
+          <label for="briefSystems" style="display:block;font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:1px;color:var(--teal-400);margin-bottom:6px;" data-i18n="brief.systems">Systems involved</label>
+          <select class="form-select" id="briefSystems" name="systems" autocomplete="off">
             <option value="" data-i18n="brief.systemsPh">Select primary system</option>
             <option value="Mainframe z/OS">Mainframe / z/OS</option>
             <option value="Core Banking">Core Banking Platform</option>
@@ -971,8 +971,8 @@
           </select>
         </div>
         <div>
-          <label style="display:block;font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:1px;color:var(--teal-400);margin-bottom:6px;" data-i18n="brief.compliance">Compliance requirements</label>
-          <select class="form-select" name="compliance">
+          <label for="briefCompliance" style="display:block;font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:1px;color:var(--teal-400);margin-bottom:6px;" data-i18n="brief.compliance">Compliance requirements</label>
+          <select class="form-select" id="briefCompliance" name="compliance" autocomplete="off">
             <option value="None / Unknown" data-i18n="brief.complianceNone">None / Not sure</option>
             <option value="PCI-DSS">PCI-DSS</option>
             <option value="SOX">SOX</option>
@@ -985,8 +985,8 @@
       <!-- Row 5: Timeline + Budget -->
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;">
         <div>
-          <label style="display:block;font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:1px;color:var(--teal-400);margin-bottom:6px;" data-i18n="brief.timeline">Target go-live</label>
-          <select class="form-select" name="timeline">
+          <label for="briefTimeline" style="display:block;font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:1px;color:var(--teal-400);margin-bottom:6px;" data-i18n="brief.timeline">Target go-live</label>
+          <select class="form-select" id="briefTimeline" name="timeline" autocomplete="off">
             <option value="" data-i18n="brief.timelinePh">Select a timeframe</option>
             <option value="ASAP" data-i18n="brief.tl1">As soon as possible</option>
             <option value="1-3 months" data-i18n="brief.tl2">1–3 months</option>
@@ -996,8 +996,8 @@
           </select>
         </div>
         <div>
-          <label style="display:block;font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:1px;color:var(--teal-400);margin-bottom:6px;" data-i18n="brief.budget">Budget range (USD) *</label>
-          <select class="form-select" name="budget" required>
+          <label for="briefBudget" style="display:block;font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:1px;color:var(--teal-400);margin-bottom:6px;" data-i18n="brief.budget">Budget range (USD) *</label>
+          <select class="form-select" id="briefBudget" name="budget" required autocomplete="off">
             <option value="" data-i18n="brief.budgetPh">Select your range</option>
             <option value="Under $10k" data-i18n="brief.b1">Under $10,000</option>
             <option value="$10k-$50k" data-i18n="brief.b2">$10,000 – $50,000</option>
@@ -1011,16 +1011,16 @@
       <!-- Row 6: Documentation + Team size -->
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;">
         <div>
-          <label style="display:block;font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:1px;color:var(--teal-400);margin-bottom:6px;" data-i18n="brief.docs">Existing documentation</label>
-          <select class="form-select" name="documentation">
+          <label for="briefDocs" style="display:block;font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:1px;color:var(--teal-400);margin-bottom:6px;" data-i18n="brief.docs">Existing documentation</label>
+          <select class="form-select" id="briefDocs" name="documentation" autocomplete="off">
             <option value="Yes — complete" data-i18n="brief.doc1">Yes — complete docs available</option>
             <option value="Partial" data-i18n="brief.doc2">Partial — some docs exist</option>
             <option value="None" data-i18n="brief.doc3">None — starting from scratch</option>
           </select>
         </div>
         <div>
-          <label style="display:block;font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:1px;color:var(--teal-400);margin-bottom:6px;" data-i18n="brief.teamsize">Your team size</label>
-          <select class="form-select" name="team_size">
+          <label for="briefTeamsize" style="display:block;font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:1px;color:var(--teal-400);margin-bottom:6px;" data-i18n="brief.teamsize">Your team size</label>
+          <select class="form-select" id="briefTeamsize" name="team_size" autocomplete="off">
             <option value="Solo / 1" data-i18n="brief.ts1">Solo / 1 person</option>
             <option value="2-5" data-i18n="brief.ts2">2–5 people</option>
             <option value="6-15" data-i18n="brief.ts3">6–15 people</option>
@@ -1031,8 +1031,8 @@
 
       <!-- Row 7: Project description -->
       <div style="margin-bottom:1.5rem;">
-        <label style="display:block;font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:1px;color:var(--teal-400);margin-bottom:6px;" data-i18n="brief.desc">Describe your project *</label>
-        <textarea class="form-input" name="message" required rows="4" data-i18n-placeholder="brief.descPh" placeholder="Tell us what you're trying to build, migrate, or fix. The more detail, the better estimate we can give you." style="min-height:100px;resize:vertical;"></textarea>
+        <label for="briefDesc" style="display:block;font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:1px;color:var(--teal-400);margin-bottom:6px;" data-i18n="brief.desc">Describe your project *</label>
+        <textarea class="form-input" id="briefDesc" name="message" required rows="4" autocomplete="off" data-i18n-placeholder="brief.descPh" placeholder="Tell us what you're trying to build, migrate, or fix. The more detail, the better estimate we can give you." style="min-height:100px;resize:vertical;"></textarea>
       </div>
 
       <!-- Hidden field to identify source -->
@@ -1568,7 +1568,8 @@
   <h2 class="notify-title" data-i18n="notify.title">Something powerful is coming.</h2>
   <p class="notify-sub" data-i18n="notify.sub">Be the first to know when Meliora Labs officially launches. No spam — just one email when we're ready.</p>
   <div class="notify-form">
-    <input class="notify-input" id="notifyEmail" type="email" data-i18n-placeholder="notify.placeholder" placeholder="your@email.com" />
+    <label for="notifyEmail" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;">Email address</label>
+    <input class="notify-input" id="notifyEmail" type="email" name="email" autocomplete="email" data-i18n-placeholder="notify.placeholder" placeholder="your@email.com" />
     <button class="notify-btn" onclick="submitNotify()" data-i18n="notify.btn">Notify Me</button>
   </div>
   <div class="notify-success" id="notifySuccess" data-i18n="notify.success">✅ You're on the list! We'll be in touch.</div>
@@ -1588,16 +1589,16 @@
     <div>
       <form id="contactForm" action="https://formspree.io/f/mdajyype" method="POST" onsubmit="handleFormSubmit(event)">
         <div class="form-group">
-          <label class="form-label" data-i18n="form.name">Full Name</label>
-          <input class="form-input" type="text" name="name" required data-i18n-placeholder="form.namePh" placeholder="John Smith" />
+          <label class="form-label" for="contactName" data-i18n="form.name">Full Name</label>
+          <input class="form-input" type="text" id="contactName" name="name" required autocomplete="name" data-i18n-placeholder="form.namePh" placeholder="John Smith" />
         </div>
         <div class="form-group">
-          <label class="form-label" data-i18n="form.email">Email Address</label>
-          <input class="form-input" type="email" name="email" required data-i18n-placeholder="form.emailPh" placeholder="john@company.com" />
+          <label class="form-label" for="contactEmail" data-i18n="form.email">Email Address</label>
+          <input class="form-input" type="email" id="contactEmail" name="email" required autocomplete="email" data-i18n-placeholder="form.emailPh" placeholder="john@company.com" />
         </div>
         <div class="form-group">
           <label class="form-label" for="serviceSelect" data-i18n="form.service">Service of Interest</label>
-          <select class="form-select" id="serviceSelect" name="service" aria-label="Service of Interest">
+          <select class="form-select" id="serviceSelect" name="service" autocomplete="off">
             <option value="" data-i18n="form.servicePh">Select a service...</option>
             <option value="delivery" data-i18n="form.svc1">360° Delivery Intelligence</option>
             <option value="payments" data-i18n="form.svc2">Payments & Fintech Consulting</option>
@@ -1609,8 +1610,8 @@
           </select>
         </div>
         <div class="form-group">
-          <label class="form-label" data-i18n="form.message">Message</label>
-          <textarea class="form-input" name="message" required data-i18n-placeholder="form.messagePh" placeholder="Tell us about your project or question..."></textarea>
+          <label class="form-label" for="contactMessage" data-i18n="form.message">Message</label>
+          <textarea class="form-input" id="contactMessage" name="message" required autocomplete="off" data-i18n-placeholder="form.messagePh" placeholder="Tell us about your project or question..."></textarea>
         </div>
         <button type="submit" class="form-submit" data-i18n="form.submit">Send Message →</button>
         <div class="form-success" id="formSuccess" data-i18n="form.success">✅ Message sent! We'll be in touch within 24 hours.</div>
@@ -1674,7 +1675,8 @@
       <span class="chat-chip" onclick="chipClick(this)" data-i18n-chip="chip6">Small companies?</span>
     </div>
     <div class="chat-input-row">
-      <input class="chat-input" id="chatInput" type="text" placeholder="Ask me anything…" data-i18n-placeholder="chat.placeholder" onkeydown="if(event.key==='Enter') sendMsg()" />
+      <label for="chatInput" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;">Chat message</label>
+    <input class="chat-input" id="chatInput" type="text" autocomplete="off" placeholder="Ask me anything…" data-i18n-placeholder="chat.placeholder" onkeydown="if(event.key==='Enter') sendMsg()" />
       <button class="chat-send" onclick="sendMsg()" aria-label="Send">
         <svg viewBox="0 0 24 24"><path d="M2 21l21-9L2 3v7l15 2-15 2v7z"/></svg>
       </button>
@@ -1765,12 +1767,16 @@ function toggleFaq(questionEl) {
 // ═══════════════════════════════════════════
 // ACTIVE NAV ON SCROLL
 // ═══════════════════════════════════════════
-const navSections = ['services', 'about', 'security', 'faq', 'contact-form'];
+const navSections = ['services', 'engine', 'managed', 'pricing-calculator', 'cases', 'faq', 'about', 'security', 'contact-form'];
 const navLinks = {
   'services': document.querySelector('a[href="#services"]'),
+  'engine': document.querySelector('a[href="#engine"]'),
+  'managed': document.querySelector('a[href="#managed"]'),
+  'pricing-calculator': document.querySelector('a[href="#pricing-calculator"]'),
+  'cases': document.querySelector('a[href="#cases"]'),
+  'faq': document.querySelector('a[href="#faq"]'),
   'about': document.querySelector('a[href="#about"]'),
   'security': document.querySelector('a[href="#security"]'),
-  'faq': document.querySelector('a[href="#faq"]'),
   'contact-form': document.querySelector('a[href="#contact-form"]'),
 };
 
@@ -1866,6 +1872,7 @@ function submitNotify() {
 // ═══════════════════════════════════════════
 const translations = {
   en: {
+    "card.learnmore":"Learn more +","card.collapse":"Close −",
     "nav.services":"Services","nav.engine":"Engine","nav.managed":"Managed","nav.calculator":"Rates","nav.cases":"Cases","nav.faq":"FAQ","nav.contact":"Get in touch","nav.cta":"Start a Project",
     "faq.tag":"FAQ","faq.title":"Frequently Asked Questions",
     "faq.sub":"Everything you need to know before starting a conversation with us.",
@@ -2143,6 +2150,7 @@ const translations = {
     "cases.c3.coming":"📋 Full case study coming soon"
   },
   es: {
+    "card.learnmore":"Ver más +","card.collapse":"Cerrar −",
     "nav.services":"Servicios","nav.engine":"Motor","nav.managed":"Servicios","nav.calculator":"Tarifas","nav.cases":"Casos","nav.faq":"FAQ","nav.contact":"Contáctanos","nav.cta":"Iniciar Proyecto",
     "faq.tag":"Preguntas Frecuentes","faq.title":"Preguntas Frecuentes",
     "faq.sub":"Todo lo que necesitas saber antes de comenzar una conversación con nosotros.",
