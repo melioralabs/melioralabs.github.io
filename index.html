@@ -1,33 +1,33 @@
 <!-- ============================================================
      Meliora Labs | melioralabs.tech
-     Version : 2.5.0
-     Date    : 2026-06-06
-     Changes : Case 2 rewritten — Fintech USA, KYC/AML/onboarding/PO story,
-               Spain removed from Case 2 badge and description,
-               Managed section CTA → #contact-form (was #project-brief),
-               EN + ES translations updated for Case 2
+     Version : 2.5.1
+     Date    : 2026-06-07
+     Changes : Spain fully removed as a market from all visible content —
+               svc3.desc, rates.note, FAQ a1/a3/q8/a8, chatbot responses,
+               meta/OG/Twitter tags, keywords updated (KYC/onboarding added);
+               Spain retained as credential only in sec4 (credentials section)
      ============================================================ -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Meliora Labs — AI-powered IT consulting for banks, fintechs, and enterprises. Payments, mainframe modernization, cybersecurity, and delivery intelligence. Serving US, Mexico, and Spain.">
-<meta name="keywords" content="IT consulting, mainframe modernization, payment platform, cybersecurity, fintech, AWS, legacy migration, COBOL, z/OS, OFAC, AML, SOX, PCI-DSS, USA, Mexico, Spain">
+<meta name="description" content="Meliora Labs — AI-powered IT consulting for banks, fintechs, and payment companies. Mainframe modernization, payments, and cloud automation. Serving US and Mexico markets, bilingual EN/ES.">
+<meta name="keywords" content="IT consulting, mainframe modernization, payment platform, fintech, AWS, cloud migration, COBOL, z/OS, OFAC, AML, KYC, onboarding, SOX, PCI-DSS, USA, Mexico, bilingual">
 <meta name="author" content="Meliora Labs">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://melioralabs.tech/">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://melioralabs.tech/">
 <meta property="og:title" content="Meliora Labs — AI-Powered IT Consulting">
-<meta property="og:description" content="Payments, mainframe modernization, cybersecurity, and delivery intelligence — built by engineers with 20+ years inside mission-critical systems. Serving US, Mexico, and Spain.">
+<meta property="og:description" content="Payments, mainframe modernization, and cloud automation — built by engineers with 20+ years inside mission-critical systems. Serving US and Mexico, bilingual EN/ES.">
 <meta property="og:image" content="https://melioralabs.tech/og-image.png">
 <meta property="og:site_name" content="Meliora Labs">
 <meta property="og:locale" content="en_US">
 <meta property="og:locale:alternate" content="es_ES">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Meliora Labs — AI-Powered IT Consulting">
-<meta name="twitter:description" content="Payments, mainframe modernization, cybersecurity — 20+ years experience. Serving US, Mexico, and Spain.">
+<meta name="twitter:description" content="Payments, mainframe modernization, cloud automation — 20+ years experience. Serving US and Mexico, bilingual EN/ES.">
 <meta name="twitter:image" content="https://melioralabs.tech/og-image.png">
 <title>Meliora Labs | Semper Melius</title>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%231D9E75'/><text x='50%25' y='50%25' dominant-baseline='central' text-anchor='middle' font-family='Georgia,serif' font-size='20' font-weight='bold' fill='white'>M</text></svg>">
@@ -508,7 +508,7 @@
         </div>
         <button class="learn-more-btn" id="btnMainframe" onclick="toggleCard('Mainframe')" data-i18n="card.learnmore">Learn more +</button>
       </div>
-      <p class="service-desc" data-i18n="svc3.desc">z/OS to cloud migration strategy and execution. We wrote the playbook for one of the largest bank migrations in North America and Spain.</p>
+      <p class="service-desc" data-i18n="svc3.desc">z/OS to cloud migration strategy and execution. We wrote the playbook for one of the largest bank migrations in North America — 100+ components, zero incidents on go-live.</p>
       <div class="coffee-panel" id="panelMainframe">
         <div class="coffee-content">
           <div class="coffee-emoji">☕</div>
@@ -815,7 +815,7 @@
 
     <!-- Rate card footer note -->
     <div style="padding:1rem 2rem;background:var(--teal-50);border-top:0.5px solid var(--teal-100);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;">
-      <p style="font-size:12px;color:var(--teal-600);margin:0;font-weight:300;" data-i18n="rates.note">* All rates in USD. Project minimums apply. Mexico and Spain engagements adjusted for local market. Free discovery call always included.</p>
+      <p style="font-size:12px;color:var(--teal-600);margin:0;font-weight:300;" data-i18n="rates.note">* All rates in USD. Project minimums apply. Mexico engagements billed in USD — no currency risk for either party. Free discovery call always included.</p>
       <a href="#project-brief" class="btn-primary" style="font-size:13px;padding:9px 20px;" data-i18n="rates.cta">Tell us about your project →</a>
     </div>
   </div>
@@ -1462,7 +1462,7 @@
         <span class="faq-question-text" data-i18n="faq.q1">What type of companies do you work with?</span>
         <div class="faq-icon"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg></div>
       </div>
-      <div class="faq-answer" data-i18n="faq.a1">We work with companies of any size — from small businesses wanting to add technology to their services, to medium enterprises and large banks or fintechs needing full modernization. If it's digital, we can help. We serve clients in the US, Mexico, and Spain.</div>
+      <div class="faq-answer" data-i18n="faq.a1">We work with companies of any size — from small businesses wanting to add technology to their services, to medium enterprises and large banks or fintechs needing full modernization. If it's digital, we can help. We serve clients in the US and Mexico.</div>
     </div>
 
     <div class="faq-item reveal reveal-delay-2">
@@ -1478,7 +1478,7 @@
         <span class="faq-question-text" data-i18n="faq.q3">Do you work remotely?</span>
         <div class="faq-icon"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg></div>
       </div>
-      <div class="faq-answer" data-i18n="faq.a3">Yes — 100% remote. We serve clients across the US, Mexico, and Spain. All collaboration happens through video calls, shared tools, and async communication. No physical office needed — and no limits on where we can work together.</div>
+      <div class="faq-answer" data-i18n="faq.a3">Yes — 100% remote. We serve clients across the US and Mexico through video calls, shared tools, and async communication. No limits on where we work together.</div>
     </div>
 
     <div class="faq-item reveal reveal-delay-4">
@@ -1515,10 +1515,10 @@
 
     <div class="faq-item reveal reveal-delay-2">
       <div class="faq-question" onclick="toggleFaq(this)">
-        <span class="faq-question-text" data-i18n="faq.q8">Do you work with companies in Mexico and Spain?</span>
+        <span class="faq-question-text" data-i18n="faq.q8">Do you work with companies in Mexico?</span>
         <div class="faq-icon"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg></div>
       </div>
-      <div class="faq-answer" data-i18n="faq.a8">Yes. We have deep experience working across the US, Mexico, and Spain — including one of the largest bank migrations between North America and Spain. We understand the regulatory, cultural, and technical differences across these markets.</div>
+      <div class="faq-answer" data-i18n="faq.a8">Yes. We have deep experience working across the US and Mexico — including regulatory, cultural, and technical differences between both markets. We are bilingual EN/ES and work comfortably across time zones.</div>
     </div>
 
   </div>
@@ -1839,11 +1839,11 @@ const translations = {
     "faq.tag":"FAQ","faq.title":"Frequently Asked Questions",
     "faq.sub":"Everything you need to know before starting a conversation with us.",
     "faq.q1":"What type of companies do you work with?",
-    "faq.a1":"We work with companies of any size — from small businesses wanting to add technology to their services, to medium enterprises and large banks or fintechs needing full modernization. If it's digital, we can help. We serve clients in the US, Mexico, and Spain.",
+    "faq.a1":"We work with companies of any size — from small businesses wanting to add technology to their services, to medium enterprises and large banks or fintechs needing full modernization. If it's digital, we can help. We serve clients in the US and Mexico.",
     "faq.q2":"How much does a project cost?",
     "faq.a2":"Pricing depends on scope, complexity, and tier. We believe technology should be accessible — our pricing is designed to be fair for every company size. We start with a free consultation. No commitment required.",
     "faq.q3":"Do you work remotely?",
-    "faq.a3":"Yes — 100% remote. We serve clients across the US, Mexico, and Spain through video calls, shared tools, and async communication. No limits on where we work together.",
+    "faq.a3":"Yes — 100% remote. We serve clients across the US and Mexico through video calls, shared tools, and async communication. No limits on where we work together.",
     "faq.q4":"What does go-live support include?",
     "faq.a4":"Go-live support is included in every project — a grace period after launch to cover errors or unexpected issues at no extra cost. You are never alone after delivery. Duration is agreed at project start and documented in your service agreement.",
     "faq.q5":"What documents do I receive at the end?",
@@ -1852,8 +1852,8 @@ const translations = {
     "faq.a6":"Small tools: 2–4 weeks. Medium projects: 1–3 months. Large modernizations: 3–6+ months. We always provide a realistic estimate during the free initial consultation — before any commitment.",
     "faq.q7":"Do I need technical knowledge to work with you?",
     "faq.a7":"Not at all. We translate complex technology into simple human language. Diagrams and presentations are designed for decision makers, not just engineers. You bring the business knowledge — we bring the technical expertise.",
-    "faq.q8":"Do you work with companies in Mexico and Spain?",
-    "faq.a8":"Yes. We have deep experience across the US, Mexico, and Spain — including one of the largest bank migrations between North America and Spain. We understand the regulatory, cultural, and technical differences across these markets.",
+    "faq.q8":"Do you work with companies in Mexico?",
+    "faq.a8":"Yes. We have deep experience working across the US and Mexico — including regulatory, cultural, and technical differences between both markets. We are bilingual EN/ES and work comfortably across time zones.",
     "svc7.title":"Technical Design — AS-IS / TO-BE",
     "svc7.desc":"Every digital system has room to grow. We map where you are, design where you could be, and build the bridge — simply, clearly, for humans not just engineers.",
     "t7s.f1":"AS-IS diagram — map your current digital systems clearly",
@@ -1995,7 +1995,7 @@ const translations = {
     "services.sub":"We don't consult from the outside. We've built, migrated, and secured the systems most firms only read about.",
     "svc1.title":"360° Delivery Intelligence","svc1.desc":"AI-powered estimation and risk visibility across your full delivery lifecycle — dependencies, blockers, capacity, and compliance in one view.",
     "svc2.title":"Payments & Fintech Consulting","svc2.desc":"ACH, RTP, Wires, OFAC, AML — hands-on expertise in the formats and regulations that power financial infrastructure.",
-    "svc3.title":"Mainframe Modernization","svc3.desc":"z/OS to cloud migration strategy and execution. We wrote the playbook for one of the largest bank migrations in North America and Spain.",
+    "svc3.title":"Mainframe Modernization","svc3.desc":"z/OS to cloud migration strategy and execution. We wrote the playbook for one of the largest bank migrations in North America — 100+ components, zero incidents on go-live.",
     "svc4.title":"Security by Design","svc4.desc":"Cybersecurity architecture built in from day one — not bolted on after. Every product we build meets banking-grade security standards.",
     "svc5.title":"AI-Powered IT Tools","svc5.desc":"Custom AI applications for delivery governance, compliance reporting, and operational intelligence — built with Claude AI and deployed on AWS.",
     "svc6.title":"Governance & Compliance","svc6.desc":"Delivery frameworks that survive regulatory scrutiny. Our governance structures have been reviewed by Federal Reserve examiners.",
@@ -2041,7 +2041,7 @@ const translations = {
     "rates.r4.name":"⚡ Fintech Integration","rates.r4.desc":"API design, third-party integrations, cloud-native","rates.r4.why":"Deep API and cloud experience across US, Mexico, Spain markets",
     "rates.r5.name":"🔁 Legacy Migration","rates.r5.desc":"On-prem to cloud, data migration, zero-downtime cutover","rates.r5.why":"14 years zero rollback record — done at scale",
     "rates.r6.name":"🤖 AI-Powered IT Consulting","rates.r6.desc":"Strategy, delivery governance, AI tooling","rates.r6.why":"Independent firm — lower overhead means better rates for you",
-    "rates.note":"* All rates in USD. Project minimums apply. Mexico and Spain engagements adjusted for local market. Free discovery call always included.",
+    "rates.note":"* All rates in USD. Project minimums apply. Mexico engagements billed in USD — no currency risk for either party. Free discovery call always included.",
     "rates.cta":"Tell us about your project →",
     "aws.tag":"No infrastructure needed","aws.title":"We bring the infrastructure. You pay only for what you use.",
     "aws.sub":"No servers to buy. No data center to maintain. No separate IT infrastructure team to hire. We build everything on AWS — and pass the savings to you.",
@@ -2120,11 +2120,11 @@ const translations = {
     "faq.tag":"Preguntas Frecuentes","faq.title":"Preguntas Frecuentes",
     "faq.sub":"Todo lo que necesitas saber antes de comenzar una conversación con nosotros.",
     "faq.q1":"¿Con qué tipo de empresas trabajan?",
-    "faq.a1":"Trabajamos con empresas de cualquier tamaño — desde pequeños negocios que quieren incorporar tecnología, hasta medianas empresas y grandes bancos o fintechs que necesitan modernización completa. Si es digital, podemos ayudar. Atendemos clientes en EE.UU., México y España.",
+    "faq.a1":"Trabajamos con empresas de cualquier tamaño — desde pequeños negocios que quieren incorporar tecnología, hasta medianas empresas y grandes bancos o fintechs que necesitan modernización completa. Si es digital, podemos ayudar. Atendemos clientes en EE.UU. y México.",
     "faq.q2":"¿Cuánto cuesta un proyecto?",
     "faq.a2":"El precio depende del alcance, complejidad y nivel del proyecto. Creemos que la tecnología debe ser accesible — nuestros precios están diseñados para ser justos para cada tamaño de empresa. Comenzamos con una consulta gratuita. Sin compromiso.",
     "faq.q3":"¿Trabajan de forma remota?",
-    "faq.a3":"Sí — 100% remoto. Atendemos clientes en EE.UU., México y España a través de videollamadas, herramientas compartidas y comunicación asíncrona. Sin límites de ubicación.",
+    "faq.a3":"Sí — 100% remoto. Atendemos clientes en EE.UU. y México a través de videollamadas, herramientas compartidas y comunicación asíncrona. Sin límites de ubicación.",
     "faq.q4":"¿Qué incluye el soporte go-live?",
     "faq.a4":"El soporte go-live está incluido en cada proyecto — un período de gracia después del lanzamiento para cubrir errores o problemas inesperados sin costo adicional. Nunca estás solo después de la entrega. La duración se acuerda al inicio del proyecto y se documenta en tu acuerdo de servicio.",
     "faq.q5":"¿Qué documentos recibo al final?",
@@ -2133,8 +2133,8 @@ const translations = {
     "faq.a6":"Herramientas pequeñas: 2–4 semanas. Proyectos medianos: 1–3 meses. Modernizaciones grandes: 3–6+ meses. Siempre damos un estimado realista en la consulta inicial gratuita — antes de cualquier compromiso.",
     "faq.q7":"¿Necesito conocimientos técnicos para trabajar con ustedes?",
     "faq.a7":"Para nada. Traducimos tecnología compleja a lenguaje humano simple. Los diagramas y presentaciones están diseñados para tomadores de decisiones, no solo ingenieros. Tú traes el conocimiento del negocio — nosotros la experiencia técnica.",
-    "faq.q8":"¿Trabajan con empresas en México y España?",
-    "faq.a8":"Sí. Tenemos amplia experiencia en EE.UU., México y España — incluyendo una de las migraciones bancarias más grandes entre Norteamérica y España. Entendemos las diferencias regulatorias, culturales y técnicas entre estos mercados.",
+    "faq.q8":"¿Trabajan con empresas en México?",
+    "faq.a8":"Sí. Tenemos amplia experiencia trabajando en EE.UU. y México — incluyendo diferencias regulatorias, culturales y técnicas entre ambos mercados. Somos bilingües EN/ES y trabajamos cómodamente en distintas zonas horarias.",
     "svc7.title":"Diseño Técnico — AS-IS / TO-BE",
     "svc7.desc":"Todo sistema digital tiene espacio para crecer. Mapeamos dónde estás, diseñamos dónde podrías estar y construimos el puente — simple, claro, para humanos no solo ingenieros.",
     "t7s.f1":"Diagrama AS-IS — mapea tus sistemas digitales actuales claramente",
@@ -2276,7 +2276,7 @@ const translations = {
     "services.sub":"No consultamos desde afuera. Hemos construido, migrado y asegurado los sistemas que la mayoría solo lee.",
     "svc1.title":"Inteligencia de Entrega 360°","svc1.desc":"Estimación e inteligencia de riesgo con IA en todo el ciclo de entrega — dependencias, bloqueos, capacidad y cumplimiento en una sola vista.",
     "svc2.title":"Consultoría en Pagos y Fintech","svc2.desc":"ACH, RTP, Transferencias, OFAC, AML — experiencia práctica en los formatos y regulaciones que impulsan la infraestructura financiera.",
-    "svc3.title":"Modernización de Mainframe","svc3.desc":"Estrategia y ejecución de migración de z/OS a la nube. Escribimos el manual para una de las migraciones bancarias más grandes en Norteamérica y España.",
+    "svc3.title":"Modernización de Mainframe","svc3.desc":"Estrategia y ejecución de migración de z/OS a la nube. Escribimos el manual para una de las migraciones bancarias más grandes en Norteamérica — más de 100 componentes, cero incidentes en el lanzamiento.",
     "svc4.title":"Seguridad por Diseño","svc4.desc":"Arquitectura de ciberseguridad integrada desde el inicio — no añadida después. Cada producto que construimos cumple estándares bancarios.",
     "svc5.title":"Herramientas de TI con IA","svc5.desc":"Aplicaciones de IA personalizadas para gobernanza de entrega, informes de cumplimiento e inteligencia operativa — construidas con Claude AI en AWS.",
     "svc6.title":"Gobernanza y Cumplimiento","svc6.desc":"Marcos de entrega que superan el escrutinio regulatorio. Nuestras estructuras han sido revisadas por examinadores de la Reserva Federal.",
@@ -2322,7 +2322,7 @@ const translations = {
     "rates.r4.name":"⚡ Integración Fintech","rates.r4.desc":"Diseño de APIs, integraciones third-party, cloud-native","rates.r4.why":"Experiencia profunda en API y cloud en US, México y España",
     "rates.r5.name":"🔁 Migración Legacy","rates.r5.desc":"On-prem a cloud, migración de datos, cutover sin downtime","rates.r5.why":"14 años sin rollbacks — lo hemos hecho a escala real",
     "rates.r6.name":"🤖 Consultoría IT con IA","rates.r6.desc":"Estrategia, gobernanza de entrega, herramientas IA","rates.r6.why":"Firma independiente — menos overhead significa mejores tarifas",
-    "rates.note":"* Todas las tarifas en USD. Se aplican mínimos por proyecto. Los compromisos en México y España se ajustan al mercado local. Llamada de descubrimiento siempre gratuita.",
+    "rates.note":"* Todas las tarifas en USD. Se aplican mínimos por proyecto. Los compromisos en México se facturan en USD — sin riesgo cambiario para ninguna de las partes. Llamada de descubrimiento siempre gratuita.",
     "rates.cta":"Cuéntanos sobre tu proyecto →",
     "aws.tag":"Sin infraestructura propia","aws.title":"Nosotros traemos la infraestructura. Tú pagas solo por lo que usas.",
     "aws.sub":"Sin servidores que comprar. Sin centro de datos que mantener. Sin equipo adicional. Construimos todo en AWS — y te pasamos los ahorros.",
@@ -2440,7 +2440,7 @@ const botResponses = {
   en: {
     greeting: "Hello! 👋 Welcome to Meliora Labs! I'm here to help you learn about our services and how we can help your business grow with technology. What would you like to know?",
     services: "We offer 7 core services: ⚡ 360° Delivery Intelligence, 🏦 Payments & Fintech, 🔄 Mainframe Modernization, 🔒 Security by Design, 🤖 AI-Powered IT Tools, 📋 Governance & Compliance, and 🗺️ Technical Design (AS-IS/TO-BE). <a href='javascript:navScrollTo(\"services\")' style='color:var(--teal-400);font-weight:500;'>👇 See all services below →</a>",
-    payments: "Our payments expertise covers ACH, RTP, Wires, OFAC screening, and AML compliance. We've built and managed $50B+ in payment platforms across North America and Spain — hands-on, not theoretical. <a href='javascript:navScrollTo(\"services\")' style='color:var(--teal-400);font-weight:500;'>👇 See Payments service details below →</a>",
+    payments: "Our payments expertise covers ACH, RTP, Wires, OFAC screening, AML compliance, KYC, and client onboarding. We've built and managed $50B+ in payment platforms across North America — hands-on, not theoretical. <a href='javascript:navScrollTo(\"services\")' style='color:var(--teal-400);font-weight:500;'>👇 See Payments service details below →</a>",
     mainframe: "We've led one of the largest z/OS to cloud migrations in North America. Every mainframe project is unique — this one deserves a real conversation. <a href='javascript:navScrollTo(\"contact-form\")' style='color:var(--teal-400);font-weight:500;'>☕ Schedule a conversation →</a>",
     security: "Security is our foundation, not an afterthought. 🔒 Zero-trust architecture, banking-grade standards, NPPI data protection, OFAC, AML, SOX and PCI-DSS compliance. <a href='javascript:navScrollTo(\"security\")' style='color:var(--teal-400);font-weight:500;'>👇 See our full Security section below →</a>",
     ai: "We build custom AI tools using Claude AI deployed on AWS — for delivery governance, compliance reporting, and operational intelligence. <a href='javascript:navScrollTo(\"services\")' style='color:var(--teal-400);font-weight:500;'>👇 See AI Tools details below →</a>",
@@ -2451,10 +2451,10 @@ const botResponses = {
     notincluded: "❌ Not included by default: ongoing maintenance after 30-day grace, third-party licenses, infrastructure costs, and out-of-scope requests. These can always be added — just ask! <a href='javascript:navScrollTo(\"contact-form\")' style='color:var(--teal-400);font-weight:500;'>👇 Contact us to discuss →</a>",
     smallcompany: "Absolutely! 🏢 We work with companies of any size. If it's digital, it can be improved — any industry, any scale. <a href='javascript:navScrollTo(\"services\")' style='color:var(--teal-400);font-weight:500;'>👇 See our service tiers below →</a>",
     timeline: "⏱️ Small tools: 2–4 weeks. Medium projects: 1–3 months. Large modernizations: 3–6+ months. We always start with a free consultation. <a href='javascript:navScrollTo(\"contact-form\")' style='color:var(--teal-400);font-weight:500;'>👇 Schedule a free consultation →</a>",
-    remote: "📍 Yes, 100% remote! We serve clients across the US, Mexico, and Spain. <a href='javascript:navScrollTo(\"contact-form\")' style='color:var(--teal-400);font-weight:500;'>👇 Get in touch below →</a>",
+    remote: "📍 Yes, 100% remote! We serve clients across the US and Mexico. <a href='javascript:navScrollTo(\"contact-form\")' style='color:var(--teal-400);font-weight:500;'>👇 Get in touch below →</a>",
     quote: "We'd love to discuss your project! Fill out the contact form or email melioralabs.tech@gmail.com — we respond within 24 hours. <a href='javascript:navScrollTo(\"contact-form\")' style='color:var(--teal-400);font-weight:500;'>👇 Go to contact form →</a>",
     contact: "You can reach us at 📧 melioralabs.tech@gmail.com or use the contact form on this page. We respond within 24 hours. <a href='javascript:navScrollTo(\"contact-form\")' style='color:var(--teal-400);font-weight:500;'>👇 Go to contact form →</a>",
-    team: "Meliora Labs was founded by engineers with 20+ years inside mission-critical payment platforms and cybersecurity operations — from Spain to North America. We don't disappear after delivery. You are never alone. 🤝 <a href='javascript:navScrollTo(\"about\")' style='color:var(--teal-400);font-weight:500;'>👇 Read our story below →</a>",
+    team: "Meliora Labs was founded by engineers with 20+ years inside mission-critical payment platforms and modernization projects across North America. We don't disappear after delivery. You are never alone. 🤝 <a href='javascript:navScrollTo(\"about\")' style='color:var(--teal-400);font-weight:500;'>👇 Read our story below →</a>",
     launch: "We're currently in development! Sign up with the Notify Me form and we'll email you the moment we launch. 🚀 <a href='javascript:navScrollTo(\"notify\")' style='color:var(--teal-400);font-weight:500;'>👇 Sign up below →</a>",
     cost: "Pricing depends on scope. Fill out the contact form and we'll schedule a free initial consultation — no commitment required. <a href='javascript:navScrollTo(\"contact-form\")' style='color:var(--teal-400);font-weight:500;'>👇 Go to contact form →</a>",
     aws: "Yes! We deploy on AWS — and our team includes AWS-certified engineers. We also work with IBM and GCP. <a href='javascript:navScrollTo(\"security\")' style='color:var(--teal-400);font-weight:500;'>👇 See our cloud security details below →</a>",
@@ -2464,7 +2464,7 @@ const botResponses = {
   es: {
     greeting: "¡Hola! 👋 ¡Bienvenido a Meliora Labs! Estoy aquí para ayudarte a conocer nuestros servicios y cómo podemos ayudar a tu empresa a crecer con tecnología. ¿Qué te gustaría saber?",
     services: "Ofrecemos 7 servicios: ⚡ Inteligencia de Entrega 360°, 🏦 Pagos y Fintech, 🔄 Mainframe, 🔒 Seguridad, 🤖 Herramientas IA, 📋 Gobernanza y 🗺️ Diseño Técnico AS-IS/TO-BE. <a href='javascript:navScrollTo(\"services\")' style='color:var(--teal-400);font-weight:500;'>👇 Ver todos los servicios →</a>",
-    payments: "Nuestra experiencia cubre ACH, RTP, Transferencias, OFAC y AML. Hemos gestionado más de $50B en plataformas de pago en Norteamérica y España. <a href='javascript:navScrollTo(\"services\")' style='color:var(--teal-400);font-weight:500;'>👇 Ver detalles del servicio →</a>",
+    payments: "Nuestra experiencia cubre ACH, RTP, Transferencias, OFAC, AML, KYC y onboarding de clientes. Hemos gestionado más de $50B en plataformas de pago en Norteamérica. <a href='javascript:navScrollTo(\"services\")' style='color:var(--teal-400);font-weight:500;'>👇 Ver detalles del servicio →</a>",
     mainframe: "Hemos liderado una de las migraciones z/OS a nube más grandes en Norteamérica. Cada proyecto es único — esta merece una conversación real. <a href='javascript:navScrollTo(\"contact-form\")' style='color:var(--teal-400);font-weight:500;'>☕ Agendar una conversación →</a>",
     security: "La seguridad es nuestra base. 🔒 Zero-trust, estándares bancarios, protección NPPI, OFAC, AML, SOX y PCI-DSS. <a href='javascript:navScrollTo(\"security\")' style='color:var(--teal-400);font-weight:500;'>👇 Ver nuestra sección de Seguridad →</a>",
     ai: "Construimos herramientas de IA con Claude AI en AWS — gobernanza, informes de cumplimiento e inteligencia operativa. <a href='javascript:navScrollTo(\"services\")' style='color:var(--teal-400);font-weight:500;'>👇 Ver detalles de Herramientas IA →</a>",
@@ -2475,10 +2475,10 @@ const botResponses = {
     notincluded: "❌ No incluido por defecto: mantenimiento mensual tras los 30 días, licencias de terceros, costos de infraestructura y solicitudes fuera de alcance. ¡Siempre se pueden agregar! <a href='javascript:navScrollTo(\"contact-form\")' style='color:var(--teal-400);font-weight:500;'>👇 Contáctanos →</a>",
     smallcompany: "¡Por supuesto! 🏢 Trabajamos con empresas de cualquier tamaño. Si es digital, puede mejorar — cualquier industria. <a href='javascript:navScrollTo(\"services\")' style='color:var(--teal-400);font-weight:500;'>👇 Ver niveles de servicio →</a>",
     timeline: "⏱️ Herramientas pequeñas: 2–4 semanas. Proyectos medianos: 1–3 meses. Modernizaciones grandes: 3–6+ meses. <a href='javascript:navScrollTo(\"contact-form\")' style='color:var(--teal-400);font-weight:500;'>👇 Agendar consulta gratuita →</a>",
-    remote: "📍 ¡Sí, 100% remoto! Atendemos clientes en EE.UU., México y España. <a href='javascript:navScrollTo(\"contact-form\")' style='color:var(--teal-400);font-weight:500;'>👇 Contáctanos →</a>",
+    remote: "📍 ¡Sí, 100% remoto! Atendemos clientes en EE.UU. y México. <a href='javascript:navScrollTo(\"contact-form\")' style='color:var(--teal-400);font-weight:500;'>👇 Contáctanos →</a>",
     quote: "¡Nos encantaría discutir tu proyecto! Escríbenos a melioralabs.tech@gmail.com — respondemos en menos de 24 horas. <a href='javascript:navScrollTo(\"contact-form\")' style='color:var(--teal-400);font-weight:500;'>👇 Ir al formulario →</a>",
     contact: "Puedes contactarnos en 📧 melioralabs.tech@gmail.com o usar el formulario en esta página. <a href='javascript:navScrollTo(\"contact-form\")' style='color:var(--teal-400);font-weight:500;'>👇 Ir al formulario →</a>",
-    team: "Meliora Labs fue fundada por ingenieros con más de 20 años en plataformas de pago y ciberseguridad — de España a Norteamérica. No desaparecemos después de la entrega. Nunca estás solo. 🤝 <a href='javascript:navScrollTo(\"about\")' style='color:var(--teal-400);font-weight:500;'>👇 Lee nuestra historia →</a>",
+    team: "Meliora Labs fue fundada por ingenieros con más de 20 años en plataformas de pago y proyectos de modernización en Norteamérica. No desaparecemos después de la entrega. Nunca estás solo. 🤝 <a href='javascript:navScrollTo(\"about\")' style='color:var(--teal-400);font-weight:500;'>👇 Lee nuestra historia →</a>",
     launch: "¡Estamos en desarrollo! Regístrate y te avisaremos cuando lancemos. 🚀 <a href='javascript:navScrollTo(\"notify\")' style='color:var(--teal-400);font-weight:500;'>👇 Registrarse abajo →</a>",
     cost: "El precio depende del alcance. Consulta inicial gratuita — sin compromiso. <a href='javascript:navScrollTo(\"contact-form\")' style='color:var(--teal-400);font-weight:500;'>👇 Ir al formulario →</a>",
     aws: "¡Sí! Desplegamos en AWS — con ingenieros certificados en AWS en el equipo. También trabajamos con IBM y GCP. <a href='javascript:navScrollTo(\"security\")' style='color:var(--teal-400);font-weight:500;'>👇 Ver seguridad en la nube →</a>",
