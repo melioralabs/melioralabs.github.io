@@ -357,6 +357,24 @@
   }
 
   /* ── RISK FLAGS ── */
+  /* Domain pills */
+  .domain-pill {
+    display:inline-block;padding:5px 12px;border-radius:20px;font-size:12px;font-weight:500;
+    background:#EAF4FB;color:#1B2A4A;border:1px solid #c8dff0;cursor:pointer;
+    transition:all 0.15s;user-select:none;
+  }
+  input[type="checkbox"]:checked + .domain-pill {
+    background:#1B2A4A;color:white;border-color:#1B2A4A;
+  }
+  /* Topic checkboxes */
+  .topic-check {
+    display:flex;align-items:center;gap:8px;padding:7px 10px;
+    background:var(--gray-50);border:0.5px solid var(--gray-100);border-radius:8px;
+    cursor:pointer;font-size:13px;color:var(--gray-800);transition:border-color 0.15s;
+  }
+  .topic-check:hover { border-color:var(--teal-200); }
+  .topic-check input { accent-color:var(--teal-400);width:14px;height:14px;flex-shrink:0;display:block; }
+
   .risk-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -774,7 +792,8 @@
       <div class="field" style="margin-bottom:1.25rem;">
         <label>Service Type <span class="req">*</span></label>
         <div style="margin-top:0.5rem;">
-          <div class="service-grid" id="service-grid">
+          <!-- Engagement phase cards -->
+          <div class="service-grid" id="service-grid" style="grid-template-columns:repeat(3,1fr);">
             <div class="service-card" data-value="Assess" onclick="selectService(this)">
               <div class="icon">🔍</div>
               <div class="label">Assess</div>
@@ -790,24 +809,39 @@
               <div class="label">Execute</div>
               <div class="rate">Full Delivery</div>
             </div>
-            <div class="service-card" data-value="Mainframe Modernization" onclick="selectService(this)">
-              <div class="icon">🔄</div>
-              <div class="label">Mainframe Modernization</div>
-              <div class="rate">COBOL · JCL · z/OS</div>
-            </div>
-            <div class="service-card" data-value="Payments & Fintech" onclick="selectService(this)">
-              <div class="icon">🏦</div>
-              <div class="label">Payments & Fintech</div>
-              <div class="rate">ACH · RTP · OFAC · AML</div>
-            </div>
-            <div class="service-card" data-value="Compliance Advisory" onclick="selectService(this)">
-              <div class="icon">📋</div>
-              <div class="label">Compliance Advisory</div>
-              <div class="rate">SOX · PCI-DSS · AML</div>
+          </div>
+
+          <!-- Domain pills (multi-select) -->
+          <div style="margin-top:1rem;">
+            <label style="display:block;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:var(--gray-500);margin-bottom:0.5rem;">Domain <span style="font-weight:400;text-transform:none;letter-spacing:0;font-size:12px;">(select all that apply)</span></label>
+            <div style="display:flex;flex-wrap:wrap;gap:8px;" id="domain-pills">
+              <label style="cursor:pointer;"><input type="checkbox" name="domain_mainframe" style="display:none;" onchange="toggleDomainPill(this)"><span class="domain-pill" data-val="Mainframe · COBOL · z/OS">🔄 Mainframe · COBOL · z/OS</span></label>
+              <label style="cursor:pointer;"><input type="checkbox" name="domain_payments" style="display:none;" onchange="toggleDomainPill(this)"><span class="domain-pill" data-val="Payments · ACH · RTP · OFAC · AML">🏦 Payments · ACH · RTP · OFAC · AML</span></label>
+              <label style="cursor:pointer;"><input type="checkbox" name="domain_cloud" style="display:none;" onchange="toggleDomainPill(this)"><span class="domain-pill" data-val="Cloud · AWS Migration">☁️ Cloud · AWS Migration</span></label>
+              <label style="cursor:pointer;"><input type="checkbox" name="domain_compliance" style="display:none;" onchange="toggleDomainPill(this)"><span class="domain-pill" data-val="Compliance · SOX · PCI-DSS · AML">📋 Compliance · SOX · PCI-DSS · AML</span></label>
+              <label style="cursor:pointer;"><input type="checkbox" name="domain_automation" style="display:none;" onchange="toggleDomainPill(this)"><span class="domain-pill" data-val="Automation · Reporting · AI">🤖 Automation · Reporting · AI</span></label>
+              <label style="cursor:pointer;"><input type="checkbox" name="domain_other" style="display:none;" onchange="toggleDomainPill(this)"><span class="domain-pill" data-val="Other">💡 Other</span></label>
             </div>
           </div>
         </div>
         <span class="error-msg" id="service-error" style="display:none;color:var(--error);font-size:0.78rem;">Please select a service type</span>
+      </div>
+
+      <!-- What's involved checklist -->
+      <div class="field" style="margin-bottom:1.25rem;">
+        <label>What's involved? <span style="font-weight:400;text-transform:none;letter-spacing:0;">(check all that apply — helps us scope accurately)</span></label>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:8px;margin-top:0.5rem;">
+          <label class="topic-check"><input type="checkbox" name="topic_cobol"> 🔄 COBOL / JCL programs</label>
+          <label class="topic-check"><input type="checkbox" name="topic_vsam"> 🗄️ VSAM / file merge / data conversion</label>
+          <label class="topic-check"><input type="checkbox" name="topic_db2"> 🏗️ DB2 / DBA / schema work</label>
+          <label class="topic-check"><input type="checkbox" name="topic_cics"> ⚙️ CICS transactions</label>
+          <label class="topic-check"><input type="checkbox" name="topic_payments"> 🏦 Payment flows (ACH / RTP / SWIFT)</label>
+          <label class="topic-check"><input type="checkbox" name="topic_compliance"> 📋 Compliance gates (OFAC / AML / SOX)</label>
+          <label class="topic-check"><input type="checkbox" name="topic_cloud"> ☁️ Cloud migration (AWS)</label>
+          <label class="topic-check"><input type="checkbox" name="topic_automation"> 🤖 Automation / AI integration</label>
+          <label class="topic-check"><input type="checkbox" name="topic_reporting"> 📊 Reporting (Excel / Access / CSV)</label>
+          <label class="topic-check"><input type="checkbox" name="topic_sow"> 📄 SOW / documentation only</label>
+        </div>
       </div>
 
       <div class="field-group three">
@@ -866,20 +900,17 @@
         <label>Project Tier</label>
         <div style="margin-top:0.5rem;">
           <div class="tier-grid">
-            <div class="tier-card" data-value="Small" onclick="selectTier(this)">
-              <div class="tier-name">🟢 Small</div>
-              <div class="tier-desc">Well-defined scope, short timeline, 1 person</div>
-              <div class="tier-price">−15% rate</div>
+            <div class="tier-card selected" data-value="Assess" onclick="selectTier(this)">
+              <div class="tier-name">🔍 Assess</div>
+              <div class="tier-desc">Discovery, inventory, and complexity classification — before any code is touched</div>
             </div>
-            <div class="tier-card selected" data-value="Medium" onclick="selectTier(this)">
-              <div class="tier-name">🔵 Medium</div>
-              <div class="tier-desc">Standard project, 1–2 months, small team</div>
-              <div class="tier-price">Standard rate</div>
+            <div class="tier-card" data-value="Blueprint" onclick="selectTier(this)">
+              <div class="tier-name">🗺️ Blueprint</div>
+              <div class="tier-desc">Architecture design, target platform, data model, SOW, and execution plan</div>
             </div>
-            <div class="tier-card" data-value="Large" onclick="selectTier(this)">
-              <div class="tier-name">🔴 Large</div>
-              <div class="tier-desc">Enterprise scale, complex dependencies</div>
-              <div class="tier-price">+15% rate</div>
+            <div class="tier-card" data-value="Execute" onclick="selectTier(this)">
+              <div class="tier-name">⚡ Execute</div>
+              <div class="tier-desc">Full delivery — refactoring, migration, parallel run, cutover, 30-day stabilization</div>
             </div>
           </div>
         </div>
@@ -890,58 +921,60 @@
         <label>Risk Factors <span style="font-weight:400;text-transform:none;letter-spacing:0;">(select all that apply)</span></label>
         <div style="margin-top:0.5rem;">
           <div class="risk-grid">
-            <div class="risk-item" data-value="international_client" onclick="toggleRisk(this)">
+            <div class="risk-item" data-value="cobol_mainframe" onclick="toggleRisk(this)">
               <div class="risk-check">✓</div>
-              <span>🌎 International client</span>
+              <span>🔄 COBOL / Mainframe programs involved</span>
+            </div>
+            <div class="risk-item" data-value="db2_dba" onclick="toggleRisk(this)">
+              <div class="risk-check">✓</div>
+              <span>🗄️ DB2 or legacy database schema work</span>
+            </div>
+            <div class="risk-item" data-value="live_payments" onclick="toggleRisk(this)">
+              <div class="risk-check">✓</div>
+              <span>🏦 Live payment processing affected</span>
+            </div>
+            <div class="risk-item" data-value="data_migration" onclick="toggleRisk(this)">
+              <div class="risk-check">✓</div>
+              <span>📦 Data migration required</span>
+            </div>
+            <div class="risk-item" data-value="undocumented_logic" onclick="toggleRisk(this)">
+              <div class="risk-check">✓</div>
+              <span>❓ Business logic undocumented</span>
+            </div>
+            <div class="risk-item" data-value="regulatory_audit" onclick="toggleRisk(this)">
+              <div class="risk-check">✓</div>
+              <span>📋 Regulatory audit in progress or pending</span>
             </div>
             <div class="risk-item" data-value="sensitive_data" onclick="toggleRisk(this)">
               <div class="risk-check">✓</div>
-              <span>🔒 Sensitive / regulated data</span>
+              <span>🔒 Sensitive / regulated data (NPPI, PII)</span>
             </div>
-            <div class="risk-item" data-value="legacy_systems" onclick="toggleRisk(this)">
+            <div class="risk-item" data-value="hard_deadline" onclick="toggleRisk(this)">
               <div class="risk-check">✓</div>
-              <span>🖥️ Legacy systems involved</span>
+              <span>⏰ Hard deadline (license renewal, audit date)</span>
             </div>
-            <div class="risk-item" data-value="tight_deadline" onclick="toggleRisk(this)">
+            <div class="risk-item" data-value="international_client" onclick="toggleRisk(this)">
               <div class="risk-check">✓</div>
-              <span>⏰ Tight deadline</span>
-            </div>
-            <div class="risk-item" data-value="unclear_requirements" onclick="toggleRisk(this)">
-              <div class="risk-check">✓</div>
-              <span>❓ Requirements not fully defined</span>
+              <span>🌎 Cross-border / international client</span>
             </div>
             <div class="risk-item" data-value="multiple_stakeholders" onclick="toggleRisk(this)">
               <div class="risk-check">✓</div>
-              <span>👥 Multiple decision makers</span>
-            </div>
-            <div class="risk-item" data-value="compliance_required" onclick="toggleRisk(this)">
-              <div class="risk-check">✓</div>
-              <span>📋 Compliance required (SOX/AML/PCI)</span>
-            </div>
-            <div class="risk-item" data-value="first_time_client" onclick="toggleRisk(this)">
-              <div class="risk-check">✓</div>
-              <span>🤝 First engagement with Meliora Labs</span>
+              <span>👥 Multiple stakeholders / decision makers</span>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- BUDGET -->
+      <!-- START DATE (budget removed) -->
       <div class="field-group">
-        <div class="field">
-          <label for="inp-budget">Budget Range (USD)</label>
-          <select id="inp-budget">
-            <option value="">Not defined yet</option>
-            <option value="under_5k">Under $5,000</option>
-            <option value="5k_15k">$5,000 – $15,000</option>
-            <option value="15k_50k">$15,000 – $50,000</option>
-            <option value="50k_100k">$50,000 – $100,000</option>
-            <option value="over_100k">$100,000+</option>
-          </select>
-        </div>
         <div class="field">
           <label for="inp-start">Preferred Start Date</label>
           <input type="date" id="inp-start">
+        </div>
+        <div class="field" style="display:flex;align-items:flex-end;">
+          <div style="padding:0.75rem 1rem;background:#EAF4FB;border-radius:10px;border:0.5px solid #c8dff0;font-size:12px;color:#2E86AB;font-weight:400;line-height:1.5;width:100%;">
+            💡 <strong>No budget field.</strong> We scope pricing to your project after the discovery call — no anchors, no ranges.
+          </div>
         </div>
       </div>
 
@@ -1096,7 +1129,7 @@ const state = {
 
 const RATES = {
   'IT Consulting': 150, 'Payments & Fintech': 175,
-  'Mainframe Modernization': 200, 'AI / Automation': 165,
+  'AI / Automation': 165,
   'Assess': 150, 'Blueprint': 165, 'Execute': 175,
   'Compliance Advisory': 155,
   'Delivery Intelligence': 160, 'SOW / Documentation': 125,
@@ -1107,7 +1140,7 @@ const TEAM_MULT  = { 1:1.0,2:1.15,3:1.25,4:1.35,5:1.5 };
 const TIER_ADJ   = { Small:0.85, Medium:1.0, Large:1.15 };
 const RISK_PTS   = { international_client:1,sensitive_data:2,legacy_systems:2,
                      tight_deadline:1,unclear_requirements:3,multiple_stakeholders:1,
-                     compliance_required:2,first_time_client:1 };
+                     compliance_required:2,/* first_time_client removed */ };
 
 // ── NAVIGATION ──
 function goToStep(n) {
@@ -1166,6 +1199,10 @@ function selectService(el) {
 }
 
 // ── TIER SELECTION ──
+function toggleDomainPill(cb) {
+  // visual feedback handled by CSS :checked selector — nothing extra needed
+}
+
 function selectTier(el) {
   document.querySelectorAll('.tier-card').forEach(c=>c.classList.remove('selected'));
   el.classList.add('selected');
@@ -1192,7 +1229,7 @@ function calcEstimate() {
   const baseHrs    = BASE_HOURS[complexity] || 60;
   const adjHrs     = baseHrs * (DUR_MULT[duration] || 1.1);
   const totalHrs   = Math.round(adjHrs * (TEAM_MULT[teamSize] || 1.0));
-  const rate       = RATES[service] || 150;
+  const rate = RATES[service] || RATES['IT Consulting'] || 150;
   const baseCost   = totalHrs * rate;
   const finalCost  = baseCost * (TIER_ADJ[tier] || 1.0);
 
@@ -1218,7 +1255,7 @@ function buildSummary() {
     international_client:'🌎 International client', sensitive_data:'🔒 Sensitive data',
     legacy_systems:'🖥️ Legacy systems', tight_deadline:'⏰ Tight deadline',
     unclear_requirements:'❓ Unclear requirements', multiple_stakeholders:'👥 Multiple stakeholders',
-    compliance_required:'📋 Compliance (SOX/AML/PCI)', first_time_client:'🤝 First-time client'
+    compliance_required:'📋 Compliance (SOX/AML/PCI)', /* first_time_client removed */
   };
   const riskSelected = state.selectedRisks.map(r=>riskLabels[r]||r).join(', ') || 'None selected';
   // [label, value, fullWidth]

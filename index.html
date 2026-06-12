@@ -1,7 +1,7 @@
 <!-- ============================================================
      Meliora Labs | melioralabs.tech
-     Version : 3.0.0
-     Date    : 2026-06-11
+     Version : 3.1.0
+     Date    : 2026-06-12
      Changes : Major redesign — 7 service cards replaced with 3 engagement
                tier cards (Assess / Blueprint / Execute) + domain row;
                Cybersecurity card removed (deferred until Eric commits);
@@ -395,10 +395,7 @@
     <a href="#services" class="btn-secondary" data-i18n="hero.cta2">See what we build →</a>
   </div>
   <div class="hero-stats reveal reveal-delay-4">
-    <div class="stat-item"><div class="stat-number">$50B+</div><div class="stat-label" data-i18n="stats.s1">Payment platforms delivered</div></div>
-    <div class="stat-item"><div class="stat-number">20+</div><div class="stat-label" data-i18n="stats.s2">Years in mission-critical systems</div></div>
-    <div class="stat-item"><div class="stat-number">0</div><div class="stat-label" data-i18n="stats.s3">Production rollbacks in 14 years</div></div>
-    <div class="stat-item"><div class="stat-number">360°</div><div class="stat-label" data-i18n="stats.s4">Delivery visibility — our core product</div></div>
+    <div style="font-size:13px;color:var(--gray-400);font-weight:300;letter-spacing:0.5px;" data-i18n="hero.trust">Trusted by financial institutions and fintechs across the US and Mexico · Bilingual EN/ES · All engagements in USD</div>
   </div>
 </div>
 
@@ -407,88 +404,152 @@
 <!-- SERVICES -->
 <section id="services">
   <div class="section-tag reveal" data-i18n="services.tag">What we do</div>
-  <h2 class="section-title reveal reveal-delay-1" data-i18n="services.title">How we engage</h2>
-  <p class="section-sub reveal reveal-delay-2" data-i18n="services.sub">Every engagement follows one of three structured phases. You know the scope, the price, and the deliverables before we start — nothing hidden, nothing open-ended.</p>
+  <h2 class="section-title reveal reveal-delay-1" data-i18n="services.title">We speak your language — whatever system you're running</h2>
+  <p class="section-sub reveal reveal-delay-2" data-i18n="services.sub">Whether you're running COBOL on IBM Z or a small company with slow, scary software nobody wants to touch — we've seen it before and we know how to fix it. Every engagement is scoped, priced, and delivered in writing before we start.</p>
 
-  <div class="services-grid" style="grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem;">
-
-    <!-- ASSESS -->
-    <div class="service-card reveal reveal-delay-1" style="border-top:4px solid #1B2A4A;position:relative;">
-      <div style="position:absolute;top:1.25rem;right:1.25rem;background:#EAF4FB;color:#1B2A4A;font-size:11px;font-weight:600;padding:3px 10px;border-radius:12px;letter-spacing:0.5px;">$8K – $20K</div>
-      <div class="service-icon">🔍</div>
-      <div class="service-title" data-i18n="svc_assess.title">Assess</div>
-      <p class="service-desc" data-i18n="svc_assess.desc">Discovery, inventory, and complexity classification. We map what you have, classify the risk, and deliver a written modernization plan — before you commit to anything bigger.</p>
-      <div style="margin-top:1.25rem;padding-top:1.25rem;border-top:0.5px solid var(--gray-100);">
-        <div style="font-size:11px;font-weight:600;color:#1B2A4A;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:0.75rem;" data-i18n="svc.included_label">✅ What's included</div>
-        <div class="tier-feature"><div class="tier-feature-dot large" style="background:#1B2A4A;"></div><span data-i18n="svc_assess.f1">COBOL/JCL program inventory — every component catalogued</span></div>
-        <div class="tier-feature"><div class="tier-feature-dot large" style="background:#1B2A4A;"></div><span data-i18n="svc_assess.f2">Complexity classification (L1–L5) per program</span></div>
-        <div class="tier-feature"><div class="tier-feature-dot large" style="background:#1B2A4A;"></div><span data-i18n="svc_assess.f3">Dependency map — CALL chains, VSAM files, DB2 tables</span></div>
-        <div class="tier-feature"><div class="tier-feature-dot large" style="background:#1B2A4A;"></div><span data-i18n="svc_assess.f4">Compliance risk register (OFAC, AML, SOX, PCI-DSS)</span></div>
-        <div class="tier-feature"><div class="tier-feature-dot large" style="background:#1B2A4A;"></div><span data-i18n="svc_assess.f5">Written modernization recommendation with phased roadmap</span></div>
-        <div style="margin-top:0.75rem;padding-top:0.75rem;border-top:0.5px solid var(--gray-100);font-size:11px;font-weight:600;color:var(--gray-400);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:0.5rem;" data-i18n="svc.notincluded_label">❌ Not included</div>
-        <div style="font-size:13px;color:var(--gray-400);" data-i18n="svc_assess.not">Code refactoring, data migration, or execution work — those are Blueprint and Execute scope.</div>
-        <div class="tier-golive" style="margin-top:1rem;">📋 <span data-i18n="svc_assess.quality">Examination-ready deliverables. Written rollback guarantee on every engagement.</span></div>
-        <a href="#contact-form" class="tier-cta" data-i18n="tier.cta">Get a free consultation →</a>
-      </div>
+  <!-- ── TRACK A: MAINFRAME & ENTERPRISE ── -->
+  <div style="margin-bottom:2.5rem;">
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:1.25rem;padding-bottom:0.75rem;border-bottom:2px solid #1B2A4A;">
+      <span style="background:#1B2A4A;color:white;font-size:11px;font-weight:700;padding:4px 12px;border-radius:20px;letter-spacing:1px;text-transform:uppercase;" data-i18n="track.a.badge">Mainframe & Enterprise</span>
+      <span style="font-size:13px;color:var(--gray-400);font-weight:300;" data-i18n="track.a.sub">Banks · Fintechs · Payment processors running IBM Z, COBOL, CICS, DB2, VSAM</span>
     </div>
 
-    <!-- BLUEPRINT -->
-    <div class="service-card reveal reveal-delay-2" style="border-top:4px solid #2E86AB;position:relative;">
-      <div style="position:absolute;top:1.25rem;right:1.25rem;background:#EAF4FB;color:#2E86AB;font-size:11px;font-weight:600;padding:3px 10px;border-radius:12px;letter-spacing:0.5px;">$20K – $60K</div>
-      <div class="service-icon">🗺️</div>
-      <div class="service-title" data-i18n="svc_blueprint.title">Blueprint</div>
-      <p class="service-desc" data-i18n="svc_blueprint.desc">Architecture design, target platform selection, data model, and full project specification. Everything your team needs to execute — or everything Meliora Labs needs to begin.</p>
-      <div style="margin-top:1.25rem;padding-top:1.25rem;border-top:0.5px solid var(--gray-100);">
-        <div style="font-size:11px;font-weight:600;color:#2E86AB;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:0.75rem;" data-i18n="svc.included_label">✅ What's included</div>
-        <div class="tier-feature"><div class="tier-feature-dot large"></div><span data-i18n="svc_blueprint.f1">Everything in Assess — full inventory and risk classification</span></div>
-        <div class="tier-feature"><div class="tier-feature-dot large"></div><span data-i18n="svc_blueprint.f2">Target architecture design — DB2, APIs, MQ, or cloud storage</span></div>
-        <div class="tier-feature"><div class="tier-feature-dot large"></div><span data-i18n="svc_blueprint.f3">Data model and API contract specifications</span></div>
-        <div class="tier-feature"><div class="tier-feature-dot large"></div><span data-i18n="svc_blueprint.f4">AS-IS / TO-BE presentation deck — board-ready</span></div>
-        <div class="tier-feature"><div class="tier-feature-dot large"></div><span data-i18n="svc_blueprint.f5">SOW, compliance design, and security framework</span></div>
-        <div class="tier-feature"><div class="tier-feature-dot large"></div><span data-i18n="svc_blueprint.f6">Phased execution plan with timeline and cost estimate</span></div>
-        <div style="margin-top:0.75rem;padding-top:0.75rem;border-top:0.5px solid var(--gray-100);font-size:11px;font-weight:600;color:var(--gray-400);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:0.5rem;" data-i18n="svc.notincluded_label">❌ Not included</div>
-        <div style="font-size:13px;color:var(--gray-400);" data-i18n="svc_blueprint.not">Code refactoring, data migration, or production cutover — those are Execute scope.</div>
-        <div class="tier-golive" style="margin-top:1rem;">📋 <span data-i18n="svc_blueprint.quality">Examination-ready deliverables. Written rollback guarantee on every engagement.</span></div>
-        <a href="#contact-form" class="tier-cta" data-i18n="tier.cta">Get a free consultation →</a>
-      </div>
-    </div>
+    <div class="services-grid" style="grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem;">
 
-    <!-- EXECUTE -->
-    <div class="service-card reveal reveal-delay-3" style="border-top:4px solid #1D9E75;position:relative;">
-      <div style="position:absolute;top:1.25rem;right:1.25rem;background:#e8f5ef;color:#1D9E75;font-size:11px;font-weight:600;padding:3px 10px;border-radius:12px;letter-spacing:0.5px;" data-i18n="svc_execute.price_badge">Scoped per project</div>
-      <div class="service-icon">⚡</div>
-      <div class="service-title" data-i18n="svc_execute.title">Execute</div>
-      <p class="service-desc" data-i18n="svc_execute.desc">Full delivery — refactoring, migration, parallel run, compliance gates, cutover, and 30-day stabilization. Fixed scope, written rollback plan, zero surprises at go-live.</p>
-      <div style="margin-top:1.25rem;padding-top:1.25rem;border-top:0.5px solid var(--gray-100);">
-        <div style="font-size:11px;font-weight:600;color:#1D9E75;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:0.75rem;" data-i18n="svc.included_label">✅ What's included</div>
-        <div class="tier-feature"><div class="tier-feature-dot small"></div><span data-i18n="svc_execute.f1">Everything in Assess + Blueprint</span></div>
-        <div class="tier-feature"><div class="tier-feature-dot small"></div><span data-i18n="svc_execute.f2">Incremental refactor — Strangler Fig or Big Bang per complexity</span></div>
-        <div class="tier-feature"><div class="tier-feature-dot small"></div><span data-i18n="svc_execute.f3">Parallel run with daily output comparison and discrepancy log</span></div>
-        <div class="tier-feature"><div class="tier-feature-dot small"></div><span data-i18n="svc_execute.f4">Compliance gate sign-offs — OFAC, AML, SOX, PCI-DSS</span></div>
-        <div class="tier-feature"><div class="tier-feature-dot small"></div><span data-i18n="svc_execute.f5">CAB-approved production cutover with tested rollback plan</span></div>
-        <div class="tier-feature"><div class="tier-feature-dot small"></div><span data-i18n="svc_execute.f6">30-day stabilization — all issues fixed at no extra cost</span></div>
-        <div style="margin-top:0.75rem;padding-top:0.75rem;border-top:0.5px solid var(--gray-100);font-size:11px;font-weight:600;color:var(--gray-400);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:0.5rem;" data-i18n="svc.notincluded_label">❌ Not included</div>
-        <div style="font-size:13px;color:var(--gray-400);" data-i18n="svc_execute.not">Ongoing managed service after 30-day stabilization, third-party licenses, infrastructure costs outside agreed scope.</div>
-        <div class="tier-golive" style="margin-top:1rem;">📋 <span data-i18n="svc_execute.quality">Examination-ready deliverables. Written rollback guarantee on every engagement.</span></div>
-        <a href="#contact-form" class="tier-cta" data-i18n="tier.cta">Get a free consultation →</a>
+      <!-- ASSESS — Mainframe -->
+      <div class="service-card reveal reveal-delay-1" style="border-top:4px solid #1B2A4A;position:relative;">
+        <div style="position:absolute;top:1.25rem;right:1.25rem;background:#EAF4FB;color:#1B2A4A;font-size:11px;font-weight:600;padding:3px 10px;border-radius:12px;">$8K – $20K</div>
+        <div class="service-icon">🔍</div>
+        <div class="service-title" data-i18n="mf_assess.title">Assess</div>
+        <p class="service-desc" data-i18n="mf_assess.desc">Full system discovery before a single line of code is touched. We inventory every program, classify complexity, map dependencies, and tell you exactly what to keep, refactor, rehost, rebuild, or replace — in writing.</p>
+        <div style="margin-top:1rem;padding-top:1rem;border-top:0.5px solid var(--gray-100);">
+          <div style="font-size:11px;font-weight:600;color:#1B2A4A;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:0.6rem;" data-i18n="svc.included_label">✅ What's included</div>
+          <div class="tier-feature"><div class="tier-feature-dot large" style="background:#1B2A4A;"></div><span data-i18n="mf_assess.f1">COBOL/JCL inventory — PROGRAM-ID, CALL chains, COPY members, FILE-CONTROL</span></div>
+          <div class="tier-feature"><div class="tier-feature-dot large" style="background:#1B2A4A;"></div><span data-i18n="mf_assess.f2">5R classification per program: Rehost · Refactor · Rebuild · Re-architect · Replace</span></div>
+          <div class="tier-feature"><div class="tier-feature-dot large" style="background:#1B2A4A;"></div><span data-i18n="mf_assess.f3">DB2 catalog analysis — SYSIBM tables, schema, referential integrity, stored procedures</span></div>
+          <div class="tier-feature"><div class="tier-feature-dot large" style="background:#1B2A4A;"></div><span data-i18n="mf_assess.f4">VSAM file mapping — KSDS/ESDS/RRDS layouts, access patterns, data volumes</span></div>
+          <div class="tier-feature"><div class="tier-feature-dot large" style="background:#1B2A4A;"></div><span data-i18n="mf_assess.f5">CICS transaction inventory — COMMAREA structures, BMS maps, program links</span></div>
+          <div class="tier-feature"><div class="tier-feature-dot large" style="background:#1B2A4A;"></div><span data-i18n="mf_assess.f6">Compliance risk register — OFAC/AML logic embedded in COBOL identified before refactor</span></div>
+          <div class="tier-feature"><div class="tier-feature-dot large" style="background:#1B2A4A;"></div><span data-i18n="mf_assess.f7">Written modernization plan with phased roadmap and risk-ranked program list</span></div>
+          <div style="margin-top:0.6rem;padding-top:0.6rem;border-top:0.5px solid var(--gray-100);font-size:11px;font-weight:600;color:var(--gray-400);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:0.4rem;" data-i18n="svc.notincluded_label">❌ Not included</div>
+          <div style="font-size:13px;color:var(--gray-400);" data-i18n="mf_assess.not">Code refactoring, data migration, or execution — Blueprint and Execute scope.</div>
+          <div class="tier-golive" style="margin-top:0.75rem;">📋 <span data-i18n="svc.quality">Examination-ready deliverables. Written rollback guarantee on every engagement.</span></div>
+          <a href="#contact-form" class="tier-cta" data-i18n="tier.cta">Get a free consultation →</a>
+        </div>
       </div>
-    </div>
 
+      <!-- BLUEPRINT — Mainframe -->
+      <div class="service-card reveal reveal-delay-2" style="border-top:4px solid #2E86AB;position:relative;">
+        <div style="position:absolute;top:1.25rem;right:1.25rem;background:#EAF4FB;color:#2E86AB;font-size:11px;font-weight:600;padding:3px 10px;border-radius:12px;">$20K – $60K</div>
+        <div class="service-icon">🗺️</div>
+        <div class="service-title" data-i18n="mf_blueprint.title">Blueprint</div>
+        <p class="service-desc" data-i18n="mf_blueprint.desc">Target architecture, data model, migration strategy, and full project specification. Strangler Fig or Big Bang — we choose based on what the Assess classification tells us, not what's easier to sell.</p>
+        <div style="margin-top:1rem;padding-top:1rem;border-top:0.5px solid var(--gray-100);">
+          <div style="font-size:11px;font-weight:600;color:#2E86AB;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:0.6rem;" data-i18n="svc.included_label">✅ What's included</div>
+          <div class="tier-feature"><div class="tier-feature-dot large"></div><span data-i18n="mf_blueprint.f1">Everything in Assess — full inventory and 5R classification</span></div>
+          <div class="tier-feature"><div class="tier-feature-dot large"></div><span data-i18n="mf_blueprint.f2">Migration strategy decision: Strangler Fig vs Big Bang with written rationale</span></div>
+          <div class="tier-feature"><div class="tier-feature-dot large"></div><span data-i18n="mf_blueprint.f3">Target data model — DB2 normalization, API event design, MQ message schemas</span></div>
+          <div class="tier-feature"><div class="tier-feature-dot large"></div><span data-i18n="mf_blueprint.f4">COBOL PIC clause → SQL/API field mapping with REDEFINES and OCCURS resolution</span></div>
+          <div class="tier-feature"><div class="tier-feature-dot large"></div><span data-i18n="mf_blueprint.f5">AS-IS / TO-BE architecture deck — board-ready, in English and Spanish</span></div>
+          <div class="tier-feature"><div class="tier-feature-dot large"></div><span data-i18n="mf_blueprint.f6">SOW, compliance design (OFAC/AML/SOX/PCI-DSS), and security framework</span></div>
+          <div style="margin-top:0.6rem;padding-top:0.6rem;border-top:0.5px solid var(--gray-100);font-size:11px;font-weight:600;color:var(--gray-400);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:0.4rem;" data-i18n="svc.notincluded_label">❌ Not included</div>
+          <div style="font-size:13px;color:var(--gray-400);" data-i18n="mf_blueprint.not">Code refactoring, data migration, or production cutover — Execute scope.</div>
+          <div class="tier-golive" style="margin-top:0.75rem;">📋 <span data-i18n="svc.quality">Examination-ready deliverables. Written rollback guarantee on every engagement.</span></div>
+          <a href="#contact-form" class="tier-cta" data-i18n="tier.cta">Get a free consultation →</a>
+        </div>
+      </div>
+
+      <!-- EXECUTE — Mainframe -->
+      <div class="service-card reveal reveal-delay-3" style="border-top:4px solid #1D9E75;position:relative;">
+        <div style="position:absolute;top:1.25rem;right:1.25rem;background:#e8f5ef;color:#1D9E75;font-size:11px;font-weight:600;padding:3px 10px;border-radius:12px;" data-i18n="svc_execute.price_badge">Scoped per project</div>
+        <div class="service-icon">⚡</div>
+        <div class="service-title" data-i18n="mf_execute.title">Execute</div>
+        <p class="service-desc" data-i18n="mf_execute.desc">Full delivery — refactoring, data migration, parallel run, behavioral equivalence validation, compliance gates, CAB-approved cutover, and 30-day stabilization. The phase most firms skip preparation for. We don't.</p>
+        <div style="margin-top:1rem;padding-top:1rem;border-top:0.5px solid var(--gray-100);">
+          <div style="font-size:11px;font-weight:600;color:#1D9E75;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:0.6rem;" data-i18n="svc.included_label">✅ What's included</div>
+          <div class="tier-feature"><div class="tier-feature-dot small"></div><span data-i18n="mf_execute.f1">Everything in Assess + Blueprint</span></div>
+          <div class="tier-feature"><div class="tier-feature-dot small"></div><span data-i18n="mf_execute.f2">Incremental refactor — Strangler Fig routing or targeted Big Bang per program</span></div>
+          <div class="tier-feature"><div class="tier-feature-dot small"></div><span data-i18n="mf_execute.f3">Parallel run — daily output comparison, record counts, monetary totals, checksums</span></div>
+          <div class="tier-feature"><div class="tier-feature-dot small"></div><span data-i18n="mf_execute.f4">Behavioral equivalence validation — golden datasets, regression suite, edge case testing</span></div>
+          <div class="tier-feature"><div class="tier-feature-dot small"></div><span data-i18n="mf_execute.f5">Compliance gate sign-offs — OFAC, AML, SOX, PCI-DSS per phase</span></div>
+          <div class="tier-feature"><div class="tier-feature-dot small"></div><span data-i18n="mf_execute.f6">CAB-approved cutover with tested rollback plan — no go-live without passing parallel run</span></div>
+          <div class="tier-feature"><div class="tier-feature-dot small"></div><span data-i18n="mf_execute.f7">30-day stabilization — all issues fixed at no extra cost</span></div>
+          <div style="margin-top:0.6rem;padding-top:0.6rem;border-top:0.5px solid var(--gray-100);font-size:11px;font-weight:600;color:var(--gray-400);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:0.4rem;" data-i18n="svc.notincluded_label">❌ Not included</div>
+          <div style="font-size:13px;color:var(--gray-400);" data-i18n="mf_execute.not">Ongoing managed service after 30-day stabilization, third-party licenses, infrastructure costs outside agreed scope.</div>
+          <div class="tier-golive" style="margin-top:0.75rem;">📋 <span data-i18n="svc.quality">Examination-ready deliverables. Written rollback guarantee on every engagement.</span></div>
+          <a href="#contact-form" class="tier-cta" data-i18n="tier.cta">Get a free consultation →</a>
+        </div>
+      </div>
+
+    </div>
   </div>
 
-  <!-- Domain row -->
-  <div style="margin-top:2.5rem;text-align:center;">
+  <!-- ── TRACK B: NON-MAINFRAME / SME ── -->
+  <div style="margin-bottom:2rem;">
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:1.25rem;padding-bottom:0.75rem;border-bottom:2px solid #2E86AB;">
+      <span style="background:#2E86AB;color:white;font-size:11px;font-weight:700;padding:4px 12px;border-radius:20px;letter-spacing:1px;text-transform:uppercase;" data-i18n="track.b.badge">Non-Mainframe & SME</span>
+      <span style="font-size:13px;color:var(--gray-400);font-weight:300;" data-i18n="track.b.sub">Small and mid-size companies with legacy software, manual processes, or payment integration needs</span>
+    </div>
+
+    <div style="background:white;border:0.5px solid var(--gray-100);border-radius:16px;padding:2rem;margin-bottom:1rem;box-shadow:0 2px 16px rgba(0,0,0,0.04);">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem;">
+
+        <!-- Problem 1 -->
+        <div style="padding:1.25rem;background:var(--gray-50);border-radius:12px;border:0.5px solid var(--gray-100);">
+          <div style="font-size:1.5rem;margin-bottom:0.5rem;">🖥️</div>
+          <div style="font-size:14px;font-weight:600;color:#1B2A4A;margin-bottom:0.35rem;" data-i18n="sme.p1.title">Software that's slow, old, or scary to touch</div>
+          <div style="font-size:13px;color:var(--gray-400);font-weight:300;margin-bottom:0.75rem;" data-i18n="sme.p1.desc">You know your system is fragile. Nobody wants to touch it. We map what you have, identify what to fix first, and build a plan that doesn't break what's working.</div>
+          <div style="font-size:12px;color:var(--teal-600);font-weight:500;" data-i18n="sme.p1.tag">AS-IS/TO-BE analysis · Phased modernization roadmap</div>
+        </div>
+
+        <!-- Problem 2 -->
+        <div style="padding:1.25rem;background:var(--gray-50);border-radius:12px;border:0.5px solid var(--gray-100);">
+          <div style="font-size:1.5rem;margin-bottom:0.5rem;">📊</div>
+          <div style="font-size:14px;font-weight:600;color:#1B2A4A;margin-bottom:0.35rem;" data-i18n="sme.p2.title">Reports done manually every week</div>
+          <div style="font-size:13px;color:var(--gray-400);font-weight:300;margin-bottom:0.75rem;" data-i18n="sme.p2.desc">Excel files, Access databases, CSV exports that someone spends hours turning into a report. We automate it — PDF delivered automatically, data quality checked, AI summary included.</div>
+          <div style="font-size:12px;color:var(--teal-600);font-weight:500;" data-i18n="sme.p2.tag">Automated reporting · Excel · Access · CSV connectors</div>
+        </div>
+
+        <!-- Problem 3 -->
+        <div style="padding:1.25rem;background:var(--gray-50);border-radius:12px;border:0.5px solid var(--gray-100);">
+          <div style="font-size:1.5rem;margin-bottom:0.5rem;">🏦</div>
+          <div style="font-size:14px;font-weight:600;color:#1B2A4A;margin-bottom:0.35rem;" data-i18n="sme.p3.title">Payment integration or compliance</div>
+          <div style="font-size:13px;color:var(--gray-400);font-weight:300;margin-bottom:0.75rem;" data-i18n="sme.p3.desc">Need to connect to ACH, RTP, or a banking partner? Facing an OFAC or AML compliance requirement? We've done this at $50B+ scale — we can do it at yours too.</div>
+          <div style="font-size:12px;color:var(--teal-600);font-weight:500;" data-i18n="sme.p3.tag">ACH · RTP · OFAC screening · AML monitoring</div>
+        </div>
+
+        <!-- Problem 4 -->
+        <div style="padding:1.25rem;background:var(--gray-50);border-radius:12px;border:0.5px solid var(--gray-100);">
+          <div style="font-size:1.5rem;margin-bottom:0.5rem;">☁️</div>
+          <div style="font-size:14px;font-weight:600;color:#1B2A4A;margin-bottom:0.35rem;" data-i18n="sme.p4.title">Move to the cloud without the chaos</div>
+          <div style="font-size:13px;color:var(--gray-400);font-weight:300;margin-bottom:0.75rem;" data-i18n="sme.p4.desc">On-premise servers that nobody wants to maintain. We design the migration, handle the cutover, and make sure nothing breaks — with a rollback plan in writing before we touch anything.</div>
+          <div style="font-size:12px;color:var(--teal-600);font-weight:500;" data-i18n="sme.p4.tag">AWS migration · Zero-downtime cutover · Rollback guaranteed</div>
+        </div>
+
+      </div>
+
+      <div style="margin-top:1.5rem;padding-top:1.5rem;border-top:0.5px solid var(--gray-100);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;">
+        <div style="font-size:13px;color:var(--gray-400);font-weight:300;max-width:500px;" data-i18n="sme.note">These are the projects big firms don't take because the margin isn't worth their overhead. That gap is exactly where Meliora Labs operates — senior expertise, fair prices, no disappearing act after go-live.</div>
+        <a href="#contact-form" class="tier-cta" style="background:var(--teal-400);" data-i18n="tier.cta">Get a free consultation →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Domain tags -->
+  <div style="text-align:center;">
     <div style="font-size:12px;font-weight:600;color:var(--gray-400);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:1rem;" data-i18n="services.domains_label">What we work on</div>
     <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:0.75rem;">
-      <span style="background:#EAF4FB;color:#1B2A4A;font-size:13px;font-weight:500;padding:6px 16px;border-radius:20px;border:0.5px solid #c8dff0;">🔄 Mainframe Modernization</span>
-      <span style="background:#EAF4FB;color:#1B2A4A;font-size:13px;font-weight:500;padding:6px 16px;border-radius:20px;border:0.5px solid #c8dff0;">🏦 Payments & Fintech</span>
-      <span style="background:#EAF4FB;color:#1B2A4A;font-size:13px;font-weight:500;padding:6px 16px;border-radius:20px;border:0.5px solid #c8dff0;">☁️ Cloud (AWS)</span>
-      <span style="background:#EAF4FB;color:#1B2A4A;font-size:13px;font-weight:500;padding:6px 16px;border-radius:20px;border:0.5px solid #c8dff0;">🤖 AI Integration</span>
+      <span style="background:#EAF4FB;color:#1B2A4A;font-size:13px;font-weight:500;padding:6px 16px;border-radius:20px;border:0.5px solid #c8dff0;">🔄 Mainframe · COBOL · z/OS</span>
+      <span style="background:#EAF4FB;color:#1B2A4A;font-size:13px;font-weight:500;padding:6px 16px;border-radius:20px;border:0.5px solid #c8dff0;">🏦 Payments · ACH · RTP · OFAC · AML</span>
+      <span style="background:#EAF4FB;color:#1B2A4A;font-size:13px;font-weight:500;padding:6px 16px;border-radius:20px;border:0.5px solid #c8dff0;">☁️ Cloud Migration · AWS</span>
+      <span style="background:#EAF4FB;color:#1B2A4A;font-size:13px;font-weight:500;padding:6px 16px;border-radius:20px;border:0.5px solid #c8dff0;">🤖 AI Integration · Automation</span>
+      <span style="background:#EAF4FB;color:#1B2A4A;font-size:13px;font-weight:500;padding:6px 16px;border-radius:20px;border:0.5px solid #c8dff0;">📊 Data & Reporting</span>
       <span style="background:#EAF4FB;color:#1B2A4A;font-size:13px;font-weight:500;padding:6px 16px;border-radius:20px;border:0.5px solid #c8dff0;">📋 Compliance Advisory</span>
     </div>
   </div>
 
 </section>
+
 <div class="divider"></div>
 
 <!-- PRICING & PROJECT BRIEF — v3.0 -->
@@ -695,18 +756,9 @@
         </div>
       </div>
 
-      <!-- Row 5: Budget -->
-      <div style="margin-bottom:1rem;">
-        <label for="briefBudget" style="display:block;font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:1px;color:var(--teal-400);margin-bottom:6px;" data-i18n="brief.budget">Approximate budget (USD) *</label>
-        <select class="form-select" id="briefBudget" name="budget" required autocomplete="off">
-          <option value="" data-i18n="brief.budgetPh">Select a range</option>
-          <option value="Under $10k" data-i18n="brief.b1">Under $10,000</option>
-          <option value="$10k-$50k" data-i18n="brief.b2">$10,000 – $50,000</option>
-          <option value="$50k-$100k" data-i18n="brief.b3">$50,000 – $100,000</option>
-          <option value="$100k+" data-i18n="brief.b4">Over $100,000</option>
-          <option value="TBD" data-i18n="brief.b5">I do not know yet</option>
-        </select>
-        <p style="font-size:12px;color:var(--gray-400);margin:6px 0 0;font-weight:300;line-height:1.5;" data-i18n="brief.budgetNote">No commitment required. This helps us give you a realistic estimate — we will never charge more than what we agree in writing.</p>
+      <!-- Row 5: Pricing note -->
+      <div style="margin-bottom:1rem;padding:1rem 1.25rem;background:var(--teal-50);border-radius:10px;border:0.5px solid var(--teal-100);">
+        <p style="font-size:13px;color:var(--teal-600);margin:0;font-weight:400;line-height:1.6;" data-i18n="brief.pricingNote">💡 <strong>We price to your project</strong> — no ranges, no anchors. Tell us what you need and a real engineer will reply within 24 hours with a clear, honest estimate. We never charge more than what we agree in writing.</p>
       </div>
 
       <!-- Row 6: Project description — plain language prompt -->
@@ -747,7 +799,7 @@
 
     <!-- FOUNDER STORY -->
     <div class="founder-card reveal">
-      <div class="founder-quote" data-i18n="founder.quote">I spent 20+ years inside the systems most consultants only read about. Payment platforms, mainframe migrations, cybersecurity — from Spain to North America. I've been in the war room at 2am. I know what's at stake when systems go down. I built Meliora Labs because every company deserves that same level of care. Not a consultant who delivers and disappears. A partner who stays until it's right.</div>
+      <div class="founder-quote" data-i18n="founder.quote">I spent 20+ years inside the systems most consultants only read about. Payment platforms, mainframe migrations, compliance frameworks — across North America. I've been in the war room at 2am. I know what's at stake when systems go down. I built Meliora Labs because every company deserves that same level of care. Not a consultant who delivers and disappears. A partner who stays until it's right.</div>
       <div class="founder-meta">
         <div class="founder-dot"></div>
         <div class="founder-name" data-i18n="founder.meta">Founder, Meliora Labs</div>
@@ -1108,7 +1160,7 @@
         <span style="font-size:12px;color:var(--gray-400);">2023</span>
       </div>
       <div class="service-title" style="margin-bottom:0.5rem;" data-i18n="cases.c1.title">Mainframe → Cloud Migration</div>
-      <p class="service-desc" style="margin-bottom:1.25rem;" data-i18n="cases.c1.desc">Full z/OS to AWS migration for a North American bank — 100+ COBOL components, zero incidents on go-live, 14-year zero rollback record maintained.</p>
+      <p class="service-desc" style="margin-bottom:1.25rem;" data-i18n="cases.c1.desc">Meliora Labs delivered a full z/OS to AWS migration for a North American bank — 100+ COBOL components assessed, classified, and migrated. Zero incidents on go-live. Parallel run passed before any cutover was authorized.</p>
       <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.5rem;">
         <div style="text-align:center;background:var(--gray-50);border-radius:8px;padding:0.75rem 0.5rem;">
           <div style="font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:500;color:var(--teal-400);">100+</div>
@@ -1133,7 +1185,7 @@
         <span style="font-size:12px;color:var(--gray-400);">2024</span>
       </div>
       <div class="service-title" style="margin-bottom:0.5rem;" data-i18n="cases.c2.title">Payments & Onboarding Platform</div>
-      <p class="service-desc" style="margin-bottom:1.25rem;" data-i18n="cases.c2.desc">End-to-end payment and client onboarding platform built on AWS — ACH, RTP, KYC verification, and AML compliance integrated. Led as Product Owner and technical lead, delivered under budget.</p>
+      <p class="service-desc" style="margin-bottom:1.25rem;" data-i18n="cases.c2.desc">Meliora Labs delivered an end-to-end payment and onboarding platform on AWS — ACH, RTP, KYC verification, and AML compliance integrated from day one. Delivered on time, within the agreed scope and cost.</p>
       <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.5rem;">
         <div style="text-align:center;background:var(--gray-50);border-radius:8px;padding:0.75rem 0.5rem;">
           <div style="font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:500;color:var(--teal-400);">$50B+</div>
@@ -1640,7 +1692,7 @@ const translations = {
     "t4m.f3":"Database and file backup strategy with retention policy",
     "t4m.f4":"Security by design — built in, not bolted on",
     "t4m.golive":"Go-live support during and after launch — duration agreed at project start",
-    "t4l.f1":"Full cybersecurity architecture — zero-trust model",
+    "t4l.f1":"Security built in by design — zero-trust model, banking-grade standards",
     "t4l.f2":"Advanced firewall, NAT, and network segmentation",
     "t4l.f3":"Multi-cloud protection — AWS, Azure, or hybrid",
     "t4l.f4":"Regulatory compliance — OFAC, AML, PCI-DSS, SOX",
@@ -1707,9 +1759,46 @@ const translations = {
     "hero.title":'Built by those who <em>lived</em> inside the systems',
     "hero.sub":"Meliora Labs delivers senior-level IT consulting for banks, fintechs, and payment companies — mainframe modernization, payments platforms, cloud automation, and compliance advisory. Built by engineers with 20+ years inside mission-critical systems.",
     "hero.cta1":"Start a conversation","hero.cta2":"See what we build →",
-    "stats.s1":"Payment platforms delivered","stats.s2":"Years in mission-critical systems",
-    "stats.s3":"Production rollbacks in 14 years","stats.s4":"Delivery visibility — our core product",
-    "services.tag":"What we do","services.title":"How we engage",
+    "stats.s1":"","stats.s2":"","stats.s3":"","stats.s4":"",
+    "services.tag":"What we do","services.title":"We speak your language — whatever system you're running",
+    "hero.trust":"Trusted by financial institutions and fintechs across the US and Mexico · Bilingual EN\/ES · All engagements in USD",
+    "track.a.badge":"Mainframe & Enterprise","track.a.sub":"Banks · Fintechs · Payment processors running IBM Z, COBOL, CICS, DB2, VSAM",
+    "track.b.badge":"Non-Mainframe & SME","track.b.sub":"Small and mid-size companies with legacy software, manual processes, or payment integration needs",
+    "mf_assess.title":"Assess","mf_assess.desc":"Full system discovery before a single line of code is touched. We inventory every program, classify complexity, map dependencies, and tell you exactly what to keep, refactor, rehost, rebuild, or replace — in writing.",
+    "mf_assess.f1":"COBOL/JCL inventory — PROGRAM-ID, CALL chains, COPY members, FILE-CONTROL",
+    "mf_assess.f2":"5R classification per program: Rehost · Refactor · Rebuild · Re-architect · Replace",
+    "mf_assess.f3":"DB2 catalog analysis — SYSIBM tables, schema, referential integrity, stored procedures",
+    "mf_assess.f4":"VSAM file mapping — KSDS/ESDS/RRDS layouts, access patterns, data volumes",
+    "mf_assess.f5":"CICS transaction inventory — COMMAREA structures, BMS maps, program links",
+    "mf_assess.f6":"Compliance risk register — OFAC/AML logic embedded in COBOL identified before refactor",
+    "mf_assess.f7":"Written modernization plan with phased roadmap and risk-ranked program list",
+    "mf_assess.not":"Code refactoring, data migration, or execution — Blueprint and Execute scope.",
+    "mf_blueprint.title":"Blueprint","mf_blueprint.desc":"Target architecture, data model, migration strategy, and full project specification. Strangler Fig or Big Bang — we choose based on what the Assess classification tells us, not what\'s easier to sell.",
+    "mf_blueprint.f1":"Everything in Assess — full inventory and 5R classification",
+    "mf_blueprint.f2":"Migration strategy decision: Strangler Fig vs Big Bang with written rationale",
+    "mf_blueprint.f3":"Target data model — DB2 normalization, API event design, MQ message schemas",
+    "mf_blueprint.f4":"COBOL PIC clause → SQL/API field mapping with REDEFINES and OCCURS resolution",
+    "mf_blueprint.f5":"AS-IS / TO-BE architecture deck — board-ready, in English and Spanish",
+    "mf_blueprint.f6":"SOW, compliance design (OFAC/AML/SOX/PCI-DSS), and security framework",
+    "mf_blueprint.not":"Code refactoring, data migration, or production cutover — Execute scope.",
+    "mf_execute.title":"Execute","mf_execute.desc":"Full delivery — refactoring, data migration, parallel run, behavioral equivalence validation, compliance gates, CAB-approved cutover, and 30-day stabilization. The phase most firms skip preparation for. We don\'t.",
+    "mf_execute.f1":"Everything in Assess + Blueprint",
+    "mf_execute.f2":"Incremental refactor — Strangler Fig routing or targeted Big Bang per program",
+    "mf_execute.f3":"Parallel run — daily output comparison, record counts, monetary totals, checksums",
+    "mf_execute.f4":"Behavioral equivalence validation — golden datasets, regression suite, edge case testing",
+    "mf_execute.f5":"Compliance gate sign-offs — OFAC, AML, SOX, PCI-DSS per phase",
+    "mf_execute.f6":"CAB-approved cutover with tested rollback plan — no go-live without passing parallel run",
+    "mf_execute.f7":"30-day stabilization — all issues fixed at no extra cost",
+    "mf_execute.not":"Ongoing managed service after 30-day stabilization, third-party licenses, infrastructure costs outside agreed scope.",
+    "svc.quality":"Examination-ready deliverables. Written rollback guarantee on every engagement.",
+    "sme.p1.title":"Software that\'s slow, old, or scary to touch","sme.p1.desc":"You know your system is fragile. Nobody wants to touch it. We map what you have, identify what to fix first, and build a plan that doesn\'t break what\'s working.","sme.p1.tag":"AS-IS/TO-BE analysis · Phased modernization roadmap",
+    "sme.p2.title":"Reports done manually every week","sme.p2.desc":"Excel files, Access databases, CSV exports that someone spends hours turning into a report. We automate it — PDF delivered automatically, data quality checked, AI summary included.","sme.p2.tag":"Automated reporting · Excel · Access · CSV connectors",
+    "sme.p3.title":"Payment integration or compliance","sme.p3.desc":"Need to connect to ACH, RTP, or a banking partner? Facing an OFAC or AML compliance requirement? We\'ve done this at $50B+ scale — we can do it at yours too.","sme.p3.tag":"ACH · RTP · OFAC screening · AML monitoring",
+    "sme.p4.title":"Move to the cloud without the chaos","sme.p4.desc":"On-premise servers that nobody wants to maintain. We design the migration, handle the cutover, and make sure nothing breaks — with a rollback plan in writing before we touch anything.","sme.p4.tag":"AWS migration · Zero-downtime cutover · Rollback guaranteed",
+    "sme.note":"These are the projects big firms don\'t take because the margin isn\'t worth their overhead. That gap is exactly where Meliora Labs operates — senior expertise, fair prices, no disappearing act after go-live.",
+    "brief.pricingNote":"💡 We price to your project — no ranges, no anchors. Tell us what you need and a real engineer will reply within 24 hours with a clear, honest estimate. We never charge more than what we agree in writing.",
+    "cases.c1.desc":"Meliora Labs delivered a full z/OS to AWS migration for a North American bank — 100+ COBOL components assessed, classified, and migrated. Zero incidents on go-live. Parallel run passed before any cutover was authorized.",
+    "cases.c2.desc":"Meliora Labs delivered an end-to-end payment and onboarding platform on AWS — ACH, RTP, KYC verification, and AML compliance integrated from day one. Delivered on time, within the agreed scope and cost.",
     "services.sub":"Every engagement follows one of three structured phases. You know the scope, the price, and the deliverables before we start — nothing hidden, nothing open-ended.",
     "services.domains_label":"What we work on",
     "svc.included_label":"✅ What's included","svc.notincluded_label":"❌ Not included",
@@ -1748,7 +1837,7 @@ const translations = {
     "svc6.title":"Governance & Compliance","svc6.desc":"Delivery frameworks that survive regulatory scrutiny. Our governance structures have been reviewed by Federal Reserve examiners.",
     "about.tag":"Why Meliora Labs","about.title":"The difference is who built it",
     "about.sub":"We don't consult from the outside. We've built, migrated, and secured the exact systems you're dealing with.",
-    "founder.quote":"I spent 20+ years inside the systems most consultants only read about. Payment platforms, mainframe migrations, cybersecurity — from Spain to North America. I've been in the war room at 2am. I know what's at stake when systems go down. I built Meliora Labs because every company deserves that same level of care. Not a consultant who delivers and disappears. A partner who stays until it's right.",
+    "founder.quote":"I spent 20+ years inside the systems most consultants only read about. Payment platforms, mainframe migrations, compliance frameworks — across North America. I've been in the war room at 2am. I know what's at stake when systems go down. I built Meliora Labs because every company deserves that same level of care. Not a consultant who delivers and disappears. A partner who stays until it's right.",
     "founder.meta":"Founder, Meliora Labs",
     "alone.title":"You are never alone — before, during, or after",
     "alone.desc":"Problems don't wait for business hours — and neither do we. From the first line of code to the moment your system goes live, and every issue that comes after, we are with you. No ticket closed until you are comfortable. No delivery considered done until you say so. That's the Meliora Labs promise.",
@@ -1812,9 +1901,9 @@ const translations = {
     "brief.ts1":"Just me","brief.ts2":"2–10 people","brief.ts3":"11–50 people","brief.ts4":"More than 50 people",
     "brief.timeline":"When do you need this done?","brief.timelinePh":"Select a timeframe",
     "brief.tl1":"As soon as possible","brief.tl2":"In 1–3 months","brief.tl3":"In 3–6 months","brief.tl4":"In 6–12 months","brief.tl5":"No rush — still exploring",
-    "brief.budget":"Approximate budget (USD) *","brief.budgetPh":"Select a range",
-    "brief.b1":"Under $10,000","brief.b2":"$10,000 – $50,000","brief.b3":"$50,000 – $100,000","brief.b4":"Over $100,000","brief.b5":"I do not know yet",
-    "brief.budgetNote":"No commitment required. This helps us give you a realistic estimate — we will never charge more than what we agree in writing.",
+    "brief.pricingNote2":"We price to your project — no ranges.",
+    
+    
     "brief.desc":"Tell us what is happening *","brief.descPh":"Example: Our software is very slow and we are afraid to touch it. We process payments every day and something could break. We want to make it faster and safer without changing how it works.",
     "brief.privacy":"Your information is never shared. A real engineer will read this and reply within 24 hours — not an automated response.",
     "brief.submit":"Send →",
@@ -2016,8 +2105,7 @@ const translations = {
     "hero.title":'Construido por quienes <em>vivieron</em> dentro de los sistemas',
     "hero.sub":"Meliora Labs ofrece herramientas y consultoría con IA para bancos, fintechs y empresas — desarrollado por ingenieros con más de 20 años dentro de plataformas de pagos y operaciones de ciberseguridad.",
     "hero.cta1":"Comenzar una conversación","hero.cta2":"Ver lo que construimos →",
-    "stats.s1":"Plataformas de pago entregadas","stats.s2":"Años en sistemas de misión crítica",
-    "stats.s3":"Rollbacks en producción en 14 años","stats.s4":"Visibilidad de entrega — nuestro producto central",
+    "stats.s1":"","stats.s2":"","stats.s3":"","stats.s4":"",
     "services.tag":"Lo que hacemos","services.title":"Servicios basados en experiencia real",
     "services.sub":"No consultamos desde afuera. Hemos construido, migrado y asegurado los sistemas que la mayoría solo lee.",
     "svc1.title":"Inteligencia de Entrega 360°","svc1.desc":"Estimación e inteligencia de riesgo con IA en todo el ciclo de entrega — dependencias, bloqueos, capacidad y cumplimiento en una sola vista.",
@@ -2028,7 +2116,7 @@ const translations = {
     "svc6.title":"Gobernanza y Cumplimiento","svc6.desc":"Marcos de entrega que superan el escrutinio regulatorio. Nuestras estructuras han sido revisadas por examinadores de la Reserva Federal.",
     "about.tag":"Por qué Meliora Labs","about.title":"La diferencia está en quién lo construyó",
     "about.sub":"No consultamos desde afuera. Hemos construido, migrado y asegurado exactamente los sistemas con los que tú trabajas.",
-    "founder.quote":"Pasé más de 20 años dentro de los sistemas que la mayoría de los consultores solo leen. Plataformas de pago, migraciones de mainframe, ciberseguridad — de España a Norteamérica. He estado en la sala de guerra a las 2am. Sé lo que está en juego cuando los sistemas fallan. Construí Meliora Labs porque cada empresa merece ese mismo nivel de cuidado. No un consultor que entrega y desaparece. Un socio que se queda hasta que todo esté bien.",
+    "founder.quote":"Pasé más de 20 años dentro de los sistemas que la mayoría de los consultores solo leen. Plataformas de pago, migraciones de mainframe, marcos de cumplimiento — en toda Norteamérica. He estado en la sala de guerra a las 2am. Sé lo que está en juego cuando los sistemas fallan. Construí Meliora Labs porque cada empresa merece ese mismo nivel de cuidado. No un consultor que entrega y desaparece. Un socio que se queda hasta que todo esté bien.",
     "founder.meta":"Fundador, Meliora Labs",
     "alone.title":"Nunca estás solo — antes, durante ni después",
     "alone.desc":"Los problemas no esperan el horario de oficina — y nosotros tampoco. Desde la primera línea de código hasta el momento en que tu sistema sale en vivo, y cada problema que viene después, estamos contigo. Ningún ticket cerrado hasta que estés cómodo. Ninguna entrega considerada terminada hasta que tú lo digas. Esa es la promesa de Meliora Labs.",
@@ -2092,7 +2180,7 @@ const translations = {
     "brief.ts1":"Solo yo","brief.ts2":"2–10 personas","brief.ts3":"11–50 personas","brief.ts4":"Más de 50 personas",
     "brief.timeline":"¿Cuándo necesitas que esté listo?","brief.timelinePh":"Selecciona un plazo",
     "brief.tl1":"Lo antes posible","brief.tl2":"En 1–3 meses","brief.tl3":"En 3–6 meses","brief.tl4":"En 6–12 meses","brief.tl5":"Sin prisa — todavía explorando",
-    "brief.budget":"Presupuesto aproximado (USD) *","brief.budgetPh":"Selecciona un rango",
+    
     "brief.b1":"Menos de $10,000","brief.b2":"$10,000 – $50,000","brief.b3":"$50,000 – $100,000","brief.b4":"Más de $100,000","brief.b5":"Aún no lo sé",
     "brief.budgetNote":"Sin compromiso. Esto nos ayuda a darte una estimación realista — nunca cobraremos más de lo que acordemos por escrito.",
     "brief.desc":"Cuéntanos qué está pasando *","brief.descPh":"Ejemplo: Nuestro software es muy lento y tenemos miedo de tocarlo. Procesamos pagos todos los días y algo podría fallar. Queremos que sea más rápido y seguro sin cambiar cómo funciona.",
