@@ -1,6 +1,6 @@
 <!-- ============================================================
      Meliora Labs | melioralabs.tech
-     Version : 3.1.0
+     Version : 3.2.0
      Date    : 2026-06-12
      Changes : Major redesign — 7 service cards replaced with 3 engagement
                tier cards (Assess / Blueprint / Execute) + domain row;
@@ -366,8 +366,8 @@
   }
   .card-modal-overlay.open { display:flex; }
   .card-modal {
-    background:white;border-radius:20px;max-width:640px;width:100%;
-    max-height:88vh;overflow-y:auto;box-shadow:0 24px 80px rgba(0,0,0,0.18);
+    background:white;border-radius:20px;max-width:860px;width:100%;
+    max-height:90vh;overflow-y:auto;box-shadow:0 24px 80px rgba(0,0,0,0.18);
     animation:modalIn 0.22s cubic-bezier(.34,1.56,.64,1);
   }
   @keyframes modalIn { from{opacity:0;transform:scale(0.92) translateY(16px)} to{opacity:1;transform:none} }
@@ -384,6 +384,7 @@
   }
   .card-modal-close:hover { color:#1B2A4A; }
   .card-modal-body { padding:1.25rem 1.75rem 1.75rem; }
+  .modal-features-grid { display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:4px 1.5rem; }
   .modal-section-title {
     font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;
     margin:1rem 0 0.6rem;
@@ -456,10 +457,10 @@
 <div class="divider"></div>
 
 <!-- SERVICES -->
-<section id="services">
+<section id="services" style="text-align:left;">
   <div class="section-tag reveal" data-i18n="services.tag">What we do</div>
   <h2 class="section-title reveal reveal-delay-1" data-i18n="services.title">We speak your language — whatever system you're running</h2>
-  <p class="section-sub reveal reveal-delay-2" data-i18n="services.sub">Whether you're running COBOL on IBM Z or a small company with slow, scary software nobody wants to touch — we've seen it before and we know how to fix it. Every engagement is scoped, priced, and delivered in writing before we start.</p>
+  <p class="section-sub reveal reveal-delay-2" style="margin-left:0;max-width:680px;" data-i18n="services.sub">Whether you're running COBOL on IBM Z or a small company with slow, scary software nobody wants to touch — we've seen it before and we know how to fix it. Every engagement is scoped, priced, and delivered in writing before we start.</p>
 
   <!-- ── TRACK A: MAINFRAME & ENTERPRISE ── -->
   <div style="margin-bottom:2.5rem;">
@@ -502,7 +503,7 @@
     <div style="border-bottom:2px solid #2E86AB;margin-bottom:1.25rem;"></div>
 
     <!-- Legacy & Business Systems card — problem tiles inside modal -->
-    <div class="service-card clickable" style="border-top:4px solid #7C3AED;position:relative;max-width:680px;" onclick="openCardModal('legacy_sme')">
+    <div class="service-card clickable" style="border-top:4px solid #7C3AED;position:relative;width:100%;box-sizing:border-box;" onclick="openCardModal('legacy_sme')">
       <div style="display:flex;align-items:flex-start;gap:1rem;">
         <div>
           <div class="service-icon" style="margin-bottom:0.5rem;">🏢</div>
@@ -523,24 +524,13 @@
       </div>
     </div>
     <div style="margin-top:1rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;">
-      <div style="font-size:13px;color:var(--gray-400);font-weight:300;max-width:500px;" data-i18n="sme.note">These are the projects big firms don't take because the margin isn't worth their overhead. That gap is exactly where Meliora Labs operates — senior expertise, fair prices, no disappearing act after go-live.</div>
+      
       <a href="#contact-form" class="tier-cta" style="background:var(--teal-400);" data-i18n="tier.cta">Get a free consultation →</a>
     </div>
     </div>
   </div>
 
-  <!-- Domain tags -->
-  <div style="text-align:center;">
-    <div style="font-size:12px;font-weight:600;color:var(--gray-400);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:1rem;" data-i18n="services.domains_label">What we work on</div>
-    <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:0.75rem;">
-      <span style="background:#EAF4FB;color:#1B2A4A;font-size:13px;font-weight:500;padding:6px 16px;border-radius:20px;border:0.5px solid #c8dff0;">🔄 Mainframe · COBOL · z/OS</span>
-      <span style="background:#EAF4FB;color:#1B2A4A;font-size:13px;font-weight:500;padding:6px 16px;border-radius:20px;border:0.5px solid #c8dff0;">🏦 Payments · ACH · RTP · OFAC · AML</span>
-      <span style="background:#EAF4FB;color:#1B2A4A;font-size:13px;font-weight:500;padding:6px 16px;border-radius:20px;border:0.5px solid #c8dff0;">☁️ Cloud Migration · AWS</span>
-      <span style="background:#EAF4FB;color:#1B2A4A;font-size:13px;font-weight:500;padding:6px 16px;border-radius:20px;border:0.5px solid #c8dff0;">🤖 AI Integration · Automation</span>
-      <span style="background:#EAF4FB;color:#1B2A4A;font-size:13px;font-weight:500;padding:6px 16px;border-radius:20px;border:0.5px solid #c8dff0;">📊 Data & Reporting</span>
-      <span style="background:#EAF4FB;color:#1B2A4A;font-size:13px;font-weight:500;padding:6px 16px;border-radius:20px;border:0.5px solid #c8dff0;">📋 Compliance Advisory</span>
-    </div>
-  </div>
+
 
 </section>
 
@@ -2645,11 +2635,13 @@ function openCardModal(cardKey) {
           </div>`).join('')}
       </div>
       <div class="modal-section-title" style="color:${data.accent};">✅ What\'s included</div>
+      <div class="modal-features-grid">
       ${data.included.map(f => `
         <div class="modal-feature">
           <div class="modal-feature-dot" style="background:${data.accent};"></div>
           <span>${f}</span>
         </div>`).join('')}
+      </div>
       <div class="modal-section-title" style="color:var(--gray-400);margin-top:1.25rem;">❌ Not included</div>
       <div class="modal-not">${data.not}</div>
       <div class="modal-quality">${data.quality}</div>
@@ -2658,11 +2650,13 @@ function openCardModal(cardKey) {
   } else {
     body.innerHTML = `
       <div class="modal-section-title" style="color:${data.accent};">✅ What\'s included</div>
+      <div class="modal-features-grid">
       ${data.included.map(f => `
         <div class="modal-feature">
           <div class="modal-feature-dot" style="background:${data.accent};"></div>
           <span>${f}</span>
         </div>`).join('')}
+      </div>
       <div class="modal-section-title" style="color:var(--gray-400);margin-top:1.25rem;">❌ Not included</div>
       <div class="modal-not">${data.not}</div>
       <div class="modal-quality">${data.quality}</div>
