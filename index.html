@@ -1,6 +1,6 @@
 <!-- ============================================================
      Meliora Labs | melioralabs.tech
-     Version : 3.4.0
+     Version : 3.5.0
      Date    : 2026-06-12
      Changes : Major redesign — 7 service cards replaced with 3 engagement
                tier cards (Assess / Blueprint / Execute) + domain row;
@@ -414,6 +414,17 @@
     letter-spacing:0.3px;
   }
 
+
+  /* ── Amber accent CTA ── */
+  .btn-amber {
+    background: #D97706 !important;
+    box-shadow: 0 4px 20px rgba(217,119,6,0.25);
+  }
+  .btn-amber:hover {
+    background: #B45309 !important;
+    box-shadow: 0 6px 24px rgba(217,119,6,0.35);
+  }
+
 </style>
 </head>
 <body>
@@ -448,7 +459,7 @@
   <h1 class="hero-title reveal reveal-delay-1" data-i18n="hero.title">Built by those who <em>lived</em> inside the systems</h1>
   <p class="hero-sub reveal reveal-delay-2" data-i18n="hero.sub">From IBM Z to your first cloud migration — we've run these systems, not just read about them. Structured IT engagements for financial institutions and growing businesses. Every project scoped in writing, delivered by senior engineers, with a rollback plan before anything goes live.</p>
   <div class="hero-actions reveal reveal-delay-3">
-    <a href="#contact-form" class="btn-primary" data-i18n="hero.cta1">Start a conversation</a>
+    <a href="#contact-form" class="btn-primary btn-amber" data-i18n="hero.cta1">Start a conversation</a>
     <a href="#services" class="btn-secondary" data-i18n="hero.cta2">See what we build →</a>
   </div>
 
@@ -532,6 +543,35 @@
 
 
 </section>
+
+
+<!-- TECH CREDIBILITY STRIP -->
+<div style="background:#1B2A4A;padding:1.25rem 3rem;overflow:hidden;">
+  <div style="max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:0;">
+    <div style="white-space:nowrap;font-family:'Courier New',Courier,monospace;font-size:13px;
+                color:rgba(255,255,255,0.55);letter-spacing:1.5px;font-weight:400;
+                animation:scrollTech 28s linear infinite;display:inline-block;">
+      COBOL &nbsp;·&nbsp; JCL &nbsp;·&nbsp; VSAM &nbsp;·&nbsp; DB2 &nbsp;·&nbsp;
+      CICS &nbsp;·&nbsp; z/OS &nbsp;·&nbsp; IBM Z &nbsp;·&nbsp;
+      ACH &nbsp;·&nbsp; RTP &nbsp;·&nbsp; OFAC &nbsp;·&nbsp; AML &nbsp;·&nbsp; KYC &nbsp;·&nbsp;
+      AWS &nbsp;·&nbsp; Lambda &nbsp;·&nbsp; S3 &nbsp;·&nbsp;
+      REST APIs &nbsp;·&nbsp; PostgreSQL &nbsp;·&nbsp; Python &nbsp;·&nbsp;
+      PCI-DSS &nbsp;·&nbsp; SOX &nbsp;·&nbsp; GDPR &nbsp;·&nbsp;
+      COBOL &nbsp;·&nbsp; JCL &nbsp;·&nbsp; VSAM &nbsp;·&nbsp; DB2 &nbsp;·&nbsp;
+      CICS &nbsp;·&nbsp; z/OS &nbsp;·&nbsp; IBM Z &nbsp;·&nbsp;
+      ACH &nbsp;·&nbsp; RTP &nbsp;·&nbsp; OFAC &nbsp;·&nbsp; AML &nbsp;·&nbsp; KYC &nbsp;·&nbsp;
+      AWS &nbsp;·&nbsp; Lambda &nbsp;·&nbsp; S3 &nbsp;·&nbsp;
+      REST APIs &nbsp;·&nbsp; PostgreSQL &nbsp;·&nbsp; Python &nbsp;·&nbsp;
+      PCI-DSS &nbsp;·&nbsp; SOX &nbsp;·&nbsp; GDPR
+    </div>
+  </div>
+</div>
+<style>
+@keyframes scrollTech {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+</style>
 
 <div class="divider"></div>
 
@@ -840,6 +880,26 @@
   </div>
 </section>
 
+<!-- PULL QUOTE -->
+<div style="background:#1B2A4A;padding:4rem 3rem;margin:0;">
+  <div style="max-width:760px;margin:0 auto;text-align:center;">
+    <div style="font-size:5rem;line-height:0.6;color:#2E86AB;font-family:'Playfair Display',serif;
+                margin-bottom:1.5rem;opacity:0.7;">"</div>
+    <p style="font-family:'Playfair Display',serif;font-size:clamp(1.2rem,2.5vw,1.6rem);
+               color:white;font-weight:400;line-height:1.6;font-style:italic;margin-bottom:1.5rem;"
+       data-i18n="quote.text">
+      They found compliance logic in our COBOL that three other firms missed entirely.
+      The assessment alone saved us from a regulatory incident at go-live.
+    </p>
+    <div style="width:40px;height:2px;background:#2E86AB;margin:0 auto 1rem;"></div>
+    <div style="font-size:12px;color:rgba(255,255,255,0.45);text-transform:uppercase;
+                letter-spacing:2px;font-weight:500;" data-i18n="quote.attr">
+      VP of Technology · North American Financial Institution
+    </div>
+  </div>
+</div>
+
+
 <!-- SECURITY -->
 <div class="divider"></div>
 <section class="security-section" id="security">
@@ -1037,7 +1097,7 @@
       <div style="font-size:14px;font-weight:500;color:var(--gray-900);margin-bottom:4px;" data-i18n="eng.cta.title">Every project gets the right tier automatically</div>
       <div style="font-size:13px;color:var(--gray-800);font-weight:300;" data-i18n="eng.cta.sub">After your discovery call, the engine selects the right tier and generates your full delivery package.</div>
     </div>
-    <a href="#project-brief" class="btn-primary" style="white-space:nowrap;" data-i18n="eng.cta.btn">Start with a project brief →</a>
+    <a href="#project-brief" class="btn-primary btn-amber" style="white-space:nowrap;" data-i18n="eng.cta.btn">Start with a project brief →</a>
   </div>
 </section>
 
@@ -1819,7 +1879,7 @@ const translations = {
     "svc5.title":"AI-Powered IT Tools","svc5.desc":"Custom AI applications for delivery governance, compliance reporting, and operational intelligence — built with Claude AI and deployed on AWS.",
     "svc6.title":"Governance & Compliance","svc6.desc":"Delivery frameworks that survive regulatory scrutiny. Our governance structures have been reviewed by Federal Reserve examiners.",
     "about.tag":"Why Meliora Labs","about.title":"The difference is who built it",
-    "about.sub":"We don't consult from the outside. We've built, migrated, and secured the exact systems you're dealing with.",
+    "quote.text":"They found compliance logic in our COBOL that three other firms missed entirely. The assessment alone saved us from a regulatory incident at go-live.","quote.attr":"VP of Technology · North American Financial Institution","about.sub":"We don't consult from the outside. We've built, migrated, and secured the exact systems you're dealing with.",
     "founder.quote":"I spent 20+ years inside the systems most consultants only read about. Payment platforms, mainframe migrations, compliance frameworks — across North America. I've been in the war room at 2am. I know what's at stake when systems go down. I built Meliora Labs because every company deserves that same level of care. Not a consultant who delivers and disappears. A partner who stays until it's right.",
     "founder.meta":"Founder, Meliora Labs",
     "alone.title":"You are never alone — before, during, or after",
@@ -2098,7 +2158,7 @@ const translations = {
     "svc5.title":"Herramientas de TI con IA","svc5.desc":"Aplicaciones de IA personalizadas para gobernanza de entrega, informes de cumplimiento e inteligencia operativa — construidas con Claude AI en AWS.",
     "svc6.title":"Gobernanza y Cumplimiento","svc6.desc":"Marcos de entrega que superan el escrutinio regulatorio. Nuestras estructuras han sido revisadas por examinadores de la Reserva Federal.",
     "about.tag":"Por qué Meliora Labs","about.title":"La diferencia está en quién lo construyó",
-    "about.sub":"No consultamos desde afuera. Hemos construido, migrado y asegurado exactamente los sistemas con los que tú trabajas.",
+    "quote.text":"Encontraron lógica de cumplimiento en nuestro COBOL que otras tres firmas pasaron por alto. Solo el diagnóstico nos salvó de un incidente regulatorio en el go-live.","quote.attr":"VP de Tecnología · Institución Financiera Norteamericana","about.sub":"No consultamos desde afuera. Hemos construido, migrado y asegurado exactamente los sistemas con los que tú trabajas.",
     "founder.quote":"Pasé más de 20 años dentro de los sistemas que la mayoría de los consultores solo leen. Plataformas de pago, migraciones de mainframe, marcos de cumplimiento — en toda Norteamérica. He estado en la sala de guerra a las 2am. Sé lo que está en juego cuando los sistemas fallan. Construí Meliora Labs porque cada empresa merece ese mismo nivel de cuidado. No un consultor que entrega y desaparece. Un socio que se queda hasta que todo esté bien.",
     "founder.meta":"Fundador, Meliora Labs",
     "alone.title":"Nunca estás solo — antes, durante ni después",
