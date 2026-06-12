@@ -357,6 +357,62 @@
     footer { padding: 1.5rem 1.25rem; flex-direction: column; align-items: flex-start; }
     .chat-window { width: calc(100vw - 40px); right: -8px; }
   }
+
+  /* ── Card modals ── */
+  .card-modal-overlay {
+    display:none;position:fixed;inset:0;background:rgba(0,0,0,0.55);
+    z-index:9000;align-items:center;justify-content:center;padding:1.5rem;
+    backdrop-filter:blur(3px);
+  }
+  .card-modal-overlay.open { display:flex; }
+  .card-modal {
+    background:white;border-radius:20px;max-width:640px;width:100%;
+    max-height:88vh;overflow-y:auto;box-shadow:0 24px 80px rgba(0,0,0,0.18);
+    animation:modalIn 0.22s cubic-bezier(.34,1.56,.64,1);
+  }
+  @keyframes modalIn { from{opacity:0;transform:scale(0.92) translateY(16px)} to{opacity:1;transform:none} }
+  .card-modal-header {
+    padding:1.5rem 1.75rem 1rem;border-bottom:0.5px solid var(--gray-100);
+    display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;
+  }
+  .card-modal-header .modal-icon { font-size:2rem;line-height:1; }
+  .card-modal-header .modal-title { font-size:1.25rem;font-weight:700;color:#1B2A4A;margin-bottom:0.2rem; }
+  .card-modal-header .modal-sub { font-size:13px;color:var(--gray-400);font-weight:300; }
+  .card-modal-close {
+    background:none;border:none;font-size:1.4rem;color:var(--gray-400);
+    cursor:pointer;padding:0;line-height:1;flex-shrink:0;
+  }
+  .card-modal-close:hover { color:#1B2A4A; }
+  .card-modal-body { padding:1.25rem 1.75rem 1.75rem; }
+  .modal-section-title {
+    font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;
+    margin:1rem 0 0.6rem;
+  }
+  .modal-feature {
+    display:flex;align-items:flex-start;gap:10px;
+    font-size:13px;color:#1B2A4A;padding:5px 0;border-bottom:0.5px solid var(--gray-50);
+  }
+  .modal-feature:last-child { border-bottom:none; }
+  .modal-feature-dot { width:6px;height:6px;border-radius:50%;flex-shrink:0;margin-top:5px; }
+  .modal-not { font-size:12px;color:var(--gray-400);line-height:1.6; }
+  .modal-quality {
+    margin-top:1rem;padding:0.75rem 1rem;background:#EAF4FB;border-radius:10px;
+    font-size:12px;color:#2E86AB;font-weight:500;
+  }
+  .modal-cta {
+    display:block;margin-top:1.25rem;padding:12px;background:#1B2A4A;color:white;
+    text-align:center;border-radius:10px;font-size:14px;font-weight:600;
+    text-decoration:none;transition:background 0.2s;
+  }
+  .modal-cta:hover { background:#2E86AB; }
+  /* Make cards clickable */
+  .service-card.clickable { cursor:pointer;transition:transform 0.15s,box-shadow 0.15s; }
+  .service-card.clickable:hover { transform:translateY(-3px);box-shadow:0 8px 32px rgba(0,0,0,0.10); }
+  .card-click-hint {
+    font-size:11px;color:var(--teal-400);font-weight:500;margin-top:0.75rem;
+    letter-spacing:0.3px;
+  }
+
 </style>
 </head>
 <body>
@@ -389,14 +445,12 @@
 <div class="hero">
   <div class="hero-tag reveal"><div class="hero-dot"></div><span data-i18n="hero.tag">AI-Powered IT Solutions</span></div>
   <h1 class="hero-title reveal reveal-delay-1" data-i18n="hero.title">Built by those who <em>lived</em> inside the systems</h1>
-  <p class="hero-sub reveal reveal-delay-2" data-i18n="hero.sub">Meliora Labs delivers senior-level IT consulting for banks, fintechs, and payment companies — mainframe modernization, payments platforms, cloud automation, and compliance advisory. Built by engineers with 20+ years inside mission-critical systems.</p>
+  <p class="hero-sub reveal reveal-delay-2" data-i18n="hero.sub">From IBM Z to your first cloud migration — we've run these systems, not just read about them. Structured IT engagements for financial institutions and growing businesses. Every project scoped in writing, delivered by senior engineers, with a rollback plan before anything goes live.</p>
   <div class="hero-actions reveal reveal-delay-3">
     <a href="#contact-form" class="btn-primary" data-i18n="hero.cta1">Start a conversation</a>
     <a href="#services" class="btn-secondary" data-i18n="hero.cta2">See what we build →</a>
   </div>
-  <div class="hero-stats reveal reveal-delay-4">
-    <div style="font-size:13px;color:var(--gray-400);font-weight:300;letter-spacing:0.5px;" data-i18n="hero.trust">Trusted by financial institutions and fintechs across the US and Mexico · Bilingual EN/ES · All engagements in USD</div>
-  </div>
+
 </div>
 
 <div class="divider"></div>
@@ -417,11 +471,12 @@
     <div class="services-grid" style="grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem;">
 
       <!-- ASSESS — Mainframe -->
-      <div class="service-card reveal reveal-delay-1" style="border-top:4px solid #1B2A4A;position:relative;">
-        <div style="position:absolute;top:1.25rem;right:1.25rem;background:#EAF4FB;color:#1B2A4A;font-size:11px;font-weight:600;padding:3px 10px;border-radius:12px;">$8K – $20K</div>
+      <div class="service-card clickable reveal reveal-delay-1" style="border-top:4px solid #1B2A4A;position:relative;" onclick="openCardModal('mf_assess')">
+
         <div class="service-icon">🔍</div>
         <div class="service-title" data-i18n="mf_assess.title">Assess</div>
         <p class="service-desc" data-i18n="mf_assess.desc">Full system discovery before a single line of code is touched. We inventory every program, classify complexity, map dependencies, and tell you exactly what to keep, refactor, rehost, rebuild, or replace — in writing.</p>
+          <div class="card-click-hint" style="color:#1B2A4A;">🔍 Click to see what's included →</div>
         <div style="margin-top:1rem;padding-top:1rem;border-top:0.5px solid var(--gray-100);">
           <div style="font-size:11px;font-weight:600;color:#1B2A4A;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:0.6rem;" data-i18n="svc.included_label">✅ What's included</div>
           <div class="tier-feature"><div class="tier-feature-dot large" style="background:#1B2A4A;"></div><span data-i18n="mf_assess.f1">COBOL/JCL inventory — PROGRAM-ID, CALL chains, COPY members, FILE-CONTROL</span></div>
@@ -439,11 +494,12 @@
       </div>
 
       <!-- BLUEPRINT — Mainframe -->
-      <div class="service-card reveal reveal-delay-2" style="border-top:4px solid #2E86AB;position:relative;">
-        <div style="position:absolute;top:1.25rem;right:1.25rem;background:#EAF4FB;color:#2E86AB;font-size:11px;font-weight:600;padding:3px 10px;border-radius:12px;">$20K – $60K</div>
+      <div class="service-card clickable reveal reveal-delay-2" style="border-top:4px solid #2E86AB;position:relative;" onclick="openCardModal('mf_blueprint')">
+
         <div class="service-icon">🗺️</div>
         <div class="service-title" data-i18n="mf_blueprint.title">Blueprint</div>
         <p class="service-desc" data-i18n="mf_blueprint.desc">Target architecture, data model, migration strategy, and full project specification. Strangler Fig or Big Bang — we choose based on what the Assess classification tells us, not what's easier to sell.</p>
+          <div class="card-click-hint" style="color:#2E86AB;">🔍 Click to see what's included →</div>
         <div style="margin-top:1rem;padding-top:1rem;border-top:0.5px solid var(--gray-100);">
           <div style="font-size:11px;font-weight:600;color:#2E86AB;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:0.6rem;" data-i18n="svc.included_label">✅ What's included</div>
           <div class="tier-feature"><div class="tier-feature-dot large"></div><span data-i18n="mf_blueprint.f1">Everything in Assess — full inventory and 5R classification</span></div>
@@ -460,11 +516,12 @@
       </div>
 
       <!-- EXECUTE — Mainframe -->
-      <div class="service-card reveal reveal-delay-3" style="border-top:4px solid #1D9E75;position:relative;">
-        <div style="position:absolute;top:1.25rem;right:1.25rem;background:#e8f5ef;color:#1D9E75;font-size:11px;font-weight:600;padding:3px 10px;border-radius:12px;" data-i18n="svc_execute.price_badge">Scoped per project</div>
+      <div class="service-card clickable reveal reveal-delay-3" style="border-top:4px solid #1D9E75;position:relative;" onclick="openCardModal('mf_execute')">
+
         <div class="service-icon">⚡</div>
         <div class="service-title" data-i18n="mf_execute.title">Execute</div>
         <p class="service-desc" data-i18n="mf_execute.desc">Full delivery — refactoring, data migration, parallel run, behavioral equivalence validation, compliance gates, CAB-approved cutover, and 30-day stabilization. The phase most firms skip preparation for. We don't.</p>
+          <div class="card-click-hint" style="color:#1D9E75;">🔍 Click to see what's included →</div>
         <div style="margin-top:1rem;padding-top:1rem;border-top:0.5px solid var(--gray-100);">
           <div style="font-size:11px;font-weight:600;color:#1D9E75;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:0.6rem;" data-i18n="svc.included_label">✅ What's included</div>
           <div class="tier-feature"><div class="tier-feature-dot small"></div><span data-i18n="mf_execute.f1">Everything in Assess + Blueprint</span></div>
@@ -528,9 +585,18 @@
 
       </div>
 
-      <div style="margin-top:1.5rem;padding-top:1.5rem;border-top:0.5px solid var(--gray-100);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;">
-        <div style="font-size:13px;color:var(--gray-400);font-weight:300;max-width:500px;" data-i18n="sme.note">These are the projects big firms don't take because the margin isn't worth their overhead. That gap is exactly where Meliora Labs operates — senior expertise, fair prices, no disappearing act after go-live.</div>
-        <a href="#contact-form" class="tier-cta" style="background:var(--teal-400);" data-i18n="tier.cta">Get a free consultation →</a>
+      <div style="margin-top:1.5rem;padding-top:1.5rem;border-top:0.5px solid var(--gray-100);">
+        <!-- Legacy & Business Systems clickable card -->
+        <div class="service-card clickable" style="border-top:4px solid #7C3AED;position:relative;margin-bottom:1.25rem;" onclick="openCardModal('legacy_sme')">
+          <div class="service-icon">🏢</div>
+          <div class="service-title" data-i18n="sme_card.title">Legacy & Business Systems</div>
+          <p class="service-desc" data-i18n="sme_card.desc">For companies running outdated software, manual processes, or disconnected systems — no mainframe required. We assess, design, and deliver the same structured way: scoped in writing, senior engineers, rollback plan included.</p>
+          <div class="card-click-hint" style="color:#7C3AED;">🔍 Click to see what's included →</div>
+        </div>
+        <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;">
+          <div style="font-size:13px;color:var(--gray-400);font-weight:300;max-width:500px;" data-i18n="sme.note">These are the projects big firms don't take because the margin isn't worth their overhead. That gap is exactly where Meliora Labs operates — senior expertise, fair prices, no disappearing act after go-live.</div>
+          <a href="#contact-form" class="tier-cta" style="background:var(--teal-400);" data-i18n="tier.cta">Get a free consultation →</a>
+        </div>
       </div>
     </div>
   </div>
@@ -1757,11 +1823,11 @@ const translations = {
     "sec.disclosure.title":"Responsible Disclosure","sec.disclosure.sub":"Found a security issue? We take all reports seriously. Please contact us directly and we'll respond within 24 hours.","sec.disclosure.btn":"Report a concern →",
     "hero.tag":"AI-Powered IT Solutions",
     "hero.title":'Built by those who <em>lived</em> inside the systems',
-    "hero.sub":"Meliora Labs delivers senior-level IT consulting for banks, fintechs, and payment companies — mainframe modernization, payments platforms, cloud automation, and compliance advisory. Built by engineers with 20+ years inside mission-critical systems.",
+    "hero.sub":"From IBM Z to your first cloud migration — we've run these systems, not just read about them. Structured IT engagements for financial institutions and growing businesses. Every project scoped in writing, delivered by senior engineers, with a rollback plan before anything goes live.",
     "hero.cta1":"Start a conversation","hero.cta2":"See what we build →",
     "stats.s1":"","stats.s2":"","stats.s3":"","stats.s4":"",
     "services.tag":"What we do","services.title":"We speak your language — whatever system you're running",
-    "hero.trust":"Trusted by financial institutions and fintechs across the US and Mexico · Bilingual EN\/ES · All engagements in USD",
+    
     "track.a.badge":"Mainframe & Enterprise","track.a.sub":"Banks · Fintechs · Payment processors running IBM Z, COBOL, CICS, DB2, VSAM",
     "track.b.badge":"Non-Mainframe & SME","track.b.sub":"Small and mid-size companies with legacy software, manual processes, or payment integration needs",
     "mf_assess.title":"Assess","mf_assess.desc":"Full system discovery before a single line of code is touched. We inventory every program, classify complexity, map dependencies, and tell you exactly what to keep, refactor, rehost, rebuild, or replace — in writing.",
@@ -1819,7 +1885,7 @@ const translations = {
     "svc_blueprint.f6":"Phased execution plan with timeline and cost estimate",
     "svc_blueprint.not":"Code refactoring, data migration, or production cutover — those are Execute scope.",
     "svc_blueprint.quality":"Examination-ready deliverables. Written rollback guarantee on every engagement.",
-    "svc_execute.title":"Execute","svc_execute.price_badge":"Scoped per project",
+    "svc_execute.title":"Execute",
     "svc_execute.desc":"Full delivery — refactoring, migration, parallel run, compliance gates, cutover, and 30-day stabilization. Fixed scope, written rollback plan, zero surprises at go-live.",
     "svc_execute.f1":"Everything in Assess + Blueprint",
     "svc_execute.f2":"Incremental refactor — Strangler Fig or Big Bang per complexity",
@@ -2452,5 +2518,214 @@ function handleBriefSubmit(e) {
 
 </script>
 <!-- END PRICING & BRIEF SCRIPT -->
+
+<!-- ── CARD MODALS ── -->
+<div class="card-modal-overlay" id="modalOverlay" onclick="closeCardModal(event)">
+  <div class="card-modal" id="cardModal">
+    <div class="card-modal-header">
+      <div>
+        <div class="modal-icon" id="modalIcon"></div>
+        <div class="modal-title" id="modalTitle"></div>
+        <div class="modal-sub" id="modalSub"></div>
+      </div>
+      <button class="card-modal-close" onclick="closeCardModal(null)">✕</button>
+    </div>
+    <div class="card-modal-body" id="modalBody"></div>
+  </div>
+</div>
+
+<script>
+// ── Modal data ──────────────────────────────────────────────
+const CARD_MODALS = {
+  en: {
+    mf_assess: {
+      icon: "🔍", title: "Assess",
+      sub: "Mainframe & Enterprise · $8K – $20K · 2–8 weeks",
+      accent: "#1B2A4A",
+      included: [
+        "COBOL/JCL inventory — PROGRAM-ID, CALL chains, COPY members, FILE-CONTROL",
+        "5R classification per program: Rehost · Refactor · Rebuild · Re-architect · Replace",
+        "DB2 catalog analysis — SYSIBM tables, schema, referential integrity, stored procedures",
+        "VSAM file mapping — KSDS/ESDS/RRDS layouts, access patterns, data volumes",
+        "CICS transaction inventory — COMMAREA structures, BMS maps, program links",
+        "Compliance risk register — OFAC/AML logic embedded in COBOL identified before refactor",
+        "Dependency map — full CALL chain graph, copybook relationships, JCL step flows",
+        "Written modernization recommendation with phased roadmap and risk-ranked program list",
+        "Phase gate review deck — board-ready, bilingual EN/ES"
+      ],
+      not: "Code refactoring, data migration, or execution work — those are Blueprint and Execute scope.",
+      quality: "📋 Examination-ready deliverables. Written rollback guarantee on every engagement."
+    },
+    mf_blueprint: {
+      icon: "🗺️", title: "Blueprint",
+      sub: "Mainframe & Enterprise · $20K – $60K · 3–8 weeks",
+      accent: "#2E86AB",
+      included: [
+        "Everything in Assess — full inventory and 5R classification",
+        "Migration strategy decision: Strangler Fig vs Big Bang with written rationale",
+        "Target data model — DB2 normalization, API event design, MQ message schemas",
+        "COBOL PIC clause → SQL/API field mapping with REDEFINES and OCCURS DEPENDING ON resolution",
+        "AS-IS / TO-BE architecture deck — board-ready, bilingual EN/ES",
+        "SOW with explicit in-scope and out-of-scope clauses",
+        "Compliance design — OFAC, AML, SOX, PCI-DSS gates per phase",
+        "Security framework for target platform",
+        "Phased execution plan with timeline, team, and cost estimate"
+      ],
+      not: "Code refactoring, data migration, or production cutover — those are Execute scope.",
+      quality: "📋 Examination-ready deliverables. Written rollback guarantee on every engagement."
+    },
+    mf_execute: {
+      icon: "⚡", title: "Execute",
+      sub: "Mainframe & Enterprise · Scoped per project · 10–54 weeks",
+      accent: "#1D9E75",
+      included: [
+        "Everything in Assess + Blueprint",
+        "Incremental refactor — Strangler Fig routing or targeted Big Bang per program complexity",
+        "Field-level mapping: COBOL PIC clauses to SQL types, REDEFINES resolution, null handling",
+        "Parallel run — daily output comparison, record counts, monetary totals, checksums",
+        "Behavioral equivalence validation — golden datasets, regression suite, edge case testing",
+        "Compliance gate sign-offs — OFAC, AML, SOX, PCI-DSS per phase",
+        "CAB-approved production cutover with tested rollback plan",
+        "No go-live without parallel run passing 100%",
+        "30-day stabilization — all defects fixed at no extra cost",
+        "Knowledge transfer and operational runbook"
+      ],
+      not: "Ongoing managed service after 30-day stabilization, third-party licenses, infrastructure costs outside agreed scope.",
+      quality: "📋 Examination-ready deliverables. Written rollback guarantee on every engagement."
+    },
+    legacy_sme: {
+      icon: "🏢", title: "Legacy & Business Systems",
+      sub: "Non-Mainframe · SME · Scoped per project",
+      accent: "#7C3AED",
+      included: [
+        "AS-IS system assessment — map what you have, identify what to fix first",
+        "Automated reporting — Excel, Access, CSV, DB2 connectors, PDF delivery, AI summary",
+        "Payment integrations — ACH, RTP, OFAC screening, AML monitoring",
+        "Cloud migration — AWS setup, data migration, zero-downtime cutover",
+        "System integration — connect apps that don't talk to each other via APIs",
+        "Process automation — eliminate manual workflows, reduce human error",
+        "AI integration — add intelligence to existing tools and workflows",
+        "Compliance advisory — SOX, PCI-DSS, AML for non-mainframe environments",
+        "SOW and technical plan — for teams that need a written spec before they build"
+      ],
+      not: "Ongoing managed service, hardware procurement, software licenses, or mainframe-specific work.",
+      quality: "📋 Clear scope before we start. Written rollback plan. 30-day support after delivery."
+    }
+  },
+  es: {
+    mf_assess: {
+      icon: "🔍", title: "Diagnóstico",
+      sub: "Mainframe y Empresarial · $8K – $20K · 2–8 semanas",
+      accent: "#1B2A4A",
+      included: [
+        "Inventario COBOL/JCL — PROGRAM-ID, cadenas CALL, miembros COPY, FILE-CONTROL",
+        "Clasificación 5R por programa: Realojar · Refactorizar · Reconstruir · Re-arquitectar · Reemplazar",
+        "Análisis del catálogo DB2 — tablas SYSIBM, esquema, integridad referencial, procedimientos almacenados",
+        "Mapeo de archivos VSAM — diseños KSDS/ESDS/RRDS, patrones de acceso, volúmenes de datos",
+        "Inventario de transacciones CICS — estructuras COMMAREA, mapas BMS, enlaces de programas",
+        "Registro de riesgos de cumplimiento — lógica OFAC/AML embebida en COBOL identificada antes de refactorizar",
+        "Mapa de dependencias — grafo completo de cadenas CALL, relaciones de copybooks, flujos JCL",
+        "Recomendación de modernización por escrito con hoja de ruta por fases y lista de programas clasificada por riesgo",
+        "Deck de revisión de fase — listo para directivos, bilingüe EN/ES"
+      ],
+      not: "Refactorización de código, migración de datos o trabajo de ejecución — eso es alcance de Plano y Ejecución.",
+      quality: "📋 Entregables listos para auditoría. Garantía de rollback por escrito en cada compromiso."
+    },
+    mf_blueprint: {
+      icon: "🗺️", title: "Plano",
+      sub: "Mainframe y Empresarial · $20K – $60K · 3–8 semanas",
+      accent: "#2E86AB",
+      included: [
+        "Todo del Diagnóstico — inventario completo y clasificación 5R",
+        "Decisión de estrategia de migración: Strangler Fig vs Big Bang con justificación escrita",
+        "Modelo de datos objetivo — normalización DB2, diseño de eventos API, esquemas de mensajes MQ",
+        "Mapeo de campos COBOL PIC → SQL/API con resolución de REDEFINES y OCCURS DEPENDING ON",
+        "Deck de arquitectura AS-IS / TO-BE — listo para directivos, bilingüe EN/ES",
+        "SOW con cláusulas explícitas de dentro y fuera de alcance",
+        "Diseño de cumplimiento — gates OFAC, AML, SOX, PCI-DSS por fase",
+        "Marco de seguridad para la plataforma objetivo",
+        "Plan de ejecución por fases con cronograma, equipo y estimación de costos"
+      ],
+      not: "Refactorización de código, migración de datos o cutover en producción — eso es alcance de Ejecución.",
+      quality: "📋 Entregables listos para auditoría. Garantía de rollback por escrito en cada compromiso."
+    },
+    mf_execute: {
+      icon: "⚡", title: "Ejecución",
+      sub: "Mainframe y Empresarial · Alcance por proyecto · 10–54 semanas",
+      accent: "#1D9E75",
+      included: [
+        "Todo del Diagnóstico + Plano",
+        "Refactorización incremental — enrutamiento Strangler Fig o Big Bang específico por complejidad del programa",
+        "Mapeo de campos: cláusulas COBOL PIC a tipos SQL, resolución de REDEFINES, manejo de nulos",
+        "Ejecución paralela — comparación diaria de salidas, conteos de registros, totales monetarios, checksums",
+        "Validación de equivalencia de comportamiento — datasets dorados, suite de regresión, pruebas de casos límite",
+        "Gates de cumplimiento — OFAC, AML, SOX, PCI-DSS por fase",
+        "Cutover aprobado por CAB con plan de rollback probado",
+        "Sin go-live hasta que la ejecución paralela pase al 100%",
+        "30 días de estabilización — todos los defectos resueltos sin costo adicional",
+        "Transferencia de conocimiento y runbook operativo"
+      ],
+      not: "Servicio gestionado después de los 30 días de estabilización, licencias de terceros, costos de infraestructura fuera del alcance.",
+      quality: "📋 Entregables listos para auditoría. Garantía de rollback por escrito en cada compromiso."
+    },
+    legacy_sme: {
+      icon: "🏢", title: "Sistemas Legacy y de Negocio",
+      sub: "No-Mainframe · PyMES · Alcance por proyecto",
+      accent: "#7C3AED",
+      included: [
+        "Evaluación del sistema AS-IS — mapear lo que tienes, identificar qué arreglar primero",
+        "Reportes automatizados — conectores Excel, Access, CSV, DB2, entrega en PDF, resumen con IA",
+        "Integraciones de pago — ACH, RTP, filtrado OFAC, monitoreo AML",
+        "Migración a la nube — configuración AWS, migración de datos, cutover sin downtime",
+        "Integración de sistemas — conectar aplicaciones que no se comunican mediante APIs",
+        "Automatización de procesos — eliminar flujos de trabajo manuales, reducir errores humanos",
+        "Integración de IA — añadir inteligencia a herramientas y flujos de trabajo existentes",
+        "Asesoría de cumplimiento — SOX, PCI-DSS, AML para entornos no-mainframe",
+        "SOW y plan técnico — para equipos que necesitan una especificación escrita antes de construir"
+      ],
+      not: "Servicio gestionado continuo, adquisición de hardware, licencias de software o trabajo específico de mainframe.",
+      quality: "📋 Alcance claro antes de comenzar. Plan de rollback por escrito. 30 días de soporte después de la entrega."
+    }
+  }
+};
+
+function openCardModal(cardKey) {
+  const lang = document.documentElement.lang === 'es' ? 'es' : 'en';
+  const data = CARD_MODALS[lang][cardKey];
+  if (!data) return;
+
+  document.getElementById('modalIcon').textContent = data.icon;
+  document.getElementById('modalTitle').textContent = data.title;
+  document.getElementById('modalSub').textContent = data.sub;
+
+  const body = document.getElementById('modalBody');
+  body.innerHTML = `
+    <div class="modal-section-title" style="color:${data.accent};">✅ What's included</div>
+    ${data.included.map(f => `
+      <div class="modal-feature">
+        <div class="modal-feature-dot" style="background:${data.accent};"></div>
+        <span>${f}</span>
+      </div>`).join('')}
+    <div class="modal-section-title" style="color:var(--gray-400);margin-top:1.25rem;">❌ Not included</div>
+    <div class="modal-not">${data.not}</div>
+    <div class="modal-quality">${data.quality}</div>
+    <a href="#contact-form" class="modal-cta" onclick="closeCardModal(null)">Get a free consultation →</a>
+  `;
+
+  document.getElementById('modalOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeCardModal(e) {
+  if (e && e.target !== document.getElementById('modalOverlay')) return;
+  document.getElementById('modalOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeCardModal(null);
+});
+</script>
+
 </body>
 </html>

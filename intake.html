@@ -827,20 +827,21 @@
         <span class="error-msg" id="service-error" style="display:none;color:var(--error);font-size:0.78rem;">Please select a service type</span>
       </div>
 
-      <!-- What's involved checklist -->
+      <!-- What would you like to improve? -->
       <div class="field" style="margin-bottom:1.25rem;">
-        <label>What's involved? <span style="font-weight:400;text-transform:none;letter-spacing:0;">(check all that apply — helps us scope accurately)</span></label>
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:8px;margin-top:0.5rem;">
-          <label class="topic-check"><input type="checkbox" name="topic_cobol"> 🔄 COBOL / JCL programs</label>
-          <label class="topic-check"><input type="checkbox" name="topic_vsam"> 🗄️ VSAM / file merge / data conversion</label>
-          <label class="topic-check"><input type="checkbox" name="topic_db2"> 🏗️ DB2 / DBA / schema work</label>
-          <label class="topic-check"><input type="checkbox" name="topic_cics"> ⚙️ CICS transactions</label>
-          <label class="topic-check"><input type="checkbox" name="topic_payments"> 🏦 Payment flows (ACH / RTP / SWIFT)</label>
-          <label class="topic-check"><input type="checkbox" name="topic_compliance"> 📋 Compliance gates (OFAC / AML / SOX)</label>
-          <label class="topic-check"><input type="checkbox" name="topic_cloud"> ☁️ Cloud migration (AWS)</label>
-          <label class="topic-check"><input type="checkbox" name="topic_automation"> 🤖 Automation / AI integration</label>
-          <label class="topic-check"><input type="checkbox" name="topic_reporting"> 📊 Reporting (Excel / Access / CSV)</label>
-          <label class="topic-check"><input type="checkbox" name="topic_sow"> 📄 SOW / documentation only</label>
+        <label>What would you like to improve? <span style="font-weight:400;text-transform:none;letter-spacing:0;font-size:12px;">(check all that apply)</span></label>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:8px;margin-top:0.5rem;">
+          <label class="topic-check"><input type="checkbox" name="improve_legacy"> 🔄 Modernize old or fragile software</label>
+          <label class="topic-check"><input type="checkbox" name="improve_reports"> 📊 Automate manual reports (Excel · Access · CSV)</label>
+          <label class="topic-check"><input type="checkbox" name="improve_db"> 🗄️ Connect or migrate a database (DB2 · SQL Server · Oracle)</label>
+          <label class="topic-check"><input type="checkbox" name="improve_payments"> 🏦 Add payment processing (ACH · RTP · OFAC · AML)</label>
+          <label class="topic-check"><input type="checkbox" name="improve_cloud"> ☁️ Move infrastructure to the cloud (AWS)</label>
+          <label class="topic-check"><input type="checkbox" name="improve_integration"> 🔗 Connect systems that don't talk to each other</label>
+          <label class="topic-check"><input type="checkbox" name="improve_ai"> 🤖 Add AI or automation to existing workflows</label>
+          <label class="topic-check"><input type="checkbox" name="improve_compliance"> 📋 Meet a compliance requirement (SOX · PCI-DSS · AML)</label>
+          <label class="topic-check"><input type="checkbox" name="improve_mainframe"> 🖥️ Mainframe modernization (COBOL · z/OS · DB2)</label>
+          <label class="topic-check"><input type="checkbox" name="improve_sow"> 📄 Get a SOW or technical plan for an existing project</label>
+          <label class="topic-check"><input type="checkbox" name="improve_unsure"> ❓ Not sure yet — I need an assessment first</label>
         </div>
       </div>
 
