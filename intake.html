@@ -775,35 +775,35 @@
         <label>Service Type <span class="req">*</span></label>
         <div style="margin-top:0.5rem;">
           <div class="service-grid" id="service-grid">
-            <div class="service-card" data-value="Payments & Fintech" onclick="selectService(this)">
-              <div class="icon">💳</div>
-              <div class="label">Payments & Fintech</div>
-              <div class="rate">$175/hr</div>
+            <div class="service-card" data-value="Assess" onclick="selectService(this)">
+              <div class="icon">🔍</div>
+              <div class="label">Assess</div>
+              <div class="rate">Discovery & Classification</div>
+            </div>
+            <div class="service-card" data-value="Blueprint" onclick="selectService(this)">
+              <div class="icon">🗺️</div>
+              <div class="label">Blueprint</div>
+              <div class="rate">Architecture & Design</div>
+            </div>
+            <div class="service-card" data-value="Execute" onclick="selectService(this)">
+              <div class="icon">⚡</div>
+              <div class="label">Execute</div>
+              <div class="rate">Full Delivery</div>
             </div>
             <div class="service-card" data-value="Mainframe Modernization" onclick="selectService(this)">
-              <div class="icon">🖥️</div>
+              <div class="icon">🔄</div>
               <div class="label">Mainframe Modernization</div>
-              <div class="rate">$200/hr</div>
+              <div class="rate">COBOL · JCL · z/OS</div>
             </div>
-            <div class="service-card" data-value="AI / Automation" onclick="selectService(this)">
-              <div class="icon">🤖</div>
-              <div class="label">AI / Automation</div>
-              <div class="rate">$165/hr</div>
+            <div class="service-card" data-value="Payments & Fintech" onclick="selectService(this)">
+              <div class="icon">🏦</div>
+              <div class="label">Payments & Fintech</div>
+              <div class="rate">ACH · RTP · OFAC · AML</div>
             </div>
-            <div class="service-card" data-value="IT Consulting" onclick="selectService(this)">
-              <div class="icon">💡</div>
-              <div class="label">IT Consulting</div>
-              <div class="rate">$150/hr</div>
-            </div>
-            <div class="service-card" data-value="Delivery Intelligence" onclick="selectService(this)">
-              <div class="icon">📊</div>
-              <div class="label">Delivery Intelligence</div>
-              <div class="rate">$160/hr</div>
-            </div>
-            <div class="service-card" data-value="SOW / Documentation" onclick="selectService(this)">
-              <div class="icon">📄</div>
-              <div class="label">SOW / Documentation</div>
-              <div class="rate">$125/hr</div>
+            <div class="service-card" data-value="Compliance Advisory" onclick="selectService(this)">
+              <div class="icon">📋</div>
+              <div class="label">Compliance Advisory</div>
+              <div class="rate">SOX · PCI-DSS · AML</div>
             </div>
           </div>
         </div>
@@ -1097,6 +1097,8 @@ const state = {
 const RATES = {
   'IT Consulting': 150, 'Payments & Fintech': 175,
   'Mainframe Modernization': 200, 'AI / Automation': 165,
+  'Assess': 150, 'Blueprint': 165, 'Execute': 175,
+  'Compliance Advisory': 155,
   'Delivery Intelligence': 160, 'SOW / Documentation': 125,
 };
 const BASE_HOURS = { Low: 20, Medium: 60, High: 120 };

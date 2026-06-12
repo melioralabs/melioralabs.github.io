@@ -1,11 +1,16 @@
 <!-- ============================================================
      Meliora Labs | melioralabs.tech
-     Version : 2.5.1
-     Date    : 2026-06-07
-     Changes : Spain fully removed as a market from all visible content —
-               svc3.desc, rates.note, FAQ a1/a3/q8/a8, chatbot responses,
-               meta/OG/Twitter tags, keywords updated (KYC/onboarding added);
-               Spain retained as credential only in sec4 (credentials section)
+     Version : 3.0.0
+     Date    : 2026-06-11
+     Changes : Major redesign — 7 service cards replaced with 3 engagement
+               tier cards (Assess / Blueprint / Execute) + domain row;
+               Cybersecurity card removed (deferred until Eric commits);
+               Security by Design → Compliance & Risk Advisory;
+               Public rate grid removed → value positioning only;
+               Chatbot updated to new scope + 3-tier model;
+               Contact form service options aligned to new scope;
+               Hero subtitle updated; case 3 updated;
+               All i18n keys updated EN + ES
      ============================================================ -->
 <!DOCTYPE html>
 <html lang="en">
@@ -384,7 +389,7 @@
 <div class="hero">
   <div class="hero-tag reveal"><div class="hero-dot"></div><span data-i18n="hero.tag">AI-Powered IT Solutions</span></div>
   <h1 class="hero-title reveal reveal-delay-1" data-i18n="hero.title">Built by those who <em>lived</em> inside the systems</h1>
-  <p class="hero-sub reveal reveal-delay-2" data-i18n="hero.sub">Meliora Labs delivers AI-powered tools and consulting for banks, fintechs, and enterprises — built by engineers with 20+ years inside mission-critical payment platforms and cybersecurity operations.</p>
+  <p class="hero-sub reveal reveal-delay-2" data-i18n="hero.sub">Meliora Labs delivers senior-level IT consulting for banks, fintechs, and payment companies — mainframe modernization, payments platforms, cloud automation, and compliance advisory. Built by engineers with 20+ years inside mission-critical systems.</p>
   <div class="hero-actions reveal reveal-delay-3">
     <a href="#contact-form" class="btn-primary" data-i18n="hero.cta1">Start a conversation</a>
     <a href="#services" class="btn-secondary" data-i18n="hero.cta2">See what we build →</a>
@@ -402,420 +407,133 @@
 <!-- SERVICES -->
 <section id="services">
   <div class="section-tag reveal" data-i18n="services.tag">What we do</div>
-  <h2 class="section-title reveal reveal-delay-1" data-i18n="services.title">Services built from real-world experience</h2>
-  <p class="section-sub reveal reveal-delay-2" data-i18n="services.sub">We don't consult from the outside. We've built, migrated, and secured the systems most firms only read about.</p>
-  <div class="services-grid">
-    <div class="service-card expandable reveal reveal-delay-1" id="card360">
-      <div class="service-card-header">
-        <div>
-          <div class="service-icon">⚡</div>
-          <div class="service-title" data-i18n="svc1.title">360° Delivery Intelligence</div>
-        </div>
-        <button class="learn-more-btn" id="btn360" onclick="toggleCard('360')" data-i18n="card.learnmore">Learn more +</button>
-      </div>
-      <p class="service-desc" data-i18n="svc1.desc">AI-powered estimation and risk visibility across your full delivery lifecycle — dependencies, blockers, capacity, and compliance in one view.</p>
+  <h2 class="section-title reveal reveal-delay-1" data-i18n="services.title">How we engage</h2>
+  <p class="section-sub reveal reveal-delay-2" data-i18n="services.sub">Every engagement follows one of three structured phases. You know the scope, the price, and the deliverables before we start — nothing hidden, nothing open-ended.</p>
 
-      <!-- EXPANDABLE TIER PANEL -->
-      <div class="tier-panel" id="panel360">
-        <!-- Pill Tabs -->
-        <div class="tier-tabs">
-          <button class="tier-tab small active" onclick="switchTierCard('360','small')" data-i18n="tier.small">🟢 Small</button>
-          <button class="tier-tab medium" onclick="switchTierCard('360','medium')" data-i18n="tier.medium">🟡 Medium</button>
-          <button class="tier-tab large" onclick="switchTierCard('360','large')" data-i18n="tier.large">🔴 Large</button>
-        </div>
+  <div class="services-grid" style="grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem;">
 
-        <!-- Small Tier -->
-        <div class="tier-content active" id="360-small">
-          <div class="tier-badge small">🟢 Small Company</div>
-          <div class="tier-feature"><div class="tier-feature-dot small"></div><span data-i18n="t1s.f1">Simple task tracking — no complex methodology needed</span></div>
-          <div class="tier-feature"><div class="tier-feature-dot small"></div><span data-i18n="t1s.f2">Affordable pricing — tailored to your budget</span></div>
-          <div class="tier-feature"><div class="tier-feature-dot small"></div><span data-i18n="t1s.f3">Minimal disruption to your daily operations</span></div>
-          <div class="tier-feature"><div class="tier-feature-dot small"></div><span data-i18n="t1s.f4">Rollback protection on every delivery</span></div>
-          <div class="tier-feature"><div class="tier-feature-dot small"></div><span data-i18n="t1s.f5">Full issue documentation included</span></div>
-          <div class="tier-golive">🟢 <span data-i18n="t1s.golive">Go-live support included — duration based on project scope</span></div>
-          <a href="#contact-form" class="tier-cta" data-i18n="tier.cta">Get a free consultation →</a>
-        </div>
-
-        <!-- Medium Tier -->
-        <div class="tier-content" id="360-medium">
-          <div class="tier-badge medium">🟡 Medium Company</div>
-          <div class="tier-feature"><div class="tier-feature-dot medium"></div><span data-i18n="t1m.f1">Agile lite methodology — structured but not overwhelming</span></div>
-          <div class="tier-feature"><div class="tier-feature-dot medium"></div><span data-i18n="t1m.f2">Multi-department coverage including HR projects</span></div>
-          <div class="tier-feature"><div class="tier-feature-dot medium"></div><span data-i18n="t1m.f3">Changes visible fast — zero impact on daily services</span></div>
-          <div class="tier-feature"><div class="tier-feature-dot medium"></div><span data-i18n="t1m.f4">Rollback protection + full documentation package</span></div>
-          <div class="tier-feature"><div class="tier-feature-dot medium"></div><span data-i18n="t1m.f5">Budget-conscious with room to scale</span></div>
-          <div class="tier-golive">🟡 <span data-i18n="t1m.golive">Go-live support during and after launch — duration agreed at project start</span></div>
-          <a href="#contact-form" class="tier-cta" data-i18n="tier.cta">Get a free consultation →</a>
-        </div>
-
-        <!-- Large Tier -->
-        <div class="tier-content" id="360-large">
-          <div class="tier-badge large">🔴 Enterprise / Retail / Fintech</div>
-          <div class="tier-feature"><div class="tier-feature-dot large"></div><span data-i18n="t1l.f1">Full Agile methodology — compliance and audit ready</span></div>
-          <div class="tier-feature"><div class="tier-feature-dot large"></div><span data-i18n="t1l.f2">One dedicated engineer per project for focused delivery</span></div>
-          <div class="tier-feature"><div class="tier-feature-dot large"></div><span data-i18n="t1l.f3">Changes reflected same day or by next noon</span></div>
-          <div class="tier-feature"><div class="tier-feature-dot large"></div><span data-i18n="t1l.f4">14 years — zero production rollbacks track record</span></div>
-          <div class="tier-feature"><div class="tier-feature-dot large"></div><span data-i18n="t1l.f5">Federal compliance ready (OFAC, AML, SOX, PCI-DSS)</span></div>
-          <div class="tier-feature"><div class="tier-feature-dot large"></div><span data-i18n="t1l.f6">Multi-team coordination — HR, engineering, compliance</span></div>
-          <div class="tier-golive">🔴 <span data-i18n="t1l.golive">Full go-live support during and after launch — dedicated support window agreed per project</span></div>
-          <a href="#contact-form" class="tier-cta" data-i18n="tier.cta">Get a free consultation →</a>
-        </div>
-      </div>
-    </div>
-    <!-- PAYMENTS & FINTECH — 2 tiers Medium + Large -->
-    <div class="service-card expandable reveal reveal-delay-2" id="cardPayments">
-      <div class="service-card-header">
-        <div>
-          <div class="service-icon">🏦</div>
-          <div class="service-title" data-i18n="svc2.title">Payments & Fintech Consulting</div>
-        </div>
-        <button class="learn-more-btn" id="btnPayments" onclick="toggleCard('Payments')" data-i18n="card.learnmore">Learn more +</button>
-      </div>
-      <p class="service-desc" data-i18n="svc2.desc">ACH, RTP, Wires, OFAC, AML — hands-on expertise in the formats and regulations that power financial infrastructure.</p>
-      <div class="tier-panel" id="panelPayments">
-        <div class="tier-tabs">
-          <button class="tier-tab medium active" onclick="switchTierCard('Payments','medium')" data-i18n="tier.medium">🟡 Medium</button>
-          <button class="tier-tab large" onclick="switchTierCard('Payments','large')" data-i18n="tier.large">🔴 Large</button>
-        </div>
-        <div class="tier-content active" id="Payments-medium">
-          <div class="tier-badge medium">🟡 Medium Company</div>
-          <div class="tier-feature"><div class="tier-feature-dot medium"></div><span data-i18n="t2m.f1">Payment flow consulting — ACH, RTP, and Wire transfers</span></div>
-          <div class="tier-feature"><div class="tier-feature-dot medium"></div><span data-i18n="t2m.f2">Basic compliance guidance — OFAC screening setup</span></div>
-          <div class="tier-feature"><div class="tier-feature-dot medium"></div><span data-i18n="t2m.f3">Integration strategy with existing banking systems</span></div>
-          <div class="tier-feature"><div class="tier-feature-dot medium"></div><span data-i18n="t2m.f4">Documentation and handover included</span></div>
-          <div class="tier-golive">🟡 <span data-i18n="t2m.golive">Go-live support during and after launch — duration agreed at project start</span></div>
-          <a href="#contact-form" class="tier-cta" data-i18n="tier.cta">Get a free consultation →</a>
-        </div>
-        <div class="tier-content" id="Payments-large">
-          <div class="tier-badge large">🔴 Enterprise / Fintech</div>
-          <div class="tier-feature"><div class="tier-feature-dot large"></div><span data-i18n="t2l.f1">Full payment infrastructure — ACH, RTP, Wires, SWIFT</span></div>
-          <div class="tier-feature"><div class="tier-feature-dot large"></div><span data-i18n="t2l.f2">OFAC, AML, and regulatory compliance — audit ready</span></div>
-          <div class="tier-feature"><div class="tier-feature-dot large"></div><span data-i18n="t2l.f3">$50B+ platform experience — hands on, not theoretical</span></div>
-          <div class="tier-feature"><div class="tier-feature-dot large"></div><span data-i18n="t2l.f4">Federal Reserve examiner-grade governance frameworks</span></div>
-          <div class="tier-feature"><div class="tier-feature-dot large"></div><span data-i18n="t2l.f5">Full documentation, specs and handover package</span></div>
-          <div class="tier-golive">🔴 <span data-i18n="t2l.golive">Full go-live support — dedicated support window agreed per project</span></div>
-          <a href="#contact-form" class="tier-cta" data-i18n="tier.cta">Get a free consultation →</a>
-        </div>
+    <!-- ASSESS -->
+    <div class="service-card reveal reveal-delay-1" style="border-top:4px solid #1B2A4A;position:relative;">
+      <div style="position:absolute;top:1.25rem;right:1.25rem;background:#EAF4FB;color:#1B2A4A;font-size:11px;font-weight:600;padding:3px 10px;border-radius:12px;letter-spacing:0.5px;">$8K – $20K</div>
+      <div class="service-icon">🔍</div>
+      <div class="service-title" data-i18n="svc_assess.title">Assess</div>
+      <p class="service-desc" data-i18n="svc_assess.desc">Discovery, inventory, and complexity classification. We map what you have, classify the risk, and deliver a written modernization plan — before you commit to anything bigger.</p>
+      <div style="margin-top:1.25rem;padding-top:1.25rem;border-top:0.5px solid var(--gray-100);">
+        <div style="font-size:11px;font-weight:600;color:#1B2A4A;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:0.75rem;" data-i18n="svc.included_label">✅ What's included</div>
+        <div class="tier-feature"><div class="tier-feature-dot large" style="background:#1B2A4A;"></div><span data-i18n="svc_assess.f1">COBOL/JCL program inventory — every component catalogued</span></div>
+        <div class="tier-feature"><div class="tier-feature-dot large" style="background:#1B2A4A;"></div><span data-i18n="svc_assess.f2">Complexity classification (L1–L5) per program</span></div>
+        <div class="tier-feature"><div class="tier-feature-dot large" style="background:#1B2A4A;"></div><span data-i18n="svc_assess.f3">Dependency map — CALL chains, VSAM files, DB2 tables</span></div>
+        <div class="tier-feature"><div class="tier-feature-dot large" style="background:#1B2A4A;"></div><span data-i18n="svc_assess.f4">Compliance risk register (OFAC, AML, SOX, PCI-DSS)</span></div>
+        <div class="tier-feature"><div class="tier-feature-dot large" style="background:#1B2A4A;"></div><span data-i18n="svc_assess.f5">Written modernization recommendation with phased roadmap</span></div>
+        <div style="margin-top:0.75rem;padding-top:0.75rem;border-top:0.5px solid var(--gray-100);font-size:11px;font-weight:600;color:var(--gray-400);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:0.5rem;" data-i18n="svc.notincluded_label">❌ Not included</div>
+        <div style="font-size:13px;color:var(--gray-400);" data-i18n="svc_assess.not">Code refactoring, data migration, or execution work — those are Blueprint and Execute scope.</div>
+        <div class="tier-golive" style="margin-top:1rem;">📋 <span data-i18n="svc_assess.quality">Examination-ready deliverables. Written rollback guarantee on every engagement.</span></div>
+        <a href="#contact-form" class="tier-cta" data-i18n="tier.cta">Get a free consultation →</a>
       </div>
     </div>
 
-    <!-- MAINFRAME — Coffee card -->
-    <div class="service-card expandable reveal reveal-delay-3" id="cardMainframe">
-      <div class="service-card-header">
-        <div>
-          <div class="service-icon">🔄</div>
-          <div class="service-title" data-i18n="svc3.title">Mainframe Modernization</div>
-        </div>
-        <button class="learn-more-btn" id="btnMainframe" onclick="toggleCard('Mainframe')" data-i18n="card.learnmore">Learn more +</button>
-      </div>
-      <p class="service-desc" data-i18n="svc3.desc">z/OS to cloud migration strategy and execution. We wrote the playbook for one of the largest bank migrations in North America — 100+ components, zero incidents on go-live.</p>
-      <div class="coffee-panel" id="panelMainframe">
-        <div class="coffee-content">
-          <div class="coffee-emoji">☕</div>
-          <div class="coffee-title" data-i18n="coffee.title">This one deserves a real conversation.</div>
-          <div class="coffee-sub" data-i18n="coffee.sub">Every mainframe modernization is unique. The complexity, the risk, and the opportunity are different for every organization — database conversions, cross-platform migrations, legacy code transformation. This is not a checkbox on a website. Let's talk.</div>
-          <a href="#contact-form" class="coffee-cta" data-i18n="coffee.cta">☕ Schedule a conversation →</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- SECURITY BY DESIGN — 3 tiers -->
-    <div class="service-card expandable reveal reveal-delay-4" id="cardSecurity">
-      <div class="service-card-header">
-        <div>
-          <div class="service-icon">🔒</div>
-          <div class="service-title" data-i18n="svc4.title">Security by Design</div>
-        </div>
-        <button class="learn-more-btn" id="btnSecurity" onclick="toggleCard('Security')" data-i18n="card.learnmore">Learn more +</button>
-      </div>
-      <p class="service-desc" data-i18n="svc4.desc">Cybersecurity architecture built in from day one — not bolted on after. Every product we build meets banking-grade security standards.</p>
-      <div class="tier-panel" id="panelSecurity">
-        <div class="tier-tabs">
-          <button class="tier-tab small active" onclick="switchTierCard('Security','small')" data-i18n="tier.small">🟢 Small</button>
-          <button class="tier-tab medium" onclick="switchTierCard('Security','medium')" data-i18n="tier.medium">🟡 Medium</button>
-          <button class="tier-tab large" onclick="switchTierCard('Security','large')" data-i18n="tier.large">🔴 Large</button>
-        </div>
-        <div class="tier-content active" id="Security-small">
-          <div class="tier-badge small">🟢 Small Company</div>
-          <div class="tier-feature"><div class="tier-feature-dot small"></div><span data-i18n="t4s.f1">Essential security assessment for your systems</span></div>
-          <div class="tier-feature"><div class="tier-feature-dot small"></div><span data-i18n="t4s.f2">Data protection and backup strategy — cloud included</span></div>
-          <div class="tier-feature"><div class="tier-feature-dot small"></div><span data-i18n="t4s.f3">Basic firewall and access control guidance</span></div>
-          <div class="tier-feature"><div class="tier-feature-dot small"></div><span data-i18n="t4s.f4">Client data protection — your data stays yours</span></div>
-          <div class="tier-golive">🟢 <span data-i18n="t4s.golive">Go-live support included — duration based on project scope</span></div>
-          <a href="#contact-form" class="tier-cta" data-i18n="tier.cta">Get a free consultation →</a>
-        </div>
-        <div class="tier-content" id="Security-medium">
-          <div class="tier-badge medium">🟡 Medium Company</div>
-          <div class="tier-feature"><div class="tier-feature-dot medium"></div><span data-i18n="t4m.f1">Network security architecture — NAT, firewall rules</span></div>
-          <div class="tier-feature"><div class="tier-feature-dot medium"></div><span data-i18n="t4m.f2">Cloud-enforced protection — AWS or your provider</span></div>
-          <div class="tier-feature"><div class="tier-feature-dot medium"></div><span data-i18n="t4m.f3">Database and file backup strategy with retention policy</span></div>
-          <div class="tier-feature"><div class="tier-feature-dot medium"></div><span data-i18n="t4m.f4">Security by design — built in, not bolted on</span></div>
-          <div class="tier-golive">🟡 <span data-i18n="t4m.golive">Go-live support during and after launch — duration agreed at project start</span></div>
-          <a href="#contact-form" class="tier-cta" data-i18n="tier.cta">Get a free consultation →</a>
-        </div>
-        <div class="tier-content" id="Security-large">
-          <div class="tier-badge large">🔴 Enterprise</div>
-          <div class="tier-feature"><div class="tier-feature-dot large"></div><span data-i18n="t4l.f1">Full cybersecurity architecture — zero-trust model</span></div>
-          <div class="tier-feature"><div class="tier-feature-dot large"></div><span data-i18n="t4l.f2">Advanced firewall, NAT, and network segmentation</span></div>
-          <div class="tier-feature"><div class="tier-feature-dot large"></div><span data-i18n="t4l.f3">Multi-cloud protection — AWS, Azure, or hybrid</span></div>
-          <div class="tier-feature"><div class="tier-feature-dot large"></div><span data-i18n="t4l.f4">Regulatory compliance — OFAC, AML, PCI-DSS, SOX</span></div>
-          <div class="tier-feature"><div class="tier-feature-dot large"></div><span data-i18n="t4l.f5">DB and file backup with cloud-enforced retention</span></div>
-          <div class="tier-golive">🔴 <span data-i18n="t4l.golive">Full go-live support — dedicated support window agreed per project</span></div>
-          <a href="#contact-form" class="tier-cta" data-i18n="tier.cta">Get a free consultation →</a>
-        </div>
+    <!-- BLUEPRINT -->
+    <div class="service-card reveal reveal-delay-2" style="border-top:4px solid #2E86AB;position:relative;">
+      <div style="position:absolute;top:1.25rem;right:1.25rem;background:#EAF4FB;color:#2E86AB;font-size:11px;font-weight:600;padding:3px 10px;border-radius:12px;letter-spacing:0.5px;">$20K – $60K</div>
+      <div class="service-icon">🗺️</div>
+      <div class="service-title" data-i18n="svc_blueprint.title">Blueprint</div>
+      <p class="service-desc" data-i18n="svc_blueprint.desc">Architecture design, target platform selection, data model, and full project specification. Everything your team needs to execute — or everything Meliora Labs needs to begin.</p>
+      <div style="margin-top:1.25rem;padding-top:1.25rem;border-top:0.5px solid var(--gray-100);">
+        <div style="font-size:11px;font-weight:600;color:#2E86AB;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:0.75rem;" data-i18n="svc.included_label">✅ What's included</div>
+        <div class="tier-feature"><div class="tier-feature-dot large"></div><span data-i18n="svc_blueprint.f1">Everything in Assess — full inventory and risk classification</span></div>
+        <div class="tier-feature"><div class="tier-feature-dot large"></div><span data-i18n="svc_blueprint.f2">Target architecture design — DB2, APIs, MQ, or cloud storage</span></div>
+        <div class="tier-feature"><div class="tier-feature-dot large"></div><span data-i18n="svc_blueprint.f3">Data model and API contract specifications</span></div>
+        <div class="tier-feature"><div class="tier-feature-dot large"></div><span data-i18n="svc_blueprint.f4">AS-IS / TO-BE presentation deck — board-ready</span></div>
+        <div class="tier-feature"><div class="tier-feature-dot large"></div><span data-i18n="svc_blueprint.f5">SOW, compliance design, and security framework</span></div>
+        <div class="tier-feature"><div class="tier-feature-dot large"></div><span data-i18n="svc_blueprint.f6">Phased execution plan with timeline and cost estimate</span></div>
+        <div style="margin-top:0.75rem;padding-top:0.75rem;border-top:0.5px solid var(--gray-100);font-size:11px;font-weight:600;color:var(--gray-400);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:0.5rem;" data-i18n="svc.notincluded_label">❌ Not included</div>
+        <div style="font-size:13px;color:var(--gray-400);" data-i18n="svc_blueprint.not">Code refactoring, data migration, or production cutover — those are Execute scope.</div>
+        <div class="tier-golive" style="margin-top:1rem;">📋 <span data-i18n="svc_blueprint.quality">Examination-ready deliverables. Written rollback guarantee on every engagement.</span></div>
+        <a href="#contact-form" class="tier-cta" data-i18n="tier.cta">Get a free consultation →</a>
       </div>
     </div>
 
-    <!-- AI TOOLS — 3 tiers -->
-    <div class="service-card expandable reveal reveal-delay-5" id="cardAI">
-      <div class="service-card-header">
-        <div>
-          <div class="service-icon">🤖</div>
-          <div class="service-title" data-i18n="svc5.title">AI-Powered IT Tools</div>
-        </div>
-        <button class="learn-more-btn" id="btnAI" onclick="toggleCard('AI')" data-i18n="card.learnmore">Learn more +</button>
-      </div>
-      <p class="service-desc" data-i18n="svc5.desc">Custom AI applications for delivery governance, compliance reporting, and operational intelligence — built with Claude AI and deployed on AWS.</p>
-      <div class="tier-panel" id="panelAI">
-        <div class="tier-tabs">
-          <button class="tier-tab small active" onclick="switchTierCard('AI','small')" data-i18n="tier.small">🟢 Small</button>
-          <button class="tier-tab medium" onclick="switchTierCard('AI','medium')" data-i18n="tier.medium">🟡 Medium</button>
-          <button class="tier-tab large" onclick="switchTierCard('AI','large')" data-i18n="tier.large">🔴 Large</button>
-        </div>
-        <div class="tier-content active" id="AI-small">
-          <div class="tier-badge small">🟢 Small Company</div>
-          <div class="tier-feature"><div class="tier-feature-dot small"></div><span data-i18n="t5s.f1">Simple AI automation for repetitive tasks</span></div>
-          <div class="tier-feature"><div class="tier-feature-dot small"></div><span data-i18n="t5s.f2">Affordable tools that save time immediately</span></div>
-          <div class="tier-feature"><div class="tier-feature-dot small"></div><span data-i18n="t5s.f3">No complex infrastructure required</span></div>
-          <div class="tier-feature"><div class="tier-feature-dot small"></div><span data-i18n="t5s.f4">Easy to use — your team adopts it from day one</span></div>
-          <div class="tier-golive">🟢 <span data-i18n="t5s.golive">Go-live support included — duration based on project scope</span></div>
-          <a href="#contact-form" class="tier-cta" data-i18n="tier.cta">Get a free consultation →</a>
-        </div>
-        <div class="tier-content" id="AI-medium">
-          <div class="tier-badge medium">🟡 Medium Company</div>
-          <div class="tier-feature"><div class="tier-feature-dot medium"></div><span data-i18n="t5m.f1">Custom AI tools for your specific workflows</span></div>
-          <div class="tier-feature"><div class="tier-feature-dot medium"></div><span data-i18n="t5m.f2">Automated reporting and operational dashboards</span></div>
-          <div class="tier-feature"><div class="tier-feature-dot medium"></div><span data-i18n="t5m.f3">Integration with your existing systems</span></div>
-          <div class="tier-feature"><div class="tier-feature-dot medium"></div><span data-i18n="t5m.f4">Deployed securely on AWS or your cloud provider</span></div>
-          <div class="tier-golive">🟡 <span data-i18n="t5m.golive">Go-live support during and after launch — duration agreed at project start</span></div>
-          <a href="#contact-form" class="tier-cta" data-i18n="tier.cta">Get a free consultation →</a>
-        </div>
-        <div class="tier-content" id="AI-large">
-          <div class="tier-badge large">🔴 Enterprise</div>
-          <div class="tier-feature"><div class="tier-feature-dot large"></div><span data-i18n="t5l.f1">Enterprise AI — delivery governance and compliance intelligence</span></div>
-          <div class="tier-feature"><div class="tier-feature-dot large"></div><span data-i18n="t5l.f2">Automated host system processes — reduce manual effort</span></div>
-          <div class="tier-feature"><div class="tier-feature-dot large"></div><span data-i18n="t5l.f3">Real-time operational visibility across all projects</span></div>
-          <div class="tier-feature"><div class="tier-feature-dot large"></div><span data-i18n="t5l.f4">Banking-grade security — built with Claude AI on AWS</span></div>
-          <div class="tier-feature"><div class="tier-feature-dot large"></div><span data-i18n="t5l.f5">Scalable — grows with your organization</span></div>
-          <div class="tier-golive">🔴 <span data-i18n="t5l.golive">Full go-live support — dedicated support window agreed per project</span></div>
-          <a href="#contact-form" class="tier-cta" data-i18n="tier.cta">Get a free consultation →</a>
-        </div>
+    <!-- EXECUTE -->
+    <div class="service-card reveal reveal-delay-3" style="border-top:4px solid #1D9E75;position:relative;">
+      <div style="position:absolute;top:1.25rem;right:1.25rem;background:#e8f5ef;color:#1D9E75;font-size:11px;font-weight:600;padding:3px 10px;border-radius:12px;letter-spacing:0.5px;" data-i18n="svc_execute.price_badge">Scoped per project</div>
+      <div class="service-icon">⚡</div>
+      <div class="service-title" data-i18n="svc_execute.title">Execute</div>
+      <p class="service-desc" data-i18n="svc_execute.desc">Full delivery — refactoring, migration, parallel run, compliance gates, cutover, and 30-day stabilization. Fixed scope, written rollback plan, zero surprises at go-live.</p>
+      <div style="margin-top:1.25rem;padding-top:1.25rem;border-top:0.5px solid var(--gray-100);">
+        <div style="font-size:11px;font-weight:600;color:#1D9E75;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:0.75rem;" data-i18n="svc.included_label">✅ What's included</div>
+        <div class="tier-feature"><div class="tier-feature-dot small"></div><span data-i18n="svc_execute.f1">Everything in Assess + Blueprint</span></div>
+        <div class="tier-feature"><div class="tier-feature-dot small"></div><span data-i18n="svc_execute.f2">Incremental refactor — Strangler Fig or Big Bang per complexity</span></div>
+        <div class="tier-feature"><div class="tier-feature-dot small"></div><span data-i18n="svc_execute.f3">Parallel run with daily output comparison and discrepancy log</span></div>
+        <div class="tier-feature"><div class="tier-feature-dot small"></div><span data-i18n="svc_execute.f4">Compliance gate sign-offs — OFAC, AML, SOX, PCI-DSS</span></div>
+        <div class="tier-feature"><div class="tier-feature-dot small"></div><span data-i18n="svc_execute.f5">CAB-approved production cutover with tested rollback plan</span></div>
+        <div class="tier-feature"><div class="tier-feature-dot small"></div><span data-i18n="svc_execute.f6">30-day stabilization — all issues fixed at no extra cost</span></div>
+        <div style="margin-top:0.75rem;padding-top:0.75rem;border-top:0.5px solid var(--gray-100);font-size:11px;font-weight:600;color:var(--gray-400);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:0.5rem;" data-i18n="svc.notincluded_label">❌ Not included</div>
+        <div style="font-size:13px;color:var(--gray-400);" data-i18n="svc_execute.not">Ongoing managed service after 30-day stabilization, third-party licenses, infrastructure costs outside agreed scope.</div>
+        <div class="tier-golive" style="margin-top:1rem;">📋 <span data-i18n="svc_execute.quality">Examination-ready deliverables. Written rollback guarantee on every engagement.</span></div>
+        <a href="#contact-form" class="tier-cta" data-i18n="tier.cta">Get a free consultation →</a>
       </div>
     </div>
 
-    <!-- TECHNICAL DESIGN AS-IS / TO-BE -->
-    <div class="service-card expandable reveal reveal-delay-1" id="cardTech">
-      <div class="service-card-header">
-        <div>
-          <div class="service-icon">🗺️</div>
-          <div class="service-title" data-i18n="svc7.title">Technical Design — AS-IS / TO-BE</div>
-        </div>
-        <button class="learn-more-btn" id="btnTech" onclick="toggleCard('Tech')" data-i18n="card.learnmore">Learn more +</button>
-      </div>
-      <p class="service-desc" data-i18n="svc7.desc">Every digital system has room to grow. We map where you are, design where you could be, and build the bridge — simply, clearly, for humans not just engineers.</p>
-      <div class="tier-panel" id="panelTech">
-        <div class="tier-tabs">
-          <button class="tier-tab small active" onclick="switchTierCard('Tech','small')" data-i18n="tier.small">🟢 Small</button>
-          <button class="tier-tab medium" onclick="switchTierCard('Tech','medium')" data-i18n="tier.medium">🟡 Medium</button>
-          <button class="tier-tab large" onclick="switchTierCard('Tech','large')" data-i18n="tier.large">🔴 Large</button>
-        </div>
-        <div class="tier-content active" id="Tech-small">
-          <div class="tier-badge small">🟢 Small Company</div>
-          <div class="tier-feature"><div class="tier-feature-dot small"></div><span data-i18n="t7s.f1">AS-IS diagram — map your current digital systems clearly</span></div>
-          <div class="tier-feature"><div class="tier-feature-dot small"></div><span data-i18n="t7s.f2">Quick wins identified — what to improve first, low cost</span></div>
-          <div class="tier-feature"><div class="tier-feature-dot small"></div><span data-i18n="t7s.f3">Simple human-readable diagrams — no engineering degree needed</span></div>
-          <div class="tier-feature"><div class="tier-feature-dot small"></div><span data-i18n="t7s.f4">If it's digital, it can be improved — any industry</span></div>
-          <div class="tier-golive">🟢 <span data-i18n="t7s.golive">Go-live support included — duration based on project scope</span></div>
-          <a href="#contact-form" class="tier-cta" data-i18n="tier.cta">Get a free consultation →</a>
-        </div>
-        <div class="tier-content" id="Tech-medium">
-          <div class="tier-badge medium">🟡 Medium Company</div>
-          <div class="tier-feature"><div class="tier-feature-dot medium"></div><span data-i18n="t7m.f1">Full AS-IS / TO-BE architecture — present and future state</span></div>
-          <div class="tier-feature"><div class="tier-feature-dot medium"></div><span data-i18n="t7m.f2">Transformation roadmap — phased, realistic, achievable</span></div>
-          <div class="tier-feature"><div class="tier-feature-dot medium"></div><span data-i18n="t7m.f3">PowerPoint presentation — simple, clear, for decision makers</span></div>
-          <div class="tier-feature"><div class="tier-feature-dot medium"></div><span data-i18n="t7m.f4">Small enhancements identified — quick value, low disruption</span></div>
-          <div class="tier-feature"><div class="tier-feature-dot medium"></div><span data-i18n="t7m.f5">AI automation opportunities flagged for future phases</span></div>
-          <div class="tier-golive">🟡 <span data-i18n="t7m.golive">Go-live support during and after launch — duration agreed at project start</span></div>
-          <a href="#contact-form" class="tier-cta" data-i18n="tier.cta">Get a free consultation →</a>
-        </div>
-        <div class="tier-content" id="Tech-large">
-          <div class="tier-badge large">🔴 Enterprise</div>
-          <div class="tier-feature"><div class="tier-feature-dot large"></div><span data-i18n="t7l.f1">Complete architecture transformation — AS-IS to TO-BE</span></div>
-          <div class="tier-feature"><div class="tier-feature-dot large"></div><span data-i18n="t7l.f2">Multi-system integration design — end to end visibility</span></div>
-          <div class="tier-feature"><div class="tier-feature-dot large"></div><span data-i18n="t7l.f3">Phased delivery plan — changes reflected with zero disruption</span></div>
-          <div class="tier-feature"><div class="tier-feature-dot large"></div><span data-i18n="t7l.f4">AI framework integration — intelligent automation by design</span></div>
-          <div class="tier-feature"><div class="tier-feature-dot large"></div><span data-i18n="t7l.f5">Diagrams and PPT for humans — board-ready presentations</span></div>
-          <div class="tier-feature"><div class="tier-feature-dot large"></div><span data-i18n="t7l.f6">AWS-certified engineers and AI specialists on your project</span></div>
-          <div class="tier-golive">🔴 <span data-i18n="t7l.golive">Full go-live support — dedicated support window agreed per project</span></div>
-          <a href="#contact-form" class="tier-cta" data-i18n="tier.cta">Get a free consultation →</a>
-        </div>
-      </div>
-    </div>
-    <div class="service-card expandable reveal reveal-delay-6" id="cardGov">
-      <div class="service-card-header">
-        <div>
-          <div class="service-icon">📋</div>
-          <div class="service-title" data-i18n="svc6.title">Governance & Compliance</div>
-        </div>
-        <button class="learn-more-btn" id="btnGov" onclick="toggleCard('Gov')" data-i18n="card.learnmore">Learn more +</button>
-      </div>
-      <p class="service-desc" data-i18n="svc6.desc">Delivery frameworks that survive regulatory scrutiny. Our governance structures have been reviewed by Federal Reserve examiners.</p>
-      <div class="tier-panel" id="panelGov">
-        <div class="tier-tabs">
-          <button class="tier-tab medium active" onclick="switchTierCard('Gov','medium')" data-i18n="tier.medium">🟡 Medium</button>
-          <button class="tier-tab large" onclick="switchTierCard('Gov','large')" data-i18n="tier.large">🔴 Large</button>
-        </div>
-        <div class="tier-content active" id="Gov-medium">
-          <div class="tier-badge medium">🟡 Medium Company</div>
-          <div class="tier-feature"><div class="tier-feature-dot medium"></div><span data-i18n="t6m.f1">Delivery governance framework — structured and scalable</span></div>
-          <div class="tier-feature"><div class="tier-feature-dot medium"></div><span data-i18n="t6m.f2">Compliance checklist aligned to your industry</span></div>
-          <div class="tier-feature"><div class="tier-feature-dot medium"></div><span data-i18n="t6m.f3">Risk management and issue escalation processes</span></div>
-          <div class="tier-feature"><div class="tier-feature-dot medium"></div><span data-i18n="t6m.f4">Documentation ready for internal audits</span></div>
-          <div class="tier-golive">🟡 <span data-i18n="t6m.golive">Go-live support during and after launch — duration agreed at project start</span></div>
-          <a href="#contact-form" class="tier-cta" data-i18n="tier.cta">Get a free consultation →</a>
-        </div>
-        <div class="tier-content" id="Gov-large">
-          <div class="tier-badge large">🔴 Enterprise / Fintech / Bank</div>
-          <div class="tier-feature"><div class="tier-feature-dot large"></div><span data-i18n="t6l.f1">Federal Reserve examiner-grade governance frameworks</span></div>
-          <div class="tier-feature"><div class="tier-feature-dot large"></div><span data-i18n="t6l.f2">Full regulatory compliance — OFAC, AML, SOX, PCI-DSS</span></div>
-          <div class="tier-feature"><div class="tier-feature-dot large"></div><span data-i18n="t6l.f3">Audit-ready from day one — no scrambling before reviews</span></div>
-          <div class="tier-feature"><div class="tier-feature-dot large"></div><span data-i18n="t6l.f4">Multi-team delivery governance across departments</span></div>
-          <div class="tier-feature"><div class="tier-feature-dot large"></div><span data-i18n="t6l.f5">Complete documentation and compliance reporting package</span></div>
-          <div class="tier-golive">🔴 <span data-i18n="t6l.golive">Full go-live support — dedicated support window agreed per project</span></div>
-          <a href="#contact-form" class="tier-cta" data-i18n="tier.cta">Get a free consultation →</a>
-        </div>
-      </div>
+  </div>
+
+  <!-- Domain row -->
+  <div style="margin-top:2.5rem;text-align:center;">
+    <div style="font-size:12px;font-weight:600;color:var(--gray-400);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:1rem;" data-i18n="services.domains_label">What we work on</div>
+    <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:0.75rem;">
+      <span style="background:#EAF4FB;color:#1B2A4A;font-size:13px;font-weight:500;padding:6px 16px;border-radius:20px;border:0.5px solid #c8dff0;">🔄 Mainframe Modernization</span>
+      <span style="background:#EAF4FB;color:#1B2A4A;font-size:13px;font-weight:500;padding:6px 16px;border-radius:20px;border:0.5px solid #c8dff0;">🏦 Payments & Fintech</span>
+      <span style="background:#EAF4FB;color:#1B2A4A;font-size:13px;font-weight:500;padding:6px 16px;border-radius:20px;border:0.5px solid #c8dff0;">☁️ Cloud (AWS)</span>
+      <span style="background:#EAF4FB;color:#1B2A4A;font-size:13px;font-weight:500;padding:6px 16px;border-radius:20px;border:0.5px solid #c8dff0;">🤖 AI Integration</span>
+      <span style="background:#EAF4FB;color:#1B2A4A;font-size:13px;font-weight:500;padding:6px 16px;border-radius:20px;border:0.5px solid #c8dff0;">📋 Compliance Advisory</span>
     </div>
   </div>
-</section>
 
+</section>
 <div class="divider"></div>
 
-<!-- PRICING & PROJECT BRIEF — v2.2 -->
+<!-- PRICING & PROJECT BRIEF — v3.0 -->
+
 <section id="pricing-calculator" style="padding:5rem 0 4rem;background:#FAFAF8;">
 <div style="max-width:1100px;margin:0 auto;padding:0 3rem;">
 
   <!-- ── Header ── -->
   <div style="text-align:center;margin-bottom:3.5rem;">
     <div class="section-tag reveal" data-i18n="rates.tag">Transparent Pricing</div>
-    <h2 class="section-title reveal reveal-delay-1" data-i18n="rates.title">Fair rates. No surprises.</h2>
-    <p class="section-sub reveal reveal-delay-2" style="margin:0 auto;" data-i18n="rates.sub">We charge significantly less than large consulting firms — without sacrificing 20+ years of hands-on expertise. Every engagement starts with a free discovery call.</p>
+    <h2 class="section-title reveal reveal-delay-1" data-i18n="rates.title">Senior expertise. Boutique pricing.</h2>
+    <p class="section-sub reveal reveal-delay-2" style="margin:0 auto;" data-i18n="rates.sub">We charge significantly less than large consulting firms — without the junior staff, the overhead, or the disappearing act after go-live. Every engagement starts with a free discovery call.</p>
   </div>
 
-  <!-- ── BLOCK 1: Rate Card ── -->
+  <!-- ── BLOCK 1: Value Positioning ── -->
   <div class="reveal" style="background:white;border:0.5px solid var(--gray-100);border-radius:16px;overflow:hidden;margin-bottom:1.5rem;box-shadow:0 2px 16px rgba(0,0,0,0.04);">
-
-    <!-- Rate card header -->
-    <div style="background:var(--teal-800);padding:1.25rem 2rem;display:grid;grid-template-columns:2fr 1.1fr 1.1fr 1.5fr;gap:1rem;align-items:center;">
-      <div style="font-family:'Playfair Display',serif;font-size:15px;font-weight:500;color:white;" data-i18n="rates.col.service">Service</div>
-      <div style="font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:1.5px;color:var(--teal-100);text-align:center;" data-i18n="rates.col.big4">Big 4 / Large Firms</div>
-      <div style="font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:1.5px;color:#6ee7b7;text-align:center;" data-i18n="rates.col.meliora">Meliora Labs</div>
-      <div style="font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:1.5px;color:var(--teal-100);text-align:center;" data-i18n="rates.col.why">Why we can do it</div>
+    <div style="background:var(--teal-800);padding:1.5rem 2rem;">
+      <div style="font-family:'Playfair Display',serif;font-size:17px;font-weight:500;color:white;" data-i18n="rates.value.title">Why Meliora Labs costs less — and delivers more</div>
+      <div style="font-size:13px;color:var(--teal-100);margin-top:0.35rem;font-weight:300;" data-i18n="rates.value.sub">Big 4 firms charge for partner overhead, bench time, and account management. You pay for none of that here.</div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:0;border-top:0.5px solid var(--gray-100);">
+      <div style="padding:1.5rem;border-right:0.5px solid var(--gray-100);">
+        <div style="font-size:1.6rem;margin-bottom:0.5rem;">🎯</div>
+        <div style="font-size:14px;font-weight:600;color:var(--gray-900);margin-bottom:0.35rem;" data-i18n="rates.v1.title">You work with the senior engineer</div>
+        <div style="font-size:13px;color:var(--gray-400);font-weight:300;" data-i18n="rates.v1.desc">Not a project manager who relays messages to a junior team. The person who scopes your project is the person who delivers it.</div>
+      </div>
+      <div style="padding:1.5rem;border-right:0.5px solid var(--gray-100);">
+        <div style="font-size:1.6rem;margin-bottom:0.5rem;">⚡</div>
+        <div style="font-size:14px;font-weight:600;color:var(--gray-900);margin-bottom:0.35rem;" data-i18n="rates.v2.title">No bench time in your invoice</div>
+        <div style="font-size:13px;color:var(--gray-400);font-weight:300;" data-i18n="rates.v2.desc">Large firms pad engagements with analysts learning on your budget. Every hour billed is a productive hour from someone who already knows the system.</div>
+      </div>
+      <div style="padding:1.5rem;border-right:0.5px solid var(--gray-100);">
+        <div style="font-size:1.6rem;margin-bottom:0.5rem;">📋</div>
+        <div style="font-size:14px;font-weight:600;color:var(--gray-900);margin-bottom:0.35rem;" data-i18n="rates.v3.title">Fixed scope — no surprises</div>
+        <div style="font-size:13px;color:var(--gray-400);font-weight:300;" data-i18n="rates.v3.desc">Every engagement is scoped in writing before we start. What's included, what's not, the timeline, and what happens if something breaks.</div>
+      </div>
+      <div style="padding:1.5rem;">
+        <div style="font-size:1.6rem;margin-bottom:0.5rem;">🤝</div>
+        <div style="font-size:14px;font-weight:600;color:var(--gray-900);margin-bottom:0.35rem;" data-i18n="rates.v4.title">We don't disappear at go-live</div>
+        <div style="font-size:13px;color:var(--gray-400);font-weight:300;" data-i18n="rates.v4.desc">30-day stabilization included on every Execute engagement. Issues after cutover are our problem too — not a new statement of work.</div>
+      </div>
     </div>
 
-    <!-- Row: Mainframe -->
-    <div style="display:grid;grid-template-columns:2fr 1.1fr 1.1fr 1.5fr;gap:1rem;padding:1.25rem 2rem;border-bottom:0.5px solid var(--gray-100);align-items:center;" class="rate-row">
-      <div>
-        <div style="font-size:14px;font-weight:500;color:var(--gray-900);margin-bottom:3px;" data-i18n="rates.r1.name">🔄 Mainframe Modernization</div>
-        <div style="font-size:12px;color:var(--gray-400);font-weight:300;" data-i18n="rates.r1.desc">z/OS migration, COBOL refactor, cloud lift</div>
-      </div>
-      <div style="text-align:center;">
-        <span style="font-size:13px;color:var(--gray-400);text-decoration:line-through;">$250–$400/hr</span>
-      </div>
-      <div style="text-align:center;">
-        <span style="display:inline-block;background:var(--teal-50);color:var(--teal-600);font-size:14px;font-weight:500;padding:4px 12px;border-radius:20px;border:0.5px solid var(--teal-100);">$145/hr</span>
-      </div>
-      <div style="font-size:12px;color:var(--gray-400);font-weight:300;" data-i18n="rates.r1.why">Boutique firm — no partner overhead, 100+ migrations delivered</div>
-    </div>
-
-    <!-- Row: Payments -->
-    <div style="display:grid;grid-template-columns:2fr 1.1fr 1.1fr 1.5fr;gap:1rem;padding:1.25rem 2rem;border-bottom:0.5px solid var(--gray-100);align-items:center;background:var(--gray-50);">
-      <div>
-        <div style="font-size:14px;font-weight:500;color:var(--gray-900);margin-bottom:3px;" data-i18n="rates.r2.name">🏦 Payments & Fintech</div>
-        <div style="font-size:12px;color:var(--gray-400);font-weight:300;" data-i18n="rates.r2.desc">ACH, RTP, SWIFT, OFAC, AML compliance</div>
-      </div>
-      <div style="text-align:center;">
-        <span style="font-size:13px;color:var(--gray-400);text-decoration:line-through;">$200–$350/hr</span>
-      </div>
-      <div style="text-align:center;">
-        <span style="display:inline-block;background:var(--teal-50);color:var(--teal-600);font-size:14px;font-weight:500;padding:4px 12px;border-radius:20px;border:0.5px solid var(--teal-100);">$125/hr</span>
-      </div>
-      <div style="font-size:12px;color:var(--gray-400);font-weight:300;" data-i18n="rates.r2.why">Specialist, not generalist — $50B+ in payment platforms delivered</div>
-    </div>
-
-    <!-- Row: Cybersecurity -->
-    <div style="display:grid;grid-template-columns:2fr 1.1fr 1.1fr 1.5fr;gap:1rem;padding:1.25rem 2rem;border-bottom:0.5px solid var(--gray-100);align-items:center;">
-      <div>
-        <div style="font-size:14px;font-weight:500;color:var(--gray-900);margin-bottom:3px;" data-i18n="rates.r3.name">🔒 Cybersecurity Audit</div>
-        <div style="font-size:12px;color:var(--gray-400);font-weight:300;" data-i18n="rates.r3.desc">Security assessment, PCI-DSS, SOX compliance</div>
-      </div>
-      <div style="text-align:center;">
-        <span style="font-size:13px;color:var(--gray-400);text-decoration:line-through;">$300–$500/hr</span>
-      </div>
-      <div style="text-align:center;">
-        <span style="display:inline-block;background:var(--teal-50);color:var(--teal-600);font-size:14px;font-weight:500;padding:4px 12px;border-radius:20px;border:0.5px solid var(--teal-100);">$155/hr</span>
-      </div>
-      <div style="font-size:12px;color:var(--gray-400);font-weight:300;" data-i18n="rates.r3.why">Banking-grade experience, lean team — you pay for expertise, not headcount</div>
-    </div>
-
-    <!-- Row: Fintech Integration -->
-    <div style="display:grid;grid-template-columns:2fr 1.1fr 1.1fr 1.5fr;gap:1rem;padding:1.25rem 2rem;border-bottom:0.5px solid var(--gray-100);align-items:center;background:var(--gray-50);">
-      <div>
-        <div style="font-size:14px;font-weight:500;color:var(--gray-900);margin-bottom:3px;" data-i18n="rates.r4.name">⚡ Fintech Integration</div>
-        <div style="font-size:12px;color:var(--gray-400);font-weight:300;" data-i18n="rates.r4.desc">API design, third-party integrations, cloud-native</div>
-      </div>
-      <div style="text-align:center;">
-        <span style="font-size:13px;color:var(--gray-400);text-decoration:line-through;">$175–$300/hr</span>
-      </div>
-      <div style="text-align:center;">
-        <span style="display:inline-block;background:var(--teal-50);color:var(--teal-600);font-size:14px;font-weight:500;padding:4px 12px;border-radius:20px;border:0.5px solid var(--teal-100);">$115/hr</span>
-      </div>
-      <div style="font-size:12px;color:var(--gray-400);font-weight:300;" data-i18n="rates.r4.why">Deep API & cloud experience across US, Mexico, Spain markets</div>
-    </div>
-
-    <!-- Row: Legacy Migration -->
-    <div style="display:grid;grid-template-columns:2fr 1.1fr 1.1fr 1.5fr;gap:1rem;padding:1.25rem 2rem;border-bottom:0.5px solid var(--gray-100);align-items:center;">
-      <div>
-        <div style="font-size:14px;font-weight:500;color:var(--gray-900);margin-bottom:3px;" data-i18n="rates.r5.name">🔁 Legacy Migration</div>
-        <div style="font-size:12px;color:var(--gray-400);font-weight:300;" data-i18n="rates.r5.desc">On-prem to cloud, data migration, zero-downtime cutover</div>
-      </div>
-      <div style="text-align:center;">
-        <span style="font-size:13px;color:var(--gray-400);text-decoration:line-through;">$200–$350/hr</span>
-      </div>
-      <div style="text-align:center;">
-        <span style="display:inline-block;background:var(--teal-50);color:var(--teal-600);font-size:14px;font-weight:500;padding:4px 12px;border-radius:20px;border:0.5px solid var(--teal-100);">$135/hr</span>
-      </div>
-      <div style="font-size:12px;color:var(--gray-400);font-weight:300;" data-i18n="rates.r5.why">14 years zero rollback record — we've done it at scale</div>
-    </div>
-
-    <!-- Row: IT Consulting -->
-    <div style="display:grid;grid-template-columns:2fr 1.1fr 1.1fr 1.5fr;gap:1rem;padding:1.25rem 2rem;align-items:center;background:var(--gray-50);">
-      <div>
-        <div style="font-size:14px;font-weight:500;color:var(--gray-900);margin-bottom:3px;" data-i18n="rates.r6.name">🤖 AI-Powered IT Consulting</div>
-        <div style="font-size:12px;color:var(--gray-400);font-weight:300;" data-i18n="rates.r6.desc">Strategy, delivery governance, AI tooling</div>
-      </div>
-      <div style="text-align:center;">
-        <span style="font-size:13px;color:var(--gray-400);text-decoration:line-through;">$150–$250/hr</span>
-      </div>
-      <div style="text-align:center;">
-        <span style="display:inline-block;background:var(--teal-50);color:var(--teal-600);font-size:14px;font-weight:500;padding:4px 12px;border-radius:20px;border:0.5px solid var(--teal-100);">$95/hr</span>
-      </div>
-      <div style="font-size:12px;color:var(--gray-400);font-weight:300;" data-i18n="rates.r6.why">Independent firm — lower overhead means better rates for you</div>
-    </div>
-
-    <!-- Rate card footer note -->
     <div style="padding:1rem 2rem;background:var(--teal-50);border-top:0.5px solid var(--teal-100);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;">
-      <p style="font-size:12px;color:var(--teal-600);margin:0;font-weight:300;" data-i18n="rates.note">* All rates in USD. Project minimums apply. Mexico engagements billed in USD — no currency risk for either party. Free discovery call always included.</p>
+      <p style="font-size:12px;color:var(--teal-600);margin:0;font-weight:300;" data-i18n="rates.note">* All rates in USD. Engagements scoped and priced after discovery call — contact us to discuss your project. Mexico engagements billed in USD. Free discovery call always included.</p>
       <a href="#project-brief" class="btn-primary" style="font-size:13px;padding:9px 20px;" data-i18n="rates.cta">Tell us about your project →</a>
     </div>
   </div>
@@ -1436,11 +1154,11 @@
     <div class="service-card reveal reveal-delay-3" style="position:relative;overflow:hidden;border-style:dashed;">
       <div style="position:absolute;top:0;left:0;right:0;height:4px;background:var(--gray-100);border-radius:0;"></div>
       <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.75rem;">
-        <span style="background:var(--gray-50);color:var(--gray-400);font-size:11px;font-weight:500;padding:3px 10px;border-radius:20px;border:0.5px solid var(--gray-100);" data-i18n="cases.c3.industry">🔒 Enterprise · Mexico</span>
+        <span style="background:var(--gray-50);color:var(--gray-400);font-size:11px;font-weight:500;padding:3px 10px;border-radius:20px;border:0.5px solid var(--gray-100);" data-i18n="cases.c3.industry">🏦 Fintech · Mexico</span>
         <span style="font-size:12px;color:var(--gray-400);" data-i18n="cases.c3.year">2025</span>
       </div>
-      <div class="service-title" style="margin-bottom:0.5rem;color:var(--gray-400);" data-i18n="cases.c3.title">Cybersecurity Transformation</div>
-      <p class="service-desc" style="margin-bottom:1.25rem;" data-i18n="cases.c3.desc">End-to-end security redesign for a Mexican enterprise — zero-trust architecture, PCI-DSS certification, and a full SOX compliance framework. Case study in progress.</p>
+      <div class="service-title" style="margin-bottom:0.5rem;color:var(--gray-400);" data-i18n="cases.c3.title">Payments & Compliance Platform</div>
+      <p class="service-desc" style="margin-bottom:1.25rem;" data-i18n="cases.c3.desc">ACH and RTP payment platform for a Mexican fintech — OFAC screening, AML transaction monitoring, and KYC onboarding workflow. Case study in progress.</p>
       <div style="background:var(--gray-50);border:0.5px solid var(--gray-100);border-radius:8px;padding:1rem;text-align:center;">
         <div style="font-size:13px;color:var(--gray-400);font-weight:300;" data-i18n="cases.c3.coming">📋 Full case study coming soon</div>
       </div>
@@ -1562,13 +1280,13 @@
           <label class="form-label" for="serviceSelect" data-i18n="form.service">Service of Interest</label>
           <select class="form-select" id="serviceSelect" name="service" autocomplete="off">
             <option value="" data-i18n="form.servicePh">Select a service...</option>
-            <option value="delivery" data-i18n="form.svc1">360° Delivery Intelligence</option>
-            <option value="payments" data-i18n="form.svc2">Payments & Fintech Consulting</option>
-            <option value="mainframe" data-i18n="form.svc3">Mainframe Modernization</option>
-            <option value="security" data-i18n="form.svc4">Security by Design</option>
-            <option value="ai-tools" data-i18n="form.svc5">AI-Powered IT Tools</option>
-            <option value="governance" data-i18n="form.svc6">Governance & Compliance</option>
-            <option value="other" data-i18n="form.svc7">Other / Not sure yet</option>
+            <option value="assess" data-i18n="form.svc1">🔍 Assess — Discovery & Complexity Classification</option>
+            <option value="blueprint" data-i18n="form.svc2">🗺️ Blueprint — Architecture & Project Design</option>
+            <option value="execute" data-i18n="form.svc3">⚡ Execute — Full Delivery & Modernization</option>
+            <option value="mainframe" data-i18n="form.svc4">🔄 Mainframe Modernization</option>
+            <option value="payments" data-i18n="form.svc5">🏦 Payments & Fintech (ACH, RTP, OFAC, AML)</option>
+            <option value="compliance" data-i18n="form.svc6">📋 Compliance & Risk Advisory</option>
+            <option value="other" data-i18n="form.svc7">💡 Other / Not sure yet</option>
           </select>
         </div>
         <div class="form-group">
@@ -1987,16 +1705,45 @@ const translations = {
     "sec.disclosure.title":"Responsible Disclosure","sec.disclosure.sub":"Found a security issue? We take all reports seriously. Please contact us directly and we'll respond within 24 hours.","sec.disclosure.btn":"Report a concern →",
     "hero.tag":"AI-Powered IT Solutions",
     "hero.title":'Built by those who <em>lived</em> inside the systems',
-    "hero.sub":"Meliora Labs delivers AI-powered tools and consulting for banks, fintechs, and enterprises — built by engineers with 20+ years inside mission-critical payment platforms and cybersecurity operations.",
+    "hero.sub":"Meliora Labs delivers senior-level IT consulting for banks, fintechs, and payment companies — mainframe modernization, payments platforms, cloud automation, and compliance advisory. Built by engineers with 20+ years inside mission-critical systems.",
     "hero.cta1":"Start a conversation","hero.cta2":"See what we build →",
     "stats.s1":"Payment platforms delivered","stats.s2":"Years in mission-critical systems",
     "stats.s3":"Production rollbacks in 14 years","stats.s4":"Delivery visibility — our core product",
-    "services.tag":"What we do","services.title":"Services built from real-world experience",
-    "services.sub":"We don't consult from the outside. We've built, migrated, and secured the systems most firms only read about.",
+    "services.tag":"What we do","services.title":"How we engage",
+    "services.sub":"Every engagement follows one of three structured phases. You know the scope, the price, and the deliverables before we start — nothing hidden, nothing open-ended.",
+    "services.domains_label":"What we work on",
+    "svc.included_label":"✅ What's included","svc.notincluded_label":"❌ Not included",
+    "svc_assess.title":"Assess","svc_assess.desc":"Discovery, inventory, and complexity classification. We map what you have, classify the risk, and deliver a written modernization plan — before you commit to anything bigger.",
+    "svc_assess.f1":"COBOL/JCL program inventory — every component catalogued",
+    "svc_assess.f2":"Complexity classification (L1–L5) per program",
+    "svc_assess.f3":"Dependency map — CALL chains, VSAM files, DB2 tables",
+    "svc_assess.f4":"Compliance risk register (OFAC, AML, SOX, PCI-DSS)",
+    "svc_assess.f5":"Written modernization recommendation with phased roadmap",
+    "svc_assess.not":"Code refactoring, data migration, or execution work — those are Blueprint and Execute scope.",
+    "svc_assess.quality":"Examination-ready deliverables. Written rollback guarantee on every engagement.",
+    "svc_blueprint.title":"Blueprint","svc_blueprint.desc":"Architecture design, target platform selection, data model, and full project specification. Everything your team needs to execute — or everything Meliora Labs needs to begin.",
+    "svc_blueprint.f1":"Everything in Assess — full inventory and risk classification",
+    "svc_blueprint.f2":"Target architecture design — DB2, APIs, MQ, or cloud storage",
+    "svc_blueprint.f3":"Data model and API contract specifications",
+    "svc_blueprint.f4":"AS-IS / TO-BE presentation deck — board-ready",
+    "svc_blueprint.f5":"SOW, compliance design, and security framework",
+    "svc_blueprint.f6":"Phased execution plan with timeline and cost estimate",
+    "svc_blueprint.not":"Code refactoring, data migration, or production cutover — those are Execute scope.",
+    "svc_blueprint.quality":"Examination-ready deliverables. Written rollback guarantee on every engagement.",
+    "svc_execute.title":"Execute","svc_execute.price_badge":"Scoped per project",
+    "svc_execute.desc":"Full delivery — refactoring, migration, parallel run, compliance gates, cutover, and 30-day stabilization. Fixed scope, written rollback plan, zero surprises at go-live.",
+    "svc_execute.f1":"Everything in Assess + Blueprint",
+    "svc_execute.f2":"Incremental refactor — Strangler Fig or Big Bang per complexity",
+    "svc_execute.f3":"Parallel run with daily output comparison and discrepancy log",
+    "svc_execute.f4":"Compliance gate sign-offs — OFAC, AML, SOX, PCI-DSS",
+    "svc_execute.f5":"CAB-approved production cutover with tested rollback plan",
+    "svc_execute.f6":"30-day stabilization — all issues fixed at no extra cost",
+    "svc_execute.not":"Ongoing managed service after 30-day stabilization, third-party licenses, infrastructure costs outside agreed scope.",
+    "svc_execute.quality":"Examination-ready deliverables. Written rollback guarantee on every engagement.",
     "svc1.title":"360° Delivery Intelligence","svc1.desc":"AI-powered estimation and risk visibility across your full delivery lifecycle — dependencies, blockers, capacity, and compliance in one view.",
     "svc2.title":"Payments & Fintech Consulting","svc2.desc":"ACH, RTP, Wires, OFAC, AML — hands-on expertise in the formats and regulations that power financial infrastructure.",
     "svc3.title":"Mainframe Modernization","svc3.desc":"z/OS to cloud migration strategy and execution. We wrote the playbook for one of the largest bank migrations in North America — 100+ components, zero incidents on go-live.",
-    "svc4.title":"Security by Design","svc4.desc":"Cybersecurity architecture built in from day one — not bolted on after. Every product we build meets banking-grade security standards.",
+    "svc4.title":"Compliance & Risk Advisory","svc4.desc":"OFAC, AML, SOX, PCI-DSS compliance advisory built into every engagement — from discovery through go-live. Governance frameworks reviewed by Federal Reserve examiners.",
     "svc5.title":"AI-Powered IT Tools","svc5.desc":"Custom AI applications for delivery governance, compliance reporting, and operational intelligence — built with Claude AI and deployed on AWS.",
     "svc6.title":"Governance & Compliance","svc6.desc":"Delivery frameworks that survive regulatory scrutiny. Our governance structures have been reviewed by Federal Reserve examiners.",
     "about.tag":"Why Meliora Labs","about.title":"The difference is who built it",
@@ -2021,9 +1768,9 @@ const translations = {
     "form.name":"Full Name","form.namePh":"John Smith",
     "form.email":"Email Address","form.emailPh":"john@company.com",
     "form.service":"Service of Interest","form.servicePh":"Select a service...",
-    "form.svc1":"360° Delivery Intelligence","form.svc2":"Payments & Fintech Consulting",
-    "form.svc3":"Mainframe Modernization","form.svc4":"Security by Design",
-    "form.svc5":"AI-Powered IT Tools","form.svc6":"Governance & Compliance","form.svc7":"Other / Not sure yet",
+    "form.svc1":"🔍 Assess — Discovery & Complexity Classification","form.svc2":"🗺️ Blueprint — Architecture & Project Design",
+    "form.svc3":"⚡ Execute — Full Delivery & Modernization","form.svc4":"🔄 Mainframe Modernization",
+    "form.svc5":"🏦 Payments & Fintech (ACH, RTP, OFAC, AML)","form.svc6":"📋 Compliance & Risk Advisory","form.svc7":"💡 Other / Not sure yet",
     "form.message":"Message","form.messagePh":"Tell us about your project or question...",
     "form.submit":"Send Message →","form.success":"✅ Message sent! We'll be in touch within 24 hours.",
     "cta.title":"Ready to see what's possible?",
@@ -2032,16 +1779,15 @@ const translations = {
     "footer.tagline":"Semper melius — always striving for better","footer.copy":"© 2026 Meliora Labs. All rights reserved.",
     "chat.status":"AI Assistant • Online","chat.placeholder":"Ask me anything…","chat.powered":"Powered by Meliora Labs AI",
     "chip1":"Our services","chip2":"What's included?","chip3":"Go-live support","chip4":"What documents?","chip5":"Get a quote","chip6":"Small companies?",
-    "rates.tag":"Transparent Pricing","rates.title":"Fair rates. No surprises.",
-    "rates.sub":"We charge significantly less than large consulting firms — without sacrificing 20+ years of hands-on expertise. Every engagement starts with a free discovery call.",
-    "rates.col.service":"Service","rates.col.big4":"Big 4 / Large Firms","rates.col.meliora":"Meliora Labs","rates.col.why":"Why we can do it",
-    "rates.r1.name":"🔄 Mainframe Modernization","rates.r1.desc":"z/OS migration, COBOL refactor, cloud lift","rates.r1.why":"Boutique firm — no partner overhead, 100+ migrations delivered",
-    "rates.r2.name":"🏦 Payments & Fintech","rates.r2.desc":"ACH, RTP, SWIFT, OFAC, AML compliance","rates.r2.why":"Specialist, not generalist — $50B+ in payment platforms delivered",
-    "rates.r3.name":"🔒 Cybersecurity Audit","rates.r3.desc":"Security assessment, PCI-DSS, SOX compliance","rates.r3.why":"Banking-grade experience, lean team — you pay for expertise, not headcount",
-    "rates.r4.name":"⚡ Fintech Integration","rates.r4.desc":"API design, third-party integrations, cloud-native","rates.r4.why":"Deep API and cloud experience across US, Mexico, Spain markets",
-    "rates.r5.name":"🔁 Legacy Migration","rates.r5.desc":"On-prem to cloud, data migration, zero-downtime cutover","rates.r5.why":"14 years zero rollback record — done at scale",
-    "rates.r6.name":"🤖 AI-Powered IT Consulting","rates.r6.desc":"Strategy, delivery governance, AI tooling","rates.r6.why":"Independent firm — lower overhead means better rates for you",
-    "rates.note":"* All rates in USD. Project minimums apply. Mexico engagements billed in USD — no currency risk for either party. Free discovery call always included.",
+    "rates.tag":"Transparent Pricing","rates.title":"Senior expertise. Boutique pricing.",
+    "rates.sub":"We charge significantly less than large consulting firms — without the junior staff, the overhead, or the disappearing act after go-live. Every engagement starts with a free discovery call.",
+    "rates.value.title":"Why Meliora Labs costs less — and delivers more",
+    "rates.value.sub":"Big 4 firms charge for partner overhead, bench time, and account management. You pay for none of that here.",
+    "rates.v1.title":"You work with the senior engineer","rates.v1.desc":"Not a project manager who relays messages to a junior team. The person who scopes your project is the person who delivers it.",
+    "rates.v2.title":"No bench time in your invoice","rates.v2.desc":"Large firms pad engagements with analysts learning on your budget. Every hour billed is a productive hour from someone who already knows the system.",
+    "rates.v3.title":"Fixed scope — no surprises","rates.v3.desc":"Every engagement is scoped in writing before we start. What's included, what's not, the timeline, and what happens if something breaks.",
+    "rates.v4.title":"We don't disappear at go-live","rates.v4.desc":"30-day stabilization included on every Execute engagement. Issues after cutover are our problem too — not a new statement of work.",
+    "rates.note":"* All rates in USD. Engagements scoped and priced after discovery call — contact us to discuss your project. Mexico engagements billed in USD. Free discovery call always included.",
     "rates.cta":"Tell us about your project →",
     "aws.tag":"No infrastructure needed","aws.title":"We bring the infrastructure. You pay only for what you use.",
     "aws.sub":"No servers to buy. No data center to maintain. No separate IT infrastructure team to hire. We build everything on AWS — and pass the savings to you.",
@@ -2277,7 +2023,7 @@ const translations = {
     "svc1.title":"Inteligencia de Entrega 360°","svc1.desc":"Estimación e inteligencia de riesgo con IA en todo el ciclo de entrega — dependencias, bloqueos, capacidad y cumplimiento en una sola vista.",
     "svc2.title":"Consultoría en Pagos y Fintech","svc2.desc":"ACH, RTP, Transferencias, OFAC, AML — experiencia práctica en los formatos y regulaciones que impulsan la infraestructura financiera.",
     "svc3.title":"Modernización de Mainframe","svc3.desc":"Estrategia y ejecución de migración de z/OS a la nube. Escribimos el manual para una de las migraciones bancarias más grandes en Norteamérica — más de 100 componentes, cero incidentes en el lanzamiento.",
-    "svc4.title":"Seguridad por Diseño","svc4.desc":"Arquitectura de ciberseguridad integrada desde el inicio — no añadida después. Cada producto que construimos cumple estándares bancarios.",
+    "svc4.title":"Asesoría de Cumplimiento y Riesgo","svc4.desc":"Asesoría OFAC, AML, SOX, PCI-DSS integrada en cada compromiso — desde el descubrimiento hasta el go-live. Marcos de gobernanza revisados por examinadores de la Reserva Federal.",
     "svc5.title":"Herramientas de TI con IA","svc5.desc":"Aplicaciones de IA personalizadas para gobernanza de entrega, informes de cumplimiento e inteligencia operativa — construidas con Claude AI en AWS.",
     "svc6.title":"Gobernanza y Cumplimiento","svc6.desc":"Marcos de entrega que superan el escrutinio regulatorio. Nuestras estructuras han sido revisadas por examinadores de la Reserva Federal.",
     "about.tag":"Por qué Meliora Labs","about.title":"La diferencia está en quién lo construyó",
@@ -2302,9 +2048,9 @@ const translations = {
     "form.name":"Nombre Completo","form.namePh":"Juan García",
     "form.email":"Correo Electrónico","form.emailPh":"juan@empresa.com",
     "form.service":"Servicio de Interés","form.servicePh":"Selecciona un servicio...",
-    "form.svc1":"Inteligencia de Entrega 360°","form.svc2":"Consultoría en Pagos y Fintech",
-    "form.svc3":"Modernización de Mainframe","form.svc4":"Seguridad por Diseño",
-    "form.svc5":"Herramientas de TI con IA","form.svc6":"Gobernanza y Cumplimiento","form.svc7":"Otro / No estoy seguro aún",
+    "form.svc1":"🔍 Diagnóstico — Descubrimiento y Clasificación","form.svc2":"🗺️ Plano — Arquitectura y Diseño",
+    "form.svc3":"⚡ Ejecución — Entrega Completa","form.svc4":"🔄 Modernización de Mainframe",
+    "form.svc5":"🏦 Pagos y Fintech (ACH, RTP, OFAC, AML)","form.svc6":"📋 Asesoría de Cumplimiento y Riesgo","form.svc7":"💡 Otro / No estoy seguro aún",
     "form.message":"Mensaje","form.messagePh":"Cuéntanos sobre tu proyecto o pregunta...",
     "form.submit":"Enviar Mensaje →","form.success":"✅ ¡Mensaje enviado! Te contactaremos en menos de 24 horas.",
     "cta.title":"¿Listo para ver lo que es posible?",
@@ -2313,16 +2059,15 @@ const translations = {
     "footer.tagline":"Semper melius — siempre mejorando","footer.copy":"© 2026 Meliora Labs. Todos los derechos reservados.",
     "chat.status":"Asistente IA • En línea","chat.placeholder":"Pregúntame lo que quieras…","chat.powered":"Desarrollado por Meliora Labs IA",
     "chip1":"Nuestros servicios","chip2":"¿Qué incluye?","chip3":"Soporte go-live","chip4":"¿Qué documentos?","chip5":"Cotización","chip6":"¿Empresas pequeñas?",
-    "rates.tag":"Precios Transparentes","rates.title":"Tarifas justas. Sin sorpresas.",
-    "rates.sub":"Cobramos significativamente menos que las grandes consultoras — sin sacrificar 20+ años de experiencia práctica. Cada compromiso comienza con una llamada de descubrimiento gratuita.",
-    "rates.col.service":"Servicio","rates.col.big4":"Big 4 / Grandes Firmas","rates.col.meliora":"Meliora Labs","rates.col.why":"Por qué podemos hacerlo",
-    "rates.r1.name":"🔄 Modernización Mainframe","rates.r1.desc":"Migración z/OS, refactoring COBOL, lift to cloud","rates.r1.why":"Firma boutique — sin overhead, 100+ migraciones entregadas",
-    "rates.r2.name":"🏦 Pagos & Fintech","rates.r2.desc":"ACH, RTP, SWIFT, cumplimiento OFAC, AML","rates.r2.why":"Especialistas, no generalistas — +$50B en plataformas de pago",
-    "rates.r3.name":"🔒 Auditoría de Ciberseguridad","rates.r3.desc":"Evaluación de seguridad, PCI-DSS, cumplimiento SOX","rates.r3.why":"Experiencia bancaria — pagas por experiencia, no por headcount",
-    "rates.r4.name":"⚡ Integración Fintech","rates.r4.desc":"Diseño de APIs, integraciones third-party, cloud-native","rates.r4.why":"Experiencia profunda en API y cloud en US, México y España",
-    "rates.r5.name":"🔁 Migración Legacy","rates.r5.desc":"On-prem a cloud, migración de datos, cutover sin downtime","rates.r5.why":"14 años sin rollbacks — lo hemos hecho a escala real",
-    "rates.r6.name":"🤖 Consultoría IT con IA","rates.r6.desc":"Estrategia, gobernanza de entrega, herramientas IA","rates.r6.why":"Firma independiente — menos overhead significa mejores tarifas",
-    "rates.note":"* Todas las tarifas en USD. Se aplican mínimos por proyecto. Los compromisos en México se facturan en USD — sin riesgo cambiario para ninguna de las partes. Llamada de descubrimiento siempre gratuita.",
+    "rates.tag":"Precios Transparentes","rates.title":"Experiencia senior. Precios boutique.",
+    "rates.sub":"Cobramos significativamente menos que las grandes consultoras — sin el personal junior, el overhead ni el abandono después del go-live. Cada compromiso comienza con una llamada de descubrimiento gratuita.",
+    "rates.value.title":"Por qué Meliora Labs cuesta menos — y entrega más",
+    "rates.value.sub":"Las grandes firmas cobran por overhead de socios, tiempo en banco y gestión de cuentas. Aquí no pagas nada de eso.",
+    "rates.v1.title":"Trabajas con el ingeniero senior","rates.v1.desc":"No con un gerente de proyecto que transmite mensajes a un equipo junior. La persona que define tu proyecto es la que lo entrega.",
+    "rates.v2.title":"Sin tiempo en banco en tu factura","rates.v2.desc":"Las grandes firmas rellenan proyectos con analistas que aprenden a tu costa. Cada hora facturada es productiva, de alguien que ya conoce el sistema.",
+    "rates.v3.title":"Alcance fijo — sin sorpresas","rates.v3.desc":"Cada compromiso está definido por escrito antes de comenzar. Qué incluye, qué no, el cronograma y qué pasa si algo falla.",
+    "rates.v4.title":"No desaparecemos en el go-live","rates.v4.desc":"30 días de estabilización incluidos en cada Ejecución. Los problemas después del cutover también son nuestros — no un nuevo SOW.",
+    "rates.note":"* Todas las tarifas en USD. Compromisos cotizados después de la llamada de descubrimiento — contáctanos para hablar de tu proyecto. Los compromisos en México se facturan en USD. Llamada de descubrimiento siempre gratuita.",
     "rates.cta":"Cuéntanos sobre tu proyecto →",
     "aws.tag":"Sin infraestructura propia","aws.title":"Nosotros traemos la infraestructura. Tú pagas solo por lo que usas.",
     "aws.sub":"Sin servidores que comprar. Sin centro de datos que mantener. Sin equipo adicional. Construimos todo en AWS — y te pasamos los ahorros.",
@@ -2391,8 +2136,8 @@ const translations = {
     "cases.c2.industry":"💳 Fintech · EE.UU.","cases.c2.title":"Plataforma de Pagos y Onboarding",
     "cases.c2.desc":"Plataforma de pagos y onboarding de clientes de extremo a extremo en AWS — ACH, RTP, verificación KYC y cumplimiento AML integrados. Liderado como Product Owner y responsable técnico, entregado bajo presupuesto.",
     "cases.c2.s1":"procesados","cases.c2.s2":"rollbacks","cases.c2.s3":"marcos de cumplimiento",
-    "cases.c3.industry":"🔒 Empresa · México","cases.c3.title":"Transformación de Ciberseguridad","cases.c3.year":"2025",
-    "cases.c3.desc":"Rediseño de seguridad de extremo a extremo — arquitectura zero-trust, certificación PCI-DSS y marco SOX. Caso de estudio en progreso.",
+    "cases.c3.industry":"🏦 Fintech · México","cases.c3.title":"Plataforma de Pagos y Cumplimiento","cases.c3.year":"2025",
+    "cases.c3.desc":"Plataforma de pagos ACH y RTP para una fintech mexicana — filtrado OFAC, monitoreo AML de transacciones y flujo de onboarding KYC. Caso de estudio en progreso.",
     "cases.c3.coming":"📋 Caso de estudio completo próximamente"
   }
 };
@@ -2439,7 +2184,7 @@ function setLang(lang) {
 const botResponses = {
   en: {
     greeting: "Hello! 👋 Welcome to Meliora Labs! I'm here to help you learn about our services and how we can help your business grow with technology. What would you like to know?",
-    services: "We offer 7 core services: ⚡ 360° Delivery Intelligence, 🏦 Payments & Fintech, 🔄 Mainframe Modernization, 🔒 Security by Design, 🤖 AI-Powered IT Tools, 📋 Governance & Compliance, and 🗺️ Technical Design (AS-IS/TO-BE). <a href='javascript:navScrollTo(\"services\")' style='color:var(--teal-400);font-weight:500;'>👇 See all services below →</a>",
+    services: "We engage in three phases: 🔍 Assess, 🗺️ Blueprint, ⚡ Execute — across Mainframe Modernization, Payments & Fintech, Cloud, AI Integration, and Compliance Advisory. <a href='javascript:navScrollTo(\"services\")' style='color:var(--teal-400);font-weight:500;'>👇 See all engagement details →</a>",
     payments: "Our payments expertise covers ACH, RTP, Wires, OFAC screening, AML compliance, KYC, and client onboarding. We've built and managed $50B+ in payment platforms across North America — hands-on, not theoretical. <a href='javascript:navScrollTo(\"services\")' style='color:var(--teal-400);font-weight:500;'>👇 See Payments service details below →</a>",
     mainframe: "We've led one of the largest z/OS to cloud migrations in North America. Every mainframe project is unique — this one deserves a real conversation. <a href='javascript:navScrollTo(\"contact-form\")' style='color:var(--teal-400);font-weight:500;'>☕ Schedule a conversation →</a>",
     security: "Security is our foundation, not an afterthought. 🔒 Zero-trust architecture, banking-grade standards, NPPI data protection, OFAC, AML, SOX and PCI-DSS compliance. <a href='javascript:navScrollTo(\"security\")' style='color:var(--teal-400);font-weight:500;'>👇 See our full Security section below →</a>",
@@ -2498,7 +2243,7 @@ function getBotReply(text) {
   if (/small|startup|tiny|little|empresa pequeña|pequeña empresa|any size|cualquier tamaño|my company|mi empresa/.test(t)) return r.smallcompany;
   if (/how long|timeline|duration|time|start|begin|cuánto tiempo|cuando empez|cuándo|plazo|semana|week|month/.test(t)) return r.timeline;
   if (/remote|location|where|located|office|virtual|remoto|dónde|donde|ubicación/.test(t)) return r.remote;
-  if (/service|what do|what you|build|offer|servicio|qué hace|qué ofre/.test(t)) return r.services;
+  if (/service|what do|what you|build|offer|engage|phase|assess|blueprint|execute|servicio|qué hace|qué ofre|fase|diagnóstico|plano|ejecución/.test(t)) return r.services;
   if (/payment|pago|ach|rtp|wire|ofac|aml|fintech/.test(t)) return r.payments;
   if (/mainframe|z\/os|cobol|migration|migra/.test(t)) return r.mainframe;
   if (/security|seguridad|cyber|hack|protect|protec/.test(t)) return r.security;
