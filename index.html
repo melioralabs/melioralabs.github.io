@@ -551,7 +551,23 @@
       </div>
     </div>
 
+  
+
+  <!-- CTA strip — bottom of services -->
+  <div style="background:var(--teal-800);border-radius:12px;padding:2rem 2.5rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1.5rem;margin-top:0.5rem;">
+    <div>
+      <div style="font-size:14px;font-weight:500;color:white;margin-bottom:4px;" data-i18n="cases.c3.title">Your project could be next</div>
+      <div style="font-size:13px;color:var(--teal-100);font-weight:300;max-width:480px;line-height:1.6;" data-i18n="cases.c3.desc">We work with banks, fintechs, and payment companies across the US and Mexico. Every engagement starts with a free discovery call — no commitment, no pressure.</div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:8px;min-width:200px;">
+      <div style="font-size:12px;color:var(--teal-100);display:flex;align-items:center;gap:8px;"><span style="color:var(--teal-400);">✓</span><span data-i18n="cases.c3.f1">Free discovery call — no commitment</span></div>
+      <div style="font-size:12px;color:var(--teal-100);display:flex;align-items:center;gap:8px;"><span style="color:var(--teal-400);">✓</span><span data-i18n="cases.c3.f2">Written estimate before any work begins</span></div>
+      <div style="font-size:12px;color:var(--teal-100);display:flex;align-items:center;gap:8px;"><span style="color:var(--teal-400);">✓</span><span data-i18n="cases.c3.f3">Response within 24 hours</span></div>
+    </div>
+    <a href="#project-brief" style="display:inline-block;background:white;color:var(--teal-800);font-size:13px;font-weight:500;padding:10px 24px;border-radius:8px;text-decoration:none;white-space:nowrap;" data-i18n="cases.c3.cta">Start a conversation →</a>
   </div>
+
+</div>
 
 </section>
 
@@ -1177,76 +1193,91 @@
 <!-- CASE STUDIES -->
 <div class="divider"></div>
 <section id="cases" style="padding:5rem 3rem;max-width:1100px;margin:0 auto;">
-  <div class="section-tag reveal" data-i18n="cases.tag">Case Studies</div>
-  <h2 class="section-title reveal reveal-delay-1" data-i18n="cases.title">Work that speaks for itself</h2>
-  <p class="section-sub reveal reveal-delay-2" data-i18n="cases.sub">Real projects. Real outcomes. Details anonymized to protect our clients — because confidentiality is part of the service.</p>
+  <div class="section-tag reveal" data-i18n="cases.tag">What we deliver</div>
+  <h2 class="section-title reveal reveal-delay-1" data-i18n="cases.title">The work we know best</h2>
+  <p class="section-sub reveal reveal-delay-2" data-i18n="cases.sub">Twenty years of hands-on delivery across financial systems, payment platforms, and enterprise infrastructure. These are the domains where we go deepest — and where our clients get the most from us.</p>
 
   <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem;">
 
-    <!-- Case 1 -->
-    <div class="service-card reveal reveal-delay-1" style="position:relative;overflow:hidden;">
-      <div style="position:absolute;top:0;left:0;right:0;height:4px;background:var(--teal-400);border-radius:0;"></div>
-      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.75rem;">
-        <span style="background:var(--teal-50);color:var(--teal-600);font-size:11px;font-weight:500;padding:3px 10px;border-radius:20px;border:0.5px solid var(--teal-100);" data-i18n="cases.c1.industry">🏦 Large Bank · USA</span>
-        <span style="font-size:12px;color:var(--gray-400);">2023</span>
+    <!-- Card 1: Mainframe & Legacy -->
+    <div class="service-card reveal reveal-delay-1" style="position:relative;overflow:hidden;border-top:4px solid #1B2A4A;">
+      <div style="font-size:2rem;margin-bottom:1rem;">🖥️</div>
+      <div class="service-title" style="margin-bottom:0.5rem;" data-i18n="cap.c1.title">Mainframe &amp; Legacy Systems</div>
+      <p class="service-desc" style="margin-bottom:1.25rem;" data-i18n="cap.c1.desc">IBM Z migrations, COBOL modernization, VSAM-to-database conversions, JCL refactoring, and legacy platform documentation. We’ve run these systems from the inside — not as outside advisors, but as the engineers accountable when something broke.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:1.25rem;">
+        <span style="background:#EEF0F5;color:#1B2A4A;font-size:11px;font-weight:500;padding:3px 10px;border-radius:20px;">COBOL / JCL</span>
+        <span style="background:#EEF0F5;color:#1B2A4A;font-size:11px;font-weight:500;padding:3px 10px;border-radius:20px;">VSAM / DB2</span>
+        <span style="background:#EEF0F5;color:#1B2A4A;font-size:11px;font-weight:500;padding:3px 10px;border-radius:20px;">CICS / z/OS</span>
+        <span style="background:#EEF0F5;color:#1B2A4A;font-size:11px;font-weight:500;padding:3px 10px;border-radius:20px;">IBM Z → AWS</span>
       </div>
-      <div class="service-title" style="margin-bottom:0.5rem;" data-i18n="cases.c1.title">Mainframe → Cloud Migration</div>
-      <p class="service-desc" style="margin-bottom:1.25rem;" data-i18n="cases.c1.desc">Meliora Labs delivered a full z/OS to AWS migration for a North American bank — 100+ COBOL components assessed, classified, and migrated. Zero incidents on go-live. Parallel run passed before any cutover was authorized.</p>
       <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.5rem;">
         <div style="text-align:center;background:var(--gray-50);border-radius:8px;padding:0.75rem 0.5rem;">
-          <div style="font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:500;color:var(--teal-400);">100+</div>
-          <div style="font-size:11px;color:var(--gray-400);font-weight:300;" data-i18n="cases.c1.s1">components</div>
+          <div style="font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:500;color:#1B2A4A;">100+</div>
+          <div style="font-size:11px;color:var(--gray-400);font-weight:300;" data-i18n="cap.c1.s1">COBOL programs</div>
         </div>
         <div style="text-align:center;background:var(--gray-50);border-radius:8px;padding:0.75rem 0.5rem;">
-          <div style="font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:500;color:var(--teal-400);">0</div>
-          <div style="font-size:11px;color:var(--gray-400);font-weight:300;" data-i18n="cases.c1.s2">incidents</div>
+          <div style="font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:500;color:#1B2A4A;">0</div>
+          <div style="font-size:11px;color:var(--gray-400);font-weight:300;" data-i18n="cap.c1.s2">go-live incidents</div>
         </div>
         <div style="text-align:center;background:var(--gray-50);border-radius:8px;padding:0.75rem 0.5rem;">
-          <div style="font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:500;color:var(--teal-400);">51%</div>
-          <div style="font-size:11px;color:var(--gray-400);font-weight:300;" data-i18n="cases.c1.s3">cost savings</div>
+          <div style="font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:500;color:#1B2A4A;">20+</div>
+          <div style="font-size:11px;color:var(--gray-400);font-weight:300;" data-i18n="cap.c1.s3">years of depth</div>
         </div>
       </div>
     </div>
 
-    <!-- Case 2 -->
-    <div class="service-card reveal reveal-delay-2" style="position:relative;overflow:hidden;">
-      <div style="position:absolute;top:0;left:0;right:0;height:4px;background:var(--teal-400);border-radius:0;"></div>
-      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.75rem;">
-        <span style="background:var(--teal-50);color:var(--teal-600);font-size:11px;font-weight:500;padding:3px 10px;border-radius:20px;border:0.5px solid var(--teal-100);" data-i18n="cases.c2.industry">💳 Fintech · USA</span>
-        <span style="font-size:12px;color:var(--gray-400);">2024</span>
+    <!-- Card 2: Automation & Data Engineering -->
+    <div class="service-card reveal reveal-delay-2" style="position:relative;overflow:hidden;border-top:4px solid #7C3AED;">
+      <div style="font-size:2rem;margin-bottom:1rem;">⚙️</div>
+      <div class="service-title" style="margin-bottom:0.5rem;" data-i18n="cap.c2.title">Automation &amp; Data Engineering</div>
+      <p class="service-desc" style="margin-bottom:1.25rem;" data-i18n="cap.c2.desc">Manual reporting eliminated. Batch jobs replaced with event-driven pipelines. Spreadsheet-based workflows converted to reliable, auditable systems. We build automation that runs without supervision and data pipelines that your team can trust.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:1.25rem;">
+        <span style="background:#F3F0FE;color:#7C3AED;font-size:11px;font-weight:500;padding:3px 10px;border-radius:20px;">Python</span>
+        <span style="background:#F3F0FE;color:#7C3AED;font-size:11px;font-weight:500;padding:3px 10px;border-radius:20px;">PostgreSQL</span>
+        <span style="background:#F3F0FE;color:#7C3AED;font-size:11px;font-weight:500;padding:3px 10px;border-radius:20px;">ETL pipelines</span>
+        <span style="background:#F3F0FE;color:#7C3AED;font-size:11px;font-weight:500;padding:3px 10px;border-radius:20px;">AI integration</span>
       </div>
-      <div class="service-title" style="margin-bottom:0.5rem;" data-i18n="cases.c2.title">Payments & Onboarding Platform</div>
-      <p class="service-desc" style="margin-bottom:1.25rem;" data-i18n="cases.c2.desc">Meliora Labs delivered an end-to-end payment and onboarding platform on AWS — ACH, RTP, KYC verification, and AML compliance integrated from day one. Delivered on time, within the agreed scope and cost.</p>
       <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.5rem;">
         <div style="text-align:center;background:var(--gray-50);border-radius:8px;padding:0.75rem 0.5rem;">
-          <div style="font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:500;color:var(--teal-400);">ACH+RTP</div>
-          <div style="font-size:11px;color:var(--gray-400);font-weight:300;" data-i18n="cases.c2.s1">rails delivered</div>
+          <div style="font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:500;color:#7C3AED;">0</div>
+          <div style="font-size:11px;color:var(--gray-400);font-weight:300;" data-i18n="cap.c2.s1">manual steps</div>
         </div>
         <div style="text-align:center;background:var(--gray-50);border-radius:8px;padding:0.75rem 0.5rem;">
-          <div style="font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:500;color:var(--teal-400);">0</div>
-          <div style="font-size:11px;color:var(--gray-400);font-weight:300;" data-i18n="cases.c2.s2">rollbacks</div>
+          <div style="font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:500;color:#7C3AED;">24/7</div>
+          <div style="font-size:11px;color:var(--gray-400);font-weight:300;" data-i18n="cap.c2.s2">pipeline uptime</div>
         </div>
         <div style="text-align:center;background:var(--gray-50);border-radius:8px;padding:0.75rem 0.5rem;">
-          <div style="font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:500;color:var(--teal-400);">3</div>
-          <div style="font-size:11px;color:var(--gray-400);font-weight:300;" data-i18n="cases.c2.s3">compliance frameworks</div>
+          <div style="font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:500;color:#7C3AED;">100%</div>
+          <div style="font-size:11px;color:var(--gray-400);font-weight:300;" data-i18n="cap.c2.s3">audit trail</div>
         </div>
       </div>
     </div>
 
-    <!-- Case 3 — CTA card -->
-    <div class="service-card reveal reveal-delay-3" style="position:relative;overflow:hidden;background:var(--teal-800);display:flex;flex-direction:column;justify-content:space-between;">
-      <div style="position:absolute;top:0;left:0;right:0;height:4px;background:var(--teal-400);border-radius:0;"></div>
-      <div>
-        <div style="font-size:2rem;margin-bottom:1.25rem;margin-top:0.25rem;">💬</div>
-        <div class="service-title" style="color:white;margin-bottom:0.75rem;" data-i18n="cases.c3.title">Your project could be next</div>
-        <p class="service-desc" style="color:var(--teal-100);margin-bottom:1.5rem;" data-i18n="cases.c3.desc">We work with banks, fintechs, and payment companies across the US and Mexico. Every engagement starts with a free discovery call — no commitment, no pressure.</p>
-        <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:1.5rem;">
-          <div style="font-size:13px;color:var(--teal-100);display:flex;align-items:center;gap:8px;"><span style="color:var(--teal-400);">✓</span><span data-i18n="cases.c3.f1">Free discovery call — no commitment</span></div>
-          <div style="font-size:13px;color:var(--teal-100);display:flex;align-items:center;gap:8px;"><span style="color:var(--teal-400);">✓</span><span data-i18n="cases.c3.f2">Written estimate before any work begins</span></div>
-          <div style="font-size:13px;color:var(--teal-100);display:flex;align-items:center;gap:8px;"><span style="color:var(--teal-400);">✓</span><span data-i18n="cases.c3.f3">Response within 24 hours</span></div>
+    <!-- Card 3: Cloud & System Integration -->
+    <div class="service-card reveal reveal-delay-3" style="position:relative;overflow:hidden;border-top:4px solid #2E86AB;">
+      <div style="font-size:2rem;margin-bottom:1rem;">☁️</div>
+      <div class="service-title" style="margin-bottom:0.5rem;" data-i18n="cap.c3.title">Cloud &amp; System Integration</div>
+      <p class="service-desc" style="margin-bottom:1.25rem;" data-i18n="cap.c3.desc">AWS deployments, API design, payment rail integration (ACH, RTP), KYC onboarding workflows, and AML compliance systems. We connect the pieces that don’t talk to each other — and make sure they stay connected after we leave.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:1.25rem;">
+        <span style="background:#E8F4FB;color:#2E86AB;font-size:11px;font-weight:500;padding:3px 10px;border-radius:20px;">AWS</span>
+        <span style="background:#E8F4FB;color:#2E86AB;font-size:11px;font-weight:500;padding:3px 10px;border-radius:20px;">ACH / RTP</span>
+        <span style="background:#E8F4FB;color:#2E86AB;font-size:11px;font-weight:500;padding:3px 10px;border-radius:20px;">REST APIs</span>
+        <span style="background:#E8F4FB;color:#2E86AB;font-size:11px;font-weight:500;padding:3px 10px;border-radius:20px;">OFAC / AML / KYC</span>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.5rem;">
+        <div style="text-align:center;background:var(--gray-50);border-radius:8px;padding:0.75rem 0.5rem;">
+          <div style="font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:500;color:#2E86AB;">ACH+RTP</div>
+          <div style="font-size:11px;color:var(--gray-400);font-weight:300;" data-i18n="cap.c3.s1">rails delivered</div>
+        </div>
+        <div style="text-align:center;background:var(--gray-50);border-radius:8px;padding:0.75rem 0.5rem;">
+          <div style="font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:500;color:#2E86AB;">0</div>
+          <div style="font-size:11px;color:var(--gray-400);font-weight:300;" data-i18n="cap.c3.s2">rollbacks</div>
+        </div>
+        <div style="text-align:center;background:var(--gray-50);border-radius:8px;padding:0.75rem 0.5rem;">
+          <div style="font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:500;color:#2E86AB;">3</div>
+          <div style="font-size:11px;color:var(--gray-400);font-weight:300;" data-i18n="cap.c3.s3">compliance frameworks</div>
         </div>
       </div>
-      <a href="#project-brief" style="display:inline-block;background:white;color:var(--teal-800);font-size:13px;font-weight:500;padding:10px 20px;border-radius:8px;text-decoration:none;text-align:center;" data-i18n="cases.c3.cta">Start a conversation →</a>
     </div>
 
   </div>
@@ -2008,8 +2039,17 @@ const translations = {
     "mgd.l3.f4":"Compliance reporting — OFAC, AML, SOX","mgd.l3.f5":"A dedicated engineer who owns it with you","mgd.l3.price":"Custom",
     "mgd.from":"Starting from","mgd.note":"* All plans include monthly reporting, change log, and a dedicated channel. No lock-in — cancel anytime with 30 days notice.",
     "mgd.cta":"Talk to us about managed support →",
-    "cases.tag":"Case Studies","cases.title":"Work that speaks for itself",
-    "cases.sub":"Real projects. Real outcomes. Details anonymized to protect our clients — because confidentiality is part of the service.",
+    "cases.tag":"What we deliver","cases.title":"The work we know best",
+    "cases.sub":"Twenty years of hands-on delivery across financial systems, payment platforms, and enterprise infrastructure. These are the domains where we go deepest — and where our clients get the most from us.",
+    "cap.c1.title":"Mainframe & Legacy Systems",
+    "cap.c1.desc":"IBM Z migrations, COBOL modernization, VSAM-to-database conversions, JCL refactoring, and legacy platform documentation. We've run these systems from the inside — not as outside advisors, but as the engineers accountable when something broke.",
+    "cap.c1.s1":"COBOL programs","cap.c1.s2":"go-live incidents","cap.c1.s3":"years of depth",
+    "cap.c2.title":"Automation & Data Engineering",
+    "cap.c2.desc":"Manual reporting eliminated. Batch jobs replaced with event-driven pipelines. Spreadsheet-based workflows converted to reliable, auditable systems. We build automation that runs without supervision and data pipelines that your team can trust.",
+    "cap.c2.s1":"manual steps","cap.c2.s2":"pipeline uptime","cap.c2.s3":"audit trail",
+    "cap.c3.title":"Cloud & System Integration",
+    "cap.c3.desc":"AWS deployments, API design, payment rail integration (ACH, RTP), KYC onboarding workflows, and AML compliance systems. We connect the pieces that don't talk to each other — and make sure they stay connected after we leave.",
+    "cap.c3.s1":"rails delivered","cap.c3.s2":"rollbacks","cap.c3.s3":"compliance frameworks",
     "cases.c1.industry":"🏦 Large Bank · USA","cases.c1.title":"Mainframe → Cloud Migration",
     "cases.c1.desc":"Full z/OS to AWS migration — 100+ COBOL components, zero incidents on go-live. Parallel run passed before any cutover was authorized.",
     "cases.c1.s1":"COBOL programs","cases.c1.s2":"incidents","cases.c1.s3":"cost savings",
@@ -2314,8 +2354,17 @@ const translations = {
     "mgd.l3.f4":"Reportes de cumplimiento — OFAC, AML, SOX","mgd.l3.f5":"Nunca estás solo — mentalidad PO","mgd.l3.price":"Personalizado",
     "mgd.from":"Desde","mgd.note":"* Todos los planes incluyen reporte mensual, registro de cambios y canal dedicado. Sin contratos — cancela con 30 días de aviso.",
     "mgd.cta":"Háblanos sobre soporte gestionado →",
-    "cases.tag":"Casos de Estudio","cases.title":"Trabajo que habla por sí mismo",
-    "cases.sub":"Proyectos reales. Resultados reales. Detalles anonimizados para proteger a nuestros clientes — porque la confidencialidad es parte del servicio.",
+    "cases.tag":"Lo que entregamos","cases.title":"El trabajo que mejor conocemos",
+    "cases.sub":"Veinte años de entrega práctica en sistemas financieros, plataformas de pagos e infraestructura empresarial. Estos son los dominios donde más profundizamos — y donde nuestros clientes obtienen más de nosotros.",
+    "cap.c1.title":"Mainframe y Sistemas Heredados",
+    "cap.c1.desc":"Migraciones de IBM Z, modernización de COBOL, conversiones VSAM a base de datos, refactorización de JCL y documentación de plataformas heredadas. Hemos operado estos sistemas desde adentro — no como asesores externos, sino como los ingenieros responsables cuando algo fallaba.",
+    "cap.c1.s1":"programas COBOL","cap.c1.s2":"incidentes en go-live","cap.c1.s3":"años de profundidad",
+    "cap.c2.title":"Automatización e Ingeniería de Datos",
+    "cap.c2.desc":"Reportes manuales eliminados. Trabajos por lotes reemplazados con pipelines orientados a eventos. Flujos de trabajo en hojas de cálculo convertidos en sistemas confiables y auditables. Construimos automatización que funciona sin supervisión y pipelines de datos en los que tu equipo puede confiar.",
+    "cap.c2.s1":"pasos manuales","cap.c2.s2":"disponibilidad del pipeline","cap.c2.s3":"trazabilidad completa",
+    "cap.c3.title":"Cloud e Integración de Sistemas",
+    "cap.c3.desc":"Despliegues en AWS, diseño de APIs, integración de rieles de pago (ACH, RTP), flujos de onboarding KYC y sistemas de cumplimiento AML. Conectamos las piezas que no se comunican entre sí — y nos aseguramos de que sigan conectadas después de que nos vayamos.",
+    "cap.c3.s1":"rieles entregados","cap.c3.s2":"rollbacks","cap.c3.s3":"marcos de cumplimiento",
     "cases.c1.industry":"🏦 Banco Grande · USA","cases.c1.title":"Mainframe → Migración a la Nube",
     "cases.c1.desc":"Migración completa de z/OS a AWS — 100+ componentes COBOL, cero incidentes en go-live, récord de cero rollbacks en 14 años.",
     "cases.c1.s1":"programas COBOL","cases.c1.s2":"incidentes","cases.c1.s3":"ahorro en costos",
