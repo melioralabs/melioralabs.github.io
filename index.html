@@ -930,111 +930,57 @@
 
 <!-- SECURITY -->
 <div class="divider"></div>
-<section class="security-section" id="security">
+<section id="security" style="padding:4rem 3rem;max-width:1100px;margin:0 auto;">
+
   <div class="section-tag reveal" data-i18n="sec.tag">Security</div>
-  <h2 class="section-title reveal reveal-delay-1" data-i18n="sec.title">Security is not a feature — it's a foundation</h2>
-  <p class="section-sub reveal reveal-delay-2" data-i18n="sec.sub">Every system we build is designed to withstand regulatory scrutiny, protect client data, and meet banking-grade security standards from day one.</p>
+  <h2 class="section-title reveal reveal-delay-1" data-i18n="sec.title">Security is not a feature — it’s a foundation</h2>
+  <p class="section-sub reveal reveal-delay-2" data-i18n="sec.sub">Every system we build starts with security. Not as a final step — as a design requirement.</p>
 
-  <div class="security-grid">
-    <!-- Security Principles -->
-    <div class="security-card reveal reveal-delay-1">
-      <div class="sec-card-header">
-        <div class="service-icon">🏛️</div>
-        <button class="learn-more-btn sec-learn-btn light-btn" onclick="toggleSec('sec1')" data-i18n="card.learnmore">Learn more +</button>
-      </div>
-      <div class="service-title" data-i18n="sec1.title">Our Security Principles</div>
-      <p class="service-desc" data-i18n="sec1.desc">Security is built into every Meliora Labs engagement from the first line of code — never bolted on after. We apply zero-trust architecture and banking-grade security standards to every project, regardless of size.</p>
-      <div class="sec-expand-panel" id="sec1">
-        <div class="sec-detail"><div class="sec-dot"></div><span data-i18n="sec1.d1">NPPI data protected — no exceptions, no shortcuts</span></div>
-        <div class="sec-detail"><div class="sec-dot"></div><span data-i18n="sec1.d2">All data encrypted at rest and in transit</span></div>
-        <div class="sec-detail"><div class="sec-dot"></div><span data-i18n="sec1.d3">Zero tolerance for security flaws — this is not a checkbox</span></div>
-        <div class="sec-detail"><div class="sec-dot"></div><span data-i18n="sec1.d4">Banking-grade standards applied to every project, every size</span></div>
-        <a href="#contact-form" class="sec-cta-small" data-i18n="sec1.learnlink">How we apply these standards →</a>
-    <div class="security-card reveal reveal-delay-2">
-      <div class="sec-card-header">
-        <div class="service-icon">🔐</div>
-        <button class="learn-more-btn sec-learn-btn light-btn" onclick="toggleSec('sec2')" data-i18n="card.learnmore">Learn more +</button>
-      </div>
-      <div class="service-title" data-i18n="sec2.title">Data Privacy & Confidentiality</div>
-      <p class="service-desc" data-i18n="sec2.desc">Your data stays yours. We never share, sell, or expose client data to third parties. Every engagement is covered by a confidentiality agreement and handled with the discretion of a trusted partner.</p>
-      <div class="sec-expand-panel" id="sec2">
-        <div class="sec-detail"><div class="sec-dot"></div><span data-i18n="sec2.d1">Server security with roles and profiles — AWS as the main actor</span></div>
-        <div class="sec-detail"><div class="sec-dot"></div><span data-i18n="sec2.d2">Access control — right people, right data, right time</span></div>
-        <div class="sec-detail"><div class="sec-dot"></div><span data-i18n="sec2.d3">Compliance certifications identified per project requirements</span></div>
-        <div class="sec-detail"><div class="sec-dot"></div><span data-i18n="sec2.d4">Confidentiality agreement included in every engagement</span></div>
-        <a href="#contact-form" class="sec-cta-small" data-i18n="sec2.learnlink">Ask about our confidentiality agreement →</a>
-    <div class="security-card reveal reveal-delay-3">
-      <div class="sec-card-header">
-        <div class="service-icon">🛡️</div>
-        <button class="learn-more-btn sec-learn-btn light-btn" onclick="toggleSec('sec3')" data-i18n="card.learnmore">Learn more +</button>
-      </div>
-      <div class="service-title" data-i18n="sec3.title">What We Protect You From</div>
-      <p class="service-desc" data-i18n="sec3.desc">Unauthorized access, compliance violations, data breaches, system vulnerabilities, and insider threats. We design systems that anticipate risk — not just react to it.</p>
-      <div class="sec-expand-panel" id="sec3">
-        <div class="sec-detail"><div class="sec-dot"></div><span data-i18n="sec3.d1">Multiple layers of security — not just one wall</span></div>
-        <div class="sec-detail"><div class="sec-dot"></div><span data-i18n="sec3.d2">Security metrics provided — cost-effective visibility</span></div>
-        <div class="sec-detail"><div class="sec-dot"></div><span data-i18n="sec3.d3">Real-time alerts — know before it becomes a problem</span></div>
-        <div class="sec-detail"><div class="sec-dot"></div><span data-i18n="sec3.d4">Patches and software version updates managed proactively</span></div>
-        <a href="#contact-form" class="sec-cta-small" data-i18n="sec3.learnlink">See how this applies to your systems →</a>
-    <div class="security-card dark reveal reveal-delay-4">
-      <div class="sec-card-header">
-        <div class="service-icon">🏆</div>
-        <button class="learn-more-btn sec-learn-btn" onclick="toggleSec('sec4')" data-i18n="card.learnmore">Learn more +</button>
-      </div>
-      <div class="service-title" data-i18n="sec4.title">Our Credentials</div>
-      <p class="service-desc" data-i18n="sec4.desc">Built on 20+ years of experience inside regulated financial environments — banking, payments, and compliance. AWS-certified engineers and AI specialists on the team.</p>
-      <div class="security-badges">
-        <span class="security-badge" style="background:rgba(159,225,203,0.15);border-color:rgba(159,225,203,0.3);color:#9FE1CB;">✓ OFAC</span>
-        <span class="security-badge" style="background:rgba(159,225,203,0.15);border-color:rgba(159,225,203,0.3);color:#9FE1CB;">✓ AML</span>
-        <span class="security-badge" style="background:rgba(159,225,203,0.15);border-color:rgba(159,225,203,0.3);color:#9FE1CB;">✓ SOX</span>
-        <span class="security-badge" style="background:rgba(159,225,203,0.15);border-color:rgba(159,225,203,0.3);color:#9FE1CB;">✓ PCI-DSS</span>
-        <span class="security-badge" style="background:rgba(159,225,203,0.15);border-color:rgba(159,225,203,0.3);color:#9FE1CB;">✓ AWS Certified</span>
-        <span class="security-badge" style="background:rgba(159,225,203,0.15);border-color:rgba(159,225,203,0.3);color:#9FE1CB;" title="Master of Science in Artificial Intelligence">✓ MS · AI</span>
-      </div>
-      <div class="sec-expand-panel dark-panel" id="sec4">
-        <div class="sec-detail light"><div class="sec-dot"></div><span data-i18n="sec4.d1">AWS-certified engineers — cloud architecture and security</span></div>
-        <div class="sec-detail light"><div class="sec-dot"></div><span data-i18n="sec4.d2">MS in Artificial Intelligence — AI-powered solutions</span></div>
-        <div class="sec-detail light"><div class="sec-dot"></div><span data-i18n="sec4.d3">20+ years OFAC, AML, SOX, PCI-DSS in US and Mexico financial environments</span></div>
-        <div class="sec-detail light"><div class="sec-dot"></div><span data-i18n="sec4.d4">Compliance requirements identified and addressed per project — not assumed</span></div>
-        <a href="#contact-form" class="sec-cta-small light" data-i18n="sec4.learnlink">Request our credentials overview →</a>
+  <!-- 3 tight principle rows -->
+  <div style="display:flex;flex-direction:column;gap:0;margin-bottom:2.5rem;border:0.5px solid var(--gray-100);border-radius:12px;overflow:hidden;">
+
+    <div style="display:flex;align-items:flex-start;gap:1.25rem;padding:1.5rem 1.75rem;border-bottom:0.5px solid var(--gray-100);">
+      <div style="width:36px;height:36px;border-radius:8px;background:#EEF0F5;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;">🔐</div>
+      <div>
+        <div style="font-size:14px;font-weight:500;color:var(--gray-900);margin-bottom:3px;" data-i18n="sec.p1.title">Built in, not bolted on</div>
+        <div style="font-size:13px;color:var(--gray-400);font-weight:300;line-height:1.6;" data-i18n="sec.p1.desc">Zero-trust architecture, encrypted data layers, and role-based access — defined before the first line of production code.</div>
       </div>
     </div>
 
-    <!-- Cloud Security -->
-    <div class="security-card reveal reveal-delay-5">
-      <div class="sec-card-header">
-        <div class="service-icon">☁️</div>
-        <button class="learn-more-btn sec-learn-btn light-btn" onclick="toggleSec('sec5')" data-i18n="card.learnmore">Learn more +</button>
+    <div style="display:flex;align-items:flex-start;gap:1.25rem;padding:1.5rem 1.75rem;border-bottom:0.5px solid var(--gray-100);">
+      <div style="width:36px;height:36px;border-radius:8px;background:#EEF0F5;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;">📋</div>
+      <div>
+        <div style="font-size:14px;font-weight:500;color:var(--gray-900);margin-bottom:3px;" data-i18n="sec.p2.title">Compliance mapped per project</div>
+        <div style="font-size:13px;color:var(--gray-400);font-weight:300;line-height:1.6;" data-i18n="sec.p2.desc">OFAC, AML, SOX, PCI-DSS — requirements identified before work begins, documented throughout, audit-ready at delivery.</div>
       </div>
-      <div class="service-title" data-i18n="sec5.title">Cloud & Infrastructure Security</div>
-      <p class="service-desc" data-i18n="sec5.desc">All cloud deployments follow security best practices — encrypted at rest and in transit, IAM role-based access, VPC isolation, and automated compliance monitoring.</p>
-      <div class="sec-expand-panel" id="sec5">
-        <div class="sec-detail"><div class="sec-dot"></div><span data-i18n="sec5.d1">AWS primary — other cloud environments follow the same security principles</span></div>
-        <div class="sec-detail"><div class="sec-dot"></div><span data-i18n="sec5.d2">Scalability built in — grows with your business</span></div>
-        <div class="sec-detail"><div class="sec-dot"></div><span data-i18n="sec5.d3">IAM roles and profiles — right access, right people</span></div>
-        <div class="sec-detail"><div class="sec-dot"></div><span data-i18n="sec5.d4">VPC isolation and automated compliance monitoring</span></div>
-        <a href="#contact-form" class="sec-cta-small" data-i18n="sec5.learnlink">Ask about our cloud security architecture →</a>
-    <div class="security-card reveal reveal-delay-6">
-      <div class="sec-card-header">
-        <div class="service-icon">📋</div>
-        <button class="learn-more-btn sec-learn-btn light-btn" onclick="toggleSec('sec6')" data-i18n="card.learnmore">Learn more +</button>
-      </div>
-      <div class="service-title" data-i18n="sec6.title">Compliance by Design</div>
-      <p class="service-desc" data-i18n="sec6.desc">We don't retrofit compliance. Every project starts with a compliance checklist aligned to your industry — banking, fintech, payments, or enterprise — so you're audit-ready from day one.</p>
-      <div class="sec-expand-panel" id="sec6">
-        <div class="sec-detail"><div class="sec-dot"></div><span data-i18n="sec6.d1">Gap analysis per project — what rules apply to you specifically</span></div>
-        <div class="sec-detail"><div class="sec-dot"></div><span data-i18n="sec6.d2">Compliance rules mapped per industry and region</span></div>
-        <div class="sec-detail"><div class="sec-dot"></div><span data-i18n="sec6.d3">Each project gets its own compliance checklist</span></div>
-        <div class="sec-detail"><div class="sec-dot"></div><span data-i18n="sec6.d4">Audit-ready documentation from day one — no scrambling</span></div>
-        <a href="#contact-form" class="sec-cta-small" data-i18n="sec6.learnlink">Get your compliance checklist →</a>
-  <div class="disclosure-box reveal">
-    <div class="disclosure-icon">🔍</div>
-    <div class="disclosure-text">
-      <div class="disclosure-title" data-i18n="sec.disclosure.title">Responsible Disclosure</div>
-      <div class="disclosure-sub" data-i18n="sec.disclosure.sub">Found a security issue? We take all reports seriously. Please contact us directly and we'll respond within 24 hours.</div>
     </div>
-    <a href="mailto:melioralabs.tech@gmail.com?subject=Security%20Disclosure" class="disclosure-link" data-i18n="sec.disclosure.btn" onclick="event.stopPropagation()">Report a concern →</a>
+
+    <div style="display:flex;align-items:flex-start;gap:1.25rem;padding:1.5rem 1.75rem;">
+      <div style="width:36px;height:36px;border-radius:8px;background:#EEF0F5;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;">🤝</div>
+      <div>
+        <div style="font-size:14px;font-weight:500;color:var(--gray-900);margin-bottom:3px;" data-i18n="sec.p3.title">Your data stays yours</div>
+        <div style="font-size:13px;color:var(--gray-400);font-weight:300;line-height:1.6;" data-i18n="sec.p3.desc">Signed NDA before discovery begins. We never share, sell, or expose client data. That’s a contractual commitment, not a policy.</div>
+      </div>
+    </div>
+
   </div>
+
+  <!-- Credential + disclosure bar -->
+  <div style="background:var(--teal-800);border-radius:12px;padding:1.5rem 2rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1.25rem;">
+    <div style="display:flex;flex-wrap:wrap;gap:8px;">
+      <span class="security-badge" style="background:rgba(159,225,203,0.15);border-color:rgba(159,225,203,0.3);color:#9FE1CB;">✓ OFAC</span>
+      <span class="security-badge" style="background:rgba(159,225,203,0.15);border-color:rgba(159,225,203,0.3);color:#9FE1CB;">✓ AML</span>
+      <span class="security-badge" style="background:rgba(159,225,203,0.15);border-color:rgba(159,225,203,0.3);color:#9FE1CB;">✓ SOX</span>
+      <span class="security-badge" style="background:rgba(159,225,203,0.15);border-color:rgba(159,225,203,0.3);color:#9FE1CB;">✓ PCI-DSS</span>
+      <span class="security-badge" style="background:rgba(159,225,203,0.15);border-color:rgba(159,225,203,0.3);color:#9FE1CB;">✓ AWS Certified</span>
+      <span class="security-badge" style="background:rgba(159,225,203,0.15);border-color:rgba(159,225,203,0.3);color:#9FE1CB;" title="Master of Science in Artificial Intelligence">✓ MS · AI</span>
+    </div>
+    <div style="display:flex;gap:1.5rem;flex-wrap:wrap;align-items:center;">
+      <a href="#contact-form" style="font-size:13px;color:var(--teal-100);font-weight:500;text-decoration:none;white-space:nowrap;" data-i18n="sec.cred.link">Ask about our security standards →</a>
+      <a href="mailto:melioralabs.tech@gmail.com?subject=Security%20Disclosure" style="font-size:13px;color:var(--teal-100);font-weight:300;text-decoration:none;white-space:nowrap;opacity:0.7;" data-i18n="sec.disclosure.btn">Report a concern →</a>
+    </div>
+  </div>
+
 </section>
 
 <!-- ENGINE -->
@@ -1194,89 +1140,47 @@
 <div class="divider"></div>
 <section id="cases" style="padding:5rem 3rem;max-width:1100px;margin:0 auto;">
   <div class="section-tag reveal" data-i18n="cases.tag">What we deliver</div>
-  <h2 class="section-title reveal reveal-delay-1" data-i18n="cases.title">The work we know best</h2>
-  <p class="section-sub reveal reveal-delay-2" data-i18n="cases.sub">Twenty years of hands-on delivery across financial systems, payment platforms, and enterprise infrastructure. These are the domains where we go deepest — and where our clients get the most from us.</p>
+  <h2 class="section-title reveal reveal-delay-1" data-i18n="cases.title">The domains where we go deepest</h2>
+  <p class="section-sub reveal reveal-delay-2" data-i18n="cases.sub">These are the areas where Meliora Labs concentrates its expertise — and where our clients get the most from working with us.</p>
 
   <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem;">
 
     <!-- Card 1: Mainframe & Legacy -->
-    <div class="service-card reveal reveal-delay-1" style="position:relative;overflow:hidden;border-top:4px solid #1B2A4A;">
+    <div class="service-card reveal reveal-delay-1" style="border-top:4px solid #1B2A4A;">
       <div style="font-size:2rem;margin-bottom:1rem;">🖥️</div>
       <div class="service-title" style="margin-bottom:0.5rem;" data-i18n="cap.c1.title">Mainframe &amp; Legacy Systems</div>
-      <p class="service-desc" style="margin-bottom:1.25rem;" data-i18n="cap.c1.desc">IBM Z migrations, COBOL modernization, VSAM-to-database conversions, JCL refactoring, and legacy platform documentation. We’ve run these systems from the inside — not as outside advisors, but as the engineers accountable when something broke.</p>
-      <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:1.25rem;">
+      <p class="service-desc" data-i18n="cap.c1.desc">IBM Z migrations, COBOL modernization, VSAM-to-database conversions, JCL refactoring, and legacy platform documentation. We’ve run these systems from the inside — not as outside advisors, but as the engineers accountable when something broke.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:1rem;">
         <span style="background:#EEF0F5;color:#1B2A4A;font-size:11px;font-weight:500;padding:3px 10px;border-radius:20px;">COBOL / JCL</span>
         <span style="background:#EEF0F5;color:#1B2A4A;font-size:11px;font-weight:500;padding:3px 10px;border-radius:20px;">VSAM / DB2</span>
         <span style="background:#EEF0F5;color:#1B2A4A;font-size:11px;font-weight:500;padding:3px 10px;border-radius:20px;">CICS / z/OS</span>
         <span style="background:#EEF0F5;color:#1B2A4A;font-size:11px;font-weight:500;padding:3px 10px;border-radius:20px;">IBM Z → AWS</span>
       </div>
-      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.5rem;">
-        <div style="text-align:center;background:var(--gray-50);border-radius:8px;padding:0.75rem 0.5rem;">
-          <div style="font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:500;color:#1B2A4A;">100+</div>
-          <div style="font-size:11px;color:var(--gray-400);font-weight:300;" data-i18n="cap.c1.s1">COBOL programs</div>
-        </div>
-        <div style="text-align:center;background:var(--gray-50);border-radius:8px;padding:0.75rem 0.5rem;">
-          <div style="font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:500;color:#1B2A4A;">0</div>
-          <div style="font-size:11px;color:var(--gray-400);font-weight:300;" data-i18n="cap.c1.s2">go-live incidents</div>
-        </div>
-        <div style="text-align:center;background:var(--gray-50);border-radius:8px;padding:0.75rem 0.5rem;">
-          <div style="font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:500;color:#1B2A4A;">20+</div>
-          <div style="font-size:11px;color:var(--gray-400);font-weight:300;" data-i18n="cap.c1.s3">years of depth</div>
-        </div>
-      </div>
     </div>
 
     <!-- Card 2: Automation & Data Engineering -->
-    <div class="service-card reveal reveal-delay-2" style="position:relative;overflow:hidden;border-top:4px solid #7C3AED;">
+    <div class="service-card reveal reveal-delay-2" style="border-top:4px solid #7C3AED;">
       <div style="font-size:2rem;margin-bottom:1rem;">⚙️</div>
       <div class="service-title" style="margin-bottom:0.5rem;" data-i18n="cap.c2.title">Automation &amp; Data Engineering</div>
-      <p class="service-desc" style="margin-bottom:1.25rem;" data-i18n="cap.c2.desc">Manual reporting eliminated. Batch jobs replaced with event-driven pipelines. Spreadsheet-based workflows converted to reliable, auditable systems. We build automation that runs without supervision and data pipelines that your team can trust.</p>
-      <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:1.25rem;">
+      <p class="service-desc" data-i18n="cap.c2.desc">Manual reporting eliminated. Batch jobs replaced with event-driven pipelines. Spreadsheet-based workflows converted to reliable, auditable systems. We build automation that runs without supervision and data pipelines that your team can trust.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:1rem;">
         <span style="background:#F3F0FE;color:#7C3AED;font-size:11px;font-weight:500;padding:3px 10px;border-radius:20px;">Python</span>
         <span style="background:#F3F0FE;color:#7C3AED;font-size:11px;font-weight:500;padding:3px 10px;border-radius:20px;">PostgreSQL</span>
         <span style="background:#F3F0FE;color:#7C3AED;font-size:11px;font-weight:500;padding:3px 10px;border-radius:20px;">ETL pipelines</span>
         <span style="background:#F3F0FE;color:#7C3AED;font-size:11px;font-weight:500;padding:3px 10px;border-radius:20px;">AI integration</span>
       </div>
-      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.5rem;">
-        <div style="text-align:center;background:var(--gray-50);border-radius:8px;padding:0.75rem 0.5rem;">
-          <div style="font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:500;color:#7C3AED;">0</div>
-          <div style="font-size:11px;color:var(--gray-400);font-weight:300;" data-i18n="cap.c2.s1">manual steps</div>
-        </div>
-        <div style="text-align:center;background:var(--gray-50);border-radius:8px;padding:0.75rem 0.5rem;">
-          <div style="font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:500;color:#7C3AED;">24/7</div>
-          <div style="font-size:11px;color:var(--gray-400);font-weight:300;" data-i18n="cap.c2.s2">pipeline uptime</div>
-        </div>
-        <div style="text-align:center;background:var(--gray-50);border-radius:8px;padding:0.75rem 0.5rem;">
-          <div style="font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:500;color:#7C3AED;">100%</div>
-          <div style="font-size:11px;color:var(--gray-400);font-weight:300;" data-i18n="cap.c2.s3">audit trail</div>
-        </div>
-      </div>
     </div>
 
     <!-- Card 3: Cloud & System Integration -->
-    <div class="service-card reveal reveal-delay-3" style="position:relative;overflow:hidden;border-top:4px solid #2E86AB;">
+    <div class="service-card reveal reveal-delay-3" style="border-top:4px solid #2E86AB;">
       <div style="font-size:2rem;margin-bottom:1rem;">☁️</div>
       <div class="service-title" style="margin-bottom:0.5rem;" data-i18n="cap.c3.title">Cloud &amp; System Integration</div>
-      <p class="service-desc" style="margin-bottom:1.25rem;" data-i18n="cap.c3.desc">AWS deployments, API design, payment rail integration (ACH, RTP), KYC onboarding workflows, and AML compliance systems. We connect the pieces that don’t talk to each other — and make sure they stay connected after we leave.</p>
-      <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:1.25rem;">
+      <p class="service-desc" data-i18n="cap.c3.desc">AWS deployments, API design, and system integration for companies whose tools don’t talk to each other. We connect platforms, migrate on-premise infrastructure to the cloud, and make sure the handover is solid — documented and stable before we leave.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:1rem;">
         <span style="background:#E8F4FB;color:#2E86AB;font-size:11px;font-weight:500;padding:3px 10px;border-radius:20px;">AWS</span>
-        <span style="background:#E8F4FB;color:#2E86AB;font-size:11px;font-weight:500;padding:3px 10px;border-radius:20px;">ACH / RTP</span>
         <span style="background:#E8F4FB;color:#2E86AB;font-size:11px;font-weight:500;padding:3px 10px;border-radius:20px;">REST APIs</span>
-        <span style="background:#E8F4FB;color:#2E86AB;font-size:11px;font-weight:500;padding:3px 10px;border-radius:20px;">OFAC / AML / KYC</span>
-      </div>
-      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.5rem;">
-        <div style="text-align:center;background:var(--gray-50);border-radius:8px;padding:0.75rem 0.5rem;">
-          <div style="font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:500;color:#2E86AB;">ACH+RTP</div>
-          <div style="font-size:11px;color:var(--gray-400);font-weight:300;" data-i18n="cap.c3.s1">rails delivered</div>
-        </div>
-        <div style="text-align:center;background:var(--gray-50);border-radius:8px;padding:0.75rem 0.5rem;">
-          <div style="font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:500;color:#2E86AB;">0</div>
-          <div style="font-size:11px;color:var(--gray-400);font-weight:300;" data-i18n="cap.c3.s2">rollbacks</div>
-        </div>
-        <div style="text-align:center;background:var(--gray-50);border-radius:8px;padding:0.75rem 0.5rem;">
-          <div style="font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:500;color:#2E86AB;">3</div>
-          <div style="font-size:11px;color:var(--gray-400);font-weight:300;" data-i18n="cap.c3.s3">compliance frameworks</div>
-        </div>
+        <span style="background:#E8F4FB;color:#2E86AB;font-size:11px;font-weight:500;padding:3px 10px;border-radius:20px;">System integration</span>
+        <span style="background:#E8F4FB;color:#2E86AB;font-size:11px;font-weight:500;padding:3px 10px;border-radius:20px;">Cloud migration</span>
       </div>
     </div>
 
@@ -1747,30 +1651,6 @@ const translations = {
     "sec4.learnlink":"Request our credentials overview →",
     "sec5.learnlink":"Ask about our cloud security architecture →",
     "sec6.learnlink":"Get your compliance checklist →",
-    "sec1.d1":"NPPI data protected — no exceptions, no shortcuts",
-    "sec1.d2":"All data encrypted at rest and in transit",
-    "sec1.d3":"Zero tolerance for security flaws — this is not a checkbox",
-    "sec1.d4":"Banking-grade standards applied to every project, every size",
-    "sec2.d1":"Server security with roles and profiles — AWS as the main actor",
-    "sec2.d2":"Access control — right people, right data, right time",
-    "sec2.d3":"Compliance certifications identified per project requirements",
-    "sec2.d4":"Confidentiality agreement included in every engagement",
-    "sec3.d1":"Multiple layers of security — not just one wall",
-    "sec3.d2":"Security metrics provided — cost-effective visibility",
-    "sec3.d3":"Real-time alerts — know before it becomes a problem",
-    "sec3.d4":"Patches and software version updates managed proactively",
-    "sec4.d1":"AWS-certified engineers — cloud architecture and security",
-    "sec4.d2":"MS in Artificial Intelligence — AI-powered solutions",
-    "sec4.d3":"20+ years OFAC, AML, SOX, PCI-DSS across US and Spain",
-    "sec4.d4":"Compliance requirements addressed per project — mapped to your industry and region",
-    "sec5.d1":"AWS primary — other cloud environments follow the same security principles",
-    "sec5.d2":"Scalability built in — grows with your business",
-    "sec5.d3":"IAM roles and profiles — right access, right people",
-    "sec5.d4":"VPC isolation and automated compliance monitoring",
-    "sec6.d1":"Gap analysis per project — what rules apply to you specifically",
-    "sec6.d2":"Compliance rules mapped per industry and region",
-    "sec6.d3":"Each project gets its own compliance checklist",
-    "sec6.d4":"Audit-ready documentation from day one — no scrambling",
     "coffee.sub":"Every mainframe modernization is unique. The complexity, the risk, and the opportunity are different for every organization — database conversions, cross-platform migrations, legacy code transformation. This is not a checkbox on a website. Let's talk.",
     "coffee.cta":"☕ Schedule a conversation →",
     "t2m.f1":"Payment flow consulting — ACH, RTP, and Wire transfers",
@@ -1849,7 +1729,16 @@ const translations = {
     "t1l.f6":"Multi-team coordination — HR, engineering, compliance",
     "t1l.golive":"Full go-live support during and after launch — dedicated support window agreed per project",
     "sec.tag":"Security","sec.title":"Security is not a feature — it's a foundation",
-    "sec.sub":"Every system we build is designed to protect client data, meet compliance requirements, and hold up under scrutiny — from the first line of code, not as an afterthought.",
+    "sec.sub":"Every system we build starts with security. Not as a final step — as a design requirement.",
+    "sec.p1.title":"Built in, not bolted on",
+    "sec.p1.desc":"Zero-trust architecture, encrypted data layers, and role-based access — defined before the first line of production code.",
+    "sec.p2.title":"Compliance mapped per project",
+    "sec.p2.desc":"OFAC, AML, SOX, PCI-DSS — requirements identified before work begins, documented throughout, audit-ready at delivery.",
+    "sec.p3.title":"Your data stays yours",
+    "sec.p3.desc":"Signed NDA before discovery begins. We never share, sell, or expose client data. That's a contractual commitment, not a policy.",
+    "sec.cred.title":"20+ years in regulated financial environments",
+    "sec.cred.sub":"US and Mexico · Banking · Payments · Enterprise",
+    "sec.cred.link":"Ask about our security standards →",
     "sec1.title":"Our Security Principles","sec1.desc":"Security is built into every Meliora Labs engagement from the first line of code — never bolted on after. We apply zero-trust architecture and banking-grade security standards to every project, regardless of size.",
     "sec2.title":"Data Privacy & Confidentiality","sec2.desc":"Your data stays yours. We never share, sell, or expose client data to third parties. Every engagement is covered by a confidentiality agreement and handled with the discretion of a trusted partner.",
     "sec3.title":"What We Protect You From","sec3.desc":"Unauthorized access, compliance violations, data breaches, system vulnerabilities, and insider threats. We design systems that anticipate risk — not just react to it.",
@@ -2039,8 +1928,8 @@ const translations = {
     "mgd.l3.f4":"Compliance reporting — OFAC, AML, SOX","mgd.l3.f5":"A dedicated engineer who owns it with you","mgd.l3.price":"Custom",
     "mgd.from":"Starting from","mgd.note":"* All plans include monthly reporting, change log, and a dedicated channel. No lock-in — cancel anytime with 30 days notice.",
     "mgd.cta":"Talk to us about managed support →",
-    "cases.tag":"What we deliver","cases.title":"The work we know best",
-    "cases.sub":"Twenty years of hands-on delivery across financial systems, payment platforms, and enterprise infrastructure. These are the domains where we go deepest — and where our clients get the most from us.",
+    "cases.tag":"What we deliver","cases.title":"The domains where we go deepest",
+    "cases.sub":"These are the areas where Meliora Labs concentrates its expertise — and where our clients get the most from working with us.",
     "cap.c1.title":"Mainframe & Legacy Systems",
     "cap.c1.desc":"IBM Z migrations, COBOL modernization, VSAM-to-database conversions, JCL refactoring, and legacy platform documentation. We've run these systems from the inside — not as outside advisors, but as the engineers accountable when something broke.",
     "cap.c1.s1":"COBOL programs","cap.c1.s2":"go-live incidents","cap.c1.s3":"years of depth",
@@ -2048,8 +1937,8 @@ const translations = {
     "cap.c2.desc":"Manual reporting eliminated. Batch jobs replaced with event-driven pipelines. Spreadsheet-based workflows converted to reliable, auditable systems. We build automation that runs without supervision and data pipelines that your team can trust.",
     "cap.c2.s1":"manual steps","cap.c2.s2":"pipeline uptime","cap.c2.s3":"audit trail",
     "cap.c3.title":"Cloud & System Integration",
-    "cap.c3.desc":"AWS deployments, API design, payment rail integration (ACH, RTP), KYC onboarding workflows, and AML compliance systems. We connect the pieces that don't talk to each other — and make sure they stay connected after we leave.",
-    "cap.c3.s1":"rails delivered","cap.c3.s2":"rollbacks","cap.c3.s3":"compliance frameworks",
+    "cap.c3.desc":"AWS deployments, API design, and system integration for companies whose tools don't talk to each other. We connect platforms, migrate on-premise infrastructure to the cloud, and make sure the handover is solid — documented and stable before we leave.",
+    "cap.c3.s1":"primary platform","cap.c3.s2":"rollbacks","cap.c3.s3":"systems connected",
     "cases.c1.industry":"🏦 Large Bank · USA","cases.c1.title":"Mainframe → Cloud Migration",
     "cases.c1.desc":"Full z/OS to AWS migration — 100+ COBOL components, zero incidents on go-live. Parallel run passed before any cutover was authorized.",
     "cases.c1.s1":"COBOL programs","cases.c1.s2":"incidents","cases.c1.s3":"cost savings",
@@ -2127,30 +2016,6 @@ const translations = {
     "sec4.learnlink":"Solicita nuestro resumen de credenciales →",
     "sec5.learnlink":"Pregunta sobre nuestra arquitectura de seguridad en la nube →",
     "sec6.learnlink":"Obtén tu lista de verificación de cumplimiento →",
-    "sec1.d1":"Datos NPPI protegidos — sin excepciones, sin atajos",
-    "sec1.d2":"Todos los datos cifrados en reposo y en tránsito",
-    "sec1.d3":"Tolerancia cero a fallas de seguridad — esto no es una casilla",
-    "sec1.d4":"Estándares bancarios aplicados a cada proyecto, de cualquier tamaño",
-    "sec2.d1":"Seguridad de servidor con roles y perfiles — AWS como actor principal",
-    "sec2.d2":"Control de acceso — personas correctas, datos correctos, momento correcto",
-    "sec2.d3":"Certificaciones de cumplimiento identificadas por requerimientos del proyecto",
-    "sec2.d4":"Acuerdo de confidencialidad incluido en cada compromiso",
-    "sec3.d1":"Múltiples capas de seguridad — no solo una pared",
-    "sec3.d2":"Métricas de seguridad proporcionadas — visibilidad rentable",
-    "sec3.d3":"Alertas en tiempo real — sabes antes de que se convierta en problema",
-    "sec3.d4":"Parches y actualizaciones de versiones de software gestionados proactivamente",
-    "sec4.d1":"Ingenieros certificados en AWS — arquitectura cloud y seguridad",
-    "sec4.d2":"Maestría en Inteligencia Artificial — soluciones impulsadas por IA",
-    "sec4.d3":"20+ años OFAC, AML, SOX, PCI-DSS en EE.UU. y España",
-    "sec4.d4":"Marcos de gobernanza diseñados para cumplir estándares de examinación bancaria",
-    "sec5.d1":"AWS, IBM o GCP — trabajamos con tu proveedor",
-    "sec5.d2":"Escalabilidad integrada — crece con tu negocio",
-    "sec5.d3":"Roles y perfiles IAM — acceso correcto, personas correctas",
-    "sec5.d4":"Aislamiento VPC y monitoreo de cumplimiento automatizado",
-    "sec6.d1":"Análisis de brechas por proyecto — qué reglas aplican específicamente a ti",
-    "sec6.d2":"Reglas de cumplimiento mapeadas por industria y región",
-    "sec6.d3":"Cada proyecto obtiene su propia lista de verificación de cumplimiento",
-    "sec6.d4":"Documentación lista para auditorías desde el primer día",
     "coffee.sub":"Cada modernización de mainframe es única. La complejidad, el riesgo y la oportunidad son diferentes para cada organización — conversiones de bases de datos, migraciones multiplataforma, transformación de código legado. Esto no es una casilla en un sitio web. Hablemos.",
     "coffee.cta":"☕ Agendar una conversación →",
     "t2m.f1":"Consultoría de flujos de pago — ACH, RTP y transferencias",
@@ -2229,7 +2094,16 @@ const translations = {
     "t1l.f6":"Coordinación multi-equipo — RRHH, ingeniería, cumplimiento",
     "t1l.golive":"Soporte go-live completo durante y después del lanzamiento — ventana de soporte dedicada por proyecto",
     "sec.tag":"Seguridad","sec.title":"La seguridad no es una función — es una base",
-    "sec.sub":"Cada sistema que construimos está diseñado para proteger los datos del cliente, cumplir los requisitos de cumplimiento y resistir el escrutinio — desde la primera línea de código, no como una ocurrencia de último momento.",
+    "sec.sub":"Cada sistema que construimos comienza con seguridad. No como paso final — como requisito de diseño.",
+    "sec.p1.title":"Integrada, no añadida al final",
+    "sec.p1.desc":"Arquitectura zero-trust, capas de datos cifrados y acceso por roles — definidos antes de la primera línea de código de producción.",
+    "sec.p2.title":"Cumplimiento mapeado por proyecto",
+    "sec.p2.desc":"OFAC, AML, SOX, PCI-DSS — requisitos identificados antes de comenzar, documentados durante el proceso, listos para auditoría en la entrega.",
+    "sec.p3.title":"Tus datos son tuyos",
+    "sec.p3.desc":"NDA firmado antes del descubrimiento. Nunca compartimos ni exponemos datos del cliente. Es un compromiso contractual, no una política.",
+    "sec.cred.title":"Más de 20 años en entornos financieros regulados",
+    "sec.cred.sub":"EE.UU. y México · Banca · Pagos · Empresarial",
+    "sec.cred.link":"Pregúntanos sobre nuestros estándares de seguridad →",
     "sec1.title":"Nuestros Principios de Seguridad","sec1.desc":"La seguridad está integrada desde la primera línea de código — nunca añadida después. Seguimos un modelo de arquitectura zero-trust y aplicamos los mismos estándares de entornos bancarios auditados por la Reserva Federal.",
     "sec2.title":"Privacidad y Confidencialidad","sec2.desc":"Tus datos son tuyos. Nunca compartimos, vendemos ni exponemos datos de clientes a terceros. Cada compromiso está cubierto por un acuerdo de confidencialidad.",
     "sec3.title":"De Qué Te Protegemos","sec3.desc":"Acceso no autorizado, violaciones de cumplimiento, brechas de datos, vulnerabilidades del sistema y amenazas internas. Diseñamos sistemas que anticipan el riesgo, no solo reaccionan a él.",
@@ -2354,8 +2228,8 @@ const translations = {
     "mgd.l3.f4":"Reportes de cumplimiento — OFAC, AML, SOX","mgd.l3.f5":"Nunca estás solo — mentalidad PO","mgd.l3.price":"Personalizado",
     "mgd.from":"Desde","mgd.note":"* Todos los planes incluyen reporte mensual, registro de cambios y canal dedicado. Sin contratos — cancela con 30 días de aviso.",
     "mgd.cta":"Háblanos sobre soporte gestionado →",
-    "cases.tag":"Lo que entregamos","cases.title":"El trabajo que mejor conocemos",
-    "cases.sub":"Veinte años de entrega práctica en sistemas financieros, plataformas de pagos e infraestructura empresarial. Estos son los dominios donde más profundizamos — y donde nuestros clientes obtienen más de nosotros.",
+    "cases.tag":"Lo que entregamos","cases.title":"Los dominios donde más profundizamos",
+    "cases.sub":"Estas son las áreas donde Meliora Labs concentra su experiencia — y donde nuestros clientes obtienen más al trabajar con nosotros.",
     "cap.c1.title":"Mainframe y Sistemas Heredados",
     "cap.c1.desc":"Migraciones de IBM Z, modernización de COBOL, conversiones VSAM a base de datos, refactorización de JCL y documentación de plataformas heredadas. Hemos operado estos sistemas desde adentro — no como asesores externos, sino como los ingenieros responsables cuando algo fallaba.",
     "cap.c1.s1":"programas COBOL","cap.c1.s2":"incidentes en go-live","cap.c1.s3":"años de profundidad",
@@ -2363,8 +2237,8 @@ const translations = {
     "cap.c2.desc":"Reportes manuales eliminados. Trabajos por lotes reemplazados con pipelines orientados a eventos. Flujos de trabajo en hojas de cálculo convertidos en sistemas confiables y auditables. Construimos automatización que funciona sin supervisión y pipelines de datos en los que tu equipo puede confiar.",
     "cap.c2.s1":"pasos manuales","cap.c2.s2":"disponibilidad del pipeline","cap.c2.s3":"trazabilidad completa",
     "cap.c3.title":"Cloud e Integración de Sistemas",
-    "cap.c3.desc":"Despliegues en AWS, diseño de APIs, integración de rieles de pago (ACH, RTP), flujos de onboarding KYC y sistemas de cumplimiento AML. Conectamos las piezas que no se comunican entre sí — y nos aseguramos de que sigan conectadas después de que nos vayamos.",
-    "cap.c3.s1":"rieles entregados","cap.c3.s2":"rollbacks","cap.c3.s3":"marcos de cumplimiento",
+    "cap.c3.desc":"Despliegues en AWS, diseño de APIs e integración de sistemas para empresas cuyos sistemas no se comunican entre sí. Conectamos plataformas, migramos infraestructura on-premise a la nube y nos aseguramos de que el traspaso sea sólido — documentado y estable antes de irnos.",
+    "cap.c3.s1":"plataforma principal","cap.c3.s2":"rollbacks","cap.c3.s3":"sistemas conectados",
     "cases.c1.industry":"🏦 Banco Grande · USA","cases.c1.title":"Mainframe → Migración a la Nube",
     "cases.c1.desc":"Migración completa de z/OS a AWS — 100+ componentes COBOL, cero incidentes en go-live, récord de cero rollbacks en 14 años.",
     "cases.c1.s1":"programas COBOL","cases.c1.s2":"incidentes","cases.c1.s3":"ahorro en costos",
