@@ -470,83 +470,88 @@
 <!-- SERVICES -->
 <section id="services" style="text-align:left;">
   <div class="section-tag reveal" data-i18n="services.tag">What we do</div>
-  <h2 class="section-title reveal reveal-delay-1" data-i18n="services.title">Structured engagements for systems that can't afford surprises</h2>
-  <p class="section-sub reveal reveal-delay-2" style="margin-left:0;" data-i18n="services.sub">We work with banks, fintechs, and growing businesses on mainframe modernization, payments platforms, cloud migration, and AI integration. Every engagement follows a defined methodology — gaps identified, risks surfaced, workstreams planned in parallel, and nothing skipped. You see where the project stands at every step, not just at the end.</p>
+  <h2 class="section-title reveal reveal-delay-1" data-i18n="services.title">Structured engagements for systems that matter</h2>
+  <p class="section-sub reveal reveal-delay-2" style="margin-left:0;" data-i18n="services.sub">Two service lines. One methodology. You always know what’s planned, what’s in progress, and what comes next.</p>
 
-  <!-- ── TRACK A: MAINFRAME & ENTERPRISE ── -->
+  <!-- TRACK A: MAINFRAME & ENTERPRISE -->
   <div style="margin-bottom:2.5rem;">
-    <div style="border-bottom:2px solid #1B2A4A;margin-bottom:1.25rem;"></div>
+
+    <!-- Track A label -->
+    <div style="display:flex;align-items:center;gap:1rem;margin-bottom:1.25rem;">
+      <div style="flex:1;height:2px;background:#1B2A4A;"></div>
+      <div style="display:flex;flex-direction:column;align-items:flex-end;gap:2px;flex-shrink:0;">
+        <span style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:1.5px;color:#1B2A4A;white-space:nowrap;" data-i18n="track.a.badge">Mainframe &amp; Enterprise</span>
+        <span style="font-size:11px;color:var(--gray-400);font-weight:300;white-space:nowrap;" data-i18n="track.a.sub">Banks · Fintechs · Payment processors · IBM Z · COBOL · CICS</span>
+      </div>
+    </div>
 
     <div class="services-grid" style="grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem;">
 
-      <!-- ASSESS — Mainframe -->
+      <!-- ASSESS -->
       <div class="service-card clickable reveal reveal-delay-1" style="border-top:4px solid #1B2A4A;position:relative;" onclick="openCardModal('mf_assess')">
-
         <div class="service-icon">🔍</div>
         <div class="service-title" data-i18n="mf_assess.title">Assess</div>
-        <p class="service-desc" data-i18n="mf_assess.desc">Know exactly what you have — before committing a dollar to change it. We go inside your systems and give you a clear picture: what's working, what's risky, what's costing you more than it should, and what needs to go. No guessing. No assumptions. A full written report — before any work begins.</p>
-          <div class="card-click-hint" style="color:#1B2A4A;">🔍 Click to see what's included →</div>
+        <p class="service-desc" data-i18n="mf_assess.desc">Know exactly what you have — before committing a dollar to change it. We go inside your systems and give you a clear picture: what’s working, what’s risky, what’s costing you more than it should, and what needs to go. No guessing. No assumptions. A full written report — before any work begins.</p>
+        <div class="card-click-hint" style="color:#1B2A4A;">🔍 Click to see what’s included →</div>
       </div>
 
-      <!-- BLUEPRINT — Mainframe -->
+      <!-- BLUEPRINT -->
       <div class="service-card clickable reveal reveal-delay-2" style="border-top:4px solid #2E86AB;position:relative;" onclick="openCardModal('mf_blueprint')">
-
         <div class="service-icon">🗺️</div>
         <div class="service-title" data-i18n="mf_blueprint.title">Blueprint</div>
-        <p class="service-desc" data-i18n="mf_blueprint.desc">A complete plan — before your team writes a single line of new code. We design the full path forward: target architecture, data model, migration strategy, and project specification. Everything is in writing. Your team knows exactly what gets built, in what order, and what happens if something doesn't go as planned.</p>
-          <div class="card-click-hint" style="color:#2E86AB;">🔍 Click to see what's included →</div>
+        <p class="service-desc" data-i18n="mf_blueprint.desc">A complete plan — before your team writes a single line of new code. We design the full path forward: target architecture, data model, migration strategy, and project specification. Everything is in writing. Your team knows exactly what gets built, in what order, and what happens if something doesn’t go as planned.</p>
+        <div class="card-click-hint" style="color:#2E86AB;">🔍 Click to see what’s included →</div>
       </div>
 
-      <!-- EXECUTE — Mainframe -->
+      <!-- EXECUTE -->
       <div class="service-card clickable reveal reveal-delay-3" style="border-top:4px solid #1D9E75;position:relative;" onclick="openCardModal('mf_execute')">
-
         <div class="service-icon">⚡</div>
         <div class="service-title" data-i18n="mf_execute.title">Execute</div>
-        <p class="service-desc" data-i18n="mf_execute.desc">We build it, migrate it, validate it — and stay until it's stable. Full delivery from first line of code to go-live and beyond. We run parallel systems until your team is confident, clear every compliance gate, and stay for 30 days after cutover. Most firms disappear at go-live. We don't.</p>
-        <p class="service-desc" style="margin-top:0.6rem;" data-i18n="mf_execute.handover">When we leave, your team isn't starting from zero. Every system we touch gets documented — in plain English, by the engineers who built it — so whoever comes next can actually own it.</p>
+        <p class="service-desc" data-i18n="mf_execute.desc">We build it, migrate it, validate it — and stay until it’s stable. Full delivery from first line of code to go-live and beyond. We run parallel systems until your team is confident, clear every compliance gate, and stay for 30 days after cutover. Most firms disappear at go-live. We don’t.</p>
+        <p class="service-desc" style="margin-top:0.6rem;" data-i18n="mf_execute.handover">When we leave, your team isn’t starting from zero. Every system we touch gets documented — in plain English, by the engineers who built it — so whoever comes next can actually own it.</p>
         <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:0.75rem;">
           <span style="font-size:11px;font-weight:500;padding:2px 10px;border-radius:20px;background:var(--teal-50);color:var(--teal-400);border:0.5px solid var(--teal-100);" data-i18n="mf_execute.addon1">+ Knowledge transfer</span>
           <span style="font-size:11px;font-weight:500;padding:2px 10px;border-radius:20px;background:var(--teal-50);color:var(--teal-400);border:0.5px solid var(--teal-100);" data-i18n="mf_execute.addon2">+ Team training</span>
           <span style="font-size:11px;font-weight:500;padding:2px 10px;border-radius:20px;background:var(--teal-50);color:var(--teal-400);border:0.5px solid var(--teal-100);" data-i18n="mf_execute.addon3">+ Handover documentation</span>
         </div>
-          <div class="card-click-hint" style="color:#1D9E75;">🔍 Click to see what's included →</div>
+        <div class="card-click-hint" style="color:#1D9E75;">🔍 Click to see what’s included →</div>
       </div>
 
     </div>
   </div>
 
-  <!-- ── TRACK B: NON-MAINFRAME / SME ── -->
+  <!-- TRACK B: LEGACY & BUSINESS SYSTEMS -->
   <div style="margin-bottom:2rem;">
-    <div style="border-bottom:2px solid #2E86AB;margin-bottom:1.25rem;"></div>
 
-    <!-- Legacy & Business Systems card — problem tiles inside modal -->
+    <!-- Track B label -->
+    <div style="display:flex;align-items:center;gap:1rem;margin-bottom:1.25rem;">
+      <div style="flex:1;height:2px;background:#2E86AB;"></div>
+      <div style="display:flex;flex-direction:column;align-items:flex-end;gap:2px;flex-shrink:0;">
+        <span style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:1.5px;color:#2E86AB;white-space:nowrap;" data-i18n="track.b.badge">Legacy &amp; Business Systems</span>
+        <span style="font-size:11px;color:var(--gray-400);font-weight:300;white-space:nowrap;" data-i18n="track.b.sub">Growing companies · Manual processes · Payment integration · Cloud migration</span>
+      </div>
+    </div>
+
+    <!-- SME card -->
     <div class="service-card clickable" style="border-top:4px solid #7C3AED;position:relative;width:100%;box-sizing:border-box;" onclick="openCardModal('legacy_sme')">
-      <div style="display:flex;align-items:flex-start;gap:1rem;">
-        <div>
-          <div class="service-icon" style="margin-bottom:0.5rem;">🏢</div>
-        </div>
+      <div style="display:flex;align-items:flex-start;gap:1.25rem;">
+        <div class="service-icon" style="flex-shrink:0;">🏢</div>
         <div style="flex:1;">
-          <div class="service-title" data-i18n="sme_card.title">Legacy & Business Systems</div>
-          <p class="service-desc" style="margin-bottom:0.75rem;" data-i18n="sme_card.desc">Your software is holding your business back. We fix that — without the big-firm price tag. Old software that breaks at the worst moment. Reports built in spreadsheets. Systems that don't talk to each other. You don't need a mainframe problem to need us — you just need it done right, by someone who's seen it before. Same structured delivery. Senior engineers. Everything in writing.</p>
-          <!-- Mini problem chips -->
+          <div class="service-title" style="margin-bottom:0.5rem;" data-i18n="sme_card.title">Legacy &amp; Business Systems</div>
+          <p class="service-desc" style="margin-bottom:0.75rem;" data-i18n="sme_card.desc">Old software that breaks at the worst moment. Reports built in spreadsheets. Systems that won’t talk to each other. You don’t need a mainframe problem to work with us — you just need it done right, by someone who’s seen it before. Same structured delivery. Senior engineers. Everything in writing.</p>
           <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:0.75rem;">
             <span style="background:var(--gray-50);border:0.5px solid var(--gray-100);border-radius:20px;padding:4px 12px;font-size:12px;color:#1B2A4A;font-weight:500;">🖥️ Old or fragile software</span>
             <span style="background:var(--gray-50);border:0.5px solid var(--gray-100);border-radius:20px;padding:4px 12px;font-size:12px;color:#1B2A4A;font-weight:500;">📊 Manual reporting</span>
             <span style="background:var(--gray-50);border:0.5px solid var(--gray-100);border-radius:20px;padding:4px 12px;font-size:12px;color:#1B2A4A;font-weight:500;">☁️ Cloud migration</span>
             <span style="background:var(--gray-50);border:0.5px solid var(--gray-100);border-radius:20px;padding:4px 12px;font-size:12px;color:#1B2A4A;font-weight:500;">🔗 System integration</span>
-            <span style="background:var(--gray-50);border:0.5px solid var(--gray-100);border-radius:20px;padding:4px 12px;font-size:12px;color:#1B2A4A;font-weight:500;">🤖 AI & automation</span>
+            <span style="background:var(--gray-50);border:0.5px solid var(--gray-100);border-radius:20px;padding:4px 12px;font-size:12px;color:#1B2A4A;font-weight:500;">🤖 AI &amp; automation</span>
           </div>
-          <div class="card-click-hint" style="color:#7C3AED;">🔍 Click to see what's included →</div>
+          <div class="card-click-hint" style="color:#7C3AED;">🔍 Click to see what’s included →</div>
         </div>
       </div>
     </div>
-    <div style="margin-top:1rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;">
-      
-    </div>
-    </div>
+
   </div>
-
-
 
 </section>
 
@@ -562,13 +567,13 @@
       ACH &nbsp;·&nbsp; RTP &nbsp;·&nbsp; OFAC &nbsp;·&nbsp; AML &nbsp;·&nbsp; KYC &nbsp;·&nbsp;
       AWS &nbsp;·&nbsp; Lambda &nbsp;·&nbsp; S3 &nbsp;·&nbsp;
       REST APIs &nbsp;·&nbsp; PostgreSQL &nbsp;·&nbsp; Python &nbsp;·&nbsp;
-      PCI-DSS &nbsp;·&nbsp; SOX &nbsp;·&nbsp; GDPR &nbsp;·&nbsp;
+      PCI-DSS &nbsp;·&nbsp; SOX &nbsp;·&nbsp; FFIEC &nbsp;·&nbsp;
       COBOL &nbsp;·&nbsp; JCL &nbsp;·&nbsp; VSAM &nbsp;·&nbsp; DB2 &nbsp;·&nbsp;
       CICS &nbsp;·&nbsp; z/OS &nbsp;·&nbsp; IBM Z &nbsp;·&nbsp;
       ACH &nbsp;·&nbsp; RTP &nbsp;·&nbsp; OFAC &nbsp;·&nbsp; AML &nbsp;·&nbsp; KYC &nbsp;·&nbsp;
       AWS &nbsp;·&nbsp; Lambda &nbsp;·&nbsp; S3 &nbsp;·&nbsp;
       REST APIs &nbsp;·&nbsp; PostgreSQL &nbsp;·&nbsp; Python &nbsp;·&nbsp;
-      PCI-DSS &nbsp;·&nbsp; SOX &nbsp;·&nbsp; GDPR
+      PCI-DSS &nbsp;·&nbsp; SOX &nbsp;·&nbsp; FFIEC
     </div>
   </div>
 </div>
@@ -701,7 +706,7 @@
         <div style="font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:1.5px;color:var(--teal-100);margin-bottom:0.75rem;" data-i18n="aws.savings.label">Typical savings</div>
         <div style="font-family:'Playfair Display',serif;font-size:3rem;font-weight:500;color:white;line-height:1;">~66%</div>
         <div style="font-size:13px;color:var(--teal-100);margin:0.5rem 0 1.5rem;font-weight:300;" data-i18n="aws.savings.sub">lower infrastructure cost vs. building it yourself</div>
-        <div style="font-size:11px;color:var(--teal-100);opacity:0.7;font-weight:300;line-height:1.5;" data-i18n="aws.savings.source">Source: ESG / AWS 3-yr TCO study. Actual savings vary by workload.</div>
+        <div style="font-size:11px;color:var(--teal-100);opacity:0.7;font-weight:300;line-height:1.5;" data-i18n="aws.savings.source">Based on typical project comparisons. Actual savings vary by workload and scope.</div>
       </div>
 
     </div>
@@ -798,6 +803,7 @@
 
       <!-- Hidden field to identify source -->
       <input type="hidden" name="_subject" value="[Meliora Labs] New Project Brief" />
+      <input type="hidden" name="_source" value="project-brief" />
 
       <!-- Submit row -->
       <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;">
@@ -828,7 +834,7 @@
 
     <!-- FOUNDER STORY -->
     <div class="founder-card reveal">
-      <div class="founder-quote" data-i18n="founder.quote">Meliora Labs was built by engineers who lived inside these systems — not consultants who read about them. Mainframe migrations, payment platforms, compliance frameworks — delivered from the inside, by the people responsible when things went wrong. We know what's at stake. Every engagement reflects that: structured, transparent, and supported until it's right.</div>
+      <div class="founder-quote" data-i18n="founder.quote">I spent 20+ years inside the systems most consultants only read about. Mainframe migrations, payment platforms, compliance frameworks — delivered by the engineers responsible when things went wrong. We know what's at stake when a system goes down. I built Meliora Labs because every company deserves that level of care. Not a consultant who delivers and disappears. A partner who stays until it's right.</div>
       <div class="founder-meta">
         <div class="founder-dot"></div>
         <div class="founder-name" data-i18n="founder.meta">Founder, Meliora Labs</div>
@@ -927,11 +933,7 @@
         <div class="sec-detail"><div class="sec-dot"></div><span data-i18n="sec1.d2">All data encrypted at rest and in transit</span></div>
         <div class="sec-detail"><div class="sec-dot"></div><span data-i18n="sec1.d3">Zero tolerance for security flaws — this is not a checkbox</span></div>
         <div class="sec-detail"><div class="sec-dot"></div><span data-i18n="sec1.d4">Banking-grade standards applied to every project, every size</span></div>
-        <a href="#contact-form" class="sec-cta-small" data-i18n="sec.learnlink">Ask us about our security standards →</a>
-      </div>
-    </div>
-
-    <!-- Data Privacy -->
+        <a href="#contact-form" class="sec-cta-small" data-i18n="sec1.learnlink">How we apply these standards →</a>
     <div class="security-card reveal reveal-delay-2">
       <div class="sec-card-header">
         <div class="service-icon">🔐</div>
@@ -944,11 +946,7 @@
         <div class="sec-detail"><div class="sec-dot"></div><span data-i18n="sec2.d2">Access control — right people, right data, right time</span></div>
         <div class="sec-detail"><div class="sec-dot"></div><span data-i18n="sec2.d3">Compliance certifications identified per project requirements</span></div>
         <div class="sec-detail"><div class="sec-dot"></div><span data-i18n="sec2.d4">Confidentiality agreement included in every engagement</span></div>
-        <a href="#contact-form" class="sec-cta-small" data-i18n="sec.learnlink">Ask us about our security standards →</a>
-      </div>
-    </div>
-
-    <!-- What We Protect -->
+        <a href="#contact-form" class="sec-cta-small" data-i18n="sec2.learnlink">Ask about our confidentiality agreement →</a>
     <div class="security-card reveal reveal-delay-3">
       <div class="sec-card-header">
         <div class="service-icon">🛡️</div>
@@ -961,11 +959,7 @@
         <div class="sec-detail"><div class="sec-dot"></div><span data-i18n="sec3.d2">Security metrics provided — cost-effective visibility</span></div>
         <div class="sec-detail"><div class="sec-dot"></div><span data-i18n="sec3.d3">Real-time alerts — know before it becomes a problem</span></div>
         <div class="sec-detail"><div class="sec-dot"></div><span data-i18n="sec3.d4">Patches and software version updates managed proactively</span></div>
-        <a href="#contact-form" class="sec-cta-small" data-i18n="sec.learnlink">Ask us about our security standards →</a>
-      </div>
-    </div>
-
-    <!-- Credentials — dark card -->
+        <a href="#contact-form" class="sec-cta-small" data-i18n="sec3.learnlink">See how this applies to your systems →</a>
     <div class="security-card dark reveal reveal-delay-4">
       <div class="sec-card-header">
         <div class="service-icon">🏆</div>
@@ -979,14 +973,14 @@
         <span class="security-badge" style="background:rgba(159,225,203,0.15);border-color:rgba(159,225,203,0.3);color:#9FE1CB;">✓ SOX</span>
         <span class="security-badge" style="background:rgba(159,225,203,0.15);border-color:rgba(159,225,203,0.3);color:#9FE1CB;">✓ PCI-DSS</span>
         <span class="security-badge" style="background:rgba(159,225,203,0.15);border-color:rgba(159,225,203,0.3);color:#9FE1CB;">✓ AWS Certified</span>
-        <span class="security-badge" style="background:rgba(159,225,203,0.15);border-color:rgba(159,225,203,0.3);color:#9FE1CB;">✓ MS AI</span>
+        <span class="security-badge" style="background:rgba(159,225,203,0.15);border-color:rgba(159,225,203,0.3);color:#9FE1CB;" title="Master of Science in Artificial Intelligence">✓ MS · AI</span>
       </div>
       <div class="sec-expand-panel dark-panel" id="sec4">
         <div class="sec-detail light"><div class="sec-dot"></div><span data-i18n="sec4.d1">AWS-certified engineers — cloud architecture and security</span></div>
         <div class="sec-detail light"><div class="sec-dot"></div><span data-i18n="sec4.d2">MS in Artificial Intelligence — AI-powered solutions</span></div>
         <div class="sec-detail light"><div class="sec-dot"></div><span data-i18n="sec4.d3">20+ years OFAC, AML, SOX, PCI-DSS in US and Mexico financial environments</span></div>
         <div class="sec-detail light"><div class="sec-dot"></div><span data-i18n="sec4.d4">Compliance requirements identified and addressed per project — not assumed</span></div>
-        <a href="#contact-form" class="sec-cta-small light" data-i18n="sec.learnlink">Ask us about our security standards →</a>
+        <a href="#contact-form" class="sec-cta-small light" data-i18n="sec4.learnlink">Request our credentials overview →</a>
       </div>
     </div>
 
@@ -1003,29 +997,20 @@
         <div class="sec-detail"><div class="sec-dot"></div><span data-i18n="sec5.d2">Scalability built in — grows with your business</span></div>
         <div class="sec-detail"><div class="sec-dot"></div><span data-i18n="sec5.d3">IAM roles and profiles — right access, right people</span></div>
         <div class="sec-detail"><div class="sec-dot"></div><span data-i18n="sec5.d4">VPC isolation and automated compliance monitoring</span></div>
-        <a href="#contact-form" class="sec-cta-small" data-i18n="sec.learnlink">Ask us about our security standards →</a>
-      </div>
-    </div>
-
-    <!-- Compliance -->
+        <a href="#contact-form" class="sec-cta-small" data-i18n="sec5.learnlink">Ask about our cloud security architecture →</a>
     <div class="security-card reveal reveal-delay-6">
       <div class="sec-card-header">
         <div class="service-icon">📋</div>
         <button class="learn-more-btn sec-learn-btn light-btn" onclick="toggleSec('sec6')" data-i18n="card.learnmore">Learn more +</button>
       </div>
       <div class="service-title" data-i18n="sec6.title">Compliance by Design</div>
-      <p class="service-desc" data-i18n="sec6.desc">We don't retrofit compliance. Every project starts with a compliance checklist aligned to your industry — banking, fintech, healthcare, or enterprise — so you're audit-ready from day one.</p>
+      <p class="service-desc" data-i18n="sec6.desc">We don't retrofit compliance. Every project starts with a compliance checklist aligned to your industry — banking, fintech, payments, or enterprise — so you're audit-ready from day one.</p>
       <div class="sec-expand-panel" id="sec6">
         <div class="sec-detail"><div class="sec-dot"></div><span data-i18n="sec6.d1">Gap analysis per project — what rules apply to you specifically</span></div>
         <div class="sec-detail"><div class="sec-dot"></div><span data-i18n="sec6.d2">Compliance rules mapped per industry and region</span></div>
         <div class="sec-detail"><div class="sec-dot"></div><span data-i18n="sec6.d3">Each project gets its own compliance checklist</span></div>
         <div class="sec-detail"><div class="sec-dot"></div><span data-i18n="sec6.d4">Audit-ready documentation from day one — no scrambling</span></div>
-        <a href="#contact-form" class="sec-cta-small" data-i18n="sec.learnlink">Ask us about our security standards →</a>
-      </div>
-    </div>
-  </div>
-
-  <!-- Responsible Disclosure -->
+        <a href="#contact-form" class="sec-cta-small" data-i18n="sec6.learnlink">Get your compliance checklist →</a>
   <div class="disclosure-box reveal">
     <div class="disclosure-icon">🔍</div>
     <div class="disclosure-text">
@@ -1040,7 +1025,7 @@
 <div class="divider"></div>
 <section id="engine" style="padding:5rem 3rem;max-width:1100px;margin:0 auto;">
   <div class="section-tag reveal" data-i18n="eng.tag">Meliora Engine</div>
-  <h2 class="section-title reveal reveal-delay-1" data-i18n="eng.title">How we keep every delivery structured</h2>
+  <h2 class="section-title reveal reveal-delay-1" data-i18n="eng.title">The engine behind every delivery</h2>
   <p class="section-sub reveal reveal-delay-2" data-i18n="eng.sub">Every project runs on a consistent internal framework — from the first estimate through final handover. Scope, timeline, and documentation are defined before any work begins. Gaps and risks are tracked continuously, not discovered at go-live. You always know what's planned, what's in progress, and what comes next.</p>
 
   <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem;margin-bottom:2.5rem;">
@@ -1171,7 +1156,7 @@
       <p class="service-desc" style="margin-bottom:1rem;color:var(--teal-100);" data-i18n="mgd.l3.desc">A dedicated Meliora Labs engineer embedded in your team. Full ownership, continuous delivery, and a direct line to your systems every day.</p>
       <div style="display:flex;flex-direction:column;gap:5px;margin-bottom:1.25rem;">
         <div style="font-size:13px;color:var(--teal-100);"><span style="color:#6ee7b7;margin-right:6px;">✓</span><span data-i18n="mgd.l3.f1">Everything in Layer 1 + 2</span></div>
-        <div style="font-size:13px;color:var(--teal-100);"><span style="color:#6ee7b7;margin-right:6px;">✓</span><span data-i18n="mgd.l3.f2">Dedicated engineer — 1hr response SLA</span></div>
+        <div style="font-size:13px;color:var(--teal-100);"><span style="color:#6ee7b7;margin-right:6px;">✓</span><span data-i18n="mgd.l3.f2">Dedicated engineer — 4hr response (business hours)</span></div>
         <div style="font-size:13px;color:var(--teal-100);"><span style="color:#6ee7b7;margin-right:6px;">✓</span><span data-i18n="mgd.l3.f3">Continuous delivery & feature work</span></div>
         <div style="font-size:13px;color:var(--teal-100);"><span style="color:#6ee7b7;margin-right:6px;">✓</span><span data-i18n="mgd.l3.f4">Compliance reporting — OFAC, AML, SOX</span></div>
         <div style="font-size:13px;color:var(--teal-100);"><span style="color:#6ee7b7;margin-right:6px;">✓</span><span data-i18n="mgd.l3.f5">A dedicated engineer who owns it with you</span></div>
@@ -1248,18 +1233,20 @@
       </div>
     </div>
 
-    <!-- Case 3 — Coming Soon -->
-    <div class="service-card reveal reveal-delay-3" style="position:relative;overflow:hidden;border-style:dashed;">
-      <div style="position:absolute;top:0;left:0;right:0;height:4px;background:var(--gray-100);border-radius:0;"></div>
-      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.75rem;">
-        <span style="background:var(--gray-50);color:var(--gray-400);font-size:11px;font-weight:500;padding:3px 10px;border-radius:20px;border:0.5px solid var(--gray-100);" data-i18n="cases.c3.industry">🏦 Fintech · Mexico</span>
-        <span style="font-size:12px;color:var(--gray-400);" data-i18n="cases.c3.year">2025</span>
+    <!-- Case 3 — CTA card -->
+    <div class="service-card reveal reveal-delay-3" style="position:relative;overflow:hidden;background:var(--teal-800);display:flex;flex-direction:column;justify-content:space-between;">
+      <div style="position:absolute;top:0;left:0;right:0;height:4px;background:var(--teal-400);border-radius:0;"></div>
+      <div>
+        <div style="font-size:2rem;margin-bottom:1.25rem;margin-top:0.25rem;">💬</div>
+        <div class="service-title" style="color:white;margin-bottom:0.75rem;" data-i18n="cases.c3.title">Your project could be next</div>
+        <p class="service-desc" style="color:var(--teal-100);margin-bottom:1.5rem;" data-i18n="cases.c3.desc">We work with banks, fintechs, and payment companies across the US and Mexico. Every engagement starts with a free discovery call — no commitment, no pressure.</p>
+        <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:1.5rem;">
+          <div style="font-size:13px;color:var(--teal-100);display:flex;align-items:center;gap:8px;"><span style="color:var(--teal-400);">✓</span><span data-i18n="cases.c3.f1">Free discovery call — no commitment</span></div>
+          <div style="font-size:13px;color:var(--teal-100);display:flex;align-items:center;gap:8px;"><span style="color:var(--teal-400);">✓</span><span data-i18n="cases.c3.f2">Written estimate before any work begins</span></div>
+          <div style="font-size:13px;color:var(--teal-100);display:flex;align-items:center;gap:8px;"><span style="color:var(--teal-400);">✓</span><span data-i18n="cases.c3.f3">Response within 24 hours</span></div>
+        </div>
       </div>
-      <div class="service-title" style="margin-bottom:0.5rem;color:var(--gray-400);" data-i18n="cases.c3.title">Payments & Compliance Platform</div>
-      <p class="service-desc" style="margin-bottom:1.25rem;" data-i18n="cases.c3.desc">ACH and RTP payment platform for a Mexican fintech — OFAC screening, AML transaction monitoring, and KYC onboarding workflow. Case study in progress.</p>
-      <div style="background:var(--gray-50);border:0.5px solid var(--gray-100);border-radius:8px;padding:1rem;text-align:center;">
-        <div style="font-size:13px;color:var(--gray-400);font-weight:300;" data-i18n="cases.c3.coming">📋 Full case study coming soon</div>
-      </div>
+      <a href="#project-brief" style="display:inline-block;background:white;color:var(--teal-800);font-size:13px;font-weight:500;padding:10px 20px;border-radius:8px;text-decoration:none;text-align:center;" data-i18n="cases.c3.cta">Start a conversation →</a>
     </div>
 
   </div>
@@ -1366,13 +1353,13 @@
 
 <!-- NOTIFY ME -->
 <div class="notify-section reveal" id="notify">
-  <div class="notify-tag" data-i18n="notify.tag">Coming Soon</div>
-  <h2 class="notify-title" data-i18n="notify.title">Something powerful is coming.</h2>
-  <p class="notify-sub" data-i18n="notify.sub">Be the first to know when Meliora Labs officially launches. No spam — just one email when we're ready.</p>
+  <div class="notify-tag" data-i18n="notify.tag">Stay Informed</div>
+  <h2 class="notify-title" data-i18n="notify.title">Insights from the inside.</h2>
+  <p class="notify-sub" data-i18n="notify.sub">Occasional notes on mainframe modernization, payments, and what we're seeing in the field. No filler — only when it's worth your time.</p>
   <div class="notify-form">
     <label for="notifyEmail" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;">Email address</label>
     <input class="notify-input" id="notifyEmail" type="email" name="email" autocomplete="email" data-i18n-placeholder="notify.placeholder" placeholder="your@email.com" />
-    <button class="notify-btn" onclick="submitNotify()" data-i18n="notify.btn">Notify Me</button>
+    <button class="notify-btn" onclick="submitNotify()" data-i18n="notify.btn">Subscribe</button>
   </div>
   <div class="notify-success" id="notifySuccess" data-i18n="notify.success">✅ You're on the list! We'll be in touch.</div>
 </div>
@@ -1390,6 +1377,8 @@
     </div>
     <div>
       <form id="contactForm" action="https://formspree.io/f/mdajyype" method="POST" onsubmit="handleFormSubmit(event)">
+        <input type="hidden" name="_subject" value="[Meliora Labs] New Contact Message" />
+        <input type="hidden" name="_source" value="contact-form" />
         <div class="form-group">
           <label class="form-label" for="contactName" data-i18n="form.name">Full Name</label>
           <input class="form-input" type="text" id="contactName" name="name" required autocomplete="name" data-i18n-placeholder="form.namePh" placeholder="John Smith" />
@@ -1721,6 +1710,12 @@ const translations = {
     "t7l.f6":"AWS-certified engineers and AI specialists on your project",
     "t7l.golive":"Full go-live support — dedicated support window agreed per project",
     "sec.learnlink":"Ask us about our security standards →",
+    "sec1.learnlink":"How we apply these standards →",
+    "sec2.learnlink":"Ask about our confidentiality agreement →",
+    "sec3.learnlink":"See how this applies to your systems →",
+    "sec4.learnlink":"Request our credentials overview →",
+    "sec5.learnlink":"Ask about our cloud security architecture →",
+    "sec6.learnlink":"Get your compliance checklist →",
     "sec1.d1":"NPPI data protected — no exceptions, no shortcuts",
     "sec1.d2":"All data encrypted at rest and in transit",
     "sec1.d3":"Zero tolerance for security flaws — this is not a checkbox",
@@ -1829,17 +1824,17 @@ const translations = {
     "sec3.title":"What We Protect You From","sec3.desc":"Unauthorized access, compliance violations, data breaches, system vulnerabilities, and insider threats. We design systems that anticipate risk — not just react to it.",
     "sec4.title":"Our Credentials","sec4.desc":"20+ years in regulated financial environments. Hands-on experience with OFAC, AML, SOX, and PCI-DSS compliance in US and Mexico environments.",
     "sec5.title":"Cloud & Infrastructure Security","sec5.desc":"All cloud deployments on AWS follow security best practices — encrypted at rest and in transit, IAM role-based access, VPC isolation, and automated compliance monitoring.",
-    "sec6.title":"Compliance by Design","sec6.desc":"We don't retrofit compliance. Every project starts with a compliance checklist aligned to your industry — banking, fintech, healthcare, or enterprise — so you're audit-ready from day one.",
+    "sec6.title":"Compliance by Design","sec6.desc":"We don't retrofit compliance. Every project starts with a compliance checklist aligned to your industry — banking, fintech, payments, or enterprise — so you're audit-ready from day one.",
     "sec.disclosure.title":"Responsible Disclosure","sec.disclosure.sub":"Found a security issue? We take all reports seriously. Please contact us directly and we'll respond within 24 hours.","sec.disclosure.btn":"Report a concern →",
     "hero.tag":"AI-Powered IT Solutions",
     "hero.title":'Built by those who <em>lived</em> inside the systems',
     "hero.sub":"From IBM Z to your first cloud migration — we've run these systems, not just read about them. Structured IT engagements for financial institutions and growing businesses. Every project scoped in writing, delivered by senior engineers, with a rollback plan before anything goes live.",
     "hero.cta1":"Start a conversation","hero.cta2":"See what we build →",
     "stats.s1":"","stats.s2":"","stats.s3":"","stats.s4":"",
-    "services.tag":"What we do","services.title":"Structured engagements for systems that can't afford surprises",
+    "services.tag":"What we do","services.title":"Structured engagements for systems that matter",
     
-    "track.a.badge":"Mainframe & Enterprise","track.a.sub":"Banks · Fintechs · Payment processors running IBM Z, COBOL, CICS, DB2, VSAM",
-    "track.b.badge":"Non-Mainframe & SME","track.b.sub":"Small and mid-size companies with legacy software, manual processes, or payment integration needs",
+    "track.a.badge":"Mainframe & Enterprise","track.a.sub":"Banks · Fintechs · Payment processors · IBM Z · COBOL · CICS",
+    "track.b.badge":"Legacy & Business Systems","track.b.sub":"Growing companies · Manual processes · Payment integration · Cloud migration",
     "mf_assess.title":"Assess","mf_assess.desc":"Know exactly what you have — before committing a dollar to change it. We go inside your systems and give you a clear picture: what's working, what's risky, what's costing you more than it should, and what needs to go. No guessing. No assumptions. A full written report — before any work begins.",
     "mf_assess.f1":"COBOL/JCL inventory — PROGRAM-ID, CALL chains, COPY members, FILE-CONTROL",
     "mf_assess.f2":"5R classification per program: Rehost · Refactor · Rebuild · Re-architect · Replace",
@@ -1875,7 +1870,7 @@ const translations = {
     "brief.pricingNote":"💡 We price to your project — no ranges, no anchors. Tell us what you need and a real engineer will reply within 24 hours with a clear, honest estimate. We never charge more than what we agree in writing.",
     "cases.c1.desc":"Meliora Labs delivered a full z/OS to AWS migration for a North American bank — 100+ COBOL components assessed, classified, and migrated. Zero incidents on go-live. Parallel run passed before any cutover was authorized.",
     "cases.c2.desc":"Meliora Labs delivered an end-to-end payment and onboarding platform on AWS — ACH, RTP, KYC verification, and AML compliance integrated from day one. Delivered on time, within the agreed scope and cost.",
-    "services.sub":"We work with banks, fintechs, and growing businesses on mainframe modernization, payments platforms, cloud migration, and AI integration. Every engagement follows a defined methodology — gaps identified, risks surfaced, workstreams planned in parallel, and nothing skipped. You see where the project stands at every step, not just at the end.",
+    "services.sub":"Two service lines. One methodology. You always know what's planned, what's in progress, and what comes next.",
     "services.domains_label":"What we work on",
     "svc.included_label":"✅ What's included","svc.notincluded_label":"❌ Not included",
     "svc_assess.title":"Assess","svc_assess.desc":"Discovery, inventory, and complexity classification. We map what you have, classify the risk, and deliver a written modernization plan — before you commit to anything bigger.",
@@ -1921,13 +1916,12 @@ const translations = {
     "alone.b3":"We own it with you","alone.b4":"Covered in your agreement",
     "why1.title":"Domain depth, not theory","why1.desc":"We've worked inside mission-critical mainframe environments and payment systems — not as outside advisors, but as the engineers accountable when something broke. That operational experience is what we bring to every engagement.",
     "why2.title":"Security first, always","why2.desc":"Every system we design is built with security from the start — encrypted, access-controlled, and compliance-ready before the first line of production code. Security is not a checkbox at the end. It is the architecture.",
-    "why3.title":"Humble, not corporate","why3.desc":"Meliora means always striving for better. We don't oversell. We don't disappear after delivery. We listen, understand, and stay until the job is truly done.",
+    "why3.title":"Scope in writing. No surprises.","why3.desc":"Every engagement is defined before it starts — what's included, what isn't, the timeline, and what happens if something breaks. Meliora Labs does not change scope mid-project without a written agreement. What we commit to, we deliver.",
     "why4.title":"Lean by design","why4.desc":"No bloated teams, no unnecessary layers. You work directly with the engineers who understand your problem — and we bring the right people behind every project.",
     "why5.title":"We don't disappear","why5.desc":"Every deployment, upgrade, and go-live has our full support. Issues happen — that's reality. What matters is who's there when they do. We are.",
-    "why5.title":"We don't disappear","why5.desc":"Every deployment, upgrade, and go-live has our full support. Issues happen — that's reality. What matters is who's there when they do. We are.",
-    "notify.tag":"Coming Soon","notify.title":"Something powerful is coming.",
-    "notify.sub":"Be the first to know when Meliora Labs officially launches. No spam — just one email when we're ready.",
-    "notify.placeholder":"your@email.com","notify.btn":"Notify Me","notify.success":"✅ You're on the list! We'll be in touch.",
+    "notify.tag":"Stay Informed","notify.title":"Insights from the inside.",
+    "notify.sub":"Occasional notes on mainframe modernization, payments, and what we're seeing in the field. No filler — only when it's worth your time.",
+    "notify.placeholder":"your@email.com","notify.btn":"Subscribe","notify.success":"✅ You're subscribed. We'll be in touch when it's worth your time.",
     "contact.tag":"Get in touch","contact.title":"Let's start a conversation",
     "contact.sub":"Whether you have a project in mind, need a consultation, or just want to explore what's possible — we'd love to hear from you.",
     "contact.response":"We respond within 24 hours",
@@ -1962,7 +1956,7 @@ const translations = {
     "aws.item.maint":"Maintenance and downtime","aws.item.aws":"AWS usage (pay-as-you-go)","aws.item.meliora":"Meliora engagement fee",
     "aws.total.self":"3-yr total cost","aws.total.meliora":"3-yr total cost",
     "aws.savings.label":"Typical savings","aws.savings.sub":"lower infrastructure cost vs. building it yourself",
-    "aws.savings.source":"Source: ESG / AWS 3-yr TCO study. Actual savings vary by workload.",
+    "aws.savings.source":"Based on typical project comparisons. Actual savings vary by workload and scope.",
     "brief.tag":"Start the conversation","brief.title":"Tell us about your project",
     "brief.sub":"No technical knowledge needed — just tell us what you want to improve or fix. A real engineer will read this and reply within 24 hours with a clear, honest estimate.",
     "brief.name":"Your name *","brief.namePh":"Maria Gonzalez","brief.company":"Company *","brief.companyPh":"Acme Bank",
@@ -1987,18 +1981,18 @@ const translations = {
     "brief.success":"✅ Received! A real engineer will review this and respond within 24 hours. Thank you for reaching out.",
     "eng.tag":"Meliora Engine","eng.title":"The engine behind every delivery",
     "eng.sub":"Every project runs on a consistent internal framework — from the first estimate through final handover. Scope, timeline, and documentation are defined before any work begins. Gaps and risks are tracked continuously, not discovered at go-live. You always know what's planned, what's in progress, and what comes next.",
-    "eng.t1.label":"Tier 1 — Foundation","eng.t1.badge":"Small projects","eng.t1.title":"Estimate + SOW",
+    "eng.t1.label":"Assess — Foundation","eng.t1.badge":"Discovery & Classification","eng.t1.title":"Inventory + Estimate + SOW",
     "eng.t1.desc":"Project intake → automated cost and hours estimation → SOW generated in Word/PDF. Everything you need to start correctly.",
     "eng.t1.f1":"Cost & hours estimation","eng.t1.f2":"Auto-generated SOW (Word + PDF)","eng.t1.f3":"Project timeline + milestones","eng.t1.f4":"Action owners — who does what, by when",
-    "eng.t2.label":"Tier 2 — Full Delivery","eng.t2.badge":"Medium projects","eng.t2.title":"SOW + Roadmap + Deck",
+    "eng.t2.label":"Blueprint — Full Design","eng.t2.badge":"Architecture & Specification","eng.t2.title":"SOW + Architecture + Roadmap + Deck",
     "eng.t2.desc":"Everything in Tier 1, plus a full roadmap, rollback plan, AS-IS/TO-BE presentation deck, and a technical Design Document Report.",
     "eng.t2.f1":"Full roadmap — phases, dependencies, blockers","eng.t2.f2":"Rollback plan auto-generated per project type",
     "eng.t2.f3":"PPT deck — AS-IS / TO-BE slides","eng.t2.f4":"DDR — Design Document Report","eng.t2.f5":"Invoice connected to project billing",
-    "eng.t3.label":"Tier 3 — Enterprise","eng.t3.badge":"Large / ongoing","eng.t3.title":"Full Enterprise Package",
+    "eng.t3.label":"Execute — Full Delivery","eng.t3.badge":"End-to-end execution","eng.t3.title":"Full Delivery Package",
     "eng.t3.desc":"Everything in Tier 1 + 2, plus a live multi-project dashboard, AI risk detection, compliance checklists, and a live client portal.",
     "eng.t3.f1":"Multi-project dashboard — all clients, one view","eng.t3.f2":"AI risk detection — flags issues before they happen",
     "eng.t3.f3":"Compliance checklist — OFAC, AML, SOX, PCI-DSS","eng.t3.f4":"Client portal — live project status","eng.t3.f5":"Audit-ready documentation and handover package",
-    "eng.cta.title":"Every project gets the right tier automatically","eng.cta.sub":"After your discovery call, the engine selects the right tier and generates your full delivery package.",
+    "eng.cta.title":"Every project follows the same structured process","eng.cta.sub":"After your discovery call, we scope the right phase — Assess, Blueprint, or Execute — and your full delivery package is built from there.",
     "eng.cta.btn":"Start with a project brief →",
     "mgd.tag":"Managed Service","mgd.title":"Support that stays after delivery",
     "mgd.sub":"For clients who want ongoing coverage after go-live — from light monitoring to dedicated engineering support. You decide the level. We stay available.",
@@ -2010,7 +2004,7 @@ const translations = {
     "mgd.l2.f1":"Everything in Layer 1","mgd.l2.f2":"Incident response — 4hr SLA","mgd.l2.f3":"Patch & update management","mgd.l2.f4":"Quarterly optimization review","mgd.l2.f5":"10 support hours/month included",
     "mgd.l3.label":"Layer 3","mgd.l3.title":"Dedicated Engineering",
     "mgd.l3.desc":"A dedicated Meliora Labs engineer embedded in your team. Full ownership, continuous delivery, direct line every day.",
-    "mgd.l3.f1":"Everything in Layer 1 + 2","mgd.l3.f2":"Dedicated engineer — 1hr response SLA","mgd.l3.f3":"Continuous delivery & feature work",
+    "mgd.l3.f1":"Everything in Layer 1 + 2","mgd.l3.f2":"Dedicated engineer — 4hr response (business hours)","mgd.l3.f3":"Continuous delivery & feature work",
     "mgd.l3.f4":"Compliance reporting — OFAC, AML, SOX","mgd.l3.f5":"A dedicated engineer who owns it with you","mgd.l3.price":"Custom",
     "mgd.from":"Starting from","mgd.note":"* All plans include monthly reporting, change log, and a dedicated channel. No lock-in — cancel anytime with 30 days notice.",
     "mgd.cta":"Talk to us about managed support →",
@@ -2022,9 +2016,12 @@ const translations = {
     "cases.c2.industry":"💳 Fintech · USA","cases.c2.title":"Payments & Onboarding Platform",
     "cases.c2.desc":"End-to-end payment and client onboarding platform built on AWS — ACH, RTP, KYC verification, and AML compliance integrated. Led as Product Owner and technical lead, delivered under budget.",
     "cases.c2.s1":"rails delivered","cases.c2.s2":"rollbacks","cases.c2.s3":"compliance frameworks",
-    "cases.c3.industry":"🔒 Enterprise · Mexico","cases.c3.title":"Cybersecurity Transformation","cases.c3.year":"2025",
-    "cases.c3.desc":"End-to-end security redesign — zero-trust architecture, PCI-DSS certification, SOX compliance framework. Case study in progress.",
-    "cases.c3.coming":"📋 Full case study coming soon"
+    "cases.c3.title":"Your project could be next",
+    "cases.c3.desc":"We work with banks, fintechs, and payment companies across the US and Mexico. Every engagement starts with a free discovery call — no commitment, no pressure.",
+    "cases.c3.f1":"Free discovery call — no commitment",
+    "cases.c3.f2":"Written estimate before any work begins",
+    "cases.c3.f3":"Response within 24 hours",
+    "cases.c3.cta":"Start a conversation →"
   },
   es: {
     "card.learnmore":"Ver más +","card.collapse":"Cerrar −",
@@ -2032,7 +2029,7 @@ const translations = {
     "mf_assess.title":"Assess","mf_assess.desc":"Sepa exactamente qué tiene — antes de comprometer un dólar en cambiarlo. Entramos en sus sistemas y le damos una imagen clara: qué funciona, qué representa un riesgo, qué le está costando más de lo que debería, y qué necesita cambiar. Sin suposiciones. Un informe escrito completo — antes de que comience cualquier trabajo.",
     "mf_blueprint.title":"Blueprint","mf_blueprint.desc":"Un plan completo — antes de que su equipo escriba una sola línea de código nuevo. Diseñamos el camino completo: arquitectura objetivo, modelo de datos, estrategia de migración y especificación del proyecto. Todo por escrito. Su equipo sabe exactamente qué se construye, en qué orden, y qué pasa si algo no va según lo planeado.",
     "mf_execute.title":"Execute","mf_execute.desc":"Lo construimos, migramos, validamos — y nos quedamos hasta que sea estable. Entrega completa desde la primera línea de código hasta el go-live y más allá. Ejecutamos sistemas en paralelo hasta que su equipo esté seguro, superamos cada control de cumplimiento y permanecemos 30 días después del cutover. La mayoría de las firmas desaparecen en el go-live. Nosotros no.","mf_execute.handover":"Cuando nos vamos, su equipo no empieza desde cero. Cada sistema que tocamos queda documentado — en lenguaje claro, por los ingenieros que lo construyeron — para que quien venga después pueda ser dueño de él.","mf_execute.addon1":"+ Transferencia de conocimiento","mf_execute.addon2":"+ Capacitación del equipo","mf_execute.addon3":"+ Documentación de traspaso",
-    "sme_card.title":"Sistemas Heredados y Empresariales","sme_card.desc":"Su software está frenando su negocio. Nosotros lo resolvemos — sin el precio de las grandes firmas. Software antiguo que falla en el peor momento. Reportes construidos en hojas de cálculo. Sistemas que no se comunican entre sí. No necesita un problema de mainframe para necesitarnos — solo necesita que se haga bien, por alguien que ya lo ha visto antes. Misma entrega estructurada. Ingenieros senior. Todo por escrito.",
+    "sme_card.title":"Sistemas Heredados y Empresariales","sme_card.desc":"Software antiguo que falla en el peor momento. Reportes construidos en hojas de cálculo. Sistemas que no se comunican entre sí. No necesitas un problema de mainframe para trabajar con nosotros — solo necesitas que se haga bien, por alguien que ya lo ha visto antes. Misma entrega estructurada. Ingenieros senior. Todo por escrito.",
     "faq.tag":"Preguntas Frecuentes","faq.title":"Preguntas Frecuentes",
     "faq.sub":"Todo lo que necesitas saber antes de comenzar una conversación con nosotros.",
     "faq.q1":"¿Con qué tipo de empresas trabajan?",
@@ -2084,6 +2081,12 @@ const translations = {
     "t7l.f6":"Ingenieros certificados en AWS y especialistas en IA en tu proyecto",
     "t7l.golive":"Soporte go-live completo — ventana de soporte dedicada por proyecto",
     "sec.learnlink":"Pregúntanos sobre nuestros estándares de seguridad →",
+    "sec1.learnlink":"Cómo aplicamos estos estándares →",
+    "sec2.learnlink":"Pregunta sobre nuestro acuerdo de confidencialidad →",
+    "sec3.learnlink":"Cómo aplica esto a tus sistemas →",
+    "sec4.learnlink":"Solicita nuestro resumen de credenciales →",
+    "sec5.learnlink":"Pregunta sobre nuestra arquitectura de seguridad en la nube →",
+    "sec6.learnlink":"Obtén tu lista de verificación de cumplimiento →",
     "sec1.d1":"Datos NPPI protegidos — sin excepciones, sin atajos",
     "sec1.d2":"Todos los datos cifrados en reposo y en tránsito",
     "sec1.d3":"Tolerancia cero a fallas de seguridad — esto no es una casilla",
@@ -2192,15 +2195,17 @@ const translations = {
     "sec3.title":"De Qué Te Protegemos","sec3.desc":"Acceso no autorizado, violaciones de cumplimiento, brechas de datos, vulnerabilidades del sistema y amenazas internas. Diseñamos sistemas que anticipan el riesgo, no solo reaccionan a él.",
     "sec4.title":"Nuestras Credenciales","sec4.desc":"Más de 20 años en entornos financieros regulados. Marcos de gobernanza revisados por examinadores de la Reserva Federal. Experiencia con OFAC, AML, SOX y PCI-DSS en Norteamérica y España.",
     "sec5.title":"Seguridad en la Nube","sec5.desc":"Todos los despliegues en AWS siguen las mejores prácticas — cifrado en reposo y en tránsito, acceso basado en roles IAM, aislamiento VPC y monitoreo de cumplimiento automatizado.",
-    "sec6.title":"Cumplimiento por Diseño","sec6.desc":"No adaptamos el cumplimiento después. Cada proyecto comienza con una lista de verificación alineada a tu industria — banca, fintech, salud o empresa — para que estés listo para auditorías desde el primer día.",
+    "sec6.title":"Cumplimiento por Diseño","sec6.desc":"No adaptamos el cumplimiento después. Cada proyecto comienza con una lista de verificación alineada a tu industria — banca, fintech, pagos o empresa — para que estés listo para auditorías desde el primer día.",
     "sec.disclosure.title":"Divulgación Responsable","sec.disclosure.sub":"¿Encontraste un problema de seguridad? Tomamos todos los reportes en serio. Contáctanos directamente y responderemos en menos de 24 horas.","sec.disclosure.btn":"Reportar un problema →",
     "hero.tag":"Soluciones de TI con IA",
     "hero.title":'Construido por quienes <em>vivieron</em> dentro de los sistemas',
     "hero.sub":"Meliora Labs ofrece herramientas y consultoría con IA para bancos, fintechs y empresas — desarrollado por ingenieros con más de 20 años dentro de plataformas de pagos y operaciones de ciberseguridad.",
     "hero.cta1":"Comenzar una conversación","hero.cta2":"Ver lo que construimos →",
     "stats.s1":"","stats.s2":"","stats.s3":"","stats.s4":"",
-    "services.tag":"Lo que hacemos","services.title":"Compromisos estructurados para sistemas que no pueden permitirse sorpresas",
-    "services.sub":"Trabajamos con bancos, fintechs y empresas en crecimiento en modernización de mainframe, plataformas de pagos, migración a la nube e integración de IA. Cada proyecto sigue una metodología definida — brechas identificadas, riesgos detectados, flujos de trabajo planificados en paralelo y nada omitido. Usted ve en qué punto se encuentra el proyecto en cada paso, no solo al final.",
+    "services.tag":"Lo que hacemos","services.title":"Compromisos estructurados para sistemas que importan",
+    "track.a.badge":"Mainframe & Enterprise","track.a.sub":"Bancos · Fintechs · Procesadores de pagos · IBM Z · COBOL · CICS",
+    "track.b.badge":"Sistemas Heredados y Empresariales","track.b.sub":"Empresas en crecimiento · Procesos manuales · Integración de pagos · Migración a la nube",
+    "services.sub":"Dos líneas de servicio. Una metodología. Siempre sabes qué está planificado, qué está en progreso y qué viene después.",
     "svc1.title":"Inteligencia de Entrega 360°","svc1.desc":"Estimación e inteligencia de riesgo con IA en todo el ciclo de entrega — dependencias, bloqueos, capacidad y cumplimiento en una sola vista.",
     "svc2.title":"Consultoría en Pagos y Fintech","svc2.desc":"ACH, RTP, Transferencias, OFAC, AML — experiencia práctica en los formatos y regulaciones que impulsan la infraestructura financiera.",
     "svc3.title":"Modernización de Mainframe","svc3.desc":"Estrategia y ejecución de migración de z/OS a la nube. Escribimos el manual para una de las migraciones bancarias más grandes en Norteamérica — más de 100 componentes, cero incidentes en el lanzamiento.",
@@ -2217,12 +2222,12 @@ const translations = {
     "alone.b3":"Mentalidad PO — lo asumimos contigo","alone.b4":"Cubierto en tu acuerdo",
     "why1.title":"Profundidad real, no teoría","why1.desc":"Hemos trabajado dentro de entornos mainframe críticos y sistemas de pago — no como asesores externos, sino como los ingenieros responsables cuando algo fallaba. Esa experiencia operativa es lo que aportamos a cada proyecto.",
     "why2.title":"Seguridad primero, siempre","why2.desc":"Cada sistema que diseñamos se construye con seguridad desde el inicio — encriptado, con control de acceso y listo para cumplimiento antes de la primera línea de código en producción. La seguridad no es un paso al final. Es la arquitectura.",
-    "why3.title":"Humildes, no corporativos","why3.desc":"Meliora significa siempre mejorar. No sobrevendemos. No desaparecemos después de la entrega. Escuchamos, entendemos y nos quedamos hasta que el trabajo esté verdaderamente terminado.",
+    "why3.title":"Alcance por escrito. Sin sorpresas.","why3.desc":"Cada engagement se define antes de comenzar — qué está incluido, qué no, el cronograma, y qué sucede si algo falla. Meliora Labs no cambia el alcance a mitad del proyecto sin un acuerdo escrito. Lo que comprometemos, lo entregamos.",
     "why4.title":"Lean por diseño","why4.desc":"Sin equipos inflados ni capas innecesarias. Trabajas directamente con los ingenieros que entienden tu problema — y traemos a las personas correctas detrás de cada proyecto.",
     "why5.title":"No desaparecemos","why5.desc":"Cada despliegue, actualización y go-live tiene nuestro apoyo completo. Los problemas ocurren — esa es la realidad. Lo que importa es quién está ahí cuando suceden. Nosotros estamos.",
-    "notify.tag":"Próximamente","notify.title":"Algo poderoso está por llegar.",
-    "notify.sub":"Sé el primero en saber cuando Meliora Labs lance oficialmente. Sin spam — solo un correo cuando estemos listos.",
-    "notify.placeholder":"tu@email.com","notify.btn":"Notifícame","notify.success":"✅ ¡Estás en la lista! Estaremos en contacto.",
+    "notify.tag":"Mantente Informado","notify.title":"Perspectivas desde adentro.",
+    "notify.sub":"Notas ocasionales sobre modernización de mainframe, pagos y lo que estamos viendo en el campo. Sin relleno — solo cuando vale la pena tu tiempo.",
+    "notify.placeholder":"tu@email.com","notify.btn":"Suscribirme","notify.success":"✅ Suscrito. Estaremos en contacto cuando valga la pena.",
     "contact.tag":"Contáctanos","contact.title":"Comencemos una conversación",
     "contact.sub":"Ya sea que tengas un proyecto en mente, necesites una consulta, o simplemente quieras explorar posibilidades — nos encantaría escucharte.",
     "contact.response":"Respondemos en menos de 24 horas",
@@ -2257,7 +2262,7 @@ const translations = {
     "aws.item.maint":"Mantenimiento y downtime","aws.item.aws":"Uso de AWS (pago por uso)","aws.item.meliora":"Fee de compromiso Meliora",
     "aws.total.self":"Costo total 3 años","aws.total.meliora":"Costo total 3 años",
     "aws.savings.label":"Ahorro típico","aws.savings.sub":"menor costo de infraestructura vs. construirlo tú mismo",
-    "aws.savings.source":"Fuente: Estudio TCO 3 años ESG / AWS. Los ahorros reales varían según la carga de trabajo.",
+    "aws.savings.source":"Basado en comparaciones típicas de proyectos. Los ahorros reales varían según la carga de trabajo y el alcance.",
     "brief.tag":"Inicia la conversación","brief.title":"Cuéntanos sobre tu proyecto",
     "brief.sub":"No necesitas conocimientos técnicos — solo cuéntanos qué quieres mejorar o resolver. Un ingeniero real leerá esto y responderá en 24 horas con una estimación clara y honesta.",
     "brief.name":"Tu nombre *","brief.namePh":"María González","brief.company":"Empresa *","brief.companyPh":"Banco Acme",
@@ -2282,18 +2287,18 @@ const translations = {
     "brief.success":"✅ Recibido! Un ingeniero real revisará esto y responderá en 24 horas. Gracias por contactarnos.",
     "eng.tag":"Motor Meliora","eng.title":"El motor detrás de cada entrega",
     "eng.sub":"Cada proyecto funciona con un marco interno consistente — desde la primera estimación hasta el traspaso final. El alcance, el cronograma y la documentación se definen antes de que comience cualquier trabajo. Las brechas y los riesgos se rastrean de forma continua, no se descubren en la puesta en marcha. Siempre sabe qué está planificado, qué está en progreso y qué sigue.",
-    "eng.t1.label":"Nivel 1 — Base","eng.t1.badge":"Proyectos pequeños","eng.t1.title":"Estimación + SOW",
+    "eng.t1.label":"Assess — Base","eng.t1.badge":"Descubrimiento y Clasificación","eng.t1.title":"Inventario + Estimación + SOW",
     "eng.t1.desc":"Formulario de proyecto → estimación automatizada → SOW generado en Word/PDF. Todo lo necesario para empezar correctamente.",
     "eng.t1.f1":"Estimación de costos y horas","eng.t1.f2":"SOW auto-generado (Word + PDF)","eng.t1.f3":"Cronograma + hitos","eng.t1.f4":"Responsables — quién hace qué y cuándo",
-    "eng.t2.label":"Nivel 2 — Entrega Completa","eng.t2.badge":"Proyectos medianos","eng.t2.title":"SOW + Roadmap + Presentación",
+    "eng.t2.label":"Blueprint — Diseño Completo","eng.t2.badge":"Arquitectura y Especificación","eng.t2.title":"SOW + Arquitectura + Roadmap + Presentación",
     "eng.t2.desc":"Todo del Nivel 1, más roadmap completo, plan de rollback, presentación AS-IS/TO-BE e Informe de Diseño técnico.",
     "eng.t2.f1":"Roadmap completo — fases, dependencias, bloqueos","eng.t2.f2":"Plan de rollback auto-generado",
     "eng.t2.f3":"Presentación PPT — AS-IS / TO-BE","eng.t2.f4":"DDR — Informe de Documento de Diseño","eng.t2.f5":"Factura conectada a la facturación",
-    "eng.t3.label":"Nivel 3 — Empresarial","eng.t3.badge":"Grande / continuo","eng.t3.title":"Paquete Empresarial Completo",
+    "eng.t3.label":"Execute — Entrega Completa","eng.t3.badge":"Ejecución de extremo a extremo","eng.t3.title":"Paquete de Entrega Completo",
     "eng.t3.desc":"Todo del Nivel 1 + 2, más panel multi-proyecto en vivo, detección de riesgos con IA, listas de cumplimiento y portal de cliente.",
     "eng.t3.f1":"Panel multi-proyecto — todos los clientes, una vista","eng.t3.f2":"Detección de riesgos con IA",
     "eng.t3.f3":"Lista de cumplimiento — OFAC, AML, SOX, PCI-DSS","eng.t3.f4":"Portal del cliente — estado en vivo","eng.t3.f5":"Exportación lista para auditoría",
-    "eng.cta.title":"Cada proyecto recibe el nivel correcto automáticamente","eng.cta.sub":"Después de tu llamada de descubrimiento, el motor selecciona el nivel y genera tu paquete completo.",
+    "eng.cta.title":"Cada proyecto sigue el mismo proceso estructurado","eng.cta.sub":"Después de tu llamada de descubrimiento, definimos la fase correcta — Assess, Blueprint o Execute — y tu paquete de entrega completo se construye desde ahí.",
     "eng.cta.btn":"Comenzar con un brief de proyecto →",
     "mgd.tag":"Servicio Gestionado","mgd.title":"Soporte que permanece después de la entrega",
     "mgd.sub":"Para clientes que desean cobertura continua después del go-live — desde monitoreo básico hasta soporte de ingeniería dedicada. Usted decide el nivel. Nosotros permanecemos disponibles.",
@@ -2305,7 +2310,7 @@ const translations = {
     "mgd.l2.f1":"Todo de la Capa 1","mgd.l2.f2":"Respuesta a incidentes — SLA 4hr","mgd.l2.f3":"Gestión de parches y actualizaciones","mgd.l2.f4":"Revisión de optimización trimestral","mgd.l2.f5":"10 horas de soporte/mes incluidas",
     "mgd.l3.label":"Capa 3","mgd.l3.title":"Ingeniería Dedicada",
     "mgd.l3.desc":"Un ingeniero de Meliora Labs dedicado integrado en tu equipo. Propiedad total, entrega continua y acceso directo a tus sistemas todos los días.",
-    "mgd.l3.f1":"Todo de la Capa 1 + 2","mgd.l3.f2":"Ingeniero dedicado — SLA 1hr de respuesta","mgd.l3.f3":"Entrega continua y desarrollo de funciones",
+    "mgd.l3.f1":"Todo de la Capa 1 + 2","mgd.l3.f2":"Ingeniero dedicado — respuesta en 4hr (horario laboral)","mgd.l3.f3":"Entrega continua y desarrollo de funciones",
     "mgd.l3.f4":"Reportes de cumplimiento — OFAC, AML, SOX","mgd.l3.f5":"Nunca estás solo — mentalidad PO","mgd.l3.price":"Personalizado",
     "mgd.from":"Desde","mgd.note":"* Todos los planes incluyen reporte mensual, registro de cambios y canal dedicado. Sin contratos — cancela con 30 días de aviso.",
     "mgd.cta":"Háblanos sobre soporte gestionado →",
@@ -2317,9 +2322,12 @@ const translations = {
     "cases.c2.industry":"💳 Fintech · EE.UU.","cases.c2.title":"Plataforma de Pagos y Onboarding",
     "cases.c2.desc":"Plataforma de pagos y onboarding de clientes de extremo a extremo en AWS — ACH, RTP, verificación KYC y cumplimiento AML integrados. Liderado como Product Owner y responsable técnico, entregado bajo presupuesto.",
     "cases.c2.s1":"rieles entregados","cases.c2.s2":"rollbacks","cases.c2.s3":"marcos de cumplimiento",
-    "cases.c3.industry":"🏦 Fintech · México","cases.c3.title":"Plataforma de Pagos y Cumplimiento","cases.c3.year":"2025",
-    "cases.c3.desc":"Plataforma de pagos ACH y RTP para una fintech mexicana — filtrado OFAC, monitoreo AML de transacciones y flujo de onboarding KYC. Caso de estudio en progreso.",
-    "cases.c3.coming":"📋 Caso de estudio completo próximamente"
+    "cases.c3.title":"Tu proyecto podría ser el siguiente",
+    "cases.c3.desc":"Trabajamos con bancos, fintechs y empresas de pagos en Estados Unidos y México. Cada engagement comienza con una llamada de descubrimiento gratuita — sin compromiso, sin presión.",
+    "cases.c3.f1":"Llamada de descubrimiento gratuita — sin compromiso",
+    "cases.c3.f2":"Estimación por escrito antes de comenzar cualquier trabajo",
+    "cases.c3.f3":"Respuesta en 24 horas",
+    "cases.c3.cta":"Iniciar una conversación →"
   }
 };
 
@@ -2381,7 +2389,7 @@ const botResponses = {
     quote: "We'd love to discuss your project! Fill out the contact form or email melioralabs.tech@gmail.com — we respond within 24 hours. <a href='javascript:navScrollTo(\"contact-form\")' style='color:var(--teal-400);font-weight:500;'>👇 Go to contact form →</a>",
     contact: "You can reach us at 📧 melioralabs.tech@gmail.com or use the contact form on this page. We respond within 24 hours. <a href='javascript:navScrollTo(\"contact-form\")' style='color:var(--teal-400);font-weight:500;'>👇 Go to contact form →</a>",
     team: "Meliora Labs is a senior-led boutique firm. Every engagement is handled by experienced engineers — not delegated to junior staff. We stay involved from first conversation through go-live and beyond. 🤝 <a href='javascript:navScrollTo(\"about\")' style='color:var(--teal-400);font-weight:500;'>👇 Read more about us →</a>",
-    launch: "We're currently in development! Sign up with the Notify Me form and we'll email you the moment we launch. 🚀 <a href='javascript:navScrollTo(\"notify\")' style='color:var(--teal-400);font-weight:500;'>👇 Sign up below →</a>",
+    launch: "Meliora Labs is open for business. Subscribe to our advisory updates for insights on mainframe modernization and payments — or start a project conversation now. <a href='javascript:navScrollTo(\"notify\")' style='color:var(--teal-400);font-weight:500;'>📬 Subscribe below →</a>",
     cost: "Pricing depends on scope. Fill out the contact form and we'll schedule a free initial consultation — no commitment required. <a href='javascript:navScrollTo(\"contact-form\")' style='color:var(--teal-400);font-weight:500;'>👇 Go to contact form →</a>",
     aws: "Yes! We deploy on AWS — and our team includes AWS-certified engineers. We also work with IBM and GCP. <a href='javascript:navScrollTo(\"security\")' style='color:var(--teal-400);font-weight:500;'>👇 See our cloud security details below →</a>",
     outofscope: "That's a bit outside what I can help with here! 😊 I'm focused on Meliora Labs services and IT consulting topics. For other questions, feel free to email us at melioralabs.tech@gmail.com",
