@@ -869,13 +869,13 @@
           <span class="error-msg">Please select a timeline</span>
         </div>
         <div class="field">
-          <label for="inp-team">Team Size Needed</label>
+          <label for="inp-team">Project Size</label>
           <select id="inp-team">
-            <option value="1">Just me (1)</option>
-            <option value="2">2 people</option>
-            <option value="3">3 people</option>
-            <option value="4">4 people</option>
-            <option value="5">5+ people</option>
+            <option value="1">Small — focused scope</option>
+            <option value="2">Medium — multiple components</option>
+            <option value="3">Large — complex / enterprise</option>
+            <option value="4">Enterprise — multi-system</option>
+            <option value="5">Not sure yet</option>
           </select>
         </div>
       </div>
@@ -892,26 +892,26 @@
         <div class="step-number">3</div>
         <div class="step-info">
           <h2>Scope & Risk Factors</h2>
-          <p>Helps us give you the most accurate estimate</p>
+          <p>Helps us calibrate the estimate to your organization</p>
         </div>
       </div>
 
       <!-- TIER -->
       <div class="field" style="margin-bottom:1.25rem;">
-        <label>Project Tier</label>
+        <label>Company Size</label>
         <div style="margin-top:0.5rem;">
           <div class="tier-grid">
-            <div class="tier-card selected" data-value="Assess" onclick="selectTier(this)">
-              <div class="tier-name">🔍 Assess</div>
-              <div class="tier-desc">Discovery, inventory, and complexity classification — before any code is touched</div>
+            <div class="tier-card" data-value="Small" onclick="selectTier(this)">
+              <div class="tier-name">🏢 Small</div>
+              <div class="tier-desc">Up to 50 employees · focused systems · lean delivery</div>
             </div>
-            <div class="tier-card" data-value="Blueprint" onclick="selectTier(this)">
-              <div class="tier-name">🗺️ Blueprint</div>
-              <div class="tier-desc">Architecture design, target platform, data model, SOW, and execution plan</div>
+            <div class="tier-card selected" data-value="Medium" onclick="selectTier(this)">
+              <div class="tier-name">🏦 Medium</div>
+              <div class="tier-desc">50–500 employees · multiple systems · structured delivery</div>
             </div>
-            <div class="tier-card" data-value="Execute" onclick="selectTier(this)">
-              <div class="tier-name">⚡ Execute</div>
-              <div class="tier-desc">Full delivery — refactoring, migration, parallel run, cutover, 30-day stabilization</div>
+            <div class="tier-card" data-value="Large" onclick="selectTier(this)">
+              <div class="tier-name">🏛️ Large</div>
+              <div class="tier-desc">500+ employees · enterprise complexity · full governance</div>
             </div>
           </div>
         </div>
@@ -1004,11 +1004,15 @@
 
       <!-- TOTAL -->
       <div class="total-box">
-        <div class="t-label">Estimated Investment</div>
+        <div class="t-label">Preliminary Estimate</div>
         <div class="t-amount" id="est-total">$0.00</div>
         <div class="t-sub" id="est-sub">Calculating...</div>
       </div>
 
+      <!-- Estimate disclaimer -->
+      <div style="background:#FFF8E1;border:0.5px solid #F5E6C0;border-radius:10px;padding:0.75rem 1rem;margin-bottom:1.25rem;font-size:12px;color:#8A6A00;line-height:1.6;">
+        💡 <strong>This is a preliminary estimate only</strong> — not a quote or commitment. Final pricing is defined in writing after a free discovery call, based on actual project scope.
+      </div>
       <!-- SUMMARY -->
       <div class="summary-grid" id="summary-grid"></div>
 
@@ -1100,7 +1104,7 @@ async function saveToSupabase(data, estimate) {
     client_phone:   data.phone       || "",
     country:        data.country     || "USA",
     project_type:   data.service     || "IT Consulting",
-    company_size:   data.tier        || "Medium",
+    company_size:   data.tier        || "Medium",  // Small / Medium / Large
     complexity:     data.complexity  || "Medium",
     duration_weeks: durMap[data.duration] || 4,
     team_size:      parseInt(data.team) || 1,
@@ -1139,9 +1143,18 @@ const BASE_HOURS = { Low: 20, Medium: 60, High: 120 };
 const DUR_MULT   = { '1-2 weeks':1.0,'1 month':1.1,'2-3 months':1.25,'3-6 months':1.4,'6+ months':1.6 };
 const TEAM_MULT  = { 1:1.0,2:1.15,3:1.25,4:1.35,5:1.5 };
 const TIER_ADJ   = { Small:0.85, Medium:1.0, Large:1.15 };
-const RISK_PTS   = { international_client:1,sensitive_data:2,legacy_systems:2,
-                     tight_deadline:1,unclear_requirements:3,multiple_stakeholders:1,
-                     compliance_required:2,/* first_time_client removed */ };
+const RISK_PTS   = {
+  cobol_mainframe:      3,  // COBOL / Mainframe programs — highest technical risk
+  db2_dba:              2,  // DB2 or legacy database schema
+  live_payments:        3,  // Live payment processing affected — production risk
+  data_migration:       2,  // Data migration required
+  undocumented_logic:   3,  // Business logic undocumented — discovery overhead
+  regulatory_audit:     2,  // Regulatory audit in progress or pending
+  sensitive_data:       2,  // Sensitive / regulated data (NPPI, PII)
+  hard_deadline:        2,  // Hard deadline (license renewal, audit date)
+  international_client: 1,  // Cross-border / international client
+  multiple_stakeholders:1,  // Multiple stakeholders / decision makers
+};
 
 // ── NAVIGATION ──
 function goToStep(n) {
@@ -1250,7 +1263,7 @@ function buildSummary() {
   const e = calcEstimate();
   document.getElementById('est-total').textContent = `$${e.total.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})}`;
   document.getElementById('est-sub').textContent =
-    `USD  ·  ${e.totalHrs} hours  ·  ${e.service}  ·  Risk: ${e.riskLabel} (${e.riskScore}/10)  ·  Valid 30 days`;
+    `USD  ·  ${e.totalHrs} hours  ·  ${e.service}  ·  Risk: ${e.riskLabel} (${e.riskScore}/10)  ·  Subject to discovery call`;
 
   const riskLabels = {
     international_client:'🌎 International client', sensitive_data:'🔒 Sensitive data',
@@ -1268,7 +1281,7 @@ function buildSummary() {
     ['Country',      document.getElementById('inp-country').value,  false],
     ['Project',      document.getElementById('inp-project').value,  true],
     ['Service',      e.service,                                      false],
-    ['Tier',         e.tier,                                         false],
+    ['Company Size', e.tier,                                         false],
     ['Complexity',   e.complexity,                                   false],
     ['Timeline',     document.getElementById('inp-duration').value, false],
     ['Risk Factors', riskSelected,                                   true],
