@@ -357,15 +357,6 @@
   }
 
   /* ── RISK FLAGS ── */
-  /* Domain pills */
-  .domain-pill {
-    display:inline-block;padding:5px 12px;border-radius:20px;font-size:12px;font-weight:500;
-    background:#EAF4FB;color:#1B2A4A;border:1px solid #c8dff0;cursor:pointer;
-    transition:all 0.15s;user-select:none;
-  }
-  input[type="checkbox"]:checked + .domain-pill {
-    background:#1B2A4A;color:white;border-color:#1B2A4A;
-  }
   /* Topic checkboxes */
   .topic-check {
     display:flex;align-items:center;gap:8px;padding:7px 10px;
@@ -811,37 +802,23 @@
             </div>
           </div>
 
-          <!-- Domain pills (multi-select) -->
-          <div style="margin-top:1rem;">
-            <label style="display:block;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:var(--gray-500);margin-bottom:0.5rem;">Domain <span style="font-weight:400;text-transform:none;letter-spacing:0;font-size:12px;">(select all that apply)</span></label>
-            <div style="display:flex;flex-wrap:wrap;gap:8px;" id="domain-pills">
-              <label style="cursor:pointer;"><input type="checkbox" name="domain_mainframe" style="display:none;" onchange="toggleDomainPill(this)"><span class="domain-pill" data-val="Mainframe · COBOL · z/OS">🔄 Mainframe · COBOL · z/OS</span></label>
-              <label style="cursor:pointer;"><input type="checkbox" name="domain_payments" style="display:none;" onchange="toggleDomainPill(this)"><span class="domain-pill" data-val="Payments · ACH · RTP · OFAC · AML">🏦 Payments · ACH · RTP · OFAC · AML</span></label>
-              <label style="cursor:pointer;"><input type="checkbox" name="domain_cloud" style="display:none;" onchange="toggleDomainPill(this)"><span class="domain-pill" data-val="Cloud · AWS Migration">☁️ Cloud · AWS Migration</span></label>
-              <label style="cursor:pointer;"><input type="checkbox" name="domain_compliance" style="display:none;" onchange="toggleDomainPill(this)"><span class="domain-pill" data-val="Compliance · SOX · PCI-DSS · AML">📋 Compliance · SOX · PCI-DSS · AML</span></label>
-              <label style="cursor:pointer;"><input type="checkbox" name="domain_automation" style="display:none;" onchange="toggleDomainPill(this)"><span class="domain-pill" data-val="Automation · Reporting · AI">🤖 Automation · Reporting · AI</span></label>
-              <label style="cursor:pointer;"><input type="checkbox" name="domain_other" style="display:none;" onchange="toggleDomainPill(this)"><span class="domain-pill" data-val="Other">💡 Other</span></label>
-            </div>
-          </div>
         </div>
         <span class="error-msg" id="service-error" style="display:none;color:var(--error);font-size:0.78rem;">Please select a service type</span>
       </div>
 
-      <!-- What would you like to improve? -->
+      <!-- What's this about? (merged Domain + Improve — no overlap) -->
       <div class="field" style="margin-bottom:1.25rem;">
-        <label>What would you like to improve? <span style="font-weight:400;text-transform:none;letter-spacing:0;font-size:12px;">(check all that apply)</span></label>
+        <label>What's this about? <span style="font-weight:400;text-transform:none;letter-spacing:0;font-size:12px;">(select all that apply)</span></label>
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:8px;margin-top:0.5rem;">
-          <label class="topic-check"><input type="checkbox" name="improve_legacy"> 🔄 Modernize old or fragile software</label>
-          <label class="topic-check"><input type="checkbox" name="improve_reports"> 📊 Automate manual reports (Excel · Access · CSV)</label>
-          <label class="topic-check"><input type="checkbox" name="improve_db"> 🗄️ Connect or migrate a database (DB2 · SQL Server · Oracle)</label>
-          <label class="topic-check"><input type="checkbox" name="improve_payments"> 🏦 Add payment processing (ACH · RTP · OFAC · AML)</label>
-          <label class="topic-check"><input type="checkbox" name="improve_cloud"> ☁️ Move infrastructure to the cloud (AWS)</label>
-          <label class="topic-check"><input type="checkbox" name="improve_integration"> 🔗 Connect systems that don't talk to each other</label>
-          <label class="topic-check"><input type="checkbox" name="improve_ai"> 🤖 Add AI or automation to existing workflows</label>
-          <label class="topic-check"><input type="checkbox" name="improve_compliance"> 📋 Meet a compliance requirement (SOX · PCI-DSS · AML)</label>
-          <label class="topic-check"><input type="checkbox" name="improve_mainframe"> 🖥️ Mainframe modernization (COBOL · z/OS · DB2)</label>
-          <label class="topic-check"><input type="checkbox" name="improve_sow"> 📄 Get a SOW or technical plan for an existing project</label>
-          <label class="topic-check"><input type="checkbox" name="improve_unsure"> ❓ Not sure yet — I need an assessment first</label>
+          <label class="topic-check"><input type="checkbox" id="topic_legacy" name="topic_legacy"> 🔄 Modernize old or fragile software</label>
+          <label class="topic-check"><input type="checkbox" id="topic_mainframe" name="topic_mainframe"> 🖥️ Mainframe modernization (COBOL · z/OS · DB2)</label>
+          <label class="topic-check"><input type="checkbox" id="topic_payments" name="topic_payments"> 🏦 Add payment processing (ACH · RTP · OFAC · AML)</label>
+          <label class="topic-check"><input type="checkbox" id="topic_cloud" name="topic_cloud"> ☁️ Move infrastructure to the cloud (AWS)</label>
+          <label class="topic-check"><input type="checkbox" id="topic_compliance" name="topic_compliance"> 📋 Meet a compliance requirement (SOX · PCI-DSS · AML)</label>
+          <label class="topic-check"><input type="checkbox" id="topic_automation" name="topic_automation"> 🤖 Automate reports, connect systems, or add AI to workflows</label>
+          <label class="topic-check"><input type="checkbox" id="topic_db" name="topic_db"> 🗄️ Connect or migrate a database (DB2 · SQL Server · Oracle)</label>
+          <label class="topic-check"><input type="checkbox" id="topic_sow" name="topic_sow"> 📄 Get a SOW or technical plan for an existing project</label>
+          <label class="topic-check"><input type="checkbox" id="topic_unsure" name="topic_unsure"> ❓ Not sure yet — I need an assessment first</label>
         </div>
       </div>
 
@@ -1213,10 +1190,6 @@ function selectService(el) {
 }
 
 // ── TIER SELECTION ──
-function toggleDomainPill(cb) {
-  // visual feedback handled by CSS :checked selector — nothing extra needed
-}
-
 function selectTier(el) {
   document.querySelectorAll('.tier-card').forEach(c=>c.classList.remove('selected'));
   el.classList.add('selected');
@@ -1266,12 +1239,32 @@ function buildSummary() {
     `USD  ·  ${e.totalHrs} hours  ·  ${e.service}  ·  Risk: ${e.riskLabel} (${e.riskScore}/10)  ·  Subject to discovery call`;
 
   const riskLabels = {
-    international_client:'🌎 International client', sensitive_data:'🔒 Sensitive data',
-    legacy_systems:'🖥️ Legacy systems', tight_deadline:'⏰ Tight deadline',
-    unclear_requirements:'❓ Unclear requirements', multiple_stakeholders:'👥 Multiple stakeholders',
-    compliance_required:'📋 Compliance (SOX/AML/PCI)', /* first_time_client removed */
+    cobol_mainframe:       '🔄 COBOL / Mainframe programs involved',
+    db2_dba:               '🗄️ DB2 or legacy database schema work',
+    live_payments:         '🏦 Live payment processing affected',
+    data_migration:        '📦 Data migration required',
+    undocumented_logic:    '❓ Business logic undocumented',
+    regulatory_audit:      '📋 Regulatory audit in progress or pending',
+    sensitive_data:        '🔒 Sensitive / regulated data (NPPI, PII)',
+    hard_deadline:         '⏰ Hard deadline (license renewal, audit date)',
+    international_client:  '🌎 Cross-border / international client',
+    multiple_stakeholders: '👥 Multiple stakeholders / decision makers',
   };
   const riskSelected = state.selectedRisks.map(r=>riskLabels[r]||r).join(', ') || 'None selected';
+  const selectedTopicLabels = {
+    topic_legacy: '🔄 Modernize old or fragile software',
+    topic_mainframe: '🖥️ Mainframe modernization (COBOL · z/OS · DB2)',
+    topic_payments: '🏦 Add payment processing (ACH · RTP · OFAC · AML)',
+    topic_cloud: '☁️ Move infrastructure to the cloud (AWS)',
+    topic_compliance: '📋 Meet a compliance requirement (SOX · PCI-DSS · AML)',
+    topic_automation: '🤖 Automate reports, connect systems, or add AI to workflows',
+    topic_db: '🗄️ Connect or migrate a database (DB2 · SQL Server · Oracle)',
+    topic_sow: '📄 Get a SOW or technical plan for an existing project',
+    topic_unsure: '❓ Not sure yet — needs an assessment',
+  };
+  const topicsSelected = Object.keys(selectedTopicLabels)
+    .filter(id => document.getElementById(id)?.checked)
+    .map(id => selectedTopicLabels[id]).join(', ') || 'None selected';
   // [label, value, fullWidth]
   const items = [
     ['Full Name',    document.getElementById('inp-name').value,    true],
@@ -1280,6 +1273,7 @@ function buildSummary() {
     ['Phone',        document.getElementById('inp-phone').value,    false],
     ['Country',      document.getElementById('inp-country').value,  false],
     ['Project',      document.getElementById('inp-project').value,  true],
+    ['What\'s this about', topicsSelected,                          true],
     ['Service',      e.service,                                      false],
     ['Company Size', e.tier,                                         false],
     ['Complexity',   e.complexity,                                   false],
@@ -1315,6 +1309,21 @@ async function submitForm() {
   }
   consentErr.style.display = 'none';
 
+  const topicLabels = {
+    topic_legacy: 'Modernize old or fragile software',
+    topic_mainframe: 'Mainframe modernization (COBOL · z/OS · DB2)',
+    topic_payments: 'Add payment processing (ACH · RTP · OFAC · AML)',
+    topic_cloud: 'Move infrastructure to the cloud (AWS)',
+    topic_compliance: 'Meet a compliance requirement (SOX · PCI-DSS · AML)',
+    topic_automation: 'Automate reports, connect systems, or add AI to workflows',
+    topic_db: 'Connect or migrate a database (DB2 · SQL Server · Oracle)',
+    topic_sow: 'Get a SOW or technical plan for an existing project',
+    topic_unsure: 'Not sure yet — needs an assessment',
+  };
+  const selectedTopics = Object.keys(topicLabels)
+    .filter(id => document.getElementById(id)?.checked)
+    .map(id => topicLabels[id]);
+
   const e = calcEstimate();
   const data = {
     name:        document.getElementById('inp-name').value,
@@ -1326,6 +1335,7 @@ async function submitForm() {
     source:      document.getElementById('inp-source').value,
     project:     document.getElementById('inp-project').value,
     description: document.getElementById('inp-description').value,
+    topics:      selectedTopics.join(', ') || 'None selected',
     service:     e.service,
     complexity:  e.complexity,
     duration:    document.getElementById('inp-duration').value,
@@ -1360,6 +1370,7 @@ async function submitForm() {
         source:       data.source,
         project:      data.project,
         description:  data.description,
+        topics:       data.topics,
         service:      data.service,
         complexity:   data.complexity,
         duration:     data.duration,
