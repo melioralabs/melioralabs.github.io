@@ -426,6 +426,8 @@
   }
 
 </style>
+<!-- Supabase for web_inquiries writes -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
 </head>
 <body>
 
@@ -826,8 +828,11 @@
       </div>
 
       <!-- Success message -->
-      <div id="briefSuccess" style="display:none;margin-top:1.25rem;background:var(--teal-50);border:0.5px solid var(--teal-100);border-radius:10px;padding:1rem 1.25rem;font-size:14px;color:var(--teal-600);font-weight:300;" data-i18n="brief.success">
-        ✅ Received! A real engineer will review this and respond within 24 hours. Thank you for reaching out.
+      <div id="briefSuccess" style="display:none;margin-top:1.25rem;background:var(--teal-50);border:0.5px solid var(--teal-100);border-radius:10px;padding:1.25rem 1.5rem;font-size:14px;color:var(--teal-600);font-weight:300;text-align:center;">
+        <div style="font-size:2rem;margin-bottom:0.5rem;">✅</div>
+        <div style="font-size:15px;font-weight:500;margin-bottom:0.4rem;" data-i18n="brief.success.title">Brief received!</div>
+        <div style="margin-bottom:1rem;" data-i18n="brief.success.sub">A real engineer will review this and respond within 24 hours. Thank you for reaching out.</div>
+        <button onclick="resetBriefForm()" style="background:var(--teal-400);color:white;border:none;border-radius:8px;padding:8px 20px;font-size:13px;font-family:'DM Sans',sans-serif;cursor:pointer;font-weight:500;" data-i18n="brief.success.btn">Submit another brief →</button>
       </div>
     </form>
   </div>
@@ -1241,7 +1246,6 @@
             <option value="blueprint" data-i18n="form.svc2">🗺️ Blueprint — Architecture & Project Design</option>
             <option value="execute" data-i18n="form.svc3">⚡ Execute — Full Delivery & Modernization</option>
             <option value="mainframe" data-i18n="form.svc4">🔄 Mainframe Modernization</option>
-            <option value="payments" data-i18n="form.svc5">🏦 Payments & Fintech (ACH, RTP, OFAC, AML)</option>
             <option value="compliance" data-i18n="form.svc6">📋 Compliance & Risk Advisory</option>
             <option value="other" data-i18n="form.svc7">💡 Other / Not sure yet</option>
           </select>
@@ -1342,6 +1346,24 @@
 
 <script>
 // ═══════════════════════════════════════════
+// SUPABASE CLIENT — web_inquiries writes
+// ═══════════════════════════════════════════
+const _SB_URL  = "https://glgnhkkaguloeouzihej.supabase.co";
+const _SB_ANON = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdsZ25oa2thZ3Vsb2VvdXppaGVqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODAxMzU0MjMsImV4cCI6MjA5NTcxMTQyM30.sLI5BM5Y0yN_Mk8NWoodbMcrT3oY0m8CrSk8s0vpJIA";
+const _sb = (typeof supabase !== "undefined") ? supabase.createClient(_SB_URL, _SB_ANON) : null;
+
+async function _writeWebInquiry(payload) {
+  if (!_sb) { console.warn("Supabase not loaded — inquiry not saved"); return; }
+  try {
+    await _sb.from("web_inquiries").insert({
+      ...payload,
+      status: "New",
+      received_at: new Date().toISOString(),
+    });
+  } catch(e) { console.warn("web_inquiries write failed:", e); }
+}
+
+// ═══════════════════════════════════════════
 // INTERACTIVE 360° CARD
 // ═══════════════════════════════════════════
 function toggleSec(id) {
@@ -1433,6 +1455,21 @@ window.addEventListener('scroll', () => {
   });
 });
 
+// Fire scroll-spy once on load so the correct nav item is highlighted after a hard refresh
+(function () {
+  let current = '';
+  navSections.forEach(id => {
+    const el = document.getElementById(id);
+    if (el && window.scrollY >= el.offsetTop - 120) current = id;
+  });
+  Object.entries(navLinks).forEach(([id, link]) => {
+    if (!link) return;
+    if (link.classList.contains('nav-cta')) return;
+    if (link.classList.contains('nav-contact')) return;
+    link.classList.toggle('active', id === current);
+  });
+})();
+
 // ═══════════════════════════════════════════
 // SCROLL TO TOP
 // ═══════════════════════════════════════════
@@ -1474,6 +1511,15 @@ function handleFormSubmit(e) {
     headers: { 'Accept': 'application/json' }
   }).then(r => {
     if (r.ok) {
+      // Write to Supabase web_inquiries (fire-and-forget — never block the UX)
+      _writeWebInquiry({
+        source:         "contact-form",
+        full_name:      document.getElementById('contactName').value.trim(),
+        email:          document.getElementById('contactEmail').value.trim(),
+        project_type:   document.getElementById('serviceSelect').value || null,
+        message:        document.getElementById('contactMessage').value.trim(),
+        preferred_lang: currentLang,
+      });
       form.reset();
       success.classList.add('show');
       btn.textContent = currentLang === 'es' ? '✅ Enviado!' : '✅ Sent!';
@@ -1789,7 +1835,7 @@ const translations = {
     "form.service":"Service of Interest","form.servicePh":"Select a service...",
     "form.svc1":"🔍 Assess — Discovery & Complexity Classification","form.svc2":"🗺️ Blueprint — Architecture & Project Design",
     "form.svc3":"⚡ Execute — Full Delivery & Modernization","form.svc4":"🔄 Mainframe Modernization",
-    "form.svc5":"🏦 Payments & Fintech (ACH, RTP, OFAC, AML)","form.svc6":"📋 Compliance & Risk Advisory","form.svc7":"💡 Other / Not sure yet",
+    "form.svc6":"📋 Compliance & Risk Advisory","form.svc7":"💡 Other / Not sure yet",
     "form.message":"Message","form.messagePh":"Tell us about your project or question...",
     "form.submit":"Send Message →","form.success":"✅ Message sent! We'll be in touch within 24 hours.",
     "cta.title":"Ready to see what's possible?",
@@ -1836,7 +1882,7 @@ const translations = {
     "brief.desc":"Tell us what is happening *","brief.descPh":"Example: Our software is very slow and we are afraid to touch it. We process payments every day and something could break. We want to make it faster and safer without changing how it works.",
     "brief.privacy":"Your information is never shared. A real engineer will read this and reply within 24 hours — not an automated response.",
     "brief.submit":"Send →",
-    "brief.success":"✅ Received! A real engineer will review this and respond within 24 hours. Thank you for reaching out.",
+    "brief.success":"✅ Received! A real engineer will review this and respond within 24 hours. Thank you for reaching out.","brief.success.title":"Brief received!","brief.success.sub":"A real engineer will review this and respond within 24 hours. Thank you for reaching out.","brief.success.btn":"Submit another brief →",
     "eng.tag":"Meliora Engine","eng.title":"The engine behind every delivery",
     "eng.sub":"Every project runs on a consistent internal framework — from the first estimate through final handover. Scope, timeline, and documentation are defined before any work begins. Gaps and risks are tracked continuously, not discovered at go-live. You always know what's planned, what's in progress, and what comes next.",
     "eng.t1.label":"Assess — Foundation","eng.t1.badge":"Discovery & Classification","eng.t1.title":"Inventory + Estimate + SOW",
@@ -2071,7 +2117,7 @@ const translations = {
     "form.service":"Servicio de Interés","form.servicePh":"Selecciona un servicio...",
     "form.svc1":"🔍 Diagnóstico — Descubrimiento y Clasificación","form.svc2":"🗺️ Plano — Arquitectura y Diseño",
     "form.svc3":"⚡ Ejecución — Entrega Completa","form.svc4":"🔄 Modernización de Mainframe",
-    "form.svc5":"🏦 Pagos y Fintech (ACH, RTP, OFAC, AML)","form.svc6":"📋 Asesoría de Cumplimiento y Riesgo","form.svc7":"💡 Otro / No estoy seguro aún",
+    "form.svc6":"📋 Asesoría de Cumplimiento y Riesgo","form.svc7":"💡 Otro / No estoy seguro aún",
     "form.message":"Mensaje","form.messagePh":"Cuéntanos sobre tu proyecto o pregunta...",
     "form.submit":"Enviar Mensaje →","form.success":"✅ ¡Mensaje enviado! Te contactaremos en menos de 24 horas.",
     "cta.title":"¿Listo para ver lo que es posible?",
@@ -2118,7 +2164,7 @@ const translations = {
     "brief.desc":"Cuéntanos qué está pasando *","brief.descPh":"Ejemplo: Nuestro software es muy lento y tenemos miedo de tocarlo. Procesamos pagos todos los días y algo podría fallar. Queremos que sea más rápido y seguro sin cambiar cómo funciona.",
     "brief.privacy":"Tu información nunca se comparte. Un ingeniero real leerá esto y responderá en 24 horas — no es una respuesta automática.",
     "brief.submit":"Enviar →",
-    "brief.success":"✅ Recibido! Un ingeniero real revisará esto y responderá en 24 horas. Gracias por contactarnos.",
+    "brief.success":"✅ Recibido! Un ingeniero real revisará esto y responderá en 24 horas. Gracias por contactarnos.","brief.success.title":"¡Brief recibido!","brief.success.sub":"Un ingeniero real revisará esto y responderá en 24 horas. Gracias por contactarnos.","brief.success.btn":"Enviar otro brief →",
     "eng.tag":"Motor Meliora","eng.title":"El motor detrás de cada entrega",
     "eng.sub":"Cada proyecto funciona con un marco interno consistente — desde la primera estimación hasta el traspaso final. El alcance, el cronograma y la documentación se definen antes de que comience cualquier trabajo. Las brechas y los riesgos se rastrean de forma continua, no se descubren en la puesta en marcha. Siempre sabe qué está planificado, qué está en progreso y qué sigue.",
     "eng.t1.label":"Assess — Base","eng.t1.badge":"Descubrimiento y Clasificación","eng.t1.title":"Inventario + Estimación + SOW",
@@ -2369,12 +2415,41 @@ function handleBriefSubmit(e) {
     headers: { 'Accept': 'application/json' }
   }).then(function(r) {
     if (r.ok) {
+      // Collect checked services as comma-separated string
+      var services = [];
+      ['mainframe','payments','automation','cloud','data','other'].forEach(function(s) {
+        var cb = form.querySelector('input[name="service_' + s + '"]');
+        if (cb && cb.checked) services.push(s);
+      });
+      // Write to Supabase web_inquiries (fire-and-forget)
+      _writeWebInquiry({
+        source:         "project-brief",
+        full_name:      document.getElementById('briefName').value.trim(),
+        email:          document.getElementById('briefEmail').value.trim(),
+        company:        document.getElementById('briefCompany').value.trim(),
+        country:        document.getElementById('briefMarket').value || null,
+        project_type:   services.join(', ') || null,
+        company_size:   document.getElementById('briefTeamsize').value || null,
+        timeline:       document.getElementById('briefTimeline').value || null,
+        description:    document.getElementById('briefDesc').value.trim(),
+        preferred_lang: currentLang,
+      });
       form.style.display = 'none';
       document.getElementById('briefSuccess').style.display = 'block';
     } else {
       form.submit();
     }
   }).catch(function() { form.submit(); });
+}
+
+// ── Reset brief form (back to empty form after success state) ──
+function resetBriefForm() {
+  var form = document.getElementById('projectBriefForm');
+  var success = document.getElementById('briefSuccess');
+  form.reset();
+  form.style.display = '';
+  success.style.display = 'none';
+  form.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
 // ── i18n keys for Pricing & Brief section ────────────────────
