@@ -2415,12 +2415,25 @@ function handleBriefSubmit(e) {
     headers: { 'Accept': 'application/json' }
   }).then(function(r) {
     if (r.ok) {
-      // Collect checked services as comma-separated string
-      var services = [];
-      ['mainframe','payments','automation','cloud','data','other'].forEach(function(s) {
+      // Map checked services → engine-canonical project_type
+      // Priority order: Mainframe > Payments > 360 Delivery > IT Consulting
+      var _svcMap = {
+        mainframe:  'Mainframe Modernization',
+        payments:   'Payments Integration',
+        data:       '360 Delivery Intelligence',
+        automation: 'IT Consulting',
+        cloud:      'IT Consulting',
+        other:      'IT Consulting'
+      };
+      var _priority = ['mainframe','payments','data','automation','cloud','other'];
+      var _checked = [];
+      _priority.forEach(function(s) {
         var cb = form.querySelector('input[name="service_' + s + '"]');
-        if (cb && cb.checked) services.push(s);
+        if (cb && cb.checked) _checked.push(s);
       });
+      // Pick highest-priority engine value; store raw labels as description hint
+      var _engineType = _checked.length ? _svcMap[_checked[0]] : 'IT Consulting';
+      var _rawLabels  = _checked.join(', ') || null;
       // Write to Supabase web_inquiries (fire-and-forget)
       _writeWebInquiry({
         source:         "project-brief",
@@ -2428,10 +2441,10 @@ function handleBriefSubmit(e) {
         email:          document.getElementById('briefEmail').value.trim(),
         company:        document.getElementById('briefCompany').value.trim(),
         country:        document.getElementById('briefMarket').value || null,
-        project_type:   services.join(', ') || null,
+        project_type:   _engineType,
         company_size:   document.getElementById('briefTeamsize').value || null,
         timeline:       document.getElementById('briefTimeline').value || null,
-        description:    document.getElementById('briefDesc').value.trim(),
+        description:    (_rawLabels ? '[Services: ' + _rawLabels + '] ' : '') + document.getElementById('briefDesc').value.trim(),
         preferred_lang: currentLang,
       });
       form.style.display = 'none';
