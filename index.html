@@ -565,7 +565,7 @@
       <div style="font-size:12px;color:var(--teal-100);display:flex;align-items:center;gap:8px;"><span style="color:var(--teal-400);">✓</span><span data-i18n="cases.c3.f2">Written estimate before any work begins</span></div>
       <div style="font-size:12px;color:var(--teal-100);display:flex;align-items:center;gap:8px;"><span style="color:var(--teal-400);">✓</span><span data-i18n="cases.c3.f3">Response within 24 hours</span></div>
     </div>
-    <a href="#project-brief" style="display:inline-block;background:white;color:var(--teal-800);font-size:13px;font-weight:500;padding:10px 24px;border-radius:8px;text-decoration:none;white-space:nowrap;" data-i18n="cases.c3.cta">Start a conversation →</a>
+    <a href="#project-brief" style="display:inline-block;background:white;color:var(--teal-800);font-size:13px;font-weight:500;padding:10px 24px;border-radius:8px;text-decoration:none;white-space:nowrap;" data-i18n="cases.c3.cta">Submit a project brief →</a>
   </div>
 
 </div>
@@ -1048,7 +1048,7 @@
       <div style="font-size:14px;font-weight:500;color:var(--gray-900);margin-bottom:4px;" data-i18n="eng.cta.title">Every project follows the same structured process</div>
       <div style="font-size:13px;color:var(--gray-800);font-weight:300;" data-i18n="eng.cta.sub">After your discovery call, we scope the right phase — Assess, Blueprint, or Execute — and your full delivery package is built from there.</div>
     </div>
-    <a href="#project-brief" class="btn-primary btn-amber" style="white-space:nowrap;" data-i18n="eng.cta.btn">Start with a project brief →</a>
+    <a href="#project-brief" class="btn-primary btn-amber" style="white-space:nowrap;" data-i18n="eng.cta.btn">Get your project scoped →</a>
   </div>
 </section>
 
@@ -1429,19 +1429,17 @@ function toggleFaq(questionEl) {
 // ═══════════════════════════════════════════
 // ACTIVE NAV ON SCROLL
 // ═══════════════════════════════════════════
-const navSections = ['services', 'engine', 'pricing-calculator', 'cases', 'faq', 'about', 'security', 'contact-form'];
+// Only track sections that have a visible nav link (excludes about, security, contact-form)
+const navSections = ['services', 'engine', 'pricing-calculator', 'cases', 'faq'];
 const navLinks = {
-  'services': document.querySelector('a[href="#services"]'),
-  'engine': document.querySelector('a[href="#engine"]'),
-  'pricing-calculator': document.querySelector('a[href="#pricing-calculator"]'),
-  'cases': document.querySelector('a[href="#cases"]'),
-  'faq': document.querySelector('a[href="#faq"]'),
-  'about': document.querySelector('a[href="#about"]'),
-  'security': document.querySelector('a[href="#security"]'),
-  'contact-form': document.querySelector('a[href="#contact-form"]'),
+  'services':            document.querySelector('a[href="#services"]'),
+  'engine':              document.querySelector('a[href="#engine"]'),
+  'pricing-calculator':  document.querySelector('a[href="#pricing-calculator"]'),
+  'cases':               document.querySelector('a[href="#cases"]'),
+  'faq':                 document.querySelector('a[href="#faq"]'),
 };
 
-window.addEventListener('scroll', () => {
+function updateActiveNav() {
   let current = '';
   navSections.forEach(id => {
     const el = document.getElementById(id);
@@ -1449,26 +1447,14 @@ window.addEventListener('scroll', () => {
   });
   Object.entries(navLinks).forEach(([id, link]) => {
     if (!link) return;
-    if (link.classList.contains('nav-cta')) return; // never highlight the CTA button
-    if (link.classList.contains('nav-contact')) return; // never highlight the contact link
     link.classList.toggle('active', id === current);
   });
-});
+}
 
-// Fire scroll-spy once on load so the correct nav item is highlighted after a hard refresh
-(function () {
-  let current = '';
-  navSections.forEach(id => {
-    const el = document.getElementById(id);
-    if (el && window.scrollY >= el.offsetTop - 120) current = id;
-  });
-  Object.entries(navLinks).forEach(([id, link]) => {
-    if (!link) return;
-    if (link.classList.contains('nav-cta')) return;
-    if (link.classList.contains('nav-contact')) return;
-    link.classList.toggle('active', id === current);
-  });
-})();
+window.addEventListener('scroll', updateActiveNav);
+
+// Fire once on load so correct item is highlighted after a hard refresh
+updateActiveNav();
 
 // ═══════════════════════════════════════════
 // SCROLL TO TOP
@@ -1897,7 +1883,7 @@ const translations = {
     "eng.t3.f1":"Multi-project dashboard — all clients, one view","eng.t3.f2":"AI risk detection — flags issues before they happen",
     "eng.t3.f3":"Compliance checklist — OFAC, AML, SOX, PCI-DSS","eng.t3.f4":"Client portal — live project status","eng.t3.f5":"Audit-ready documentation and handover package",
     "eng.cta.title":"Every project follows the same structured process","eng.cta.sub":"After your discovery call, we scope the right phase — Assess, Blueprint, or Execute — and your full delivery package is built from there.",
-    "eng.cta.btn":"Start with a project brief →",
+    "eng.cta.btn":"Get your project scoped →",
     "cases.tag":"What we deliver","cases.title":"The domains where we go deepest",
     "cases.sub":"These are the areas where Meliora Labs concentrates its expertise — and where our clients get the most from working with us.",
     "cap.c1.title":"Mainframe & Legacy Systems",
@@ -1920,7 +1906,7 @@ const translations = {
     "cases.c3.f1":"Free discovery call — no commitment",
     "cases.c3.f2":"Written estimate before any work begins",
     "cases.c3.f3":"Response within 24 hours",
-    "cases.c3.cta":"Start a conversation →"
+    "cases.c3.cta":"Submit a project brief →"
   },
   es: {
     "card.learnmore":"Ver más +","card.collapse":"Cerrar −",
@@ -2179,7 +2165,7 @@ const translations = {
     "eng.t3.f1":"Panel multi-proyecto — todos los clientes, una vista","eng.t3.f2":"Detección de riesgos con IA",
     "eng.t3.f3":"Lista de cumplimiento — OFAC, AML, SOX, PCI-DSS","eng.t3.f4":"Portal del cliente — estado en vivo","eng.t3.f5":"Exportación lista para auditoría",
     "eng.cta.title":"Cada proyecto sigue el mismo proceso estructurado","eng.cta.sub":"Después de tu llamada de descubrimiento, definimos la fase correcta — Assess, Blueprint o Execute — y tu paquete de entrega completo se construye desde ahí.",
-    "eng.cta.btn":"Comenzar con un brief de proyecto →",
+    "eng.cta.btn":"Iniciar el alcance del proyecto →",
     "cases.tag":"Lo que entregamos","cases.title":"Los dominios donde más profundizamos",
     "cases.sub":"Estas son las áreas donde Meliora Labs concentra su experiencia — y donde nuestros clientes obtienen más al trabajar con nosotros.",
     "cap.c1.title":"Mainframe y Sistemas Heredados",
@@ -2202,7 +2188,7 @@ const translations = {
     "cases.c3.f1":"Llamada de descubrimiento gratuita — sin compromiso",
     "cases.c3.f2":"Estimación por escrito antes de comenzar cualquier trabajo",
     "cases.c3.f3":"Respuesta en 24 horas",
-    "cases.c3.cta":"Iniciar una conversación →"
+    "cases.c3.cta":"Enviar un brief de proyecto →"
   }
 };
 
