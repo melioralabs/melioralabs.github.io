@@ -1429,8 +1429,8 @@ function toggleFaq(questionEl) {
 // ═══════════════════════════════════════════
 // ACTIVE NAV ON SCROLL
 // ═══════════════════════════════════════════
-// Only track sections that have a visible nav link (excludes about, security, contact-form)
-const navSections = ['services', 'engine', 'pricing-calculator', 'cases', 'faq'];
+// Sections listed in DOM order — scroll spy depends on this being top-to-bottom
+const navSections = ['services', 'pricing-calculator', 'engine', 'cases', 'faq'];
 const navLinks = {
   'services':            document.querySelector('a[href="#services"]'),
   'engine':              document.querySelector('a[href="#engine"]'),
