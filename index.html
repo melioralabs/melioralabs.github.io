@@ -444,6 +444,40 @@
   .pain-card:nth-child(2) .pain-reality { color:#2E86AB; background:#EAF4FB; border-left-color:#2E86AB; }
   .pain-card:nth-child(3) .pain-reality { color:#1B2A4A; background:#EEF2F8; border-left-color:#1B2A4A; }
 
+  /* ── BRIEF FORM: TRACK SELECTOR ── */
+  .track-selector { display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-bottom:1.5rem; }
+  .track-btn {
+    display:flex; align-items:flex-start; gap:12px; padding:1.25rem;
+    border:1.5px solid var(--gray-100); border-radius:12px; cursor:pointer;
+    background:white; transition:all 0.2s; text-align:left; font-family:'DM Sans',sans-serif;
+  }
+  .track-btn:hover { border-color:var(--teal-100); background:var(--teal-50); }
+  .track-btn.selected { border-color:var(--teal-400); background:var(--teal-50); box-shadow:0 0 0 3px rgba(29,158,117,0.1); }
+  .track-btn.selected-b { border-color:#2E86AB; background:#EAF4FB; box-shadow:0 0 0 3px rgba(46,134,171,0.1); }
+  .track-icon { font-size:1.5rem; flex-shrink:0; margin-top:2px; }
+  .track-label { font-size:14px; font-weight:500; color:var(--gray-900); margin-bottom:3px; line-height:1.3; }
+  .track-sub { font-size:12px; color:var(--gray-400); font-weight:300; line-height:1.5; }
+  .track-badge { display:inline-block; font-size:10px; font-weight:500; padding:2px 8px; border-radius:20px; margin-top:5px; }
+  .track-badge-a { background:#1B2A4A; color:white; }
+  .track-badge-b { background:#2E86AB; color:white; }
+
+  /* ── BRIEF FORM: DYNAMIC PANELS ── */
+  .brief-panel { display:none; animation:briefFadeIn 0.25s ease; }
+  .brief-panel.active { display:block; }
+  @keyframes briefFadeIn { from { opacity:0; transform:translateY(6px); } to { opacity:1; transform:translateY(0); } }
+
+  /* ── BRIEF FORM: TECH STACK CHIPS ── */
+  .tech-chips { display:flex; flex-wrap:wrap; gap:8px; margin-top:6px; }
+  .tech-chip {
+    display:inline-flex; align-items:center; gap:5px;
+    padding:6px 12px; border:1.5px solid var(--gray-100);
+    border-radius:20px; font-size:12px; font-weight:500; color:var(--gray-800);
+    background:white; cursor:pointer; transition:all 0.15s; user-select:none;
+  }
+  .tech-chip:hover { border-color:var(--teal-100); color:var(--teal-600); }
+  .tech-chip.selected { border-color:var(--teal-400); background:var(--teal-50); color:var(--teal-600); }
+  .tech-chip input[type=checkbox] { display:none; }
+
 </style>
 <!-- Supabase for web_inquiries writes -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
@@ -895,17 +929,115 @@
         </div>
       </div>
 
-      <!-- Row 3: What do you need — plain language checkboxes -->
-      <div style="margin-bottom:1rem;">
-        <label style="display:block;font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:1px;color:var(--teal-400);margin-bottom:8px;" data-i18n="brief.service">What would you like to improve? (check all that apply)</label>
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:8px;">
-          <label style="display:flex;align-items:center;gap:8px;background:var(--gray-50);border:0.5px solid var(--gray-100);border-radius:8px;padding:10px 12px;cursor:pointer;font-size:13px;color:var(--gray-800);transition:border-color .2s;" onmouseover="this.style.borderColor='var(--teal-100)'" onmouseout="this.style.borderColor='var(--gray-100)'"><input type="checkbox" name="service_mainframe" style="accent-color:var(--teal-400);" /> <span data-i18n="brief.svc1">🖥️ Old software running slow or at risk</span></label>
-          <label style="display:flex;align-items:center;gap:8px;background:var(--gray-50);border:0.5px solid var(--gray-100);border-radius:8px;padding:10px 12px;cursor:pointer;font-size:13px;color:var(--gray-800);transition:border-color .2s;" onmouseover="this.style.borderColor='var(--teal-100)'" onmouseout="this.style.borderColor='var(--gray-100)'"><input type="checkbox" name="service_payments" style="accent-color:var(--teal-400);" /> <span data-i18n="brief.svc2">🏦 Payments, banking or financial systems</span></label>
-          <label style="display:flex;align-items:center;gap:8px;background:var(--gray-50);border:0.5px solid var(--gray-100);border-radius:8px;padding:10px 12px;cursor:pointer;font-size:13px;color:var(--gray-800);transition:border-color .2s;" onmouseover="this.style.borderColor='var(--teal-100)'" onmouseout="this.style.borderColor='var(--gray-100)'"><input type="checkbox" name="service_automation" style="accent-color:var(--teal-400);" /> <span data-i18n="brief.svc3">🤖 Automate manual or repetitive work</span></label>
-          <label style="display:flex;align-items:center;gap:8px;background:var(--gray-50);border:0.5px solid var(--gray-100);border-radius:8px;padding:10px 12px;cursor:pointer;font-size:13px;color:var(--gray-800);transition:border-color .2s;" onmouseover="this.style.borderColor='var(--teal-100)'" onmouseout="this.style.borderColor='var(--gray-100)'"><input type="checkbox" name="service_cloud" style="accent-color:var(--teal-400);" /> <span data-i18n="brief.svc4">☁️ Move systems to the cloud (AWS)</span></label>
-          <label style="display:flex;align-items:center;gap:8px;background:var(--gray-50);border:0.5px solid var(--gray-100);border-radius:8px;padding:10px 12px;cursor:pointer;font-size:13px;color:var(--gray-800);transition:border-color .2s;" onmouseover="this.style.borderColor='var(--teal-100)'" onmouseout="this.style.borderColor='var(--gray-100)'"><input type="checkbox" name="service_data" style="accent-color:var(--teal-400);" /> <span data-i18n="brief.svc5">📊 Data, files, or reports that need organizing</span></label>
-          <label style="display:flex;align-items:center;gap:8px;background:var(--gray-50);border:0.5px solid var(--gray-100);border-radius:8px;padding:10px 12px;cursor:pointer;font-size:13px;color:var(--gray-800);transition:border-color .2s;" onmouseover="this.style.borderColor='var(--teal-100)'" onmouseout="this.style.borderColor='var(--gray-100)'"><input type="checkbox" name="service_other" style="accent-color:var(--teal-400);" /> <span data-i18n="brief.svc6">💡 Something else — I will describe it below</span></label>
+      <!-- TRACK SELECTOR -->
+      <div style="margin-bottom:1.5rem;">
+        <label style="display:block;font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:1px;color:var(--teal-400);margin-bottom:10px;" data-i18n="brief.trackLabel">What best describes your situation?</label>
+        <div class="track-selector">
+          <button type="button" class="track-btn" id="trackBtnA" onclick="selectTrack('A')">
+            <div class="track-icon">🖥️</div>
+            <div>
+              <div class="track-label" data-i18n="brief.trackA.title">Mainframe &amp; Legacy Systems</div>
+              <div class="track-sub" data-i18n="brief.trackA.sub">IBM Z, AS/400, COBOL, JCL, CICS, REXX, VSAM, DB2 — payments and banking systems included</div>
+              <span class="track-badge track-badge-a" data-i18n="brief.trackA.badge">Saul — Senior Engineer</span>
+            </div>
+          </button>
+          <button type="button" class="track-btn" id="trackBtnB" onclick="selectTrack('B')">
+            <div class="track-icon">🏢</div>
+            <div>
+              <div class="track-label" data-i18n="brief.trackB.title">Legacy Business Systems</div>
+              <div class="track-sub" data-i18n="brief.trackB.sub">Old software, manual reports, cloud migration, system integration, automation — non-mainframe</div>
+              <span class="track-badge track-badge-b" data-i18n="brief.trackB.badge">Engineering Team</span>
+            </div>
+          </button>
         </div>
+        <input type="hidden" id="briefTrack" name="track" />
+      </div>
+
+      <!-- TRACK A: MAINFRAME PANEL -->
+      <div class="brief-panel" id="panelA">
+
+        <!-- A1: Tech stack chips -->
+        <div style="margin-bottom:1rem;">
+          <label style="display:block;font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:1px;color:var(--teal-400);margin-bottom:8px;" data-i18n="brief.stack.label">Technology stack — select everything that applies</label>
+          <div class="tech-chips" id="techChips">
+            <label class="tech-chip"><input type="checkbox" name="stack_cobol" onchange="toggleChip(this)" /> COBOL</label>
+            <label class="tech-chip"><input type="checkbox" name="stack_jcl" onchange="toggleChip(this)" /> JCL</label>
+            <label class="tech-chip"><input type="checkbox" name="stack_cics" onchange="toggleChip(this)" /> CICS</label>
+            <label class="tech-chip"><input type="checkbox" name="stack_vsam" onchange="toggleChip(this)" /> VSAM</label>
+            <label class="tech-chip"><input type="checkbox" name="stack_db2" onchange="toggleChip(this)" /> DB2</label>
+            <label class="tech-chip"><input type="checkbox" name="stack_ims" onchange="toggleChip(this)" /> IMS</label>
+            <label class="tech-chip"><input type="checkbox" name="stack_rexx" onchange="toggleChip(this)" /> REXX</label>
+            <label class="tech-chip"><input type="checkbox" name="stack_pli" onchange="toggleChip(this)" /> PL/I</label>
+            <label class="tech-chip"><input type="checkbox" name="stack_zos" onchange="toggleChip(this)" /> z/OS</label>
+            <label class="tech-chip"><input type="checkbox" name="stack_as400" onchange="toggleChip(this)" /> AS/400 · iSeries</label>
+            <label class="tech-chip"><input type="checkbox" name="stack_ach" onchange="toggleChip(this)" /> ACH / RTP</label>
+            <label class="tech-chip"><input type="checkbox" name="stack_ofac" onchange="toggleChip(this)" /> OFAC / AML</label>
+            <label class="tech-chip"><input type="checkbox" name="stack_oracle" onchange="toggleChip(this)" /> Oracle</label>
+            <label class="tech-chip"><input type="checkbox" name="stack_other_mf" onchange="toggleChip(this)" data-i18n="brief.stack.other">Other / not sure</label>
+          </div>
+        </div>
+
+        <!-- A2: System age + Primary concern -->
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;">
+          <div>
+            <label for="briefSysAge" style="display:block;font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:1px;color:var(--teal-400);margin-bottom:6px;" data-i18n="brief.sysage.label">How old is the system?</label>
+            <select class="form-select" id="briefSysAge" name="system_age">
+              <option value="" data-i18n="brief.sysage.ph">Select age</option>
+              <option value="Under 10 years" data-i18n="brief.sysage.1">Under 10 years</option>
+              <option value="10-20 years" data-i18n="brief.sysage.2">10–20 years</option>
+              <option value="20-30 years" data-i18n="brief.sysage.3">20–30 years</option>
+              <option value="30+ years" data-i18n="brief.sysage.4">30+ years — original engineers likely retired</option>
+            </select>
+          </div>
+          <div>
+            <label for="briefConcern" style="display:block;font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:1px;color:var(--teal-400);margin-bottom:6px;" data-i18n="brief.concern.label">Primary concern</label>
+            <select class="form-select" id="briefConcern" name="primary_concern">
+              <option value="" data-i18n="brief.concern.ph">Select concern</option>
+              <option value="Documentation missing" data-i18n="brief.concern.1">Documentation is missing or wrong</option>
+              <option value="Risk to touch" data-i18n="brief.concern.2">Afraid to touch it — too much risk</option>
+              <option value="Audit / compliance" data-i18n="brief.concern.3">Upcoming audit or compliance deadline</option>
+              <option value="Modernization plan" data-i18n="brief.concern.4">Need a modernization roadmap</option>
+              <option value="Performance" data-i18n="brief.concern.5">Performance or capacity issues</option>
+              <option value="Knowledge transfer" data-i18n="brief.concern.6">Key engineers retiring — need knowledge transfer</option>
+              <option value="Other" data-i18n="brief.concern.7">Something else</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- A3: Description — mainframe-specific placeholder -->
+        <div style="margin-bottom:1rem;">
+          <label for="briefDescA" style="display:block;font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:1px;color:var(--teal-400);margin-bottom:6px;" data-i18n="brief.desc.a">Tell us what is happening *</label>
+          <textarea class="form-input" id="briefDescA" name="message" required rows="4" autocomplete="off"
+            placeholder="Example: We have 400 COBOL programs running on z/OS that process ACH payments nightly. The engineer who wrote them retired last year. Documentation is incomplete and we have an audit in Q3. We need to understand what we have before we can plan what to change."
+            data-i18n-placeholder="brief.descA.ph" style="min-height:110px;resize:vertical;"></textarea>
+        </div>
+
+      </div>
+
+      <!-- TRACK B: BUSINESS SYSTEMS PANEL -->
+      <div class="brief-panel" id="panelB">
+
+        <!-- B1: What needs fixing -->
+        <div style="margin-bottom:1rem;">
+          <label style="display:block;font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:1px;color:var(--teal-400);margin-bottom:8px;" data-i18n="brief.biz.label">What needs fixing? (check all that apply)</label>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:8px;">
+            <label style="display:flex;align-items:center;gap:8px;background:var(--gray-50);border:0.5px solid var(--gray-100);border-radius:8px;padding:10px 12px;cursor:pointer;font-size:13px;color:var(--gray-800);transition:border-color .2s;" onmouseover="this.style.borderColor='#9EC8DA'" onmouseout="this.style.borderColor='var(--gray-100)'"><input type="checkbox" name="biz_software" style="accent-color:#2E86AB;" /> <span data-i18n="brief.biz.1">🖥️ Old or fragile software</span></label>
+            <label style="display:flex;align-items:center;gap:8px;background:var(--gray-50);border:0.5px solid var(--gray-100);border-radius:8px;padding:10px 12px;cursor:pointer;font-size:13px;color:var(--gray-800);transition:border-color .2s;" onmouseover="this.style.borderColor='#9EC8DA'" onmouseout="this.style.borderColor='var(--gray-100)'"><input type="checkbox" name="biz_reports" style="accent-color:#2E86AB;" /> <span data-i18n="brief.biz.2">📊 Manual reports or data work</span></label>
+            <label style="display:flex;align-items:center;gap:8px;background:var(--gray-50);border:0.5px solid var(--gray-100);border-radius:8px;padding:10px 12px;cursor:pointer;font-size:13px;color:var(--gray-800);transition:border-color .2s;" onmouseover="this.style.borderColor='#9EC8DA'" onmouseout="this.style.borderColor='var(--gray-100)'"><input type="checkbox" name="biz_cloud" style="accent-color:#2E86AB;" /> <span data-i18n="brief.biz.3">☁️ Move to the cloud</span></label>
+            <label style="display:flex;align-items:center;gap:8px;background:var(--gray-50);border:0.5px solid var(--gray-100);border-radius:8px;padding:10px 12px;cursor:pointer;font-size:13px;color:var(--gray-800);transition:border-color .2s;" onmouseover="this.style.borderColor='#9EC8DA'" onmouseout="this.style.borderColor='var(--gray-100)'"><input type="checkbox" name="biz_integration" style="accent-color:#2E86AB;" /> <span data-i18n="brief.biz.4">🔗 Connect systems that don't talk</span></label>
+            <label style="display:flex;align-items:center;gap:8px;background:var(--gray-50);border:0.5px solid var(--gray-100);border-radius:8px;padding:10px 12px;cursor:pointer;font-size:13px;color:var(--gray-800);transition:border-color .2s;" onmouseover="this.style.borderColor='#9EC8DA'" onmouseout="this.style.borderColor='var(--gray-100)'"><input type="checkbox" name="biz_automation" style="accent-color:#2E86AB;" /> <span data-i18n="brief.biz.5">🤖 Automate repetitive work</span></label>
+            <label style="display:flex;align-items:center;gap:8px;background:var(--gray-50);border:0.5px solid var(--gray-100);border-radius:8px;padding:10px 12px;cursor:pointer;font-size:13px;color:var(--gray-800);transition:border-color .2s;" onmouseover="this.style.borderColor='#9EC8DA'" onmouseout="this.style.borderColor='var(--gray-100)'"><input type="checkbox" name="biz_other" style="accent-color:#2E86AB;" /> <span data-i18n="brief.biz.6">💡 Something else</span></label>
+          </div>
+        </div>
+
+        <!-- B2: Description — plain language placeholder -->
+        <div style="margin-bottom:1rem;">
+          <label for="briefDescB" style="display:block;font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:1px;color:var(--teal-400);margin-bottom:6px;" data-i18n="brief.desc.b">Tell us what is happening *</label>
+          <textarea class="form-input" id="briefDescB" name="message_b" rows="4" autocomplete="off"
+            placeholder="Example: We generate 5 reports every Monday by hand in Excel. It takes 3 people a full day. We want this automated and delivered by email every Monday morning."
+            data-i18n-placeholder="brief.descB.ph" style="min-height:110px;resize:vertical;"></textarea>
+        </div>
+
       </div>
 
       <!-- Row 4: Company size + Timeline -->
@@ -1925,13 +2057,41 @@ const translations = {
     "brief.sub":"No technical knowledge needed — just tell us what you want to improve or fix. A real engineer will read this and reply within 24 hours with a clear, honest estimate.",
     "brief.name":"Your name *","brief.namePh":"Maria Gonzalez","brief.company":"Company *","brief.companyPh":"Acme Bank",
     "brief.email":"Work email *","brief.emailPh":"maria@acmebank.com","brief.market":"Your country *","brief.marketPh":"Select your country","brief.marketOther":"Other",
-    "brief.service":"What would you like to improve? (check all that apply)",
-    "brief.svc1":"🖥️ Old software running slow or at risk",
-    "brief.svc2":"🏦 Payments, banking or financial systems",
-    "brief.svc3":"🤖 Automate manual or repetitive work",
-    "brief.svc4":"☁️ Move systems to the cloud (AWS)",
-    "brief.svc5":"📊 Data, files, or reports that need organizing",
-    "brief.svc6":"💡 Something else — I will describe it below",
+    "brief.trackLabel":"What best describes your situation?",
+    "brief.trackA.title":"Mainframe & Legacy Systems",
+    "brief.trackA.sub":"IBM Z, AS/400, COBOL, JCL, CICS, REXX, VSAM, DB2 — payments and banking systems included",
+    "brief.trackA.badge":"Saul — Senior Engineer",
+    "brief.trackB.title":"Legacy Business Systems",
+    "brief.trackB.sub":"Old software, manual reports, cloud migration, system integration, automation — non-mainframe",
+    "brief.trackB.badge":"Engineering Team",
+    "brief.stack.label":"Technology stack — select everything that applies",
+    "brief.stack.other":"Other / not sure",
+    "brief.sysage.label":"How old is the system?",
+    "brief.sysage.ph":"Select age",
+    "brief.sysage.1":"Under 10 years",
+    "brief.sysage.2":"10–20 years",
+    "brief.sysage.3":"20–30 years",
+    "brief.sysage.4":"30+ years — original engineers likely retired",
+    "brief.concern.label":"Primary concern",
+    "brief.concern.ph":"Select concern",
+    "brief.concern.1":"Documentation is missing or wrong",
+    "brief.concern.2":"Afraid to touch it — too much risk",
+    "brief.concern.3":"Upcoming audit or compliance deadline",
+    "brief.concern.4":"Need a modernization roadmap",
+    "brief.concern.5":"Performance or capacity issues",
+    "brief.concern.6":"Key engineers retiring — need knowledge transfer",
+    "brief.concern.7":"Something else",
+    "brief.desc.a":"Tell us what is happening *",
+    "brief.descA.ph":"Example: We have 400 COBOL programs running on z/OS that process ACH payments nightly. The engineer who wrote them retired last year. Documentation is incomplete and we have an audit in Q3.",
+    "brief.biz.label":"What needs fixing? (check all that apply)",
+    "brief.biz.1":"🖥️ Old or fragile software",
+    "brief.biz.2":"📊 Manual reports or data work",
+    "brief.biz.3":"☁️ Move to the cloud",
+    "brief.biz.4":"🔗 Connect systems that don't talk",
+    "brief.biz.5":"🤖 Automate repetitive work",
+    "brief.biz.6":"💡 Something else",
+    "brief.desc.b":"Tell us what is happening *",
+    "brief.descB.ph":"Example: We generate 5 reports every Monday by hand in Excel. It takes 3 people a full day. We want this automated and delivered by email every Monday morning.",
     "brief.teamsize":"How big is your company?","brief.teamPh":"Select size",
     "brief.ts1":"Just me","brief.ts2":"2–10 people","brief.ts3":"11–50 people","brief.ts4":"More than 50 people",
     "brief.timeline":"When do you need this done?","brief.timelinePh":"Select a timeframe",
@@ -2223,13 +2383,41 @@ const translations = {
     "brief.sub":"No necesitas conocimientos técnicos — solo cuéntanos qué quieres mejorar o resolver. Un ingeniero real leerá esto y responderá en 24 horas con una estimación clara y honesta.",
     "brief.name":"Tu nombre *","brief.namePh":"María González","brief.company":"Empresa *","brief.companyPh":"Banco Acme",
     "brief.email":"Email de trabajo *","brief.emailPh":"maria@bancoacme.com","brief.market":"Tu país *","brief.marketPh":"Selecciona tu país","brief.marketOther":"Otro",
-    "brief.service":"¿Qué te gustaría mejorar? (selecciona todo lo que aplique)",
-    "brief.svc1":"🖥️ Software antiguo que va lento o que da miedo tocar",
-    "brief.svc2":"🏦 Pagos, banca o sistemas financieros",
-    "brief.svc3":"🤖 Automatizar trabajo manual o repetitivo",
-    "brief.svc4":"☁️ Mover sistemas a la nube (AWS)",
-    "brief.svc5":"📊 Datos, archivos o reportes que necesitan orden",
-    "brief.svc6":"💡 Otra cosa — lo describo abajo",
+    "brief.trackLabel":"¿Qué describe mejor su situación?",
+    "brief.trackA.title":"Mainframe y Sistemas Legacy",
+    "brief.trackA.sub":"IBM Z, AS/400, COBOL, JCL, CICS, REXX, VSAM, DB2 — sistemas de pagos y banca incluidos",
+    "brief.trackA.badge":"Saul — Ingeniero Senior",
+    "brief.trackB.title":"Sistemas de Negocio Legacy",
+    "brief.trackB.sub":"Software antiguo, reportes manuales, migración a la nube, integración — no mainframe",
+    "brief.trackB.badge":"Equipo de Ingeniería",
+    "brief.stack.label":"Stack tecnológico — seleccione todo lo que aplique",
+    "brief.stack.other":"Otro / no estoy seguro",
+    "brief.sysage.label":"¿Qué tan antiguo es el sistema?",
+    "brief.sysage.ph":"Seleccionar antigüedad",
+    "brief.sysage.1":"Menos de 10 años",
+    "brief.sysage.2":"10–20 años",
+    "brief.sysage.3":"20–30 años",
+    "brief.sysage.4":"30+ años — ingenieros originales probablemente jubilados",
+    "brief.concern.label":"Preocupación principal",
+    "brief.concern.ph":"Seleccionar preocupación",
+    "brief.concern.1":"La documentación está incompleta o incorrecta",
+    "brief.concern.2":"Miedo de tocarlo — demasiado riesgo",
+    "brief.concern.3":"Auditoría o fecha límite de cumplimiento próxima",
+    "brief.concern.4":"Necesito un plan de modernización",
+    "brief.concern.5":"Problemas de rendimiento o capacidad",
+    "brief.concern.6":"Ingenieros clave jubilándose — necesito transferencia de conocimiento",
+    "brief.concern.7":"Otra razón",
+    "brief.desc.a":"Cuéntenos qué está pasando *",
+    "brief.descA.ph":"Ejemplo: Tenemos 400 programas COBOL en z/OS que procesan pagos ACH cada noche. El ingeniero que los escribió se jubiló el año pasado. La documentación está incompleta y tenemos una auditoría en Q3.",
+    "brief.biz.label":"¿Qué necesita corregir? (seleccione todo lo que aplique)",
+    "brief.biz.1":"🖥️ Software antiguo o frágil",
+    "brief.biz.2":"📊 Reportes manuales o trabajo con datos",
+    "brief.biz.3":"☁️ Migrar a la nube",
+    "brief.biz.4":"🔗 Conectar sistemas que no se comunican",
+    "brief.biz.5":"🤖 Automatizar trabajo repetitivo",
+    "brief.biz.6":"💡 Otra cosa",
+    "brief.desc.b":"Cuéntenos qué está pasando *",
+    "brief.descB.ph":"Ejemplo: Generamos 5 reportes cada lunes a mano en Excel. Le toma a 3 personas un día completo. Queremos que esto sea automático y llegue por correo cada lunes.",
     "brief.teamsize":"¿Qué tan grande es tu empresa?","brief.teamPh":"Selecciona tamaño",
     "brief.ts1":"Solo yo","brief.ts2":"2–10 personas","brief.ts3":"11–50 personas","brief.ts4":"Más de 50 personas",
     "brief.timeline":"¿Cuándo necesitas que esté listo?","brief.timelinePh":"Selecciona un plazo",
@@ -2481,38 +2669,76 @@ function resetChat() {
 <!-- PRICING & BRIEF SCRIPT -->
 <script>
 // ── Project Brief Form handler ─────────────────────────────────
+// ── Track selector ──────────────────────────────────────────────────
+function selectTrack(track) {
+  document.getElementById('briefTrack').value = track;
+  var btnA = document.getElementById('trackBtnA');
+  var btnB = document.getElementById('trackBtnB');
+  var panelA = document.getElementById('panelA');
+  var panelB = document.getElementById('panelB');
+  var descA = document.getElementById('briefDescA');
+  var descB = document.getElementById('briefDescB');
+  btnA.className = 'track-btn' + (track === 'A' ? ' selected' : '');
+  btnB.className = 'track-btn' + (track === 'B' ? ' selected-b' : '');
+  panelA.className = 'brief-panel' + (track === 'A' ? ' active' : '');
+  panelB.className = 'brief-panel' + (track === 'B' ? ' active' : '');
+  // Required management — only active panel description is required
+  descA.required = (track === 'A');
+  descB.required = (track === 'B');
+}
+
+function toggleChip(cb) {
+  var label = cb.closest('label');
+  if (cb.checked) label.classList.add('selected');
+  else label.classList.remove('selected');
+}
+
 function handleBriefSubmit(e) {
   e.preventDefault();
   var form = document.getElementById('projectBriefForm');
+  // Validate track selected
+  var track = document.getElementById('briefTrack').value;
+  if (!track) {
+    var trackLabel = form.querySelector('[data-i18n="brief.trackLabel"]');
+    if (trackLabel) trackLabel.scrollIntoView({ behavior:'smooth', block:'center' });
+    trackLabel && (trackLabel.style.color = '#E24B4A');
+    setTimeout(function() { if(trackLabel) trackLabel.style.color = ''; }, 2000);
+    return;
+  }
   var data = new FormData(form);
+  // For track B, copy briefDescB into message field for formspree
+  if (track === 'B') {
+    var descB = document.getElementById('briefDescB').value.trim();
+    data.set('message', descB);
+  }
   fetch(form.action, {
     method: 'POST',
     body: data,
     headers: { 'Accept': 'application/json' }
   }).then(function(r) {
     if (r.ok) {
-      // Map checked services → engine-canonical project_type
-      // Priority order: Mainframe > Payments > 360 Delivery > IT Consulting
-      var _svcMap = {
-        mainframe:  'Mainframe Modernization',
-        payments:   'Payments Integration',
-        data:       '360 Delivery Intelligence',
-        automation: 'IT Consulting',
-        cloud:      'IT Consulting',
-        other:      'IT Consulting'
-      };
-      var _priority = ['mainframe','payments','data','automation','cloud','other'];
-      var _checked = [];
-      _priority.forEach(function(s) {
-        var cb = form.querySelector('input[name="service_' + s + '"]');
-        if (cb && cb.checked) _checked.push(s);
+      // Map track → engine-canonical project_type
+      var _engineType = track === 'A' ? 'Mainframe Modernization' : 'IT Consulting';
+      // Collect selected tech stack chips (Track A)
+      var _stackChips = [];
+      form.querySelectorAll('input[name^="stack_"]:checked').forEach(function(cb) {
+        _stackChips.push(cb.name.replace('stack_','').toUpperCase());
       });
-      // Pick highest-priority engine value; store raw labels as description hint
-      var _engineType = _checked.length ? _svcMap[_checked[0]] : 'IT Consulting';
-      var _rawLabels  = _checked.join(', ') || null;
+      // Collect biz checkboxes (Track B)
+      var _bizItems = [];
+      form.querySelectorAll('input[name^="biz_"]:checked').forEach(function(cb) {
+        _bizItems.push(cb.name.replace('biz_',''));
+      });
+      var _desc = track === 'A'
+        ? ('[Stack: ' + (_stackChips.join(', ') || 'not specified') + '] '
+          + '[Age: ' + (document.getElementById('briefSysAge').value || 'not specified') + '] '
+          + '[Concern: ' + (document.getElementById('briefConcern').value || 'not specified') + '] '
+          + document.getElementById('briefDescA').value.trim())
+        : ('[Biz: ' + (_bizItems.join(', ') || 'not specified') + '] '
+          + document.getElementById('briefDescB').value.trim());
       // Write to Supabase web_inquiries (fire-and-forget)
       _writeWebInquiry({
-        source:         "project-brief",
+        source:         'project-brief',
         full_name:      document.getElementById('briefName').value.trim(),
         email:          document.getElementById('briefEmail').value.trim(),
         company:        document.getElementById('briefCompany').value.trim(),
@@ -2520,7 +2746,7 @@ function handleBriefSubmit(e) {
         project_type:   _engineType,
         company_size:   document.getElementById('briefTeamsize').value || null,
         timeline:       document.getElementById('briefTimeline').value || null,
-        description:    (_rawLabels ? '[Services: ' + _rawLabels + '] ' : '') + document.getElementById('briefDesc').value.trim(),
+        description:    _desc,
         preferred_lang: currentLang,
       });
       form.style.display = 'none';
