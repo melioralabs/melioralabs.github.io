@@ -478,6 +478,60 @@
   .tech-chip.selected { border-color:var(--teal-400); background:var(--teal-50); color:var(--teal-600); }
   .tech-chip input[type=checkbox] { display:none; }
 
+  /* ── CHIP CATEGORIES ── */
+  .chip-category { margin-bottom:0.85rem; }
+  .chip-cat-label {
+    font-size:10px; font-weight:600; text-transform:uppercase;
+    letter-spacing:1.2px; color:var(--teal-600); margin-bottom:5px;
+    display:flex; align-items:center; gap:6px;
+  }
+  .chip-cat-label::after {
+    content:''; flex:1; height:0.5px; background:var(--teal-100);
+  }
+
+  /* ── TRAINING SELECTOR ── */
+  .training-grid {
+    display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    gap:8px; margin-top:6px;
+  }
+  .training-card {
+    display:flex; flex-direction:column; align-items:flex-start; gap:4px;
+    padding:10px 12px; border:1.5px solid var(--gray-100);
+    border-radius:10px; cursor:pointer; background:white;
+    transition:all 0.15s; font-family:'DM Sans',sans-serif; text-align:left;
+  }
+  .training-card:hover { border-color:var(--teal-100); background:var(--teal-50); }
+  .training-card.selected {
+    border-color:var(--teal-400); background:var(--teal-50);
+    box-shadow:0 0 0 3px rgba(29,158,117,0.08);
+  }
+  .training-card .tc-icon { font-size:1.1rem; }
+  .training-card .tc-label { font-size:13px; font-weight:500; color:var(--gray-900); }
+  .training-card .tc-sub { font-size:11px; color:var(--gray-400); line-height:1.4; }
+  .team-size-panel { display:none; margin-top:0.6rem; animation:briefFadeIn 0.2s ease; }
+  .team-size-panel.active { display:block; }
+
+  /* ── URGENCY SELECTOR ── */
+  .urgency-grid {
+    display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:8px; margin-top:6px;
+  }
+  .urgency-card {
+    display:flex; align-items:flex-start; gap:10px; padding:10px 12px;
+    border:1.5px solid var(--gray-100); border-radius:10px;
+    cursor:pointer; background:white; transition:all 0.15s;
+    font-family:'DM Sans',sans-serif; text-align:left;
+  }
+  .urgency-card:hover { border-color:var(--teal-100); background:var(--teal-50); }
+  .urgency-card.selected {
+    border-color:var(--teal-400); background:var(--teal-50);
+    box-shadow:0 0 0 3px rgba(29,158,117,0.08);
+  }
+  .urgency-card.urgent.selected { border-color:#E24B4A; background:#FDEAEA; box-shadow:0 0 0 3px rgba(226,75,74,0.08); }
+  .uc-icon { font-size:1.1rem; flex-shrink:0; margin-top:1px; }
+  .uc-label { font-size:13px; font-weight:500; color:var(--gray-900); line-height:1.3; }
+  .uc-sub { font-size:11px; color:var(--gray-400); margin-top:2px; line-height:1.4; }
+
 </style>
 <!-- Supabase for web_inquiries writes -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
@@ -956,54 +1010,145 @@
       <!-- TRACK A: MAINFRAME PANEL -->
       <div class="brief-panel" id="panelA">
 
-        <!-- A1: Tech stack chips -->
+        <!-- A1: Grouped tech stack chips -->
+        <div style="margin-bottom:1.25rem;">
+          <label style="display:block;font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:1px;color:var(--teal-400);margin-bottom:10px;" data-i18n="brief.stack.label">Technology stack — select everything that applies</label>
+
+          <div class="chip-category">
+            <div class="chip-cat-label" data-i18n="brief.stack.cat.lang">⚙️ Language</div>
+            <div class="tech-chips">
+              <label class="tech-chip"><input type="checkbox" name="stack_cobol" onchange="toggleChip(this)" /> COBOL</label>
+              <label class="tech-chip"><input type="checkbox" name="stack_pli" onchange="toggleChip(this)" /> PL/I</label>
+              <label class="tech-chip"><input type="checkbox" name="stack_asm" onchange="toggleChip(this)" /> Assembler</label>
+              <label class="tech-chip"><input type="checkbox" name="stack_rexx" onchange="toggleChip(this)" /> REXX</label>
+            </div>
+          </div>
+
+          <div class="chip-category">
+            <div class="chip-cat-label" data-i18n="brief.stack.cat.online">🟢 Online (OLTP)</div>
+            <div class="tech-chips">
+              <label class="tech-chip"><input type="checkbox" name="stack_cics" onchange="toggleChip(this)" /> CICS</label>
+              <label class="tech-chip"><input type="checkbox" name="stack_mq" onchange="toggleChip(this)" /> MQ</label>
+              <label class="tech-chip"><input type="checkbox" name="stack_ims_tm" onchange="toggleChip(this)" /> IMS/TM</label>
+            </div>
+          </div>
+
+          <div class="chip-category">
+            <div class="chip-cat-label" data-i18n="brief.stack.cat.batch">🔵 Batch</div>
+            <div class="tech-chips">
+              <label class="tech-chip"><input type="checkbox" name="stack_jcl" onchange="toggleChip(this)" /> JCL</label>
+              <label class="tech-chip"><input type="checkbox" name="stack_vsam" onchange="toggleChip(this)" /> VSAM</label>
+              <label class="tech-chip"><input type="checkbox" name="stack_controlm" onchange="toggleChip(this)" /> Control-M</label>
+              <label class="tech-chip"><input type="checkbox" name="stack_twsz" onchange="toggleChip(this)" /> TWS/z</label>
+            </div>
+          </div>
+
+          <div class="chip-category">
+            <div class="chip-cat-label" data-i18n="brief.stack.cat.data">🗄️ Data</div>
+            <div class="tech-chips">
+              <label class="tech-chip"><input type="checkbox" name="stack_db2" onchange="toggleChip(this)" /> DB2</label>
+              <label class="tech-chip"><input type="checkbox" name="stack_ims_db" onchange="toggleChip(this)" /> IMS/DB</label>
+              <label class="tech-chip"><input type="checkbox" name="stack_oracle" onchange="toggleChip(this)" /> Oracle</label>
+              <label class="tech-chip"><input type="checkbox" name="stack_sql" onchange="toggleChip(this)" /> SQL</label>
+            </div>
+          </div>
+
+          <div class="chip-category">
+            <div class="chip-cat-label" data-i18n="brief.stack.cat.payments">💳 Payments &amp; Integration</div>
+            <div class="tech-chips">
+              <label class="tech-chip"><input type="checkbox" name="stack_ach" onchange="toggleChip(this)" /> ACH / RTP</label>
+              <label class="tech-chip"><input type="checkbox" name="stack_swift" onchange="toggleChip(this)" /> SWIFT</label>
+              <label class="tech-chip"><input type="checkbox" name="stack_iso20022" onchange="toggleChip(this)" /> ISO 20022</label>
+            </div>
+          </div>
+
+          <div class="chip-category">
+            <div class="chip-cat-label" data-i18n="brief.stack.cat.modern">🔧 Modernization Tools</div>
+            <div class="tech-chips">
+              <label class="tech-chip"><input type="checkbox" name="stack_microfocus" onchange="toggleChip(this)" /> Micro Focus / OpenText</label>
+              <label class="tech-chip"><input type="checkbox" name="stack_other_mf" onchange="toggleChip(this)" data-i18n="brief.stack.other">Other / not sure</label>
+            </div>
+          </div>
+        </div>
+
+        <!-- A2: Primary concern (full width, no system age) -->
         <div style="margin-bottom:1rem;">
-          <label style="display:block;font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:1px;color:var(--teal-400);margin-bottom:8px;" data-i18n="brief.stack.label">Technology stack — select everything that applies</label>
-          <div class="tech-chips" id="techChips">
-            <label class="tech-chip"><input type="checkbox" name="stack_cobol" onchange="toggleChip(this)" /> COBOL</label>
-            <label class="tech-chip"><input type="checkbox" name="stack_jcl" onchange="toggleChip(this)" /> JCL</label>
-            <label class="tech-chip"><input type="checkbox" name="stack_cics" onchange="toggleChip(this)" /> CICS</label>
-            <label class="tech-chip"><input type="checkbox" name="stack_vsam" onchange="toggleChip(this)" /> VSAM</label>
-            <label class="tech-chip"><input type="checkbox" name="stack_db2" onchange="toggleChip(this)" /> DB2</label>
-            <label class="tech-chip"><input type="checkbox" name="stack_ims" onchange="toggleChip(this)" /> IMS</label>
-            <label class="tech-chip"><input type="checkbox" name="stack_rexx" onchange="toggleChip(this)" /> REXX</label>
-            <label class="tech-chip"><input type="checkbox" name="stack_pli" onchange="toggleChip(this)" /> PL/I</label>
-            <label class="tech-chip"><input type="checkbox" name="stack_zos" onchange="toggleChip(this)" /> z/OS</label>
-            <label class="tech-chip"><input type="checkbox" name="stack_ach" onchange="toggleChip(this)" /> ACH / RTP</label>
-            <label class="tech-chip"><input type="checkbox" name="stack_ofac" onchange="toggleChip(this)" /> OFAC / AML</label>
-            <label class="tech-chip"><input type="checkbox" name="stack_oracle" onchange="toggleChip(this)" /> Oracle</label>
-            <label class="tech-chip"><input type="checkbox" name="stack_other_mf" onchange="toggleChip(this)" data-i18n="brief.stack.other">Other / not sure</label>
-          </div>
+          <label for="briefConcern" style="display:block;font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:1px;color:var(--teal-400);margin-bottom:6px;" data-i18n="brief.concern.label">Primary concern</label>
+          <select class="form-select" id="briefConcern" name="primary_concern">
+            <option value="" data-i18n="brief.concern.ph">Select concern</option>
+            <option value="Documentation missing" data-i18n="brief.concern.1">Documentation is missing or wrong</option>
+            <option value="Risk to touch" data-i18n="brief.concern.2">Afraid to touch it — too much risk</option>
+            <option value="Audit / compliance" data-i18n="brief.concern.3">Upcoming audit or compliance deadline</option>
+            <option value="Modernization plan" data-i18n="brief.concern.4">Need a modernization roadmap</option>
+            <option value="Performance" data-i18n="brief.concern.5">Performance or capacity issues</option>
+            <option value="Knowledge transfer" data-i18n="brief.concern.6">Key engineers retiring — need knowledge transfer</option>
+            <option value="Other" data-i18n="brief.concern.7">Something else</option>
+          </select>
         </div>
 
-        <!-- A2: System age + Primary concern -->
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;">
-          <div>
-            <label for="briefSysAge" style="display:block;font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:1px;color:var(--teal-400);margin-bottom:6px;" data-i18n="brief.sysage.label">How old is the system?</label>
-            <select class="form-select" id="briefSysAge" name="system_age">
-              <option value="" data-i18n="brief.sysage.ph">Select age</option>
-              <option value="Under 10 years" data-i18n="brief.sysage.1">Under 10 years</option>
-              <option value="10-20 years" data-i18n="brief.sysage.2">10–20 years</option>
-              <option value="20-30 years" data-i18n="brief.sysage.3">20–30 years</option>
-              <option value="30+ years" data-i18n="brief.sysage.4">30+ years — original engineers likely retired</option>
+        <!-- A3: Training question — replaces company size -->
+        <div style="margin-bottom:1rem;">
+          <label style="display:block;font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:1px;color:var(--teal-400);margin-bottom:8px;" data-i18n="brief.training.label">Will your team need training on the deliverables?</label>
+          <div class="training-grid">
+            <button type="button" class="training-card" id="trainNone" onclick="selectTraining('none')">
+              <span class="tc-icon">🔧</span>
+              <span class="tc-label" data-i18n="brief.training.none">No — deliver and done</span>
+              <span class="tc-sub" data-i18n="brief.training.none.sub">No knowledge transfer needed</span>
+            </button>
+            <button type="button" class="training-card" id="trainIndividual" onclick="selectTraining('individual')">
+              <span class="tc-icon">📖</span>
+              <span class="tc-label" data-i18n="brief.training.individual">Yes — one person</span>
+              <span class="tc-sub" data-i18n="brief.training.individual.sub">One engineer maintains what we build</span>
+            </button>
+            <button type="button" class="training-card" id="trainTeam" onclick="selectTraining('team')">
+              <span class="tc-icon">👥</span>
+              <span class="tc-label" data-i18n="brief.training.team">Yes — a team</span>
+              <span class="tc-sub" data-i18n="brief.training.team.sub">Multiple people need knowledge transfer</span>
+            </button>
+            <button type="button" class="training-card" id="trainUnsure" onclick="selectTraining('unsure')">
+              <span class="tc-icon">🤷</span>
+              <span class="tc-label" data-i18n="brief.training.unsure">Not sure yet</span>
+              <span class="tc-sub" data-i18n="brief.training.unsure.sub">We'll decide after the discovery call</span>
+            </button>
+          </div>
+          <!-- Team size — appears when team is selected -->
+          <div class="team-size-panel" id="teamSizePanel">
+            <label for="briefTeamSize" style="display:block;font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:1px;color:var(--teal-400);margin-bottom:6px;margin-top:0.75rem;" data-i18n="brief.training.teamsize.label">Approx. how many people?</label>
+            <select class="form-select" id="briefTeamSize" name="training_team_size">
+              <option value="" data-i18n="brief.training.teamsize.ph">Select size</option>
+              <option value="2-5" data-i18n="brief.training.teamsize.1">2–5 people</option>
+              <option value="6-10" data-i18n="brief.training.teamsize.2">6–10 people</option>
+              <option value="10+" data-i18n="brief.training.teamsize.3">More than 10 people</option>
             </select>
           </div>
-          <div>
-            <label for="briefConcern" style="display:block;font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:1px;color:var(--teal-400);margin-bottom:6px;" data-i18n="brief.concern.label">Primary concern</label>
-            <select class="form-select" id="briefConcern" name="primary_concern">
-              <option value="" data-i18n="brief.concern.ph">Select concern</option>
-              <option value="Documentation missing" data-i18n="brief.concern.1">Documentation is missing or wrong</option>
-              <option value="Risk to touch" data-i18n="brief.concern.2">Afraid to touch it — too much risk</option>
-              <option value="Audit / compliance" data-i18n="brief.concern.3">Upcoming audit or compliance deadline</option>
-              <option value="Modernization plan" data-i18n="brief.concern.4">Need a modernization roadmap</option>
-              <option value="Performance" data-i18n="brief.concern.5">Performance or capacity issues</option>
-              <option value="Knowledge transfer" data-i18n="brief.concern.6">Key engineers retiring — need knowledge transfer</option>
-              <option value="Other" data-i18n="brief.concern.7">Something else</option>
-            </select>
-          </div>
+          <input type="hidden" id="briefTrainingVal" name="training_needed" />
         </div>
 
-        <!-- A3: Description — mainframe-specific placeholder -->
+        <!-- A4: Urgency driver — replaces timeline -->
+        <div style="margin-bottom:1rem;">
+          <label style="display:block;font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:1px;color:var(--teal-400);margin-bottom:8px;" data-i18n="brief.urgency.label">What is driving the timeline?</label>
+          <div class="urgency-grid">
+            <button type="button" class="urgency-card urgent" id="urgAudit" onclick="selectUrgency('audit')">
+              <span class="uc-icon">📋</span>
+              <div><div class="uc-label" data-i18n="brief.urgency.audit">Audit or regulatory deadline</div><div class="uc-sub" data-i18n="brief.urgency.audit.sub">Fixed date — compliance at stake</div></div>
+            </button>
+            <button type="button" class="urgency-card urgent" id="urgRisk" onclick="selectUrgency('risk')">
+              <span class="uc-icon">🚨</span>
+              <div><div class="uc-label" data-i18n="brief.urgency.risk">System at risk right now</div><div class="uc-sub" data-i18n="brief.urgency.risk.sub">Production issue or critical vulnerability</div></div>
+            </button>
+            <button type="button" class="urgency-card" id="urgMilestone" onclick="selectUrgency('milestone')">
+              <span class="uc-icon">📅</span>
+              <div><div class="uc-label" data-i18n="brief.urgency.milestone">Internal project milestone</div><div class="uc-sub" data-i18n="brief.urgency.milestone.sub">Business-driven deadline</div></div>
+            </button>
+            <button type="button" class="urgency-card" id="urgExploring" onclick="selectUrgency('exploring')">
+              <span class="uc-icon">🔍</span>
+              <div><div class="uc-label" data-i18n="brief.urgency.exploring">Still exploring</div><div class="uc-sub" data-i18n="brief.urgency.exploring.sub">No hard deadline yet</div></div>
+            </button>
+          </div>
+          <input type="hidden" id="briefUrgencyVal" name="urgency_driver" />
+        </div>
+
+        <!-- A5: Description — mainframe-specific placeholder -->
         <div style="margin-bottom:1rem;">
           <label for="briefDescA" style="display:block;font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:1px;color:var(--teal-400);margin-bottom:6px;" data-i18n="brief.desc.a">Tell us what is happening *</label>
           <textarea class="form-input" id="briefDescA" name="message" required rows="4" autocomplete="off"
@@ -2065,12 +2210,12 @@ const translations = {
     "brief.trackB.badge":"Engineering Team",
     "brief.stack.label":"Technology stack — select everything that applies",
     "brief.stack.other":"Other / not sure",
-    "brief.sysage.label":"How old is the system?",
-    "brief.sysage.ph":"Select age",
-    "brief.sysage.1":"Under 10 years",
-    "brief.sysage.2":"10–20 years",
-    "brief.sysage.3":"20–30 years",
-    "brief.sysage.4":"30+ years — original engineers likely retired",
+    "brief.stack.cat.lang":"⚙️ Language",
+    "brief.stack.cat.online":"🟢 Online (OLTP)",
+    "brief.stack.cat.batch":"🔵 Batch",
+    "brief.stack.cat.data":"🗄️ Data",
+    "brief.stack.cat.payments":"💳 Payments & Integration",
+    "brief.stack.cat.modern":"🔧 Modernization Tools",
     "brief.concern.label":"Primary concern",
     "brief.concern.ph":"Select concern",
     "brief.concern.1":"Documentation is missing or wrong",
@@ -2080,6 +2225,29 @@ const translations = {
     "brief.concern.5":"Performance or capacity issues",
     "brief.concern.6":"Key engineers retiring — need knowledge transfer",
     "brief.concern.7":"Something else",
+    "brief.training.label":"Will your team need training on the deliverables?",
+    "brief.training.none":"No — deliver and done",
+    "brief.training.none.sub":"No knowledge transfer needed",
+    "brief.training.individual":"Yes — one person",
+    "brief.training.individual.sub":"One engineer maintains what we build",
+    "brief.training.team":"Yes — a team",
+    "brief.training.team.sub":"Multiple people need knowledge transfer",
+    "brief.training.unsure":"Not sure yet",
+    "brief.training.unsure.sub":"We'll decide after the discovery call",
+    "brief.training.teamsize.label":"Approx. how many people?",
+    "brief.training.teamsize.ph":"Select size",
+    "brief.training.teamsize.1":"2–5 people",
+    "brief.training.teamsize.2":"6–10 people",
+    "brief.training.teamsize.3":"More than 10 people",
+    "brief.urgency.label":"What is driving the timeline?",
+    "brief.urgency.audit":"Audit or regulatory deadline",
+    "brief.urgency.audit.sub":"Fixed date — compliance at stake",
+    "brief.urgency.risk":"System at risk right now",
+    "brief.urgency.risk.sub":"Production issue or critical vulnerability",
+    "brief.urgency.milestone":"Internal project milestone",
+    "brief.urgency.milestone.sub":"Business-driven deadline",
+    "brief.urgency.exploring":"Still exploring",
+    "brief.urgency.exploring.sub":"No hard deadline yet",
     "brief.desc.a":"Tell us what is happening *",
     "brief.descA.ph":"Example: We have 400 COBOL programs running on z/OS that process ACH payments nightly. The engineer who wrote them retired last year. Documentation is incomplete and we have an audit in Q3.",
     "brief.biz.label":"What needs fixing? (check all that apply)",
@@ -2391,12 +2559,12 @@ const translations = {
     "brief.trackB.badge":"Equipo de Ingeniería",
     "brief.stack.label":"Stack tecnológico — seleccione todo lo que aplique",
     "brief.stack.other":"Otro / no estoy seguro",
-    "brief.sysage.label":"¿Qué tan antiguo es el sistema?",
-    "brief.sysage.ph":"Seleccionar antigüedad",
-    "brief.sysage.1":"Menos de 10 años",
-    "brief.sysage.2":"10–20 años",
-    "brief.sysage.3":"20–30 años",
-    "brief.sysage.4":"30+ años — ingenieros originales probablemente jubilados",
+    "brief.stack.cat.lang":"⚙️ Lenguaje",
+    "brief.stack.cat.online":"🟢 En línea (OLTP)",
+    "brief.stack.cat.batch":"🔵 Batch",
+    "brief.stack.cat.data":"🗄️ Datos",
+    "brief.stack.cat.payments":"💳 Pagos e Integración",
+    "brief.stack.cat.modern":"🔧 Herramientas de Modernización",
     "brief.concern.label":"Preocupación principal",
     "brief.concern.ph":"Seleccionar preocupación",
     "brief.concern.1":"La documentación está incompleta o incorrecta",
@@ -2404,8 +2572,31 @@ const translations = {
     "brief.concern.3":"Auditoría o fecha límite de cumplimiento próxima",
     "brief.concern.4":"Necesito un plan de modernización",
     "brief.concern.5":"Problemas de rendimiento o capacidad",
-    "brief.concern.6":"Ingenieros clave jubilándose — necesito transferencia de conocimiento",
+    "brief.concern.6":"Ingenieros clave jubilándose — transferencia de conocimiento",
     "brief.concern.7":"Otra razón",
+    "brief.training.label":"¿Su equipo necesitará capacitación sobre los entregables?",
+    "brief.training.none":"No — solo entregar",
+    "brief.training.none.sub":"No se necesita transferencia de conocimiento",
+    "brief.training.individual":"Sí — una persona",
+    "brief.training.individual.sub":"Un ingeniero mantiene lo que construimos",
+    "brief.training.team":"Sí — un equipo",
+    "brief.training.team.sub":"Varias personas necesitan transferencia de conocimiento",
+    "brief.training.unsure":"Aún no lo sé",
+    "brief.training.unsure.sub":"Lo decidiremos después de la llamada de descubrimiento",
+    "brief.training.teamsize.label":"¿Cuántas personas aproximadamente?",
+    "brief.training.teamsize.ph":"Seleccionar cantidad",
+    "brief.training.teamsize.1":"2–5 personas",
+    "brief.training.teamsize.2":"6–10 personas",
+    "brief.training.teamsize.3":"Más de 10 personas",
+    "brief.urgency.label":"¿Qué está impulsando el cronograma?",
+    "brief.urgency.audit":"Auditoría o fecha límite regulatoria",
+    "brief.urgency.audit.sub":"Fecha fija — cumplimiento en juego",
+    "brief.urgency.risk":"Sistema en riesgo ahora mismo",
+    "brief.urgency.risk.sub":"Problema de producción o vulnerabilidad crítica",
+    "brief.urgency.milestone":"Hito interno del proyecto",
+    "brief.urgency.milestone.sub":"Fecha límite impuesta por el negocio",
+    "brief.urgency.exploring":"Aún explorando",
+    "brief.urgency.exploring.sub":"Sin fecha límite definida aún",
     "brief.desc.a":"Cuéntenos qué está pasando *",
     "brief.descA.ph":"Ejemplo: Tenemos 400 programas COBOL en z/OS que procesan pagos ACH cada noche. El ingeniero que los escribió se jubiló el año pasado. La documentación está incompleta y tenemos una auditoría en Q3.",
     "brief.biz.label":"¿Qué necesita corregir? (seleccione todo lo que aplique)",
@@ -2668,6 +2859,31 @@ function resetChat() {
 <!-- PRICING & BRIEF SCRIPT -->
 <script>
 // ── Project Brief Form handler ─────────────────────────────────
+// ── Training selector ────────────────────────────────────────────────
+function selectTraining(val) {
+  ['trainNone','trainIndividual','trainTeam','trainUnsure'].forEach(function(id) {
+    var el = document.getElementById(id);
+    if (el) el.classList.remove('selected');
+  });
+  var btn = document.getElementById('train' + val.charAt(0).toUpperCase() + val.slice(1));
+  if (btn) btn.classList.add('selected');
+  document.getElementById('briefTrainingVal').value = val;
+  var panel = document.getElementById('teamSizePanel');
+  if (panel) panel.className = 'team-size-panel' + (val === 'team' ? ' active' : '');
+}
+
+// ── Urgency selector ─────────────────────────────────────────────────
+function selectUrgency(val) {
+  ['urgAudit','urgRisk','urgMilestone','urgExploring'].forEach(function(id) {
+    var el = document.getElementById(id);
+    if (el) el.classList.remove('selected');
+  });
+  var map = { audit:'urgAudit', risk:'urgRisk', milestone:'urgMilestone', exploring:'urgExploring' };
+  var btn = document.getElementById(map[val]);
+  if (btn) btn.classList.add('selected');
+  document.getElementById('briefUrgencyVal').value = val;
+}
+
 // ── Track selector ──────────────────────────────────────────────────
 function selectTrack(track) {
   document.getElementById('briefTrack').value = track;
@@ -2730,8 +2946,9 @@ function handleBriefSubmit(e) {
       });
       var _desc = track === 'A'
         ? ('[Stack: ' + (_stackChips.join(', ') || 'not specified') + '] '
-          + '[Age: ' + (document.getElementById('briefSysAge').value || 'not specified') + '] '
-          + '[Concern: ' + (document.getElementById('briefConcern').value || 'not specified') + '] '
+          + '[Concern: ' + (document.getElementById('briefConcern')?.value || 'not specified') + '] '
+          + '[Training: ' + (document.getElementById('briefTrainingVal')?.value || 'not specified') + '] '
+          + '[Urgency: ' + (document.getElementById('briefUrgencyVal')?.value || 'not specified') + '] '
           + document.getElementById('briefDescA').value.trim())
         : ('[Biz: ' + (_bizItems.join(', ') || 'not specified') + '] '
           + document.getElementById('briefDescB').value.trim());
