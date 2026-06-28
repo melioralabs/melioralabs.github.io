@@ -1,6 +1,6 @@
 <!-- ============================================================
      Meliora Labs | melioralabs.tech
-     Version : 3.6.0
+     Version : 2.2.0
      Date    : 2026-06-12
      Changes : Major redesign — 7 service cards replaced with 3 engagement
                tier cards (Assess / Blueprint / Execute) + domain row;
@@ -1552,6 +1552,22 @@
       <div class="faq-answer" data-i18n="faq.a11">Absolutely — and that's actually where most engagements start. You don't need to commit to a full migration to work with us. We can start with a system assessment and documentation pass, then modernize what's running on the mainframe before any move to the cloud is considered. You control the pace. Most of our mainframe clients take it one step at a time — and that's exactly how we recommend approaching it.</div>
     </div>
 
+    <div class="faq-item reveal reveal-delay-1">
+      <div class="faq-question" onclick="toggleFaq(this)">
+        <span class="faq-question-text" data-i18n="faq.q12">What are you responsible for after delivery?</span>
+        <div class="faq-icon"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg></div>
+      </div>
+      <div class="faq-answer" data-i18n="faq.a12">We are responsible for what is written in your Statement of Work — nothing more, nothing less. Every engagement begins with a signed scope document that defines exactly what we deliver, what we do not deliver, and where our responsibility ends. We engineer the technical implementation. Business rules, compliance interpretation, and exception handling remain with your team — that is documented in writing before work begins. Go-live support is included for errors within the delivered scope. Anything outside that scope is a new conversation, not an assumption.</div>
+    </div>
+
+    <div class="faq-item reveal reveal-delay-2">
+      <div class="faq-question" onclick="toggleFaq(this)">
+        <span class="faq-question-text" data-i18n="faq.q13">What happens if scope changes mid-project?</span>
+        <div class="faq-icon"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg></div>
+      </div>
+      <div class="faq-answer" data-i18n="faq.a13">Scope changes are handled through a formal change request process — in writing, every time. If something comes up that was not in the original Statement of Work, we stop, document it, estimate the additional effort, and get your sign-off before any new work begins. No verbal authorizations. No surprises on the invoice. This protects both sides: you always know what you're approving and what it costs, and we never do work that hasn't been agreed upon. Time is always billable — even for adjustments that seem small.</div>
+    </div>
+
   </div>
 </section>
 
@@ -2038,6 +2054,10 @@ const translations = {
     "faq.a10":"Yes. Knowledge transfer is an optional add-on to any Execute engagement. We can train your team directly on the new architecture, run working sessions, and make sure someone internal owns the system before we step back. The goal is always that your team can operate independently — not that you need us forever.",
     "faq.q11":"We have legacy mainframe systems but we\'re not ready for a full migration. Can you still help?",
     "faq.a11":"Absolutely — and that\'s actually where most engagements start. You don\'t need to commit to a full migration to work with us. We can start with a system assessment and documentation pass, then modernize what\'s running on the mainframe before any move to the cloud is considered. You control the pace. Most of our mainframe clients take it one step at a time — and that\'s exactly how we recommend approaching it.",
+    "faq.q12":"What are you responsible for after delivery?",
+    "faq.a12":"We are responsible for what is written in your Statement of Work — nothing more, nothing less. Every engagement begins with a signed scope document that defines exactly what we deliver, what we do not deliver, and where our responsibility ends. We engineer the technical implementation. Business rules, compliance interpretation, and exception handling remain with your team — that is documented in writing before work begins. Go-live support is included for errors within the delivered scope. Anything outside that scope is a new conversation, not an assumption.",
+    "faq.q13":"What happens if scope changes mid-project?",
+    "faq.a13":"Scope changes are handled through a formal change request process — in writing, every time. If something comes up that was not in the original Statement of Work, we stop, document it, estimate the additional effort, and get your sign-off before any new work begins. No verbal authorizations. No surprises on the invoice. This protects both sides: you always know what you\'re approving and what it costs, and we never do work that hasn\'t been agreed upon. Time is always billable — even for adjustments that seem small.",
     "svc7.title":"Technical Design — AS-IS / TO-BE",
     "svc7.desc":"Every digital system has room to grow. We map where you are, design where you could be, and build the bridge — simply, clearly, for humans not just engineers.",
     "t7s.f1":"AS-IS diagram — map your current digital systems clearly",
@@ -2457,6 +2477,10 @@ const translations = {
     "faq.a10":"Sí. La transferencia de conocimiento es un complemento opcional en cualquier compromiso Execute. Podemos capacitar a su equipo directamente en la nueva arquitectura, realizar sesiones de trabajo y asegurarnos de que alguien interno sea dueño del sistema antes de que nos retiremos. El objetivo siempre es que su equipo pueda operar de forma independiente — no que nos necesiten para siempre.",
     "faq.q11":"Tenemos sistemas mainframe heredados pero no estamos listos para una migración completa. ¿Pueden ayudarnos?",
     "faq.a11":"Absolutamente — y así es como comienza la mayoría de los proyectos. No necesitan comprometerse con una migración completa para trabajar con nosotros. Podemos comenzar con una evaluación del sistema y documentación, luego modernizar lo que se ejecuta en el mainframe antes de considerar cualquier migración a la nube. Ustedes controlan el ritmo. La mayoría de nuestros clientes de mainframe lo hacen paso a paso — y así es exactamente como lo recomendamos.",
+    "faq.q12":"¿De qué son responsables después de la entrega?",
+    "faq.a12":"Somos responsables de lo que está escrito en su Declaración de Trabajo — nada más, nada menos. Cada compromiso comienza con un documento de alcance firmado que define exactamente qué entregamos, qué no entregamos y dónde termina nuestra responsabilidad. Nosotros realizamos la implementación técnica. Las reglas de negocio, la interpretación de cumplimiento y el manejo de excepciones permanecen con su equipo — eso queda documentado por escrito antes de que comience el trabajo. El soporte go-live está incluido para errores dentro del alcance entregado. Cualquier cosa fuera de ese alcance es una conversación nueva, no una suposición.",
+    "faq.q13":"¿Qué sucede si el alcance cambia durante el proyecto?",
+    "faq.a13":"Los cambios de alcance se manejan a través de un proceso formal de solicitud de cambio — por escrito, siempre. Si surge algo que no estaba en la Declaración de Trabajo original, nos detenemos, lo documentamos, estimamos el esfuerzo adicional y obtenemos su aprobación antes de comenzar cualquier trabajo nuevo. Sin autorizaciones verbales. Sin sorpresas en la factura. Esto protege a ambas partes: ustedes siempre saben qué están aprobando y cuánto cuesta, y nosotros nunca hacemos trabajo que no haya sido acordado. El tiempo siempre es facturable — incluso para ajustes que parecen pequeños.",
     "svc7.title":"Diseño Técnico — AS-IS / TO-BE",
     "svc7.desc":"Todo sistema digital tiene espacio para crecer. Mapeamos dónde estás, diseñamos dónde podrías estar y construimos el puente — simple, claro, para humanos no solo ingenieros.",
     "t7s.f1":"Diagrama AS-IS — mapea tus sistemas digitales actuales claramente",
