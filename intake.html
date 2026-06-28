@@ -680,6 +680,54 @@
   }
   .concern-panel.active { display:block; }
 
+  /* ── SYSTEM CATEGORY CARDS (Track A) ── */
+  .sys-cat-grid {
+    display:grid; grid-template-columns:repeat(2,1fr); gap:0.65rem;
+    margin-top:0.5rem;
+  }
+  .sys-cat-card {
+    border:1.5px solid var(--border); border-radius:12px;
+    padding:1rem 1.1rem; cursor:pointer; background:var(--surface);
+    transition:all 0.18s; user-select:none; position:relative;
+  }
+  .sys-cat-card:hover { border-color:var(--blue-mid); background:var(--blue-light); }
+  .sys-cat-card.selected {
+    border-color:var(--blue); background:var(--blue-light);
+    box-shadow:0 0 0 3px rgba(27,79,114,0.12);
+  }
+  .sys-cat-card .sc-icon { font-size:1.3rem; margin-bottom:0.3rem; }
+  .sys-cat-card .sc-label {
+    font-size:0.88rem; font-weight:700; color:var(--blue); margin-bottom:0.2rem;
+  }
+  .sys-cat-card .sc-chips {
+    font-size:0.72rem; color:var(--muted); font-weight:400; line-height:1.5;
+  }
+  .sys-cat-card .sc-scope {
+    font-size:0.71rem; color:#C0392B; font-weight:600;
+    margin-top:0.4rem; line-height:1.4;
+  }
+  /* Follow-up chain panels */
+  .followup-panel {
+    display:none; margin-top:0.75rem;
+    padding:0.85rem 1.1rem; background:#EBF5FB;
+    border:1px solid #C8D9E8; border-radius:10px;
+    animation:fadeIn 0.2s ease;
+  }
+  .followup-panel.active { display:block; }
+  .followup-label {
+    font-size:0.75rem; font-weight:700; color:var(--blue);
+    text-transform:uppercase; letter-spacing:0.7px; margin-bottom:0.55rem;
+  }
+  .followup-opts { display:flex; gap:8px; flex-wrap:wrap; }
+  .followup-opt {
+    padding:5px 14px; border:1.5px solid #B3CCE0; border-radius:20px;
+    font-size:0.8rem; font-weight:500; color:var(--blue);
+    background:white; cursor:pointer; transition:all 0.15s; user-select:none;
+  }
+  .followup-opt:hover { border-color:var(--blue-mid); background:var(--blue-light); }
+  .followup-opt.selected { border-color:var(--blue); background:var(--blue-light); font-weight:700; }
+  @media (max-width:600px) { .sys-cat-grid { grid-template-columns:1fr; } }
+
   /* ── RESPONSIVE ── */
   @media (max-width: 600px) {
     .field-group, .field-group.three { grid-template-columns: 1fr; }
@@ -840,21 +888,59 @@
         <span class="error-msg" id="service-error" style="display:none;color:var(--error);font-size:0.78rem;">Please select a service type</span>
       </div>
 
-      <!-- What's this about? -->
-      <div class="field" style="margin-bottom:1.25rem;">
-        <label>What's this about? <span style="font-weight:400;text-transform:none;letter-spacing:0;font-size:12px;">(select all that apply)</span></label>
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:8px;margin-top:0.5rem;">
-          <label class="topic-check"><input type="checkbox" id="topic_mainframe" name="topic_mainframe" onchange="toggleMainframePanel(this)"> 🖥️ Mainframe &amp; Legacy Systems (COBOL · z/OS · DB2 · CICS · payments on mainframe)</label>
-          <label class="topic-check"><input type="checkbox" id="topic_legacy" name="topic_legacy"> 🔄 Modernize old or fragile software (non-mainframe)</label>
-          <label class="topic-check"><input type="checkbox" id="topic_cloud" name="topic_cloud"> ☁️ Move infrastructure to the cloud (AWS)</label>
-          <label class="topic-check"><input type="checkbox" id="topic_compliance" name="topic_compliance"> 📋 Meet a compliance requirement (SOX · PCI-DSS · AML · FFIEC)</label>
-          <label class="topic-check"><input type="checkbox" id="topic_automation" name="topic_automation"> 🤖 Automate reports, connect systems, or add AI to workflows</label>
-          <label class="topic-check"><input type="checkbox" id="topic_db" name="topic_db"> 🗄️ Connect or migrate a database (DB2 · SQL Server · Oracle)</label>
-          <label class="topic-check"><input type="checkbox" id="topic_sow" name="topic_sow"> 📄 Get a SOW or technical plan for an existing project</label>
-          <label class="topic-check"><input type="checkbox" id="topic_unsure" name="topic_unsure"> ❓ Not sure yet — I need an assessment first</label>
+      <!-- What's this about? — Track A system category cards -->
+      <div class="field" style="margin-bottom:1.25rem;" id="f-sys-cat">
+        <label>What system are you working with? <span class="req">*</span></label>
+        <div class="sys-cat-grid" id="sys-cat-grid">
+
+          <div class="sys-cat-card" data-value="online_oltp" data-label="Online (OLTP)" onclick="selectSysCat(this)">
+            <div class="sc-icon">🟢</div>
+            <div class="sc-label">Online (OLTP)</div>
+            <div class="sc-chips">CICS · MQ · IMS/TM · DB2 · COBOL / PL/I</div>
+          </div>
+
+          <div class="sys-cat-card" data-value="batch_processing" data-label="Batch Processing" onclick="selectSysCat(this)">
+            <div class="sc-icon">🔵</div>
+            <div class="sc-label">Batch Processing</div>
+            <div class="sc-chips">JCL · VSAM · Control-M · TWS/z · Easytrieve</div>
+          </div>
+
+          <div class="sys-cat-card" data-value="payments_integration" data-label="Payments & Integration" onclick="selectSysCat(this)">
+            <div class="sc-icon">💳</div>
+            <div class="sc-label">Payments & Integration</div>
+            <div class="sc-chips">ACH / RTP · SWIFT · ISO 20022 · MQ · Connect:Direct</div>
+            <div class="sc-scope">Meliora engineers the technical implementation. Business rules, compliance interpretation, and exception handling remain with your team.</div>
+          </div>
+
+          <div class="sys-cat-card" data-value="modernization_apis" data-label="Modernization & APIs" onclick="selectSysCat(this)">
+            <div class="sc-icon">🔧</div>
+            <div class="sc-label">Modernization & APIs</div>
+            <div class="sc-chips">MQ Bridge · REST / SOAP · Micro Focus · Oracle · Cloud migration</div>
+          </div>
+
+        </div>
+        <span class="error-msg" id="sys-cat-error" style="display:none;color:var(--error);font-size:0.78rem;">Please select a system category</span>
+
+        <!-- Follow-up: Online → also runs batch? -->
+        <div class="followup-panel" id="fu-batch-question">
+          <div class="followup-label">Does this system also run batch?</div>
+          <div class="followup-opts">
+            <div class="followup-opt" data-fu="batch_yes" onclick="selectFollowup('fu-batch','batch_yes',this)">Yes</div>
+            <div class="followup-opt" data-fu="batch_no"  onclick="selectFollowup('fu-batch','batch_no', this)">No</div>
+          </div>
         </div>
 
-        <!-- DYNAMIC: Tech stack chips — appears when Mainframe is checked -->
+        <!-- Follow-up: Batch confirmed → updates DB2? -->
+        <div class="followup-panel" id="fu-db2-question">
+          <div class="followup-label">Does the batch job update DB2?</div>
+          <div class="followup-opts">
+            <div class="followup-opt" data-fu="db2_yes"     onclick="selectFollowup('fu-db2','db2_yes',    this)">Yes</div>
+            <div class="followup-opt" data-fu="db2_partial" onclick="selectFollowup('fu-db2','db2_partial',this)">Partial</div>
+            <div class="followup-opt" data-fu="db2_no"      onclick="selectFollowup('fu-db2','db2_no',     this)">No</div>
+          </div>
+        </div>
+
+        <!-- DYNAMIC: Tech stack chips — appears for any mainframe category -->
         <div class="stack-panel" id="mainframe-stack-panel">
           <div class="stack-panel-label">Technology stack — select everything that applies</div>
           <div class="stack-chips">
@@ -1196,7 +1282,7 @@ const RATES = {
   'Assess':                   150,  // Discovery & Classification
   'Blueprint':                165,  // Architecture & Design
   'Execute':                  175,  // Full Delivery
-  'Mainframe Modernization':  175,  // IBM Z / COBOL / AS400 — highest complexity
+  'Mainframe Modernization':  205,  // IBM Z / COBOL — midpoint of $185–225/hr range
   'IT Consulting':            150,  // Default fallback
 };
 const BASE_HOURS = { Low: 20, Medium: 60, High: 120 };
@@ -1251,6 +1337,14 @@ function validateStep(n) {
     } else {
       document.getElementById('service-error').style.display='none';
     }
+    if (!state_sysCat.selected) {
+      document.getElementById('sys-cat-error').style.display='block';
+      document.getElementById('f-sys-cat').classList.add('error');
+      ok=false;
+    } else {
+      document.getElementById('sys-cat-error').style.display='none';
+      document.getElementById('f-sys-cat').classList.remove('error');
+    }
   }
   return ok;
 }
@@ -1280,25 +1374,81 @@ function selectTier(el) {
 }
 
 
-// ── MAINFRAME STACK PANEL TOGGLE ──
-function toggleMainframePanel(cb) {
-  const panel = document.getElementById('mainframe-stack-panel');
-  if (cb.checked) {
-    panel.classList.add('active');
-    // Auto-check cobol_mainframe risk flag if not already selected
-    const riskCobol = document.querySelector('[data-value="cobol_mainframe"]');
-    if (riskCobol && !riskCobol.classList.contains('selected')) {
-      riskCobol.classList.add('selected');
-      if (!state.selectedRisks.includes('cobol_mainframe'))
-        state.selectedRisks.push('cobol_mainframe');
+// ── SYSTEM CATEGORY CARD SELECTION (Track A) ──
+const state_sysCat = { selected: '', fuBatch: '', fuDb2: '' };
+
+function selectSysCat(el) {
+  // Deselect all cards
+  document.querySelectorAll('.sys-cat-card').forEach(c => c.classList.remove('selected'));
+  el.classList.add('selected');
+  state_sysCat.selected = el.dataset.value;
+  state_sysCat.fuBatch  = '';
+  state_sysCat.fuDb2    = '';
+
+  // Reset follow-up opts
+  document.querySelectorAll('.followup-opt').forEach(o => o.classList.remove('selected'));
+
+  // Show/hide follow-up chain
+  const fqBatch = document.getElementById('fu-batch-question');
+  const fqDb2   = document.getElementById('fu-db2-question');
+  fqBatch.classList.remove('active');
+  fqDb2.classList.remove('active');
+
+  if (el.dataset.value === 'online_oltp') {
+    fqBatch.classList.add('active');
+  }
+
+  // Show stack panel for all mainframe categories
+  const stackPanel = document.getElementById('mainframe-stack-panel');
+  stackPanel.classList.add('active');
+
+  // Auto-flag cobol_mainframe risk
+  const riskCobol = document.querySelector('[data-value="cobol_mainframe"]');
+  if (riskCobol && !riskCobol.classList.contains('selected')) {
+    riskCobol.classList.add('selected');
+    if (!state.selectedRisks.includes('cobol_mainframe'))
+      state.selectedRisks.push('cobol_mainframe');
+  }
+
+  // Auto-flag live_payments risk for Payments card
+  if (el.dataset.value === 'payments_integration') {
+    const riskPay = document.querySelector('[data-value="live_payments"]');
+    if (riskPay && !riskPay.classList.contains('selected')) {
+      riskPay.classList.add('selected');
+      if (!state.selectedRisks.includes('live_payments'))
+        state.selectedRisks.push('live_payments');
     }
-  } else {
-    panel.classList.remove('active');
-    // Uncheck all stack chips
-    document.querySelectorAll('input[name^="stack_"]').forEach(function(c) {
-      c.checked = false;
-      c.closest('label').classList.remove('selected');
-    });
+  }
+
+  // Clear sys-cat error
+  document.getElementById('sys-cat-error').style.display = 'none';
+  document.getElementById('f-sys-cat').classList.remove('error');
+}
+
+function selectFollowup(group, value, el) {
+  // Deselect siblings in same follow-up group
+  el.closest('.followup-opts').querySelectorAll('.followup-opt')
+    .forEach(o => o.classList.remove('selected'));
+  el.classList.add('selected');
+
+  if (group === 'fu-batch') {
+    state_sysCat.fuBatch = value;
+    const fqDb2 = document.getElementById('fu-db2-question');
+    // Show DB2 question only if batch confirmed
+    if (value === 'batch_yes') fqDb2.classList.add('active');
+    else { fqDb2.classList.remove('active'); state_sysCat.fuDb2 = ''; }
+  }
+  if (group === 'fu-db2') {
+    state_sysCat.fuDb2 = value;
+    // Auto-flag db2_dba risk if DB2 confirmed
+    if (value === 'db2_yes' || value === 'db2_partial') {
+      const riskDb2 = document.querySelector('[data-value="db2_dba"]');
+      if (riskDb2 && !riskDb2.classList.contains('selected')) {
+        riskDb2.classList.add('selected');
+        if (!state.selectedRisks.includes('db2_dba'))
+          state.selectedRisks.push('db2_dba');
+      }
+    }
   }
 }
 
@@ -1322,10 +1472,11 @@ function calcEstimate() {
   const complexity = document.getElementById('inp-complexity').value || 'Medium';
   const duration   = document.getElementById('inp-duration').value   || '1 month';
   const teamSize   = parseInt(document.getElementById('inp-team').value) || 1;
-  // Boost to Mainframe rate if mainframe topic is checked
-  const mfChecked = document.getElementById('topic_mainframe')?.checked;
+  // Use system category card to determine rate; all mainframe cats → Mainframe rate
+  const mfCats = ['online_oltp','batch_processing','payments_integration','modernization_apis'];
+  const sysCat = state_sysCat.selected;
   const baseService = state.selectedService || 'IT Consulting';
-  const service = mfChecked ? 'Mainframe Modernization' : baseService;
+  const service = mfCats.includes(sysCat) ? 'Mainframe Modernization' : baseService;
   const tier       = state.selectedTier;
 
   const baseHrs    = BASE_HOURS[complexity] || 60;
@@ -1354,6 +1505,19 @@ function buildSummary() {
     .map(c => c.name.replace('stack_','').toUpperCase()).join(', ');
   const _mfConcern = document.getElementById('inp-mf-concern')?.value || '';
   const _sysAge    = document.getElementById('inp-sys-age')?.value    || '';
+
+  // System category from card selection
+  const sysCatLabels = {
+    online_oltp:          '🟢 Online (OLTP) — CICS · MQ · IMS/TM · DB2 · COBOL/PL/I',
+    batch_processing:     '🔵 Batch Processing — JCL · VSAM · Control-M · TWS/z · Easytrieve',
+    payments_integration: '💳 Payments & Integration — ACH/RTP · SWIFT · ISO 20022',
+    modernization_apis:   '🔧 Modernization & APIs — MQ Bridge · REST/SOAP · Micro Focus · Oracle',
+  };
+  const sysCatDisplay = sysCatLabels[state_sysCat.selected] || '—';
+  const fuDisplay = [
+    state_sysCat.fuBatch ? `Also runs batch: ${state_sysCat.fuBatch === 'batch_yes' ? 'Yes' : 'No'}` : '',
+    state_sysCat.fuDb2   ? `Batch updates DB2: ${ {db2_yes:'Yes',db2_partial:'Partial',db2_no:'No'}[state_sysCat.fuDb2] }` : '',
+  ].filter(Boolean).join(' · ');
   document.getElementById('est-total').textContent = `$${e.total.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})}`;
   document.getElementById('est-sub').innerHTML =
     `<span style="display:block;margin-bottom:3px;">USD &nbsp;·&nbsp; ${e.totalHrs} hours &nbsp;·&nbsp; ${e.service}</span>` +
@@ -1372,42 +1536,31 @@ function buildSummary() {
     multiple_stakeholders: '👥 Multiple stakeholders / decision makers',
   };
   const riskSelected = state.selectedRisks.map(r=>riskLabels[r]||r).join(', ') || 'None selected';
-  const selectedTopicLabels = {
-    topic_mainframe: '🖥️ Mainframe & Legacy Systems (COBOL · z/OS · DB2 · CICS · payments on mainframe)',
-    topic_legacy: '🔄 Modernize old or fragile software (non-mainframe)',
-    topic_cloud: '☁️ Move infrastructure to the cloud (AWS)',
-    topic_compliance: '📋 Meet a compliance requirement (SOX · PCI-DSS · AML · FFIEC)',
-    topic_automation: '🤖 Automate reports, connect systems, or add AI to workflows',
-    topic_db: '🗄️ Connect or migrate a database (DB2 · SQL Server · Oracle)',
-    topic_sow: '📄 Get a SOW or technical plan for an existing project',
-    topic_unsure: '❓ Not sure yet — needs an assessment',
-  };
-  const topicsSelected = Object.keys(selectedTopicLabels)
-    .filter(id => document.getElementById(id)?.checked)
-    .map(id => selectedTopicLabels[id]).join(', ') || 'None selected';
+
   // [label, value, fullWidth]
   const items = [
-    ['Full Name',    document.getElementById('inp-name').value,    true],
-    ['Company',      document.getElementById('inp-company').value,  true],
-    ['Email',        document.getElementById('inp-email').value,    true],
-    ['Phone',        document.getElementById('inp-phone').value,    false],
-    ['Country',      document.getElementById('inp-country').value,  false],
-    ['Project',      document.getElementById('inp-project').value,  true],
-    ['What\'s this about', topicsSelected,                          true],
-    ['Service',      e.service,                                      false],
-    ['Company Size', e.tier,                                         false],
-    ['Complexity',   e.complexity,                                   false],
-    ['Timeline',     document.getElementById('inp-duration').value, false],
-    ['Risk Factors', riskSelected,                                   true],
-    ['Tech Stack',    _techStack || '—',  true],
-    ['MF Concern',   _mfConcern || '—',  false],
-    ['System Age',   _sysAge    || '—',  false],
-    ['Hours',        `${e.totalHrs} hrs`,                           false],
-    ['Rate',         `$${e.rate}/hr`,                               false],
-    ['Base Cost',    `$${e.baseCost.toLocaleString('en-US',{minimumFractionDigits:2})}`, false],
+    ['Full Name',      document.getElementById('inp-name').value,    true],
+    ['Company',        document.getElementById('inp-company').value,  true],
+    ['Email',          document.getElementById('inp-email').value,    true],
+    ['Phone',          document.getElementById('inp-phone').value,    false],
+    ['Country',        document.getElementById('inp-country').value,  false],
+    ['Project',        document.getElementById('inp-project').value,  true],
+    ['System Category', sysCatDisplay,                                true],
+    fuDisplay ? ['System Detail', fuDisplay,                          true] : null,
+    ['Service',        e.service,                                      false],
+    ['Company Size',   e.tier,                                         false],
+    ['Complexity',     e.complexity,                                   false],
+    ['Timeline',       document.getElementById('inp-duration').value, false],
+    ['Risk Factors',   riskSelected,                                   true],
+    ['Tech Stack',     _techStack || '—',                              true],
+    ['MF Concern',     _mfConcern || '—',                             false],
+    ['System Age',     _sysAge    || '—',                             false],
+    ['Hours',          `${e.totalHrs} hrs`,                           false],
+    ['Rate',           `$${e.rate}/hr`,                               false],
+    ['Base Cost',      `$${e.baseCost.toLocaleString('en-US',{minimumFractionDigits:2})}`, false],
     [`Contingency (${e.contPct}%)`, `$${e.contingency.toLocaleString('en-US',{minimumFractionDigits:2})}`, false],
-    ['Risk Score',   `${e.riskScore}/10 — ${e.riskLabel}`,          false],
-  ];
+    ['Risk Score',     `${e.riskScore}/10 — ${e.riskLabel}`,          false],
+  ].filter(Boolean);
 
   const grid = document.getElementById('summary-grid');
   if (!grid) { console.error('summary-grid element NOT FOUND'); return; }
@@ -1432,39 +1585,37 @@ async function submitForm() {
   }
   consentErr.style.display = 'none';
 
-  const topicLabels = {
-    topic_mainframe: 'Mainframe & Legacy Systems (COBOL · z/OS · DB2 · CICS · payments on mainframe)',
-    topic_legacy: 'Modernize old or fragile software (non-mainframe)',
-    topic_cloud: 'Move infrastructure to the cloud (AWS)',
-    topic_compliance: 'Meet a compliance requirement (SOX · PCI-DSS · AML · FFIEC)',
-    topic_automation: 'Automate reports, connect systems, or add AI to workflows',
-    topic_db: 'Connect or migrate a database (DB2 · SQL Server · Oracle)',
-    topic_sow: 'Get a SOW or technical plan for an existing project',
-    topic_unsure: 'Not sure yet — needs an assessment',
+  const sysCatLabels = {
+    online_oltp:          'Online (OLTP) — CICS · MQ · IMS/TM · DB2 · COBOL/PL/I',
+    batch_processing:     'Batch Processing — JCL · VSAM · Control-M · TWS/z · Easytrieve',
+    payments_integration: 'Payments & Integration — ACH/RTP · SWIFT · ISO 20022',
+    modernization_apis:   'Modernization & APIs — MQ Bridge · REST/SOAP · Micro Focus · Oracle',
   };
-  const selectedTopics = Object.keys(topicLabels)
-    .filter(id => document.getElementById(id)?.checked)
-    .map(id => topicLabels[id]);
+  const sysCatValue = sysCatLabels[state_sysCat.selected] || 'Not selected';
+  const fuBatchValue = state_sysCat.fuBatch ? (state_sysCat.fuBatch === 'batch_yes' ? 'Yes' : 'No') : '';
+  const fuDb2Value   = state_sysCat.fuDb2   ? ({db2_yes:'Yes',db2_partial:'Partial',db2_no:'No'}[state_sysCat.fuDb2] || '') : '';
 
   const e = calcEstimate();
   const data = {
-    name:        document.getElementById('inp-name').value,
-    company:     document.getElementById('inp-company').value,
-    email:       document.getElementById('inp-email').value,
-    phone:       document.getElementById('inp-phone').value,
-    country:     document.getElementById('inp-country').value,
-    role:        document.getElementById('inp-role').value,
-    source:      document.getElementById('inp-source').value,
-    project:     document.getElementById('inp-project').value,
-    description: document.getElementById('inp-description').value,
-    topics:      selectedTopics.join(', ') || 'None selected',
-    service:     e.service,
-    complexity:  e.complexity,
-    duration:    document.getElementById('inp-duration').value,
-    team:        document.getElementById('inp-team').value,
-    tier:        e.tier,
-    risks:       state.selectedRisks.join(', '),
-    start_date:  document.getElementById('inp-start').value,
+    name:           document.getElementById('inp-name').value,
+    company:        document.getElementById('inp-company').value,
+    email:          document.getElementById('inp-email').value,
+    phone:          document.getElementById('inp-phone').value,
+    country:        document.getElementById('inp-country').value,
+    role:           document.getElementById('inp-role').value,
+    source:         document.getElementById('inp-source').value,
+    project:        document.getElementById('inp-project').value,
+    description:    document.getElementById('inp-description').value,
+    sys_category:   sysCatValue,
+    batch_flag:     fuBatchValue,
+    db2_flag:       fuDb2Value,
+    service:        e.service,
+    complexity:     e.complexity,
+    duration:       document.getElementById('inp-duration').value,
+    team:           document.getElementById('inp-team').value,
+    tier:           e.tier,
+    risks:          state.selectedRisks.join(', '),
+    start_date:     document.getElementById('inp-start').value,
     notes:       document.getElementById('inp-notes').value,
     tech_stack:  Array.from(document.querySelectorAll('input[name^="stack_"]:checked')).map(c=>c.name.replace('stack_','')).join(', '),
     mf_concern:  document.getElementById('inp-mf-concern')?.value || '',
@@ -1495,7 +1646,9 @@ async function submitForm() {
         source:       data.source,
         project:      data.project,
         description:  data.description,
-        topics:       data.topics,
+        sys_category: data.sys_category,
+        batch_flag:   data.batch_flag,
+        db2_flag:     data.db2_flag,
         service:      data.service,
         complexity:   data.complexity,
         duration:     data.duration,
