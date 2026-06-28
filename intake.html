@@ -1374,7 +1374,18 @@ function selectTier(el) {
 }
 
 
-// ── SYSTEM CATEGORY CARD SELECTION (Track A) ──
+// ── URL PARAM PRE-SELECTION ──
+// Reads ?service=Assess|Blueprint|Execute and pre-selects the matching card.
+// Called on DOMContentLoaded so the cards exist before we try to click them.
+function applyUrlParams() {
+  const params = new URLSearchParams(window.location.search);
+  const service = params.get('service');
+  if (service) {
+    const card = document.querySelector(`.service-card[data-value="${service}"]`);
+    if (card) selectService(card);
+  }
+}
+document.addEventListener('DOMContentLoaded', applyUrlParams);
 const state_sysCat = { selected: '', fuBatch: '', fuDb2: '' };
 
 function selectSysCat(el) {

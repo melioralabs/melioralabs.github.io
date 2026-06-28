@@ -3420,7 +3420,7 @@ function openCardModal(cardKey) {
       <div class="modal-section-title" style="color:var(--gray-400);margin-top:1.25rem;">❌ Not included</div>
       <div class="modal-not">${data.not}</div>
       <div class="modal-quality">${data.quality}</div>
-      <a href="#contact-form" class="modal-cta" onclick="closeCardModal(null)">Get a free consultation →</a>
+      <a href="intake.html" class="modal-cta" onclick="closeCardModal(null)">Tell us about your project →</a>
     `;
   } else {
     body.innerHTML = `
@@ -3435,12 +3435,22 @@ function openCardModal(cardKey) {
       <div class="modal-section-title" style="color:var(--gray-400);margin-top:1.25rem;">❌ Not included</div>
       <div class="modal-not">${data.not}</div>
       <div class="modal-quality">${data.quality}</div>
-      <a href="#contact-form" class="modal-cta" onclick="closeCardModal(null)">Get a free consultation →</a>
+      <a href="" class="modal-cta" id="modal-cta-btn" onclick="closeCardModal(null)">Tell us about your project →</a>
     `;
   }
 
   document.getElementById('modalOverlay').classList.add('open');
   document.body.style.overflow = 'hidden';
+
+  // Wire CTA button to intake.html with service pre-selection param
+  const serviceMap = {
+    mf_assess:    'intake.html?service=Assess',
+    mf_blueprint: 'intake.html?service=Blueprint',
+    mf_execute:   'intake.html?service=Execute',
+    legacy_sme:   'intake.html',
+  };
+  const ctaBtn = document.getElementById('modal-cta-btn');
+  if (ctaBtn) ctaBtn.href = serviceMap[cardKey] || 'intake.html';
 }
 
 function closeCardModal(e) {
