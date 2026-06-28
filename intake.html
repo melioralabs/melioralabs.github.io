@@ -761,7 +761,6 @@
             <option value="">Select country...</option>
             <option value="USA">🇺🇸 United States</option>
             <option value="Mexico">🇲🇽 Mexico</option>
-            <option value="Spain">🇪🇸 Spain</option>
             <option value="Other">🌍 Other</option>
           </select>
           <span class="error-msg">Please select your country</span>
@@ -845,7 +844,7 @@
       <div class="field" style="margin-bottom:1.25rem;">
         <label>What's this about? <span style="font-weight:400;text-transform:none;letter-spacing:0;font-size:12px;">(select all that apply)</span></label>
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:8px;margin-top:0.5rem;">
-          <label class="topic-check"><input type="checkbox" id="topic_mainframe" name="topic_mainframe" onchange="toggleMainframePanel(this)"> 🖥️ Mainframe &amp; Legacy Systems (COBOL · z/OS · AS/400 · payments on mainframe)</label>
+          <label class="topic-check"><input type="checkbox" id="topic_mainframe" name="topic_mainframe" onchange="toggleMainframePanel(this)"> 🖥️ Mainframe &amp; Legacy Systems (COBOL · z/OS · DB2 · CICS · payments on mainframe)</label>
           <label class="topic-check"><input type="checkbox" id="topic_legacy" name="topic_legacy"> 🔄 Modernize old or fragile software (non-mainframe)</label>
           <label class="topic-check"><input type="checkbox" id="topic_cloud" name="topic_cloud"> ☁️ Move infrastructure to the cloud (AWS)</label>
           <label class="topic-check"><input type="checkbox" id="topic_compliance" name="topic_compliance"> 📋 Meet a compliance requirement (SOX · PCI-DSS · AML · FFIEC)</label>
@@ -868,10 +867,9 @@
             <label class="stack-chip"><input type="checkbox" name="stack_rexx" onchange="toggleStackChip(this)"> REXX</label>
             <label class="stack-chip"><input type="checkbox" name="stack_pli" onchange="toggleStackChip(this)"> PL/I</label>
             <label class="stack-chip"><input type="checkbox" name="stack_zos" onchange="toggleStackChip(this)"> z/OS</label>
-            <label class="stack-chip"><input type="checkbox" name="stack_as400" onchange="toggleStackChip(this)"> AS/400 · iSeries</label>
             <label class="stack-chip"><input type="checkbox" name="stack_ach" onchange="toggleStackChip(this)"> ACH / RTP</label>
             <label class="stack-chip"><input type="checkbox" name="stack_ofac" onchange="toggleStackChip(this)"> OFAC / AML</label>
-            <label class="stack-chip"><input type="checkbox" name="stack_oracle_mf" onchange="toggleStackChip(this)"> Oracle</label>
+            <label class="stack-chip"><input type="checkbox" name="stack_oracle" onchange="toggleStackChip(this)"> Oracle</label>
             <label class="stack-chip"><input type="checkbox" name="stack_other_mf" onchange="toggleStackChip(this)"> Other / not sure</label>
           </div>
 
@@ -886,7 +884,6 @@
               <option value="Modernization plan">Need a modernization roadmap</option>
               <option value="Performance">Performance or capacity issues</option>
               <option value="Knowledge transfer">Key engineers retiring — knowledge transfer needed</option>
-              <option value="New feature">Add new functionality to existing system</option>
               <option value="Other">Something else</option>
             </select>
           </div>
@@ -920,11 +917,11 @@
           <label for="inp-duration">Timeline <span class="req">*</span></label>
           <select id="inp-duration">
             <option value="">Select...</option>
-            <option value="1-2 weeks">1–2 weeks</option>
-            <option value="1 month">1 month</option>
-            <option value="2-3 months">2–3 months</option>
-            <option value="3-6 months">3–6 months</option>
-            <option value="6+ months">6+ months</option>
+            <option value="ASAP">As soon as possible</option>
+            <option value="1-3 months">In 1–3 months</option>
+            <option value="3-6 months">In 3–6 months</option>
+            <option value="6-12 months">In 6–12 months</option>
+            <option value="Flexible">No rush — still exploring</option>
           </select>
           <span class="error-msg">Please select a timeline</span>
         </div>
@@ -1154,7 +1151,7 @@ const SUPABASE_URL  = "https://glgnhkkaguloeouzihej.supabase.co";
 const SUPABASE_ANON = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdsZ25oa2thZ3Vsb2VvdXppaGVqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODAxMzU0MjMsImV4cCI6MjA5NTcxMTQyM30.sLI5BM5Y0yN_Mk8NWoodbMcrT3oY0m8CrSk8s0vpJIA";
 
 async function saveToSupabase(data, estimate) {
-  const durMap = { '1-2 weeks':2, '1 month':4, '2-3 months':10, '3-6 months':18, '6+ months':26 };
+  const durMap = { 'ASAP':2, '1-3 months':6, '3-6 months':18, '6-12 months':36, 'Flexible':4 };
   const riskText = estimate.riskScore <= 2 ? 'low' : estimate.riskScore <= 5 ? 'medium' : estimate.riskScore <= 7 ? 'high' : 'critical';
 
   const payload = {
@@ -1203,7 +1200,7 @@ const RATES = {
   'IT Consulting':            150,  // Default fallback
 };
 const BASE_HOURS = { Low: 20, Medium: 60, High: 120 };
-const DUR_MULT   = { '1-2 weeks':1.0,'1 month':1.1,'2-3 months':1.25,'3-6 months':1.4,'6+ months':1.6 };
+const DUR_MULT   = { 'ASAP':1.0,'1-3 months':1.15,'3-6 months':1.4,'6-12 months':1.6,'Flexible':1.1 };
 const TEAM_MULT  = { 1:1.0,2:1.15,3:1.25,4:1.35,5:1.5 };
 const TIER_ADJ   = { Small:0.85, Medium:1.0, Large:1.15 };
 const RISK_PTS   = {
@@ -1352,6 +1349,11 @@ function calcEstimate() {
 // ── BUILD SUMMARY ──
 function buildSummary() {
   const e = calcEstimate();
+  // Read stack/concern/age regardless of panel visibility
+  const _techStack = Array.from(document.querySelectorAll('input[name^="stack_"]:checked'))
+    .map(c => c.name.replace('stack_','').toUpperCase()).join(', ');
+  const _mfConcern = document.getElementById('inp-mf-concern')?.value || '';
+  const _sysAge    = document.getElementById('inp-sys-age')?.value    || '';
   document.getElementById('est-total').textContent = `$${e.total.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})}`;
   document.getElementById('est-sub').innerHTML =
     `<span style="display:block;margin-bottom:3px;">USD &nbsp;·&nbsp; ${e.totalHrs} hours &nbsp;·&nbsp; ${e.service}</span>` +
@@ -1371,7 +1373,7 @@ function buildSummary() {
   };
   const riskSelected = state.selectedRisks.map(r=>riskLabels[r]||r).join(', ') || 'None selected';
   const selectedTopicLabels = {
-    topic_mainframe: '🖥️ Mainframe & Legacy Systems (COBOL · z/OS · AS/400 · payments on mainframe)',
+    topic_mainframe: '🖥️ Mainframe & Legacy Systems (COBOL · z/OS · DB2 · CICS · payments on mainframe)',
     topic_legacy: '🔄 Modernize old or fragile software (non-mainframe)',
     topic_cloud: '☁️ Move infrastructure to the cloud (AWS)',
     topic_compliance: '📋 Meet a compliance requirement (SOX · PCI-DSS · AML · FFIEC)',
@@ -1397,9 +1399,9 @@ function buildSummary() {
     ['Complexity',   e.complexity,                                   false],
     ['Timeline',     document.getElementById('inp-duration').value, false],
     ['Risk Factors', riskSelected,                                   true],
-    ['Tech Stack',    (Array.from(document.querySelectorAll('input[name^="stack_"]:checked')).map(c=>c.name.replace('stack_','')).join(', ') || '—'), true],
-    ['MF Concern',   (document.getElementById('inp-mf-concern')?.value || '—'),   false],
-    ['System Age',   (document.getElementById('inp-sys-age')?.value || '—'),      false],
+    ['Tech Stack',    _techStack || '—',  true],
+    ['MF Concern',   _mfConcern || '—',  false],
+    ['System Age',   _sysAge    || '—',  false],
     ['Hours',        `${e.totalHrs} hrs`,                           false],
     ['Rate',         `$${e.rate}/hr`,                               false],
     ['Base Cost',    `$${e.baseCost.toLocaleString('en-US',{minimumFractionDigits:2})}`, false],
@@ -1431,7 +1433,7 @@ async function submitForm() {
   consentErr.style.display = 'none';
 
   const topicLabels = {
-    topic_mainframe: 'Mainframe & Legacy Systems (COBOL · z/OS · AS/400 · payments on mainframe)',
+    topic_mainframe: 'Mainframe & Legacy Systems (COBOL · z/OS · DB2 · CICS · payments on mainframe)',
     topic_legacy: 'Modernize old or fragile software (non-mainframe)',
     topic_cloud: 'Move infrastructure to the cloud (AWS)',
     topic_compliance: 'Meet a compliance requirement (SOX · PCI-DSS · AML · FFIEC)',
