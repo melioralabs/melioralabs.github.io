@@ -648,6 +648,38 @@
     to   { transform:scale(1); opacity:1; }
   }
 
+
+  /* ── TECH STACK CHIPS (intake) ── */
+  .stack-panel {
+    display:none; margin-top:0.75rem;
+    padding:1rem 1.25rem; background:#EBF5FB;
+    border:1px solid #C8D9E8; border-radius:10px;
+    animation:fadeIn 0.2s ease;
+  }
+  .stack-panel.active { display:block; }
+  .stack-panel-label {
+    font-size:0.75rem; font-weight:700; color:var(--blue);
+    text-transform:uppercase; letter-spacing:0.8px; margin-bottom:0.6rem;
+  }
+  .stack-chips { display:flex; flex-wrap:wrap; gap:6px; }
+  .stack-chip {
+    display:inline-flex; align-items:center; gap:4px;
+    padding:5px 11px; border:1.5px solid #B3CCE0;
+    border-radius:20px; font-size:0.78rem; font-weight:500;
+    color:var(--blue); background:white; cursor:pointer;
+    transition:all 0.15s; user-select:none;
+  }
+  .stack-chip:hover { border-color:var(--blue-mid); background:var(--blue-light); }
+  .stack-chip.selected { border-color:var(--blue); background:var(--blue-light); font-weight:700; }
+  .stack-chip input[type=checkbox] { display:none; }
+
+  /* ── CONCERN DROPDOWN (intake) ── */
+  .concern-panel {
+    display:none; margin-top:0.75rem;
+    animation:fadeIn 0.2s ease;
+  }
+  .concern-panel.active { display:block; }
+
   /* ── RESPONSIVE ── */
   @media (max-width: 600px) {
     .field-group, .field-group.three { grid-template-columns: 1fr; }
@@ -729,6 +761,7 @@
             <option value="">Select country...</option>
             <option value="USA">🇺🇸 United States</option>
             <option value="Mexico">🇲🇽 Mexico</option>
+            <option value="Spain">🇪🇸 Spain</option>
             <option value="Other">🌍 Other</option>
           </select>
           <span class="error-msg">Please select your country</span>
@@ -808,19 +841,67 @@
         <span class="error-msg" id="service-error" style="display:none;color:var(--error);font-size:0.78rem;">Please select a service type</span>
       </div>
 
-      <!-- What's this about? (merged Domain + Improve — no overlap) -->
+      <!-- What's this about? -->
       <div class="field" style="margin-bottom:1.25rem;">
         <label>What's this about? <span style="font-weight:400;text-transform:none;letter-spacing:0;font-size:12px;">(select all that apply)</span></label>
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:8px;margin-top:0.5rem;">
-          <label class="topic-check"><input type="checkbox" id="topic_legacy" name="topic_legacy"> 🔄 Modernize old or fragile software</label>
-          <label class="topic-check"><input type="checkbox" id="topic_mainframe" name="topic_mainframe"> 🖥️ Mainframe modernization (COBOL · z/OS · DB2)</label>
-          <label class="topic-check"><input type="checkbox" id="topic_payments" name="topic_payments"> 🏦 Add payment processing (ACH · RTP · OFAC · AML)</label>
+          <label class="topic-check"><input type="checkbox" id="topic_mainframe" name="topic_mainframe" onchange="toggleMainframePanel(this)"> 🖥️ Mainframe &amp; Legacy Systems (COBOL · z/OS · AS/400 · payments on mainframe)</label>
+          <label class="topic-check"><input type="checkbox" id="topic_legacy" name="topic_legacy"> 🔄 Modernize old or fragile software (non-mainframe)</label>
           <label class="topic-check"><input type="checkbox" id="topic_cloud" name="topic_cloud"> ☁️ Move infrastructure to the cloud (AWS)</label>
-          <label class="topic-check"><input type="checkbox" id="topic_compliance" name="topic_compliance"> 📋 Meet a compliance requirement (SOX · PCI-DSS · AML)</label>
+          <label class="topic-check"><input type="checkbox" id="topic_compliance" name="topic_compliance"> 📋 Meet a compliance requirement (SOX · PCI-DSS · AML · FFIEC)</label>
           <label class="topic-check"><input type="checkbox" id="topic_automation" name="topic_automation"> 🤖 Automate reports, connect systems, or add AI to workflows</label>
           <label class="topic-check"><input type="checkbox" id="topic_db" name="topic_db"> 🗄️ Connect or migrate a database (DB2 · SQL Server · Oracle)</label>
           <label class="topic-check"><input type="checkbox" id="topic_sow" name="topic_sow"> 📄 Get a SOW or technical plan for an existing project</label>
           <label class="topic-check"><input type="checkbox" id="topic_unsure" name="topic_unsure"> ❓ Not sure yet — I need an assessment first</label>
+        </div>
+
+        <!-- DYNAMIC: Tech stack chips — appears when Mainframe is checked -->
+        <div class="stack-panel" id="mainframe-stack-panel">
+          <div class="stack-panel-label">Technology stack — select everything that applies</div>
+          <div class="stack-chips">
+            <label class="stack-chip"><input type="checkbox" name="stack_cobol" onchange="toggleStackChip(this)"> COBOL</label>
+            <label class="stack-chip"><input type="checkbox" name="stack_jcl" onchange="toggleStackChip(this)"> JCL</label>
+            <label class="stack-chip"><input type="checkbox" name="stack_cics" onchange="toggleStackChip(this)"> CICS</label>
+            <label class="stack-chip"><input type="checkbox" name="stack_vsam" onchange="toggleStackChip(this)"> VSAM</label>
+            <label class="stack-chip"><input type="checkbox" name="stack_db2" onchange="toggleStackChip(this)"> DB2</label>
+            <label class="stack-chip"><input type="checkbox" name="stack_ims" onchange="toggleStackChip(this)"> IMS</label>
+            <label class="stack-chip"><input type="checkbox" name="stack_rexx" onchange="toggleStackChip(this)"> REXX</label>
+            <label class="stack-chip"><input type="checkbox" name="stack_pli" onchange="toggleStackChip(this)"> PL/I</label>
+            <label class="stack-chip"><input type="checkbox" name="stack_zos" onchange="toggleStackChip(this)"> z/OS</label>
+            <label class="stack-chip"><input type="checkbox" name="stack_as400" onchange="toggleStackChip(this)"> AS/400 · iSeries</label>
+            <label class="stack-chip"><input type="checkbox" name="stack_ach" onchange="toggleStackChip(this)"> ACH / RTP</label>
+            <label class="stack-chip"><input type="checkbox" name="stack_ofac" onchange="toggleStackChip(this)"> OFAC / AML</label>
+            <label class="stack-chip"><input type="checkbox" name="stack_oracle_mf" onchange="toggleStackChip(this)"> Oracle</label>
+            <label class="stack-chip"><input type="checkbox" name="stack_other_mf" onchange="toggleStackChip(this)"> Other / not sure</label>
+          </div>
+
+          <!-- Primary concern dropdown -->
+          <div class="concern-panel active" style="margin-top:0.75rem;">
+            <div class="stack-panel-label" style="margin-top:0.5rem;">Primary concern</div>
+            <select id="inp-mf-concern" name="mf_concern" style="width:100%;padding:0.65rem 1rem;border:1.5px solid #B3CCE0;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:0.9rem;color:var(--text);background:white;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%237F8C8D' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1rem center;padding-right:2.5rem;cursor:pointer;">
+              <option value="">Select primary concern...</option>
+              <option value="Documentation missing">Documentation is missing or wrong</option>
+              <option value="Risk to touch">Afraid to touch it — too much risk</option>
+              <option value="Audit / compliance">Upcoming audit or compliance deadline</option>
+              <option value="Modernization plan">Need a modernization roadmap</option>
+              <option value="Performance">Performance or capacity issues</option>
+              <option value="Knowledge transfer">Key engineers retiring — knowledge transfer needed</option>
+              <option value="New feature">Add new functionality to existing system</option>
+              <option value="Other">Something else</option>
+            </select>
+          </div>
+
+          <!-- System age -->
+          <div style="margin-top:0.75rem;">
+            <div class="stack-panel-label">How old is the system?</div>
+            <select id="inp-sys-age" name="system_age" style="width:100%;padding:0.65rem 1rem;border:1.5px solid #B3CCE0;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:0.9rem;color:var(--text);background:white;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%237F8C8D' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1rem center;padding-right:2.5rem;cursor:pointer;">
+              <option value="">Select age...</option>
+              <option value="Under 10 years">Under 10 years</option>
+              <option value="10-20 years">10–20 years</option>
+              <option value="20-30 years">20–30 years</option>
+              <option value="30+ years">30+ years — original engineers likely retired</option>
+            </select>
+          </div>
         </div>
       </div>
 
@@ -961,7 +1042,7 @@
       <div class="field-group full">
         <div class="field">
           <label for="inp-notes">Additional Notes</label>
-          <textarea id="inp-notes" placeholder="Anything else we should know? Existing tech stack, constraints, compliance requirements, integration needs..."></textarea>
+          <textarea id="inp-notes" placeholder="Anything else that would help us prepare for the discovery call — compliance constraints, integration points, go-live pressures, key contacts, or dependencies we should know about upfront."></textarea>
         </div>
       </div>
 
@@ -1089,6 +1170,9 @@ async function saveToSupabase(data, estimate) {
     team_size:      parseInt(data.team) || 1,
     risk_level:     riskText,
     description:    data.description || "",
+    tech_stack:     data.tech_stack  || "",
+    mf_concern:     data.mf_concern  || "",
+    system_age:     data.system_age  || "",
     status:         "pending",
   };
   try {
@@ -1112,11 +1196,11 @@ const state = {
 };
 
 const RATES = {
-  'IT Consulting': 150,
-  'AI / Automation': 165,
-  'Assess': 150, 'Blueprint': 165, 'Execute': 175,
-  'Compliance Advisory': 155,
-  'Delivery Intelligence': 160, 'SOW / Documentation': 125,
+  'Assess':                   150,  // Discovery & Classification
+  'Blueprint':                165,  // Architecture & Design
+  'Execute':                  175,  // Full Delivery
+  'Mainframe Modernization':  175,  // IBM Z / COBOL / AS400 — highest complexity
+  'IT Consulting':            150,  // Default fallback
 };
 const BASE_HOURS = { Low: 20, Medium: 60, High: 120 };
 const DUR_MULT   = { '1-2 weeks':1.0,'1 month':1.1,'2-3 months':1.25,'3-6 months':1.4,'6+ months':1.6 };
@@ -1198,6 +1282,35 @@ function selectTier(el) {
   state.selectedTier = el.dataset.value;
 }
 
+
+// ── MAINFRAME STACK PANEL TOGGLE ──
+function toggleMainframePanel(cb) {
+  const panel = document.getElementById('mainframe-stack-panel');
+  if (cb.checked) {
+    panel.classList.add('active');
+    // Auto-check cobol_mainframe risk flag if not already selected
+    const riskCobol = document.querySelector('[data-value="cobol_mainframe"]');
+    if (riskCobol && !riskCobol.classList.contains('selected')) {
+      riskCobol.classList.add('selected');
+      if (!state.selectedRisks.includes('cobol_mainframe'))
+        state.selectedRisks.push('cobol_mainframe');
+    }
+  } else {
+    panel.classList.remove('active');
+    // Uncheck all stack chips
+    document.querySelectorAll('input[name^="stack_"]').forEach(function(c) {
+      c.checked = false;
+      c.closest('label').classList.remove('selected');
+    });
+  }
+}
+
+function toggleStackChip(cb) {
+  const label = cb.closest('label');
+  if (cb.checked) label.classList.add('selected');
+  else label.classList.remove('selected');
+}
+
 // ── RISK TOGGLE ──
 function toggleRisk(el) {
   el.classList.toggle('selected');
@@ -1212,7 +1325,10 @@ function calcEstimate() {
   const complexity = document.getElementById('inp-complexity').value || 'Medium';
   const duration   = document.getElementById('inp-duration').value   || '1 month';
   const teamSize   = parseInt(document.getElementById('inp-team').value) || 1;
-  const service    = state.selectedService || 'IT Consulting';
+  // Boost to Mainframe rate if mainframe topic is checked
+  const mfChecked = document.getElementById('topic_mainframe')?.checked;
+  const baseService = state.selectedService || 'IT Consulting';
+  const service = mfChecked ? 'Mainframe Modernization' : baseService;
   const tier       = state.selectedTier;
 
   const baseHrs    = BASE_HOURS[complexity] || 60;
@@ -1237,8 +1353,9 @@ function calcEstimate() {
 function buildSummary() {
   const e = calcEstimate();
   document.getElementById('est-total').textContent = `$${e.total.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})}`;
-  document.getElementById('est-sub').textContent =
-    `USD  ·  ${e.totalHrs} hours  ·  ${e.service}  ·  Risk: ${e.riskLabel} (${e.riskScore}/10)  ·  Subject to discovery call`;
+  document.getElementById('est-sub').innerHTML =
+    `<span style="display:block;margin-bottom:3px;">USD &nbsp;·&nbsp; ${e.totalHrs} hours &nbsp;·&nbsp; ${e.service}</span>` +
+    `<span style="opacity:0.75;">Risk: ${e.riskLabel} (${e.riskScore}/10) &nbsp;·&nbsp; Subject to discovery call</span>`;
 
   const riskLabels = {
     cobol_mainframe:       '🔄 COBOL / Mainframe programs involved',
@@ -1254,11 +1371,10 @@ function buildSummary() {
   };
   const riskSelected = state.selectedRisks.map(r=>riskLabels[r]||r).join(', ') || 'None selected';
   const selectedTopicLabels = {
-    topic_legacy: '🔄 Modernize old or fragile software',
-    topic_mainframe: '🖥️ Mainframe modernization (COBOL · z/OS · DB2)',
-    topic_payments: '🏦 Add payment processing (ACH · RTP · OFAC · AML)',
+    topic_mainframe: '🖥️ Mainframe & Legacy Systems (COBOL · z/OS · AS/400 · payments on mainframe)',
+    topic_legacy: '🔄 Modernize old or fragile software (non-mainframe)',
     topic_cloud: '☁️ Move infrastructure to the cloud (AWS)',
-    topic_compliance: '📋 Meet a compliance requirement (SOX · PCI-DSS · AML)',
+    topic_compliance: '📋 Meet a compliance requirement (SOX · PCI-DSS · AML · FFIEC)',
     topic_automation: '🤖 Automate reports, connect systems, or add AI to workflows',
     topic_db: '🗄️ Connect or migrate a database (DB2 · SQL Server · Oracle)',
     topic_sow: '📄 Get a SOW or technical plan for an existing project',
@@ -1281,6 +1397,9 @@ function buildSummary() {
     ['Complexity',   e.complexity,                                   false],
     ['Timeline',     document.getElementById('inp-duration').value, false],
     ['Risk Factors', riskSelected,                                   true],
+    ['Tech Stack',    (Array.from(document.querySelectorAll('input[name^="stack_"]:checked')).map(c=>c.name.replace('stack_','')).join(', ') || '—'), true],
+    ['MF Concern',   (document.getElementById('inp-mf-concern')?.value || '—'),   false],
+    ['System Age',   (document.getElementById('inp-sys-age')?.value || '—'),      false],
     ['Hours',        `${e.totalHrs} hrs`,                           false],
     ['Rate',         `$${e.rate}/hr`,                               false],
     ['Base Cost',    `$${e.baseCost.toLocaleString('en-US',{minimumFractionDigits:2})}`, false],
@@ -1312,11 +1431,10 @@ async function submitForm() {
   consentErr.style.display = 'none';
 
   const topicLabels = {
-    topic_legacy: 'Modernize old or fragile software',
-    topic_mainframe: 'Mainframe modernization (COBOL · z/OS · DB2)',
-    topic_payments: 'Add payment processing (ACH · RTP · OFAC · AML)',
+    topic_mainframe: 'Mainframe & Legacy Systems (COBOL · z/OS · AS/400 · payments on mainframe)',
+    topic_legacy: 'Modernize old or fragile software (non-mainframe)',
     topic_cloud: 'Move infrastructure to the cloud (AWS)',
-    topic_compliance: 'Meet a compliance requirement (SOX · PCI-DSS · AML)',
+    topic_compliance: 'Meet a compliance requirement (SOX · PCI-DSS · AML · FFIEC)',
     topic_automation: 'Automate reports, connect systems, or add AI to workflows',
     topic_db: 'Connect or migrate a database (DB2 · SQL Server · Oracle)',
     topic_sow: 'Get a SOW or technical plan for an existing project',
@@ -1346,6 +1464,9 @@ async function submitForm() {
     risks:       state.selectedRisks.join(', '),
     start_date:  document.getElementById('inp-start').value,
     notes:       document.getElementById('inp-notes').value,
+    tech_stack:  Array.from(document.querySelectorAll('input[name^="stack_"]:checked')).map(c=>c.name.replace('stack_','')).join(', '),
+    mf_concern:  document.getElementById('inp-mf-concern')?.value || '',
+    system_age:  document.getElementById('inp-sys-age')?.value || '',
     estimate:    `$${e.total.toFixed(2)}`,
     hours:       e.totalHrs,
     risk_score:  e.riskScore,
@@ -1385,6 +1506,9 @@ async function submitForm() {
         hours:        data.hours,
         risk_score:   data.risk_score,
         risk_label:   data.risk_label,
+        tech_stack:   data.tech_stack,
+        mf_concern:   data.mf_concern,
+        system_age:   data.system_age,
         _replyto:     data.email,
         submitted_at: new Date().toLocaleString(),
       })
