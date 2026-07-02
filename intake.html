@@ -312,52 +312,6 @@
     margin-top: 0.2rem;
   }
 
-  /* ── TIER SELECTOR ── */
-  .tier-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 0.75rem;
-    margin-bottom: 1.25rem;
-  }
-
-  .tier-card {
-    border: 1.5px solid var(--border);
-    border-radius: 12px;
-    padding: 1.25rem 1rem;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    background: var(--surface);
-    user-select: none;
-  }
-
-  .tier-card:hover { border-color: var(--blue-mid); transform: translateY(-2px); }
-
-  .tier-card.selected {
-    border-color: var(--blue);
-    background: var(--blue-light);
-    box-shadow: 0 0 0 3px var(--blue-glow);
-  }
-
-  .tier-card .tier-name {
-    font-weight: 700;
-    color: var(--blue);
-    font-size: 0.9rem;
-    margin-bottom: 0.3rem;
-  }
-
-  .tier-card .tier-desc {
-    font-size: 0.75rem;
-    color: var(--muted);
-    line-height: 1.4;
-  }
-
-  .tier-card .tier-price {
-    font-size: 0.75rem;
-    color: var(--gold);
-    font-weight: 600;
-    margin-top: 0.4rem;
-  }
-
   /* ── RISK FLAGS ── */
   /* Topic checkboxes */
   .topic-check {
@@ -413,6 +367,19 @@
   .risk-item.selected .risk-check {
     background: #E53E3E;
     border-color: #E53E3E;
+    color: white;
+  }
+
+  /* Neutral variant — used for non-risk toggles like Training/Knowledge Transfer,
+     so "selected" reads as a normal choice (blue) instead of a danger flag (red). */
+  .risk-grid.neutral .risk-item.selected {
+    border-color: var(--blue);
+    background: var(--blue-light);
+    color: var(--text);
+  }
+  .risk-grid.neutral .risk-item.selected .risk-check {
+    background: var(--blue);
+    border-color: var(--blue);
     color: white;
   }
 
@@ -689,12 +656,16 @@
     margin-top:1px; transition:all 0.18s; font-size:0.68rem; color:white;
   }
   .feature-item.checked .feature-check { background:var(--blue); border-color:var(--blue); }
+  .feature-item.locked {
+    cursor:default; border-color:var(--blue); background:#F0F4F8; font-weight:600;
+  }
+  .feature-item.locked .feature-check { background:var(--muted); border-color:var(--muted); font-size:0.6rem; }
 
   /* ── RESPONSIVE ── */
   @media (max-width: 600px) {
     .field-group, .field-group.three { grid-template-columns: 1fr; }
     .service-grid { grid-template-columns: repeat(2, 1fr); }
-    .tier-grid, .risk-grid, .summary-grid { grid-template-columns: 1fr; }
+    .risk-grid, .summary-grid { grid-template-columns: 1fr; }
     .card { padding: 1.5rem; }
   }
 </style>
@@ -894,27 +865,6 @@
         </div>
       </div>
 
-      <!-- TIER -->
-      <div class="field" style="margin-bottom:1.25rem;">
-        <label>Company Size</label>
-        <div style="margin-top:0.5rem;">
-          <div class="tier-grid">
-            <div class="tier-card" data-value="Small" onclick="selectTier(this)">
-              <div class="tier-name">🏢 Small</div>
-              <div class="tier-desc">Up to 50 employees · focused systems · lean delivery</div>
-            </div>
-            <div class="tier-card selected" data-value="Medium" onclick="selectTier(this)">
-              <div class="tier-name">🏦 Medium</div>
-              <div class="tier-desc">50–500 employees · multiple systems · structured delivery</div>
-            </div>
-            <div class="tier-card" data-value="Large" onclick="selectTier(this)">
-              <div class="tier-name">🏛️ Large</div>
-              <div class="tier-desc">500+ employees · enterprise complexity · full governance</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
       <!-- RISK FLAGS -->
       <div class="field" style="margin-bottom:1.25rem;">
         <label>Risk Factors <span style="font-weight:400;text-transform:none;letter-spacing:0;">(select all that apply)</span></label>
@@ -962,6 +912,24 @@
             </div>
           </div>
         </div>
+      </div>
+
+      <!-- TRAINING / KNOWLEDGE TRANSFER -->
+      <div class="field" style="margin-bottom:1.25rem;">
+        <label>Training / Knowledge Transfer <span style="font-weight:400;text-transform:none;letter-spacing:0;">(does your team need it?)</span></label>
+        <div style="margin-top:0.5rem;">
+          <div class="risk-grid neutral" style="grid-template-columns:repeat(2,1fr);">
+            <div class="risk-item" data-training="yes" onclick="selectTraining(this)">
+              <div class="risk-check">✓</div>
+              <span>🎓 Yes — train our team / knowledge transfer</span>
+            </div>
+            <div class="risk-item" data-training="no" onclick="selectTraining(this)">
+              <div class="risk-check">✓</div>
+              <span>🚫 No — our team is self-sufficient</span>
+            </div>
+          </div>
+        </div>
+        <span class="error-msg" id="training-error" style="display:none;color:var(--error);font-size:0.78rem;">Please let us know if training is needed</span>
       </div>
 
       <!-- START DATE (budget removed) -->
@@ -1106,11 +1074,11 @@ async function saveToSupabase(data, estimate) {
     country:        data.country     || "USA",
     track:          data.track       || "",          // mainframe | legacy
     project_type:   data.service     || "Legacy & Business Systems",
-    company_size:   data.tier        || "Medium",     // Small / Medium / Large
     complexity:     data.complexity  || "Medium",
     duration_weeks: durWeeks,
     team_size:      1,                                // solo practitioner model
     risk_level:     riskText,
+    training_required: data.training_required ?? "",
     description:    data.description || "",
     features_included: data.features_included || "",
     features_dropped:  data.features_dropped  || "",
@@ -1133,9 +1101,9 @@ const state = {
   step: 1,
   selectedTrack: '',      // 'mainframe' | 'legacy'
   selectedService: '',    // Assess | Blueprint | Execute — mainframe track only
-  selectedTier: 'Medium', // Company Size, set in Step 3
   selectedRisks: [],
   featuresChecked: [],    // indices of checked feature-checklist items (relative to current FEATURE_DATA list)
+  trainingRequired: null, // true | false | null (not yet answered), set in Step 3
 };
 
 // Rates by engagement phase (Mainframe & Enterprise track) and flat rate for Legacy track.
@@ -1154,7 +1122,6 @@ const RATES = {
 // because Execute spans a 10–54 week range and Legacy is explicitly "scoped per project" on index.html.
 const BASE_HOURS = { Assess: 65, Blueprint: 160, Execute: 400 };
 const BASE_HOURS_LEGACY = 60; // internal reference only, not shown to client
-const TIER_ADJ   = { Small:0.85, Medium:1.0, Large:1.15 };
 
 // Feature checklist content — mirrors CARD_MODALS.included arrays on index.html.
 // Keep these in sync whenever the index.html card content changes.
@@ -1162,6 +1129,7 @@ const FEATURE_DATA = {
   Assess: {
     label: "What's included — Assess",
     not: "Code refactoring, data migration, or execution work — those are Blueprint and Execute scope.",
+    alwaysIncluded: [],
     included: [
       "COBOL/JCL inventory — PROGRAM-ID, CALL chains, COPY members, FILE-CONTROL",
       "5R classification per program: Rehost · Refactor · Rebuild · Re-architect · Replace",
@@ -1177,8 +1145,11 @@ const FEATURE_DATA = {
   Blueprint: {
     label: "What's included — Blueprint",
     not: "Code refactoring, data migration, or production cutover — those are Execute scope.",
-    included: [
+    // Always part of Blueprint — not a toggle. Blueprint cannot be purchased without the Assess inventory underneath it.
+    alwaysIncluded: [
       "Everything in Assess — full inventory and 5R classification",
+    ],
+    included: [
       "Migration strategy decision: Strangler Fig vs Big Bang with written rationale",
       "Target data model — DB2 normalization, API event design, MQ message schemas",
       "COBOL PIC clause → SQL/API field mapping with REDEFINES and OCCURS DEPENDING ON resolution",
@@ -1192,8 +1163,11 @@ const FEATURE_DATA = {
   Execute: {
     label: "What's included — Execute",
     not: "Ongoing managed service after 30-day stabilization, third-party licenses, infrastructure costs outside agreed scope.",
-    included: [
+    // Always part of Execute — not a toggle. Execute cannot be purchased without Assess + Blueprint underneath it.
+    alwaysIncluded: [
       "Everything in Assess + Blueprint",
+    ],
+    included: [
       "Incremental refactor — Strangler Fig routing or targeted Big Bang per program complexity",
       "Field-level mapping: COBOL PIC clauses to SQL types, REDEFINES resolution, null handling",
       "Parallel run — daily output comparison, record counts, monetary totals, checksums",
@@ -1208,6 +1182,7 @@ const FEATURE_DATA = {
   Legacy: {
     label: "What's included — Legacy & Business Systems",
     not: "Ongoing managed service, hardware procurement, software licenses, or mainframe-specific work.",
+    alwaysIncluded: [],
     included: [
       "AS-IS system assessment — map what you have, identify what to fix first",
       "Automated reporting — Excel, Access, CSV, DB2 connectors, PDF delivery, AI summary",
@@ -1271,6 +1246,13 @@ function validateStep(n) {
       document.getElementById('service-error').style.display='block'; ok=false;
     } else {
       document.getElementById('service-error').style.display='none';
+    }
+  }
+  if (n === 3) {
+    if (state.trainingRequired === null) {
+      document.getElementById('training-error').style.display='block'; ok=false;
+    } else {
+      document.getElementById('training-error').style.display='none';
     }
   }
   return ok;
@@ -1337,7 +1319,15 @@ function renderFeatureChecklist(key) {
 
   label.textContent = data.label;
   grid.innerHTML = '';
-  state.featuresChecked = data.included.map((_, i) => i); // all checked by default
+  state.featuresChecked = data.included.map((_, i) => i); // all toggleable items checked by default
+
+  // Locked defaults — e.g. "Everything in Assess" — always included, not a checkbox the client can drop.
+  (data.alwaysIncluded || []).forEach(feature => {
+    const item = document.createElement('div');
+    item.className = 'feature-item locked';
+    item.innerHTML = `<div class="feature-check">🔒</div><span>${feature} <em style="font-weight:400;opacity:0.7;">— always included</em></span>`;
+    grid.appendChild(item);
+  });
 
   data.included.forEach((feature, i) => {
     const item = document.createElement('div');
@@ -1373,11 +1363,12 @@ function toggleFeature(el, i) {
   }
 }
 
-// ── TIER SELECTION ──
-function selectTier(el) {
-  document.querySelectorAll('.tier-card').forEach(c=>c.classList.remove('selected'));
+// ── TRAINING / KNOWLEDGE TRANSFER SELECTION ──
+function selectTraining(el) {
+  el.closest('.risk-grid').querySelectorAll('.risk-item').forEach(c=>c.classList.remove('selected'));
   el.classList.add('selected');
-  state.selectedTier = el.dataset.value;
+  state.trainingRequired = el.dataset.training === 'yes';
+  document.getElementById('training-error').style.display = 'none';
 }
 
 
@@ -1412,16 +1403,13 @@ function toggleRisk(el) {
 function calcEstimate() {
   const track   = state.selectedTrack;              // 'mainframe' | 'legacy'
   const service = track === 'mainframe' ? (state.selectedService || '') : 'Legacy & Business Systems';
-  const tier    = state.selectedTier;
-
-  // Complexity is derived from the card chosen, not asked separately.
-  const complexity = { Assess:'Low', Blueprint:'Medium', Execute:'High' }[state.selectedService] || 'Medium';
 
   const baseHrs  = track === 'mainframe' ? (BASE_HOURS[state.selectedService] || 65) : BASE_HOURS_LEGACY;
   const totalHrs = Math.round(baseHrs);
   const rate     = RATES[service] || RATES['IT Consulting'];
   const baseCost = totalHrs * rate;
-  const finalCost= baseCost * (TIER_ADJ[tier] || 1.0);
+  // No company-size multiplier — rate is transparent and the same regardless of client size.
+  const finalCost= baseCost;
 
   const riskScore  = Math.min(state.selectedRisks.reduce((s,f)=>s+(RISK_PTS[f]||0),0), 10);
   const contPct    = riskScore<=2?0.05:riskScore<=5?0.10:riskScore<=7?0.15:0.20;
@@ -1429,12 +1417,16 @@ function calcEstimate() {
   const total      = finalCost + contingency;
 
   const riskLabel  = riskScore<=2?'Low':riskScore<=5?'Medium':riskScore<=7?'High':'Critical';
+  // Complexity is decoupled from the tier card and driven purely by the actual risk factors
+  // selected in Step 3 — an Assess engagement touching live production payments is genuinely
+  // high complexity even though Assess is the "lightest" tier.
+  const complexity = riskLabel;
 
   // Execute and Legacy are "scoped per project" on index.html — no fixed total shown to the client.
   const showFixedTotal = state.selectedService === 'Assess' || state.selectedService === 'Blueprint';
 
   return { totalHrs, rate, baseCost, finalCost, riskScore, riskLabel,
-           contPct:Math.round(contPct*100), contingency, total, service, tier, complexity,
+           contPct:Math.round(contPct*100), contingency, total, service, complexity,
            track, showFixedTotal };
 }
 
@@ -1452,7 +1444,7 @@ function buildSummary() {
   const featureKey = state.selectedTrack === 'mainframe' ? state.selectedService : 'Legacy';
   const featureData = FEATURE_DATA[featureKey];
   const featuresIncluded = featureData
-    ? state.featuresChecked.map(i => featureData.included[i]).join(' · ')
+    ? [...(featureData.alwaysIncluded || []), ...state.featuresChecked.map(i => featureData.included[i])].join(' · ')
     : '';
   const featuresDropped = featureData
     ? featureData.included.filter((_, i) => !state.featuresChecked.includes(i)).join(' · ')
@@ -1494,8 +1486,8 @@ function buildSummary() {
     ['Project',        document.getElementById('inp-project').value,  true],
     ['Product',        trackDisplay,                                  false],
     state.selectedTrack === 'mainframe' ? ['Engagement Phase', e.service || '—', false] : null,
-    ['Company Size',   e.tier,                                         false],
     ['Complexity',     e.complexity,                                   false],
+    ['Training / Knowledge Transfer', state.trainingRequired === null ? '—' : (state.trainingRequired ? 'Yes — requested' : 'No — not needed'), false],
     ['Risk Factors',   riskSelected,                                   true],
     ['Features Included', featuresIncluded || '—',                     true],
     featuresDropped ? ['Features Dropped', featuresDropped,            true] : null,
@@ -1536,7 +1528,9 @@ async function submitForm() {
 
   const featureKey = state.selectedTrack === 'mainframe' ? state.selectedService : 'Legacy';
   const featureData = FEATURE_DATA[featureKey];
-  const featuresIncludedStr = featureData ? state.featuresChecked.map(i => featureData.included[i]).join(' | ') : '';
+  const featuresIncludedStr = featureData
+    ? [...(featureData.alwaysIncluded || []), ...state.featuresChecked.map(i => featureData.included[i])].join(' | ')
+    : '';
   const featuresDroppedStr  = featureData ? featureData.included.filter((_, i) => !state.featuresChecked.includes(i)).join(' | ') : '';
 
   const trackLabel = state.selectedTrack === 'mainframe' ? 'Mainframe & Enterprise'
@@ -1557,7 +1551,7 @@ async function submitForm() {
     track_label:    trackLabel,
     service:        e.service || trackLabel,
     complexity:     e.complexity,
-    tier:           e.tier,
+    training_required: state.trainingRequired === null ? '' : (state.trainingRequired ? 'Yes' : 'No'),
     risks:          state.selectedRisks.join(', '),
     start_date:     document.getElementById('inp-start').value,
     notes:          document.getElementById('inp-notes').value,
@@ -1594,7 +1588,7 @@ async function submitForm() {
         track:        data.track_label,
         service:      data.service,
         complexity:   data.complexity,
-        tier:         data.tier,
+        training_required: data.training_required,
         risks:        data.risks,
         start_date:   data.start_date,
         notes:        data.notes,
