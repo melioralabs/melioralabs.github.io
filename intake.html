@@ -649,84 +649,46 @@
   }
 
 
-  /* ── TECH STACK CHIPS (intake) ── */
-  .stack-panel {
-    display:none; margin-top:0.75rem;
-    padding:1rem 1.25rem; background:#EBF5FB;
-    border:1px solid #C8D9E8; border-radius:10px;
-    animation:fadeIn 0.2s ease;
-  }
-  .stack-panel.active { display:block; }
-  .stack-panel-label {
-    font-size:0.75rem; font-weight:700; color:var(--blue);
-    text-transform:uppercase; letter-spacing:0.8px; margin-bottom:0.6rem;
-  }
-  .stack-chips { display:flex; flex-wrap:wrap; gap:6px; }
-  .stack-chip {
-    display:inline-flex; align-items:center; gap:4px;
-    padding:5px 11px; border:1.5px solid #B3CCE0;
-    border-radius:20px; font-size:0.78rem; font-weight:500;
-    color:var(--blue); background:white; cursor:pointer;
-    transition:all 0.15s; user-select:none;
-  }
-  .stack-chip:hover { border-color:var(--blue-mid); background:var(--blue-light); }
-  .stack-chip.selected { border-color:var(--blue); background:var(--blue-light); font-weight:700; }
-  .stack-chip input[type=checkbox] { display:none; }
-
-  /* ── CONCERN DROPDOWN (intake) ── */
-  .concern-panel {
-    display:none; margin-top:0.75rem;
-    animation:fadeIn 0.2s ease;
-  }
-  .concern-panel.active { display:block; }
-
-  /* ── SYSTEM CATEGORY CARDS (Track A) ── */
-  .sys-cat-grid {
-    display:grid; grid-template-columns:repeat(2,1fr); gap:0.65rem;
+  /* ── PRODUCT TRACK CARDS (replaces sys-cat) ── */
+  .track-grid {
+    display:grid; grid-template-columns:repeat(2,1fr); gap:0.85rem;
     margin-top:0.5rem;
   }
-  .sys-cat-card {
-    border:1.5px solid var(--border); border-radius:12px;
-    padding:1rem 1.1rem; cursor:pointer; background:var(--surface);
-    transition:all 0.18s; user-select:none; position:relative;
+  .track-card {
+    border:1.5px solid var(--border); border-radius:14px;
+    padding:1.25rem 1.1rem; cursor:pointer; background:var(--surface);
+    transition:all 0.2s ease; user-select:none;
   }
-  .sys-cat-card:hover { border-color:var(--blue-mid); background:var(--blue-light); }
-  .sys-cat-card.selected {
+  .track-card:hover { border-color:var(--blue-mid); background:var(--blue-light); transform:translateY(-2px); }
+  .track-card.selected {
     border-color:var(--blue); background:var(--blue-light);
-    box-shadow:0 0 0 3px rgba(27,79,114,0.12);
+    box-shadow:0 0 0 3px var(--blue-glow);
   }
-  .sys-cat-card .sc-icon { font-size:1.3rem; margin-bottom:0.3rem; }
-  .sys-cat-card .sc-label {
-    font-size:0.88rem; font-weight:700; color:var(--blue); margin-bottom:0.2rem;
+  .track-card .track-icon { font-size:1.6rem; margin-bottom:0.4rem; }
+  .track-card .track-name { font-weight:700; color:var(--blue); font-size:0.95rem; margin-bottom:0.25rem; }
+  .track-card .track-sub { font-size:0.75rem; color:var(--muted); line-height:1.4; }
+  @media (max-width:600px) { .track-grid { grid-template-columns:1fr; } }
+
+  /* ── FEATURE CHECKLIST (replaces tech stack chips) ── */
+  .feature-grid {
+    display:grid; grid-template-columns:1fr; gap:0.5rem; margin-top:0.75rem;
   }
-  .sys-cat-card .sc-chips {
-    font-size:0.72rem; color:var(--muted); font-weight:400; line-height:1.5;
+  .feature-item {
+    display:flex; align-items:flex-start; gap:0.6rem;
+    padding:0.65rem 0.9rem; border:1.5px solid var(--border); border-radius:8px;
+    cursor:pointer; background:var(--surface); font-size:0.83rem; color:var(--text);
+    transition:all 0.18s; user-select:none; line-height:1.4;
   }
-  .sys-cat-card .sc-scope {
-    font-size:0.71rem; color:#C0392B; font-weight:600;
-    margin-top:0.4rem; line-height:1.4;
+  .feature-item:hover { border-color:var(--blue-mid); }
+  .feature-item.checked { border-color:var(--blue); background:var(--blue-light); }
+  .feature-item.unchecked { opacity:0.5; background:var(--surface); }
+  .feature-item.unchecked span { text-decoration:line-through; }
+  .feature-check {
+    width:18px; height:18px; border:2px solid var(--border); border-radius:4px;
+    display:flex; align-items:center; justify-content:center; flex-shrink:0;
+    margin-top:1px; transition:all 0.18s; font-size:0.68rem; color:white;
   }
-  /* Follow-up chain panels */
-  .followup-panel {
-    display:none; margin-top:0.75rem;
-    padding:0.85rem 1.1rem; background:#EBF5FB;
-    border:1px solid #C8D9E8; border-radius:10px;
-    animation:fadeIn 0.2s ease;
-  }
-  .followup-panel.active { display:block; }
-  .followup-label {
-    font-size:0.75rem; font-weight:700; color:var(--blue);
-    text-transform:uppercase; letter-spacing:0.7px; margin-bottom:0.55rem;
-  }
-  .followup-opts { display:flex; gap:8px; flex-wrap:wrap; }
-  .followup-opt {
-    padding:5px 14px; border:1.5px solid #B3CCE0; border-radius:20px;
-    font-size:0.8rem; font-weight:500; color:var(--blue);
-    background:white; cursor:pointer; transition:all 0.15s; user-select:none;
-  }
-  .followup-opt:hover { border-color:var(--blue-mid); background:var(--blue-light); }
-  .followup-opt.selected { border-color:var(--blue); background:var(--blue-light); font-weight:700; }
-  @media (max-width:600px) { .sys-cat-grid { grid-template-columns:1fr; } }
+  .feature-item.checked .feature-check { background:var(--blue); border-color:var(--blue); }
 
   /* ── RESPONSIVE ── */
   @media (max-width: 600px) {
@@ -861,165 +823,58 @@
         </div>
       </div>
 
-      <!-- SERVICE TYPE -->
-      <div class="field" style="margin-bottom:1.25rem;">
-        <label>Service Type <span class="req">*</span></label>
+      <!-- PRODUCT TRACK -->
+      <div class="field" style="margin-bottom:1.25rem;" id="f-track">
+        <label>Which product fits your project? <span class="req">*</span></label>
+        <div class="track-grid" id="track-grid">
+          <div class="track-card" data-value="mainframe" onclick="selectTrack(this)">
+            <div class="track-icon">🏦</div>
+            <div class="track-name">Mainframe & Enterprise</div>
+            <div class="track-sub">Banks · Fintechs · Payment processors · IBM Z · COBOL · CICS</div>
+          </div>
+          <div class="track-card" data-value="legacy" onclick="selectTrack(this)">
+            <div class="track-icon">🏢</div>
+            <div class="track-name">Legacy & Business Systems</div>
+            <div class="track-sub">Growing companies · Manual processes · Payment integration · Cloud migration</div>
+          </div>
+        </div>
+        <span class="error-msg" id="track-error" style="display:none;color:var(--error);font-size:0.78rem;">Please select a product</span>
+      </div>
+
+      <!-- SERVICE TYPE — Mainframe & Enterprise only -->
+      <div class="field" style="margin-bottom:1.25rem;display:none;" id="f-service">
+        <label>Engagement Phase <span class="req">*</span></label>
         <div style="margin-top:0.5rem;">
-          <!-- Engagement phase cards -->
           <div class="service-grid" id="service-grid" style="grid-template-columns:repeat(3,1fr);">
             <div class="service-card" data-value="Assess" onclick="selectService(this)">
               <div class="icon">🔍</div>
               <div class="label">Assess</div>
-              <div class="rate">Discovery & Classification</div>
+              <div class="rate">Discovery & Classification · $185/hr</div>
             </div>
             <div class="service-card" data-value="Blueprint" onclick="selectService(this)">
               <div class="icon">🗺️</div>
               <div class="label">Blueprint</div>
-              <div class="rate">Architecture & Design</div>
+              <div class="rate">Architecture & Design · $210/hr</div>
             </div>
             <div class="service-card" data-value="Execute" onclick="selectService(this)">
               <div class="icon">⚡</div>
               <div class="label">Execute</div>
-              <div class="rate">Full Delivery</div>
+              <div class="rate">Full Delivery · $235/hr</div>
             </div>
           </div>
-
         </div>
-        <span class="error-msg" id="service-error" style="display:none;color:var(--error);font-size:0.78rem;">Please select a service type</span>
+        <span class="error-msg" id="service-error" style="display:none;color:var(--error);font-size:0.78rem;">Please select an engagement phase</span>
       </div>
 
-      <!-- What's this about? — Track A system category cards -->
-      <div class="field" style="margin-bottom:1.25rem;" id="f-sys-cat">
-        <label>What system are you working with? <span class="req">*</span></label>
-        <div class="sys-cat-grid" id="sys-cat-grid">
-
-          <div class="sys-cat-card" data-value="online_oltp" data-label="Online (OLTP)" onclick="selectSysCat(this)">
-            <div class="sc-icon">🟢</div>
-            <div class="sc-label">Online (OLTP)</div>
-            <div class="sc-chips">CICS · MQ · IMS/TM · DB2 · COBOL / PL/I</div>
-          </div>
-
-          <div class="sys-cat-card" data-value="batch_processing" data-label="Batch Processing" onclick="selectSysCat(this)">
-            <div class="sc-icon">🔵</div>
-            <div class="sc-label">Batch Processing</div>
-            <div class="sc-chips">JCL · VSAM · Control-M · TWS/z · Easytrieve</div>
-          </div>
-
-          <div class="sys-cat-card" data-value="payments_integration" data-label="Payments & Integration" onclick="selectSysCat(this)">
-            <div class="sc-icon">💳</div>
-            <div class="sc-label">Payments & Integration</div>
-            <div class="sc-chips">ACH / RTP · SWIFT · ISO 20022 · MQ · Connect:Direct</div>
-            <div class="sc-scope">Meliora engineers the technical implementation. Business rules, compliance interpretation, and exception handling remain with your team.</div>
-          </div>
-
-          <div class="sys-cat-card" data-value="modernization_apis" data-label="Modernization & APIs" onclick="selectSysCat(this)">
-            <div class="sc-icon">🔧</div>
-            <div class="sc-label">Modernization & APIs</div>
-            <div class="sc-chips">MQ Bridge · REST / SOAP · Micro Focus · Oracle · Cloud migration</div>
-          </div>
-
+      <!-- FEATURE CHECKLIST — mirrors the index.html card's "included" list -->
+      <div class="field" id="f-features" style="margin-bottom:1.25rem;display:none;">
+        <label id="features-label">What's included</label>
+        <div style="font-size:0.78rem;color:var(--muted);font-weight:400;margin:-0.3rem 0 0.5rem;">
+          Pre-selected based on your choice above — uncheck anything you don't need. We confirm final scope together on the discovery call.
         </div>
-        <span class="error-msg" id="sys-cat-error" style="display:none;color:var(--error);font-size:0.78rem;">Please select a system category</span>
-
-        <!-- Follow-up: Online → also runs batch? -->
-        <div class="followup-panel" id="fu-batch-question">
-          <div class="followup-label">Does this system also run batch?</div>
-          <div class="followup-opts">
-            <div class="followup-opt" data-fu="batch_yes" onclick="selectFollowup('fu-batch','batch_yes',this)">Yes</div>
-            <div class="followup-opt" data-fu="batch_no"  onclick="selectFollowup('fu-batch','batch_no', this)">No</div>
-          </div>
-        </div>
-
-        <!-- Follow-up: Batch confirmed → updates DB2? -->
-        <div class="followup-panel" id="fu-db2-question">
-          <div class="followup-label">Does the batch job update DB2?</div>
-          <div class="followup-opts">
-            <div class="followup-opt" data-fu="db2_yes"     onclick="selectFollowup('fu-db2','db2_yes',    this)">Yes</div>
-            <div class="followup-opt" data-fu="db2_partial" onclick="selectFollowup('fu-db2','db2_partial',this)">Partial</div>
-            <div class="followup-opt" data-fu="db2_no"      onclick="selectFollowup('fu-db2','db2_no',     this)">No</div>
-          </div>
-        </div>
-
-        <!-- DYNAMIC: Tech stack chips — appears for any mainframe category -->
-        <div class="stack-panel" id="mainframe-stack-panel">
-          <div class="stack-panel-label">Technology stack — select everything that applies</div>
-          <div class="stack-chips">
-            <label class="stack-chip"><input type="checkbox" name="stack_cobol" onchange="toggleStackChip(this)"> COBOL</label>
-            <label class="stack-chip"><input type="checkbox" name="stack_jcl" onchange="toggleStackChip(this)"> JCL</label>
-            <label class="stack-chip"><input type="checkbox" name="stack_cics" onchange="toggleStackChip(this)"> CICS</label>
-            <label class="stack-chip"><input type="checkbox" name="stack_vsam" onchange="toggleStackChip(this)"> VSAM</label>
-            <label class="stack-chip"><input type="checkbox" name="stack_db2" onchange="toggleStackChip(this)"> DB2</label>
-            <label class="stack-chip"><input type="checkbox" name="stack_ims" onchange="toggleStackChip(this)"> IMS</label>
-            <label class="stack-chip"><input type="checkbox" name="stack_rexx" onchange="toggleStackChip(this)"> REXX</label>
-            <label class="stack-chip"><input type="checkbox" name="stack_pli" onchange="toggleStackChip(this)"> PL/I</label>
-            <label class="stack-chip"><input type="checkbox" name="stack_zos" onchange="toggleStackChip(this)"> z/OS</label>
-            <label class="stack-chip"><input type="checkbox" name="stack_ach" onchange="toggleStackChip(this)"> ACH / RTP</label>
-            <label class="stack-chip"><input type="checkbox" name="stack_ofac" onchange="toggleStackChip(this)"> OFAC / AML</label>
-            <label class="stack-chip"><input type="checkbox" name="stack_oracle" onchange="toggleStackChip(this)"> Oracle</label>
-            <label class="stack-chip"><input type="checkbox" name="stack_other_mf" onchange="toggleStackChip(this)"> Other / not sure</label>
-          </div>
-
-          <!-- Primary concern dropdown -->
-          <div class="concern-panel active" style="margin-top:0.75rem;">
-            <div class="stack-panel-label" style="margin-top:0.5rem;">Primary concern</div>
-            <select id="inp-mf-concern" name="mf_concern" style="width:100%;padding:0.65rem 1rem;border:1.5px solid #B3CCE0;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:0.9rem;color:var(--text);background:white;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%237F8C8D' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1rem center;padding-right:2.5rem;cursor:pointer;">
-              <option value="">Select primary concern...</option>
-              <option value="Documentation missing">Documentation is missing or wrong</option>
-              <option value="Risk to touch">Afraid to touch it — too much risk</option>
-              <option value="Audit / compliance">Upcoming audit or compliance deadline</option>
-              <option value="Modernization plan">Need a modernization roadmap</option>
-              <option value="Performance">Performance or capacity issues</option>
-              <option value="Knowledge transfer">Key engineers retiring — knowledge transfer needed</option>
-              <option value="Other">Something else</option>
-            </select>
-          </div>
-
-          <!-- System age -->
-          <div style="margin-top:0.75rem;">
-            <div class="stack-panel-label">How old is the system?</div>
-            <select id="inp-sys-age" name="system_age" style="width:100%;padding:0.65rem 1rem;border:1.5px solid #B3CCE0;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:0.9rem;color:var(--text);background:white;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%237F8C8D' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1rem center;padding-right:2.5rem;cursor:pointer;">
-              <option value="">Select age...</option>
-              <option value="Under 10 years">Under 10 years</option>
-              <option value="10-20 years">10–20 years</option>
-              <option value="20-30 years">20–30 years</option>
-              <option value="30+ years">30+ years — original engineers likely retired</option>
-            </select>
-          </div>
-        </div>
-      </div>
-
-      <div class="field-group three">
-        <div class="field" id="f-complexity">
-          <label for="inp-complexity">Complexity <span class="req">*</span></label>
-          <select id="inp-complexity">
-            <option value="">Select...</option>
-            <option value="Low">Low — straightforward</option>
-            <option value="Medium">Medium — some complexity</option>
-            <option value="High">High — complex / large scale</option>
-          </select>
-          <span class="error-msg">Please select complexity</span>
-        </div>
-        <div class="field" id="f-duration">
-          <label for="inp-duration">Timeline <span class="req">*</span></label>
-          <select id="inp-duration">
-            <option value="">Select...</option>
-            <option value="ASAP">As soon as possible</option>
-            <option value="1-3 months">In 1–3 months</option>
-            <option value="3-6 months">In 3–6 months</option>
-            <option value="6-12 months">In 6–12 months</option>
-            <option value="Flexible">No rush — still exploring</option>
-          </select>
-          <span class="error-msg">Please select a timeline</span>
-        </div>
-        <div class="field">
-          <label for="inp-team">Project Size</label>
-          <select id="inp-team">
-            <option value="1">Small — focused scope</option>
-            <option value="2">Medium — multi-component</option>
-            <option value="3">Large — enterprise scale</option>
-            <option value="4">Enterprise — multi-system</option>
-            <option value="5">Not sure yet</option>
-          </select>
+        <div class="feature-grid" id="feature-grid"></div>
+        <div id="features-not-box" style="margin-top:0.6rem;padding:0.6rem 0.85rem;background:#FFF5F5;border:1px solid #F5C6C6;border-radius:8px;font-size:0.75rem;color:#C0392B;display:none;">
+          <strong>Not included:</strong> <span id="features-not-text"></span>
         </div>
       </div>
 
@@ -1237,7 +1092,10 @@ const SUPABASE_URL  = "https://glgnhkkaguloeouzihej.supabase.co";
 const SUPABASE_ANON = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdsZ25oa2thZ3Vsb2VvdXppaGVqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODAxMzU0MjMsImV4cCI6MjA5NTcxMTQyM30.sLI5BM5Y0yN_Mk8NWoodbMcrT3oY0m8CrSk8s0vpJIA";
 
 async function saveToSupabase(data, estimate) {
-  const durMap = { 'ASAP':2, '1-3 months':6, '3-6 months':18, '6-12 months':36, 'Flexible':4 };
+  // Published week ranges from index.html cards, midpoint used as a duration estimate
+  // since the Timeline dropdown was removed — client no longer states a preferred duration.
+  const durWeeksMap = { Assess: 5, Blueprint: 6, Execute: 32 };
+  const durWeeks = data.track === 'mainframe' ? (durWeeksMap[data.service] || 6) : 8; // Legacy: no published range, generic placeholder
   const riskText = estimate.riskScore <= 2 ? 'low' : estimate.riskScore <= 5 ? 'medium' : estimate.riskScore <= 7 ? 'high' : 'critical';
 
   const payload = {
@@ -1246,16 +1104,16 @@ async function saveToSupabase(data, estimate) {
     client_email:   data.email       || "",
     client_phone:   data.phone       || "",
     country:        data.country     || "USA",
-    project_type:   data.service     || "IT Consulting",
-    company_size:   data.tier        || "Medium",  // Small / Medium / Large
+    track:          data.track       || "",          // mainframe | legacy
+    project_type:   data.service     || "Legacy & Business Systems",
+    company_size:   data.tier        || "Medium",     // Small / Medium / Large
     complexity:     data.complexity  || "Medium",
-    duration_weeks: durMap[data.duration] || 4,
-    team_size:      parseInt(data.team) || 1,
+    duration_weeks: durWeeks,
+    team_size:      1,                                // solo practitioner model
     risk_level:     riskText,
     description:    data.description || "",
-    tech_stack:     data.tech_stack  || "",
-    mf_concern:     data.mf_concern  || "",
-    system_age:     data.system_age  || "",
+    features_included: data.features_included || "",
+    features_dropped:  data.features_dropped  || "",
     status:         "pending",
   };
   try {
@@ -1273,22 +1131,95 @@ async function saveToSupabase(data, estimate) {
 }
 const state = {
   step: 1,
-  selectedService: '',
-  selectedTier: 'Medium',
+  selectedTrack: '',      // 'mainframe' | 'legacy'
+  selectedService: '',    // Assess | Blueprint | Execute — mainframe track only
+  selectedTier: 'Medium', // Company Size, set in Step 3
   selectedRisks: [],
+  featuresChecked: [],    // indices of checked feature-checklist items (relative to current FEATURE_DATA list)
 };
 
+// Rates by engagement phase (Mainframe & Enterprise track) and flat rate for Legacy track.
+// NOTE: keep these in sync with index.html — CARD_MODALS.mf_assess/mf_blueprint/mf_execute .sub lines
+// display the published price ranges clients see before they ever reach this form.
 const RATES = {
-  'Assess':                   150,  // Discovery & Classification
-  'Blueprint':                165,  // Architecture & Design
-  'Execute':                  175,  // Full Delivery
-  'Mainframe Modernization':  205,  // IBM Z / COBOL — midpoint of $185–225/hr range
-  'IT Consulting':            150,  // Default fallback
+  'Assess':                       185,  // Discovery & Classification
+  'Blueprint':                    210,  // Architecture & Design
+  'Execute':                      235,  // Full Delivery
+  'Legacy & Business Systems':    160,  // Flat rate — non-mainframe track
+  'IT Consulting':                185,  // Default fallback
 };
-const BASE_HOURS = { Low: 20, Medium: 60, High: 120 };
-const DUR_MULT   = { 'ASAP':1.0,'1-3 months':1.15,'3-6 months':1.4,'6-12 months':1.6,'Flexible':1.1 };
-const TEAM_MULT  = { 1:1.0,2:1.15,3:1.25,4:1.35,5:1.5 };
+// Base hours calibrated so Assess/Blueprint totals land inside the price ranges
+// published on index.html (Assess $8K–$20K, Blueprint $20K–$60K) at Medium company size, low risk.
+// Execute and Legacy are NOT shown as a fixed client-facing total — see buildSummary() —
+// because Execute spans a 10–54 week range and Legacy is explicitly "scoped per project" on index.html.
+const BASE_HOURS = { Assess: 65, Blueprint: 160, Execute: 400 };
+const BASE_HOURS_LEGACY = 60; // internal reference only, not shown to client
 const TIER_ADJ   = { Small:0.85, Medium:1.0, Large:1.15 };
+
+// Feature checklist content — mirrors CARD_MODALS.included arrays on index.html.
+// Keep these in sync whenever the index.html card content changes.
+const FEATURE_DATA = {
+  Assess: {
+    label: "What's included — Assess",
+    not: "Code refactoring, data migration, or execution work — those are Blueprint and Execute scope.",
+    included: [
+      "COBOL/JCL inventory — PROGRAM-ID, CALL chains, COPY members, FILE-CONTROL",
+      "5R classification per program: Rehost · Refactor · Rebuild · Re-architect · Replace",
+      "DB2 catalog analysis — SYSIBM tables, schema, referential integrity, stored procedures",
+      "VSAM file mapping — KSDS/ESDS/RRDS layouts, access patterns, data volumes",
+      "CICS transaction inventory — COMMAREA structures, BMS maps, program links",
+      "Compliance risk register — OFAC/AML logic embedded in COBOL identified before refactor",
+      "Dependency map — full CALL chain graph, copybook relationships, JCL step flows",
+      "Written modernization recommendation with phased roadmap and risk-ranked program list",
+      "Phase gate review deck — board-ready, bilingual EN/ES",
+    ],
+  },
+  Blueprint: {
+    label: "What's included — Blueprint",
+    not: "Code refactoring, data migration, or production cutover — those are Execute scope.",
+    included: [
+      "Everything in Assess — full inventory and 5R classification",
+      "Migration strategy decision: Strangler Fig vs Big Bang with written rationale",
+      "Target data model — DB2 normalization, API event design, MQ message schemas",
+      "COBOL PIC clause → SQL/API field mapping with REDEFINES and OCCURS DEPENDING ON resolution",
+      "AS-IS / TO-BE architecture deck — board-ready, bilingual EN/ES",
+      "SOW with explicit in-scope and out-of-scope clauses",
+      "Compliance design — OFAC, AML, SOX, PCI-DSS gates per phase",
+      "Security framework for target platform",
+      "Phased execution plan with timeline, team, and cost estimate",
+    ],
+  },
+  Execute: {
+    label: "What's included — Execute",
+    not: "Ongoing managed service after 30-day stabilization, third-party licenses, infrastructure costs outside agreed scope.",
+    included: [
+      "Everything in Assess + Blueprint",
+      "Incremental refactor — Strangler Fig routing or targeted Big Bang per program complexity",
+      "Field-level mapping: COBOL PIC clauses to SQL types, REDEFINES resolution, null handling",
+      "Parallel run — daily output comparison, record counts, monetary totals, checksums",
+      "Behavioral equivalence validation — golden datasets, regression suite, edge case testing",
+      "Compliance gate sign-offs — OFAC, AML, SOX, PCI-DSS per phase",
+      "CAB-approved production cutover with tested rollback plan",
+      "No go-live without parallel run passing 100%",
+      "30-day stabilization — all defects fixed at no extra cost",
+      "Knowledge transfer and operational runbook",
+    ],
+  },
+  Legacy: {
+    label: "What's included — Legacy & Business Systems",
+    not: "Ongoing managed service, hardware procurement, software licenses, or mainframe-specific work.",
+    included: [
+      "AS-IS system assessment — map what you have, identify what to fix first",
+      "Automated reporting — Excel, Access, CSV, DB2 connectors, PDF delivery, AI summary",
+      "Cloud migration — AWS setup, data migration, zero-downtime cutover",
+      "System integration — connect apps that don't talk to each other via APIs",
+      "Process automation — eliminate manual workflows, reduce human error",
+      "AI integration — add intelligence to existing tools and workflows",
+      "Compliance advisory — SOX, PCI-DSS, AML for non-mainframe environments",
+      "SOW and technical plan — for teams that need a written spec before they build",
+    ],
+  },
+};
 const RISK_PTS   = {
   cobol_mainframe:      3,  // COBOL / Mainframe programs — highest technical risk
   db2_dba:              2,  // DB2 or legacy database schema
@@ -1330,20 +1261,16 @@ function validateStep(n) {
   if (n === 2) {
     ok = validateField('f-project','inp-project',v=>v.trim().length>2) & ok;
     ok = validateField('f-description','inp-description',v=>v.trim().length>10) & ok;
-    ok = validateField('f-complexity','inp-complexity',v=>v!=='') & ok;
-    ok = validateField('f-duration','inp-duration',v=>v!=='') & ok;
-    if (!state.selectedService) {
+    if (!state.selectedTrack) {
+      document.getElementById('track-error').style.display='block';
+      ok=false;
+    } else {
+      document.getElementById('track-error').style.display='none';
+    }
+    if (state.selectedTrack === 'mainframe' && !state.selectedService) {
       document.getElementById('service-error').style.display='block'; ok=false;
     } else {
       document.getElementById('service-error').style.display='none';
-    }
-    if (!state_sysCat.selected) {
-      document.getElementById('sys-cat-error').style.display='block';
-      document.getElementById('f-sys-cat').classList.add('error');
-      ok=false;
-    } else {
-      document.getElementById('sys-cat-error').style.display='none';
-      document.getElementById('f-sys-cat').classList.remove('error');
     }
   }
   return ok;
@@ -1358,12 +1285,92 @@ function validateField(fid, iid, test) {
   return valid;
 }
 
-// ── SERVICE SELECTION ──
+// ── TRACK SELECTION ──
+function selectTrack(el) {
+  document.querySelectorAll('.track-card').forEach(c=>c.classList.remove('selected'));
+  el.classList.add('selected');
+  state.selectedTrack = el.dataset.value;
+  document.getElementById('track-error').style.display = 'none';
+
+  const fService = document.getElementById('f-service');
+  if (state.selectedTrack === 'mainframe') {
+    fService.style.display = '';
+    // Auto-flag cobol_mainframe risk — every Mainframe & Enterprise engagement touches it
+    const riskCobol = document.querySelector('[data-value="cobol_mainframe"]');
+    if (riskCobol && !riskCobol.classList.contains('selected')) {
+      riskCobol.classList.add('selected');
+      if (!state.selectedRisks.includes('cobol_mainframe'))
+        state.selectedRisks.push('cobol_mainframe');
+    }
+    // Service not chosen yet — hide checklist until it is
+    state.selectedService = '';
+    document.querySelectorAll('.service-card').forEach(c=>c.classList.remove('selected'));
+    document.getElementById('f-features').style.display = 'none';
+  } else {
+    // Legacy track — no engagement-phase cards, show its checklist directly
+    fService.style.display = 'none';
+    state.selectedService = '';
+    renderFeatureChecklist('Legacy');
+  }
+}
+
+// ── SERVICE SELECTION (Mainframe & Enterprise track) ──
 function selectService(el) {
   document.querySelectorAll('.service-card').forEach(c=>c.classList.remove('selected'));
   el.classList.add('selected');
   state.selectedService = el.dataset.value;
   document.getElementById('service-error').style.display='none';
+  renderFeatureChecklist(el.dataset.value);
+}
+
+// ── FEATURE CHECKLIST ──
+// Renders the "included" list for the given key (Assess | Blueprint | Execute | Legacy)
+// as checkboxes, all checked by default. Client unchecks anything they want to drop.
+function renderFeatureChecklist(key) {
+  const data = FEATURE_DATA[key];
+  const wrap = document.getElementById('f-features');
+  const grid = document.getElementById('feature-grid');
+  const label = document.getElementById('features-label');
+  const notBox = document.getElementById('features-not-box');
+  const notText = document.getElementById('features-not-text');
+  if (!data) { wrap.style.display = 'none'; return; }
+
+  label.textContent = data.label;
+  grid.innerHTML = '';
+  state.featuresChecked = data.included.map((_, i) => i); // all checked by default
+
+  data.included.forEach((feature, i) => {
+    const item = document.createElement('div');
+    item.className = 'feature-item checked';
+    item.dataset.index = i;
+    item.onclick = () => toggleFeature(item, i);
+    item.innerHTML = `<div class="feature-check">✓</div><span>${feature}</span>`;
+    grid.appendChild(item);
+  });
+
+  if (data.not) {
+    notText.textContent = data.not;
+    notBox.style.display = 'block';
+  } else {
+    notBox.style.display = 'none';
+  }
+
+  wrap.style.display = 'block';
+}
+
+function toggleFeature(el, i) {
+  const idx = state.featuresChecked.indexOf(i);
+  if (idx > -1) {
+    state.featuresChecked.splice(idx, 1);
+    el.classList.remove('checked');
+    el.classList.add('unchecked');
+    el.querySelector('.feature-check').textContent = '';
+  } else {
+    state.featuresChecked.push(i);
+    el.classList.add('checked');
+    el.classList.remove('unchecked');
+    el.querySelector('.feature-check').textContent = '✓';
+  }
 }
 
 // ── TIER SELECTION ──
@@ -1375,99 +1382,22 @@ function selectTier(el) {
 
 
 // ── URL PARAM PRE-SELECTION ──
-// Reads ?service=Assess|Blueprint|Execute and pre-selects the matching card.
-// Called on DOMContentLoaded so the cards exist before we try to click them.
+// Reads ?service=Assess|Blueprint|Execute and/or ?track=mainframe|legacy and pre-selects
+// the matching cards. Called on DOMContentLoaded so the cards exist before we try to click them.
 function applyUrlParams() {
   const params = new URLSearchParams(window.location.search);
   const service = params.get('service');
+  const track   = params.get('track') || (service ? 'mainframe' : '');
+  if (track) {
+    const trackCard = document.querySelector(`.track-card[data-value="${track}"]`);
+    if (trackCard) selectTrack(trackCard);
+  }
   if (service) {
     const card = document.querySelector(`.service-card[data-value="${service}"]`);
     if (card) selectService(card);
   }
 }
 document.addEventListener('DOMContentLoaded', applyUrlParams);
-const state_sysCat = { selected: '', fuBatch: '', fuDb2: '' };
-
-function selectSysCat(el) {
-  // Deselect all cards
-  document.querySelectorAll('.sys-cat-card').forEach(c => c.classList.remove('selected'));
-  el.classList.add('selected');
-  state_sysCat.selected = el.dataset.value;
-  state_sysCat.fuBatch  = '';
-  state_sysCat.fuDb2    = '';
-
-  // Reset follow-up opts
-  document.querySelectorAll('.followup-opt').forEach(o => o.classList.remove('selected'));
-
-  // Show/hide follow-up chain
-  const fqBatch = document.getElementById('fu-batch-question');
-  const fqDb2   = document.getElementById('fu-db2-question');
-  fqBatch.classList.remove('active');
-  fqDb2.classList.remove('active');
-
-  if (el.dataset.value === 'online_oltp') {
-    fqBatch.classList.add('active');
-  }
-
-  // Show stack panel for all mainframe categories
-  const stackPanel = document.getElementById('mainframe-stack-panel');
-  stackPanel.classList.add('active');
-
-  // Auto-flag cobol_mainframe risk
-  const riskCobol = document.querySelector('[data-value="cobol_mainframe"]');
-  if (riskCobol && !riskCobol.classList.contains('selected')) {
-    riskCobol.classList.add('selected');
-    if (!state.selectedRisks.includes('cobol_mainframe'))
-      state.selectedRisks.push('cobol_mainframe');
-  }
-
-  // Auto-flag live_payments risk for Payments card
-  if (el.dataset.value === 'payments_integration') {
-    const riskPay = document.querySelector('[data-value="live_payments"]');
-    if (riskPay && !riskPay.classList.contains('selected')) {
-      riskPay.classList.add('selected');
-      if (!state.selectedRisks.includes('live_payments'))
-        state.selectedRisks.push('live_payments');
-    }
-  }
-
-  // Clear sys-cat error
-  document.getElementById('sys-cat-error').style.display = 'none';
-  document.getElementById('f-sys-cat').classList.remove('error');
-}
-
-function selectFollowup(group, value, el) {
-  // Deselect siblings in same follow-up group
-  el.closest('.followup-opts').querySelectorAll('.followup-opt')
-    .forEach(o => o.classList.remove('selected'));
-  el.classList.add('selected');
-
-  if (group === 'fu-batch') {
-    state_sysCat.fuBatch = value;
-    const fqDb2 = document.getElementById('fu-db2-question');
-    // Show DB2 question only if batch confirmed
-    if (value === 'batch_yes') fqDb2.classList.add('active');
-    else { fqDb2.classList.remove('active'); state_sysCat.fuDb2 = ''; }
-  }
-  if (group === 'fu-db2') {
-    state_sysCat.fuDb2 = value;
-    // Auto-flag db2_dba risk if DB2 confirmed
-    if (value === 'db2_yes' || value === 'db2_partial') {
-      const riskDb2 = document.querySelector('[data-value="db2_dba"]');
-      if (riskDb2 && !riskDb2.classList.contains('selected')) {
-        riskDb2.classList.add('selected');
-        if (!state.selectedRisks.includes('db2_dba'))
-          state.selectedRisks.push('db2_dba');
-      }
-    }
-  }
-}
-
-function toggleStackChip(cb) {
-  const label = cb.closest('label');
-  if (cb.checked) label.classList.add('selected');
-  else label.classList.remove('selected');
-}
 
 // ── RISK TOGGLE ──
 function toggleRisk(el) {
@@ -1480,22 +1410,18 @@ function toggleRisk(el) {
 
 // ── ESTIMATE CALC ──
 function calcEstimate() {
-  const complexity = document.getElementById('inp-complexity').value || 'Medium';
-  const duration   = document.getElementById('inp-duration').value   || '1 month';
-  const teamSize   = parseInt(document.getElementById('inp-team').value) || 1;
-  // Use system category card to determine rate; all mainframe cats → Mainframe rate
-  const mfCats = ['online_oltp','batch_processing','payments_integration','modernization_apis'];
-  const sysCat = state_sysCat.selected;
-  const baseService = state.selectedService || 'IT Consulting';
-  const service = mfCats.includes(sysCat) ? 'Mainframe Modernization' : baseService;
-  const tier       = state.selectedTier;
+  const track   = state.selectedTrack;              // 'mainframe' | 'legacy'
+  const service = track === 'mainframe' ? (state.selectedService || '') : 'Legacy & Business Systems';
+  const tier    = state.selectedTier;
 
-  const baseHrs    = BASE_HOURS[complexity] || 60;
-  const adjHrs     = baseHrs * (DUR_MULT[duration] || 1.1);
-  const totalHrs   = Math.round(adjHrs * (TEAM_MULT[teamSize] || 1.0));
-  const rate = RATES[service] || RATES['IT Consulting'] || 150;
-  const baseCost   = totalHrs * rate;
-  const finalCost  = baseCost * (TIER_ADJ[tier] || 1.0);
+  // Complexity is derived from the card chosen, not asked separately.
+  const complexity = { Assess:'Low', Blueprint:'Medium', Execute:'High' }[state.selectedService] || 'Medium';
+
+  const baseHrs  = track === 'mainframe' ? (BASE_HOURS[state.selectedService] || 65) : BASE_HOURS_LEGACY;
+  const totalHrs = Math.round(baseHrs);
+  const rate     = RATES[service] || RATES['IT Consulting'];
+  const baseCost = totalHrs * rate;
+  const finalCost= baseCost * (TIER_ADJ[tier] || 1.0);
 
   const riskScore  = Math.min(state.selectedRisks.reduce((s,f)=>s+(RISK_PTS[f]||0),0), 10);
   const contPct    = riskScore<=2?0.05:riskScore<=5?0.10:riskScore<=7?0.15:0.20;
@@ -1504,35 +1430,45 @@ function calcEstimate() {
 
   const riskLabel  = riskScore<=2?'Low':riskScore<=5?'Medium':riskScore<=7?'High':'Critical';
 
+  // Execute and Legacy are "scoped per project" on index.html — no fixed total shown to the client.
+  const showFixedTotal = state.selectedService === 'Assess' || state.selectedService === 'Blueprint';
+
   return { totalHrs, rate, baseCost, finalCost, riskScore, riskLabel,
-           contPct:Math.round(contPct*100), contingency, total, service, tier, complexity };
+           contPct:Math.round(contPct*100), contingency, total, service, tier, complexity,
+           track, showFixedTotal };
 }
 
 // ── BUILD SUMMARY ──
 function buildSummary() {
   const e = calcEstimate();
-  // Read stack/concern/age regardless of panel visibility
-  const _techStack = Array.from(document.querySelectorAll('input[name^="stack_"]:checked'))
-    .map(c => c.name.replace('stack_','').toUpperCase()).join(', ');
-  const _mfConcern = document.getElementById('inp-mf-concern')?.value || '';
-  const _sysAge    = document.getElementById('inp-sys-age')?.value    || '';
 
-  // System category from card selection
-  const sysCatLabels = {
-    online_oltp:          '🟢 Online (OLTP) — CICS · MQ · IMS/TM · DB2 · COBOL/PL/I',
-    batch_processing:     '🔵 Batch Processing — JCL · VSAM · Control-M · TWS/z · Easytrieve',
-    payments_integration: '💳 Payments & Integration — ACH/RTP · SWIFT · ISO 20022',
-    modernization_apis:   '🔧 Modernization & APIs — MQ Bridge · REST/SOAP · Micro Focus · Oracle',
-  };
-  const sysCatDisplay = sysCatLabels[state_sysCat.selected] || '—';
-  const fuDisplay = [
-    state_sysCat.fuBatch ? `Also runs batch: ${state_sysCat.fuBatch === 'batch_yes' ? 'Yes' : 'No'}` : '',
-    state_sysCat.fuDb2   ? `Batch updates DB2: ${ {db2_yes:'Yes',db2_partial:'Partial',db2_no:'No'}[state_sysCat.fuDb2] }` : '',
-  ].filter(Boolean).join(' · ');
-  document.getElementById('est-total').textContent = `$${e.total.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})}`;
-  document.getElementById('est-sub').innerHTML =
-    `<span style="display:block;margin-bottom:3px;">USD &nbsp;·&nbsp; ${e.totalHrs} hours &nbsp;·&nbsp; ${e.service}</span>` +
-    `<span style="opacity:0.75;">Risk: ${e.riskLabel} (${e.riskScore}/10) &nbsp;·&nbsp; Subject to discovery call</span>`;
+  const trackDisplay = state.selectedTrack === 'mainframe'
+    ? '🏦 Mainframe & Enterprise'
+    : state.selectedTrack === 'legacy'
+      ? '🏢 Legacy & Business Systems'
+      : '—';
+
+  // Feature checklist state → included / dropped lists, keyed off whichever list is currently rendered
+  const featureKey = state.selectedTrack === 'mainframe' ? state.selectedService : 'Legacy';
+  const featureData = FEATURE_DATA[featureKey];
+  const featuresIncluded = featureData
+    ? state.featuresChecked.map(i => featureData.included[i]).join(' · ')
+    : '';
+  const featuresDropped = featureData
+    ? featureData.included.filter((_, i) => !state.featuresChecked.includes(i)).join(' · ')
+    : '';
+
+  if (e.showFixedTotal) {
+    document.getElementById('est-total').textContent = `$${e.total.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})}`;
+    document.getElementById('est-sub').innerHTML =
+      `<span style="display:block;margin-bottom:3px;">USD &nbsp;·&nbsp; ${e.totalHrs} hours &nbsp;·&nbsp; ${e.service}</span>` +
+      `<span style="opacity:0.75;">Risk: ${e.riskLabel} (${e.riskScore}/10) &nbsp;·&nbsp; Subject to discovery call</span>`;
+  } else {
+    document.getElementById('est-total').textContent = 'Scoped per project';
+    document.getElementById('est-sub').innerHTML =
+      `<span style="display:block;margin-bottom:3px;">${trackDisplay}${e.service ? ' · ' + e.service : ''}</span>` +
+      `<span style="opacity:0.75;">Final estimate confirmed on the discovery call &nbsp;·&nbsp; Risk: ${e.riskLabel} (${e.riskScore}/10)</span>`;
+  }
 
   const riskLabels = {
     cobol_mainframe:       '🔄 COBOL / Mainframe programs involved',
@@ -1556,20 +1492,20 @@ function buildSummary() {
     ['Phone',          document.getElementById('inp-phone').value,    false],
     ['Country',        document.getElementById('inp-country').value,  false],
     ['Project',        document.getElementById('inp-project').value,  true],
-    ['System Category', sysCatDisplay,                                true],
-    fuDisplay ? ['System Detail', fuDisplay,                          true] : null,
-    ['Service',        e.service,                                      false],
+    ['Product',        trackDisplay,                                  false],
+    state.selectedTrack === 'mainframe' ? ['Engagement Phase', e.service || '—', false] : null,
     ['Company Size',   e.tier,                                         false],
     ['Complexity',     e.complexity,                                   false],
-    ['Timeline',       document.getElementById('inp-duration').value, false],
     ['Risk Factors',   riskSelected,                                   true],
-    ['Tech Stack',     _techStack || '—',                              true],
-    ['MF Concern',     _mfConcern || '—',                             false],
-    ['System Age',     _sysAge    || '—',                             false],
-    ['Hours',          `${e.totalHrs} hrs`,                           false],
-    ['Rate',           `$${e.rate}/hr`,                               false],
-    ['Base Cost',      `$${e.baseCost.toLocaleString('en-US',{minimumFractionDigits:2})}`, false],
-    [`Contingency (${e.contPct}%)`, `$${e.contingency.toLocaleString('en-US',{minimumFractionDigits:2})}`, false],
+    ['Features Included', featuresIncluded || '—',                     true],
+    featuresDropped ? ['Features Dropped', featuresDropped,            true] : null,
+    // Hours/cost breakdown only shown to the client when we're quoting a fixed total (Assess/Blueprint).
+    // Execute and Legacy stay "Scoped per project" on screen — the full numbers still reach Saul
+    // through the Formspree/Supabase payload in submitForm(), just not displayed here.
+    e.showFixedTotal ? ['Hours', `${e.totalHrs} hrs`, false] : null,
+    e.showFixedTotal ? ['Rate', `$${e.rate}/hr`, false] : null,
+    e.showFixedTotal ? ['Base Cost', `$${e.baseCost.toLocaleString('en-US',{minimumFractionDigits:2})}`, false] : null,
+    e.showFixedTotal ? [`Contingency (${e.contPct}%)`, `$${e.contingency.toLocaleString('en-US',{minimumFractionDigits:2})}`, false] : null,
     ['Risk Score',     `${e.riskScore}/10 — ${e.riskLabel}`,          false],
   ].filter(Boolean);
 
@@ -1596,17 +1532,17 @@ async function submitForm() {
   }
   consentErr.style.display = 'none';
 
-  const sysCatLabels = {
-    online_oltp:          'Online (OLTP) — CICS · MQ · IMS/TM · DB2 · COBOL/PL/I',
-    batch_processing:     'Batch Processing — JCL · VSAM · Control-M · TWS/z · Easytrieve',
-    payments_integration: 'Payments & Integration — ACH/RTP · SWIFT · ISO 20022',
-    modernization_apis:   'Modernization & APIs — MQ Bridge · REST/SOAP · Micro Focus · Oracle',
-  };
-  const sysCatValue = sysCatLabels[state_sysCat.selected] || 'Not selected';
-  const fuBatchValue = state_sysCat.fuBatch ? (state_sysCat.fuBatch === 'batch_yes' ? 'Yes' : 'No') : '';
-  const fuDb2Value   = state_sysCat.fuDb2   ? ({db2_yes:'Yes',db2_partial:'Partial',db2_no:'No'}[state_sysCat.fuDb2] || '') : '';
-
   const e = calcEstimate();
+
+  const featureKey = state.selectedTrack === 'mainframe' ? state.selectedService : 'Legacy';
+  const featureData = FEATURE_DATA[featureKey];
+  const featuresIncludedStr = featureData ? state.featuresChecked.map(i => featureData.included[i]).join(' | ') : '';
+  const featuresDroppedStr  = featureData ? featureData.included.filter((_, i) => !state.featuresChecked.includes(i)).join(' | ') : '';
+
+  const trackLabel = state.selectedTrack === 'mainframe' ? 'Mainframe & Enterprise'
+                    : state.selectedTrack === 'legacy'    ? 'Legacy & Business Systems'
+                    : 'Not selected';
+
   const data = {
     name:           document.getElementById('inp-name').value,
     company:        document.getElementById('inp-company').value,
@@ -1617,22 +1553,20 @@ async function submitForm() {
     source:         document.getElementById('inp-source').value,
     project:        document.getElementById('inp-project').value,
     description:    document.getElementById('inp-description').value,
-    sys_category:   sysCatValue,
-    batch_flag:     fuBatchValue,
-    db2_flag:       fuDb2Value,
-    service:        e.service,
+    track:          state.selectedTrack,       // 'mainframe' | 'legacy' — used by saveToSupabase
+    track_label:    trackLabel,
+    service:        e.service || trackLabel,
     complexity:     e.complexity,
-    duration:       document.getElementById('inp-duration').value,
-    team:           document.getElementById('inp-team').value,
     tier:           e.tier,
     risks:          state.selectedRisks.join(', '),
     start_date:     document.getElementById('inp-start').value,
-    notes:       document.getElementById('inp-notes').value,
-    tech_stack:  Array.from(document.querySelectorAll('input[name^="stack_"]:checked')).map(c=>c.name.replace('stack_','')).join(', '),
-    mf_concern:  document.getElementById('inp-mf-concern')?.value || '',
-    system_age:  document.getElementById('inp-sys-age')?.value || '',
-    estimate:    `$${e.total.toFixed(2)}`,
+    notes:          document.getElementById('inp-notes').value,
+    features_included: featuresIncludedStr,
+    features_dropped:  featuresDroppedStr,
+    // Full computed estimate always goes to Saul, even on tiers shown as "Scoped per project" on screen.
+    estimate:    e.showFixedTotal ? `$${e.total.toFixed(2)}` : `Scoped per project (internal ref: $${e.total.toFixed(2)})`,
     hours:       e.totalHrs,
+    rate:        e.rate,
     risk_score:  e.riskScore,
     risk_label:  e.riskLabel,
   };
@@ -1657,24 +1591,20 @@ async function submitForm() {
         source:       data.source,
         project:      data.project,
         description:  data.description,
-        sys_category: data.sys_category,
-        batch_flag:   data.batch_flag,
-        db2_flag:     data.db2_flag,
+        track:        data.track_label,
         service:      data.service,
         complexity:   data.complexity,
-        duration:     data.duration,
-        team_size:    data.team,
         tier:         data.tier,
         risks:        data.risks,
         start_date:   data.start_date,
         notes:        data.notes,
+        features_included: data.features_included,
+        features_dropped:  data.features_dropped,
         estimate:     data.estimate,
         hours:        data.hours,
+        rate:         data.rate,
         risk_score:   data.risk_score,
         risk_label:   data.risk_label,
-        tech_stack:   data.tech_stack,
-        mf_concern:   data.mf_concern,
-        system_age:   data.system_age,
         _replyto:     data.email,
         submitted_at: new Date().toLocaleString(),
       })
