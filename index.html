@@ -939,81 +939,41 @@
     </div>
   </div>
 
-  <!-- ── BLOCK 2: AWS Cost Benefit ── -->
+  <!-- ── BLOCK 2: AWS Infrastructure ── -->
   <div class="reveal" style="background:white;border:0.5px solid var(--gray-100);border-radius:16px;overflow:hidden;margin-bottom:1.5rem;box-shadow:0 2px 16px rgba(0,0,0,0.04);">
 
     <div style="padding:2rem 2rem 0;">
       <div class="section-tag" style="margin-bottom:0.5rem;" data-i18n="aws.tag">Enterprise infrastructure</div>
       <h3 style="font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:500;color:var(--gray-900);margin:0 0 0.5rem;" data-i18n="aws.title">Enterprise infrastructure — without owning it.</h3>
-      <p style="font-size:14px;color:var(--gray-800);font-weight:300;max-width:620px;line-height:1.75;margin:0 0 2rem;" data-i18n="aws.sub">Where cloud infrastructure is part of the engagement, we build on AWS — so you get secure, scalable, enterprise-grade infrastructure without buying servers, managing hardware, or hiring a dedicated infra team. You pay only for what your project uses. Other cloud environments follow the same principles — the provider changes, the standards don't.</p>
+      <p style="font-size:14px;color:var(--gray-800);font-weight:300;max-width:620px;line-height:1.75;margin:0 0 2rem;" data-i18n="aws.sub">Where cloud infrastructure is part of the engagement, we build on AWS — so you get secure, scalable, enterprise-grade infrastructure without buying servers, managing hardware, or hiring a dedicated infra team. Other cloud environments follow the same principles — the provider changes, the standards don't.</p>
     </div>
 
-    <!-- 3-column comparison -->
-    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;border-top:0.5px solid var(--gray-100);">
-
-      <!-- Build it yourself -->
-      <div style="padding:1.75rem;border-right:0.5px solid var(--gray-100);">
-        <div style="font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:1.5px;color:var(--gray-400);margin-bottom:0.4rem;" data-i18n="aws.col1.label">Build it yourself</div><div style="font-size:11px;color:var(--gray-400);font-weight:300;margin-bottom:0.75rem;font-style:italic;" data-i18n="aws.col1.note">Illustrative example — mid-size fintech, 3 years</div>
-        <div style="display:flex;flex-direction:column;gap:10px;">
-          <div style="display:flex;justify-content:space-between;align-items:baseline;font-size:13px;">
-            <span style="color:var(--gray-800);font-weight:300;" data-i18n="aws.item.servers">Servers / hardware</span>
-            <span style="color:var(--gray-900);font-weight:500;font-size:12px;">significant upfront</span>
-          </div>
-          <div style="display:flex;justify-content:space-between;align-items:baseline;font-size:13px;">
-            <span style="color:var(--gray-800);font-weight:300;" data-i18n="aws.item.staff">Infra team (1–2 FTEs)</span>
-            <span style="color:var(--gray-900);font-weight:500;font-size:12px;">$120k–$240k/yr</span>
-          </div>
-          <div style="display:flex;justify-content:space-between;align-items:baseline;font-size:13px;">
-            <span style="color:var(--gray-800);font-weight:300;" data-i18n="aws.item.licenses">Software licenses</span>
-            <span style="color:var(--gray-900);font-weight:500;font-size:12px;">$15k–$60k/yr</span>
-          </div>
-          <div style="display:flex;justify-content:space-between;align-items:baseline;font-size:13px;">
-            <span style="color:var(--gray-800);font-weight:300;" data-i18n="aws.item.maint">Maintenance & downtime</span>
-            <span style="color:var(--gray-900);font-weight:500;font-size:12px;">$20k–$80k/yr</span>
-          </div>
-          <div style="height:0.5px;background:var(--gray-100);margin:4px 0;"></div>
-          <div style="display:flex;justify-content:space-between;align-items:baseline;">
-            <span style="font-size:13px;color:var(--gray-800);font-weight:500;" data-i18n="aws.total.self">3-yr total cost</span>
-            <span style="font-size:14px;color:var(--gray-900);font-weight:500;font-family:'Playfair Display',serif;">$600k+ typical</span>
-          </div>
-        </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:0;border-top:0.5px solid var(--gray-100);">
+      <div style="padding:1.5rem;border-right:0.5px solid var(--gray-100);">
+        <div style="font-size:1.6rem;margin-bottom:0.5rem;">☁️</div>
+        <div style="font-size:14px;font-weight:600;color:var(--gray-900);margin-bottom:0.35rem;" data-i18n="aws.card1.title">Enterprise-grade, not enterprise overhead</div>
+        <div style="font-size:13px;color:var(--gray-400);font-weight:300;" data-i18n="aws.card1.desc">Architecture built to the same standards banks require — without hiring a team to run it.</div>
       </div>
-
-      <!-- With Meliora + AWS -->
-      <div style="padding:1.75rem;border-right:0.5px solid var(--teal-100);background:var(--teal-50);">
-        <div style="font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:1.5px;color:var(--teal-400);margin-bottom:1rem;" data-i18n="aws.col2.label">With Meliora + AWS</div>
-        <div style="display:flex;flex-direction:column;gap:10px;">
-          <div style="display:flex;justify-content:space-between;align-items:baseline;font-size:13px;">
-            <span style="color:var(--gray-800);font-weight:300;" data-i18n="aws.item.servers">Servers / hardware</span>
-            <span style="color:var(--teal-600);font-weight:500;">$0</span>
-          </div>
-          <div style="display:flex;justify-content:space-between;align-items:baseline;font-size:13px;">
-            <span style="color:var(--gray-800);font-weight:300;" data-i18n="aws.item.staff">Infra team</span>
-            <span style="color:var(--teal-600);font-weight:500;">$0 <span style="font-size:11px;font-weight:300;">(we handle it)</span></span>
-          </div>
-          <div style="display:flex;justify-content:space-between;align-items:baseline;font-size:13px;">
-            <span style="color:var(--gray-800);font-weight:300;" data-i18n="aws.item.aws">AWS usage (pay-as-you-go)</span>
-            <span style="color:var(--teal-600);font-weight:500;font-size:12px;">pay-as-you-go</span>
-          </div>
-          <div style="display:flex;justify-content:space-between;align-items:baseline;font-size:13px;">
-            <span style="color:var(--gray-800);font-weight:300;" data-i18n="aws.item.meliora">Meliora engagement fee</span>
-            <span style="color:var(--teal-600);font-weight:500;">per project</span>
-          </div>
-          <div style="height:0.5px;background:var(--teal-100);margin:4px 0;"></div>
-          <div style="display:flex;justify-content:space-between;align-items:baseline;">
-            <span style="font-size:13px;color:var(--teal-600);font-weight:500;" data-i18n="aws.total.meliora">3-yr total cost</span>
-            <span style="font-size:14px;color:var(--teal-600);font-weight:500;font-family:'Playfair Display',serif;">significantly less</span>
-          </div>
-        </div>
+      <div style="padding:1.5rem;border-right:0.5px solid var(--gray-100);">
+        <div style="font-size:1.6rem;margin-bottom:0.5rem;">🔧</div>
+        <div style="font-size:14px;font-weight:600;color:var(--gray-900);margin-bottom:0.35rem;" data-i18n="aws.card2.title">We own the operations</div>
+        <div style="font-size:13px;color:var(--gray-400);font-weight:300;" data-i18n="aws.card2.desc">Servers, backups, monitoring, scaling — handled as part of the engagement, so nothing falls through the cracks.</div>
       </div>
-
-      <!-- Savings callout -->
-      <div style="padding:1.75rem;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;background:var(--teal-800);">
-        <div style="font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:1.5px;color:var(--teal-100);margin-bottom:0.75rem;" data-i18n="aws.savings.label">Typical savings</div>
-        <div style="font-family:'Playfair Display',serif;font-size:2rem;font-weight:500;color:white;line-height:1.2;margin-bottom:0.75rem;" data-i18n="aws.savings.headline">No servers.<br>No infra team.<br>No upfront capital.</div>
-        <div style="font-size:12px;color:var(--teal-100);font-weight:300;line-height:1.6;" data-i18n="aws.savings.source">Costs scale with your project — not with your headcount.</div>
+      <div style="padding:1.5rem;border-right:0.5px solid var(--gray-100);">
+        <div style="font-size:1.6rem;margin-bottom:0.5rem;">📈</div>
+        <div style="font-size:14px;font-weight:600;color:var(--gray-900);margin-bottom:0.35rem;" data-i18n="aws.card3.title">Built to scale with you</div>
+        <div style="font-size:13px;color:var(--gray-400);font-weight:300;" data-i18n="aws.card3.desc">The same architecture that supports day-one projects scales cleanly as your systems grow — no re-platforming later.</div>
       </div>
+      <div style="padding:1.5rem;">
+        <div style="font-size:1.6rem;margin-bottom:0.5rem;">🌍</div>
+        <div style="font-size:14px;font-weight:600;color:var(--gray-900);margin-bottom:0.35rem;" data-i18n="aws.card4.title">Not locked to one provider</div>
+        <div style="font-size:13px;color:var(--gray-400);font-weight:300;" data-i18n="aws.card4.desc">AWS today, another cloud tomorrow if your environment calls for it. Same standards either way.</div>
+      </div>
+    </div>
 
+    <div style="padding:1rem 2rem;background:var(--teal-50);border-top:0.5px solid var(--teal-100);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;">
+      <p style="font-size:12px;color:var(--teal-600);margin:0;font-weight:300;" data-i18n="aws.note">Infrastructure scope and cost are confirmed together during your discovery call.</p>
+      <a href="#project-brief" class="btn-primary" style="font-size:13px;padding:9px 20px;" data-i18n="aws.cta">Tell us about your project →</a>
     </div>
   </div>
 
@@ -2317,12 +2277,12 @@ const translations = {
     "rates.note":"* All engagements priced in USD. Scoped and priced after discovery call — contact us to discuss your project. Free discovery call always included.",
     "rates.cta":"Tell us about your project →",
     "aws.tag":"Enterprise infrastructure","aws.title":"Enterprise infrastructure — without owning it.",
-    "aws.sub":"Where cloud infrastructure is part of the engagement, we build on AWS — so you get secure, scalable, enterprise-grade infrastructure without buying servers, managing hardware, or hiring a dedicated infra team. You pay only for what your project uses. Other cloud environments follow the same principles — the provider changes, the standards don't.",
-    "aws.col1.label":"Build it yourself","aws.col1.note":"Illustrative example — mid-size fintech, 3 years","aws.col2.label":"With Meliora + AWS",
-    "aws.item.servers":"Servers / hardware","aws.item.staff":"Infra team (1-2 FTEs)","aws.item.licenses":"Software licenses",
-    "aws.item.maint":"Maintenance and downtime","aws.item.aws":"AWS usage (pay-as-you-go)","aws.item.meliora":"Meliora engagement fee",
-    "aws.total.self":"3-yr total cost","aws.total.meliora":"3-yr total cost",
-    "aws.savings.headline":"No servers. No infra team. No upfront capital.","aws.savings.source":"Costs scale with your project — not with your headcount.",
+    "aws.sub":"Where cloud infrastructure is part of the engagement, we build on AWS — so you get secure, scalable, enterprise-grade infrastructure without buying servers, managing hardware, or hiring a dedicated infra team. Other cloud environments follow the same principles — the provider changes, the standards don't.",
+    "aws.card1.title":"Enterprise-grade, not enterprise overhead","aws.card1.desc":"Architecture built to the same standards banks require — without hiring a team to run it.",
+    "aws.card2.title":"We own the operations","aws.card2.desc":"Servers, backups, monitoring, scaling — handled as part of the engagement, so nothing falls through the cracks.",
+    "aws.card3.title":"Built to scale with you","aws.card3.desc":"The same architecture that supports day-one projects scales cleanly as your systems grow — no re-platforming later.",
+    "aws.card4.title":"Not locked to one provider","aws.card4.desc":"AWS today, another cloud tomorrow if your environment calls for it. Same standards either way.",
+    "aws.note":"Infrastructure scope and cost are confirmed together during your discovery call.","aws.cta":"Tell us about your project →",
     "brief.tag":"Start the conversation","brief.title":"Tell us about your project",
     "brief.sub":"No technical knowledge needed — just tell us what you want to improve or fix. A real engineer will read this and reply within 24 hours with a clear, honest estimate.",
     "brief.name":"Your name *","brief.namePh":"Maria Gonzalez","brief.company":"Company *","brief.companyPh":"Acme Bank",
@@ -2675,12 +2635,12 @@ const translations = {
     "rates.note":"* Todos los compromisos se cotizan en USD. Precio definido después de la llamada de descubrimiento — contáctanos para hablar de tu proyecto. Llamada de descubrimiento siempre gratuita.",
     "rates.cta":"Cuéntanos sobre tu proyecto →",
     "aws.tag":"Infraestructura empresarial","aws.title":"Infraestructura empresarial — sin necesidad de poseerla.",
-    "aws.sub":"Cuando la infraestructura en la nube es parte del proyecto, construimos sobre AWS — para que tengas infraestructura segura y escalable sin comprar servidores, gestionar hardware ni contratar un equipo dedicado. Solo pagas por lo que usa tu proyecto. Otros entornos de nube siguen los mismos principios — el proveedor cambia, los estándares no.",
-    "aws.col1.label":"Construirlo tú mismo","aws.col1.note":"Ejemplo ilustrativo — fintech mediano, 3 años","aws.col2.label":"Con Meliora + AWS",
-    "aws.item.servers":"Servidores / hardware","aws.item.staff":"Equipo de infra (1-2 FTEs)","aws.item.licenses":"Licencias de software",
-    "aws.item.maint":"Mantenimiento y downtime","aws.item.aws":"Uso de AWS (pago por uso)","aws.item.meliora":"Fee de compromiso Meliora",
-    "aws.total.self":"Costo total 3 años","aws.total.meliora":"Costo total 3 años",
-    "aws.savings.headline":"Sin servidores. Sin equipo de infra. Sin capital inicial.","aws.savings.source":"Los costos escalan con tu proyecto — no con tu plantilla.",
+    "aws.sub":"Cuando la infraestructura en la nube es parte del proyecto, construimos sobre AWS — para que tengas infraestructura segura, escalable y de nivel empresarial sin comprar servidores, gestionar hardware ni contratar un equipo dedicado. Otros entornos de nube siguen los mismos principios — el proveedor cambia, los estándares no.",
+    "aws.card1.title":"Nivel empresarial, sin el overhead empresarial","aws.card1.desc":"Arquitectura construida con los mismos estándares que exigen los bancos — sin que tengas que contratar un equipo para operarla.",
+    "aws.card2.title":"Nosotros operamos la infraestructura","aws.card2.desc":"Servidores, respaldos, monitoreo, escalamiento — todo incluido como parte del compromiso, para que nada se te escape.",
+    "aws.card3.title":"Diseñada para crecer contigo","aws.card3.desc":"La misma arquitectura que soporta proyectos desde el día uno escala limpiamente conforme tus sistemas crecen — sin migrar de plataforma después.",
+    "aws.card4.title":"No dependes de un solo proveedor","aws.card4.desc":"AWS hoy, otra nube mañana si tu entorno lo requiere. Los mismos estándares en cualquier caso.",
+    "aws.note":"El alcance y costo de infraestructura se confirman juntos durante tu llamada de descubrimiento.","aws.cta":"Cuéntanos sobre tu proyecto →",
     "brief.tag":"Inicia la conversación","brief.title":"Cuéntanos sobre tu proyecto",
     "brief.sub":"No necesitas conocimientos técnicos — solo cuéntanos qué quieres mejorar o resolver. Un ingeniero real leerá esto y responderá en 24 horas con una estimación clara y honesta.",
     "brief.name":"Tu nombre *","brief.namePh":"María González","brief.company":"Empresa *","brief.companyPh":"Banco Acme",
