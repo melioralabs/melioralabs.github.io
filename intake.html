@@ -1083,6 +1083,10 @@ async function saveToSupabase(data, estimate) {
     features_included: data.features_included || "",
     features_dropped:  data.features_dropped  || "",
     status:         "pending",
+    // Internal reference only — never shown to the client (see EmailJS send above).
+    // Lets Saul see what the JS calculator produced when reviewing the draft in the Engine.
+    client_quoted_hours:    estimate.totalHrs ?? null,
+    client_quoted_estimate: estimate.total != null ? `$${estimate.total.toFixed(2)}` : null,
   };
   try {
     await fetch(`${SUPABASE_URL}/rest/v1/intake_submissions`, {
@@ -1613,13 +1617,18 @@ async function submitForm() {
     saveToSupabase(data, e).catch(() => {});
 
     // ── Step 3: Send EmailJS auto-reply (non-blocking) ──
+    // showFixedTotal is only true for Assess/Blueprint — those are the only tracks with a
+    // published, client-safe number. Execute and Legacy & Business Systems use BASE_HOURS_LEGACY
+    // / BASE_HOURS.Execute as an internal planning reference only (see calcEstimate() / the
+    // "internal reference only, not shown to client" comment on BASE_HOURS_LEGACY) — that number
+    // must never reach the client-facing email, so it's replaced with a generic line here.
     emailjs.send("meliora_gmail", "template_14hnex5", {
       name:         data.name,
       client_email: data.email,
       project:      data.project,
       service:      data.service,
-      estimate:     data.estimate,
-      hours:        data.hours,
+      estimate:     e.showFixedTotal ? data.estimate : "Scoped per project — we'll confirm hours and cost after the discovery call",
+      hours:        e.showFixedTotal ? data.hours     : "To be scoped on the discovery call",
       risk_label:   data.risk_label,
     }).catch(() => {});
 
