@@ -1094,7 +1094,7 @@ async function saveToSupabase(data, estimate) {
     client_quoted_estimate: estimate.total != null ? `$${estimate.total.toFixed(2)}` : null,
   };
   try {
-    await fetch(`${SUPABASE_URL}/rest/v1/intake_submissions`, {
+    let resp = await fetch(`${SUPABASE_URL}/rest/v1/intake_submissions`, {
       method:  "POST",
       headers: {
         "Content-Type":  "application/json",
@@ -1104,6 +1104,29 @@ async function saveToSupabase(data, estimate) {
       },
       body: JSON.stringify(payload),
     });
+    if (!resp.ok) {
+      const errText = await resp.text().catch(() => "");
+      console.warn("Supabase save failed:", resp.status, errText);
+      // Most likely cause: a column in payload (e.g. risk_flags) doesn't exist on
+      // intake_submissions yet. Never let a schema mismatch drop the whole lead —
+      // retry once with only the fields that have existed since the last known-good
+      // schema, so the submission is saved even if a newer field isn't live yet.
+      const { risk_flags, ...corePayload } = payload;
+      const retryResp = await fetch(`${SUPABASE_URL}/rest/v1/intake_submissions`, {
+        method:  "POST",
+        headers: {
+          "Content-Type":  "application/json",
+          "apikey":        SUPABASE_ANON,
+          "Authorization": `Bearer ${SUPABASE_ANON}`,
+          "Prefer":        "return=minimal",
+        },
+        body: JSON.stringify(corePayload),
+      });
+      if (!retryResp.ok) {
+        const retryErrText = await retryResp.text().catch(() => "");
+        console.warn("Supabase retry save also failed:", retryResp.status, retryErrText);
+      }
+    }
   } catch(e) { console.warn("Supabase save failed:", e); }
 }
 const state = {
