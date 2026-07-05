@@ -1155,7 +1155,7 @@ const RATES = {
 // Execute and Legacy are NOT shown as a fixed client-facing total — see buildSummary() —
 // because Execute spans a 10–54 week range and Legacy is explicitly "scoped per project" on index.html.
 const BASE_HOURS = { Assess: 65, Blueprint: 160, Execute: 400 };
-const BASE_HOURS_LEGACY = 60; // internal reference only, not shown to client
+const BASE_HOURS_LEGACY = 60; // planning baseline for Legacy scoping — shown to client as a labeled estimate
 
 // Feature checklist content — mirrors CARD_MODALS.included arrays on index.html.
 // Keep these in sync whenever the index.html card content changes.
@@ -1490,10 +1490,13 @@ function buildSummary() {
       `<span style="display:block;margin-bottom:3px;">USD &nbsp;·&nbsp; ${e.totalHrs} hours &nbsp;·&nbsp; ${e.service}</span>` +
       `<span style="opacity:0.75;">Risk: ${e.riskLabel} (${e.riskScore}/10) &nbsp;·&nbsp; Subject to discovery call</span>`;
   } else {
-    document.getElementById('est-total').textContent = 'Scoped per project';
+    // Legacy & Execute don't have a published fixed-rate card, but the client should still
+    // see the actual estimated number up front — it's just clearly labeled as an estimate
+    // that Saul confirms/adjusts manually after the discovery call, not a masked/generic line.
+    document.getElementById('est-total').textContent = `~$${e.total.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})} (estimate)`;
     document.getElementById('est-sub').innerHTML =
-      `<span style="display:block;margin-bottom:3px;">${trackDisplay}${e.service ? ' · ' + e.service : ''}</span>` +
-      `<span style="opacity:0.75;">Final estimate confirmed on the discovery call &nbsp;·&nbsp; Risk: ${e.riskLabel} (${e.riskScore}/10)</span>`;
+      `<span style="display:block;margin-bottom:3px;">USD (estimate) &nbsp;·&nbsp; ~${e.totalHrs} hours (estimate) &nbsp;·&nbsp; ${trackDisplay}${e.service ? ' · ' + e.service : ''}</span>` +
+      `<span style="opacity:0.75;">Risk: ${e.riskLabel} (${e.riskScore}/10) &nbsp;·&nbsp; Final scope confirmed on the discovery call</span>`;
   }
 
   const riskLabels = {
@@ -1525,13 +1528,13 @@ function buildSummary() {
     ['Risk Factors',   riskSelected,                                   true],
     ['Features Included', featuresIncluded || '—',                     true],
     featuresDropped ? ['Features Dropped', featuresDropped,            true] : null,
-    // Hours/cost breakdown only shown to the client when we're quoting a fixed total (Assess/Blueprint).
-    // Execute and Legacy stay "Scoped per project" on screen — the full numbers still reach Saul
-    // through the Formspree/Supabase payload in submitForm(), just not displayed here.
-    e.showFixedTotal ? ['Hours', `${e.totalHrs} hrs`, false] : null,
-    e.showFixedTotal ? ['Rate', `$${e.rate}/hr`, false] : null,
-    e.showFixedTotal ? ['Base Cost', `$${e.baseCost.toLocaleString('en-US',{minimumFractionDigits:2})}`, false] : null,
-    e.showFixedTotal ? [`Contingency (${e.contPct}%)`, `$${e.contingency.toLocaleString('en-US',{minimumFractionDigits:2})}`, false] : null,
+    // Hours/cost breakdown shown to the client for every track — Legacy/Execute don't have a
+    // published fixed-rate card, but the client should still see the real estimated numbers,
+    // clearly marked as estimates Saul confirms/adjusts manually after the discovery call.
+    ['Hours', `${e.showFixedTotal ? '' : '~'}${e.totalHrs} hrs${e.showFixedTotal ? '' : ' (est.)'}`, false],
+    ['Rate', `$${e.rate}/hr`, false],
+    ['Base Cost', `$${e.baseCost.toLocaleString('en-US',{minimumFractionDigits:2})}${e.showFixedTotal ? '' : ' (est.)'}`, false],
+    [`Contingency (${e.contPct}%)`, `$${e.contingency.toLocaleString('en-US',{minimumFractionDigits:2})}`, false],
     ['Risk Score',     `${e.riskScore}/10 — ${e.riskLabel}`,          false],
   ].filter(Boolean);
 
@@ -1647,18 +1650,18 @@ async function submitForm() {
     saveToSupabase(data, e).catch(() => {});
 
     // ── Step 3: Send EmailJS auto-reply (non-blocking) ──
-    // showFixedTotal is only true for Assess/Blueprint — those are the only tracks with a
-    // published, client-safe number. Execute and Legacy & Business Systems use BASE_HOURS_LEGACY
-    // / BASE_HOURS.Execute as an internal planning reference only (see calcEstimate() / the
-    // "internal reference only, not shown to client" comment on BASE_HOURS_LEGACY) — that number
-    // must never reach the client-facing email, so it's replaced with a generic line here.
+    // Intake is a private, per-prospect scoping conversation, not the public rate card —
+    // being transparent about estimated hours/cost here is the point, since the client is
+    // deciding whether to move forward. These are always labeled as estimates; the final
+    // scope/number is confirmed manually by Saul after the discovery call, same as the
+    // fixed-rate tracks already say "Subject to discovery call."
     emailjs.send("meliora_gmail", "template_14hnex5", {
       name:         data.name,
       client_email: data.email,
       project:      data.project,
       service:      data.service,
-      estimate:     e.showFixedTotal ? data.estimate : "Scoped per project — we'll confirm hours and cost after the discovery call",
-      hours:        e.showFixedTotal ? data.hours     : "To be scoped on the discovery call",
+      estimate:     e.showFixedTotal ? data.estimate : `~$${e.total.toFixed(2)} (estimate — confirmed after the discovery call)`,
+      hours:        e.showFixedTotal ? data.hours     : `~${e.totalHrs} hours (estimate — confirmed after the discovery call)`,
       risk_label:   data.risk_label,
     }).catch(() => {});
 
