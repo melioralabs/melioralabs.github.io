@@ -202,7 +202,8 @@
     gap: 0.5rem;
   }
 
-  .field label {
+  .field label,
+  .field .field-label {
     font-size: 0.78rem;
     font-weight: 600;
     color: var(--blue);
@@ -210,7 +211,8 @@
     letter-spacing: 0.8px;
   }
 
-  .field label .req { color: var(--gold); margin-left: 2px; }
+  .field label .req,
+  .field .field-label .req { color: var(--gold); margin-left: 2px; }
 
   .field input,
   .field select,
@@ -796,7 +798,7 @@
 
       <!-- PRODUCT TRACK -->
       <div class="field" style="margin-bottom:1.25rem;" id="f-track">
-        <label>Which product fits your project? <span class="req">*</span></label>
+        <div class="field-label">Which product fits your project? <span class="req">*</span></div>
         <div class="track-grid" id="track-grid">
           <div class="track-card" data-value="mainframe" onclick="selectTrack(this)">
             <div class="track-icon">🏦</div>
@@ -814,7 +816,7 @@
 
       <!-- SERVICE TYPE — Mainframe & Enterprise only -->
       <div class="field" style="margin-bottom:1.25rem;display:none;" id="f-service">
-        <label>Engagement Phase <span class="req">*</span></label>
+        <div class="field-label">Engagement Phase <span class="req">*</span></div>
         <div style="margin-top:0.5rem;">
           <div class="service-grid" id="service-grid" style="grid-template-columns:repeat(3,1fr);">
             <div class="service-card" data-value="Assess" onclick="selectService(this)">
@@ -867,7 +869,7 @@
 
       <!-- RISK FLAGS -->
       <div class="field" style="margin-bottom:1.25rem;">
-        <label>Risk Factors <span style="font-weight:400;text-transform:none;letter-spacing:0;">(select all that apply)</span></label>
+        <div class="field-label">Risk Factors <span style="font-weight:400;text-transform:none;letter-spacing:0;">(select all that apply)</span></div>
         <div style="margin-top:0.5rem;">
           <div class="risk-grid">
             <div class="risk-item" data-value="cobol_mainframe" onclick="toggleRisk(this)">
@@ -916,7 +918,7 @@
 
       <!-- TRAINING / KNOWLEDGE TRANSFER -->
       <div class="field" style="margin-bottom:1.25rem;">
-        <label>Training / Knowledge Transfer <span style="font-weight:400;text-transform:none;letter-spacing:0;">(does your team need it?)</span></label>
+        <div class="field-label">Training / Knowledge Transfer <span style="font-weight:400;text-transform:none;letter-spacing:0;">(does your team need it?)</span></div>
         <div style="margin-top:0.5rem;">
           <div class="risk-grid neutral" style="grid-template-columns:repeat(2,1fr);">
             <div class="risk-item" data-training="yes" onclick="selectTraining(this)">
