@@ -1083,6 +1083,11 @@ async function saveToSupabase(data, estimate) {
     features_included: data.features_included || "",
     features_dropped:  data.features_dropped  || "",
     status:         "pending",
+    // Real selected risk flags (comma-joined internal keys, e.g. "sensitive_data, hard_deadline") —
+    // sent alongside risk_level so the Engine can recalculate the EXACT same score/contingency
+    // instead of approximating from the low/medium/high/critical bucket. Requires a risk_flags
+    // text column on intake_submissions (added 2026-07).
+    risk_flags:     data.risks || "",
     // Internal reference only — never shown to the client (see EmailJS send above).
     // Lets Saul see what the JS calculator produced when reviewing the draft in the Engine.
     client_quoted_hours:    estimate.totalHrs ?? null,
